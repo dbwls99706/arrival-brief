@@ -1,0 +1,17 @@
+/* Original app identity with a restrained reference to the contest brand palette. */
+:root{--brand-accent:#003b62;--brand-soft:#eff4f8;--brand-hover:#002b49}body.arrival-focus{--blue:var(--brand-accent)}
+.hero h1>span{color:var(--ink)}
+.wordmark .brand-icon,.arrival-focus .reel-name svg{color:var(--brand-accent)}
+.edition-rule{background:var(--brand-accent)}
+.button-primary{background:var(--brand-accent);box-shadow:none}
+.button-primary:hover{background:var(--brand-hover)}
+.hero-product-index .app-icon,.product-title .app-icon,.closing-app .app-icon{background:var(--brand-soft);color:var(--brand-accent);border-color:var(--brand-soft)}
+.reel-footer>a{color:var(--brand-accent)}
+header strong{color:var(--brand-accent)}
+aside a:hover,blockquote{border-color:var(--brand-accent)}
+article a{color:var(--brand-accent)}
+
+/* The dark app retains its pale-blue text and semantic warning/status colors. */
+.mark{background:var(--brand-accent);color:white;border:1px solid #748fa6}
+.primary{background:var(--brand-accent);color:white;border:1px solid #748fa6}
+.primary:hover{background:#074a78}

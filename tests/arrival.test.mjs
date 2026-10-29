@@ -1,0 +1,15 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {extractDestinations,buildBrief,formatBrief,DESTINATIONS} from '../dist/arrival/engine.mjs';
+test('official destination mappings',()=>{for(const [name,gate,zone] of [['오디토리움','북문','블루존'],['컨퍼런스룸 E','동문','퍼플존'],['회의실 301호','동문','그린존'],['회의실 403호','동문','그린존']]){const b=buildBrief({text:`코엑스 ${name}`,height:1.65});assert.equal(b.status,'ready');assert.equal(b.destination.gate,gate);assert.equal(b.destination.zone,zone);}});
+test('reject unsupported facilities including Magok',()=>{for(const text of ['예술의전당 오디토리움','코엑스 마곡 오디토리움','COEX MAGOK auditorium'])assert.equal(buildBrief({text,height:1.65}).status,'unsupported');});
+test('ambiguous destinations require selection',()=>{const text='코엑스 오디토리움과 컨퍼런스룸 E';assert.equal(buildBrief({text,height:1.65}).status,'ambiguous');assert.equal(buildBrief({text,height:1.65,destinationId:'conferenceE'}).destination.gate,'동문');});
+test('selected destination cannot contradict parsed ticket',()=>{assert.equal(buildBrief({text:'코엑스 오디토리움',height:1.65,destinationId:'conferenceE'}).status,'conflict');});
+test('height fail closed for missing, invalid and over limit',()=>{for(const height of [2.21,3])assert.equal(buildBrief({text:'코엑스 오디토리움',height}).status,'blocked');for(const height of ['NaN',0,99])assert.equal(buildBrief({text:'코엑스 오디토리움',height}).status,'invalid');assert.equal(buildBrief({text:'코엑스 오디토리움',height:''}).canConfirm,false);assert.equal(buildBrief({text:'코엑스 오디토리움',height:2.2}).warnings.length,3);});
+test('driving and unknown state prohibit confirmation',()=>{for(const mode of ['driving','unknown'])assert.equal(buildBrief({text:'코엑스 오디토리움',height:1.65,mode}).canConfirm,false);});
+test('exports contain source and limitations and no loading instruction',()=>{const s=formatBrief(buildBrief({text:'코엑스 오디토리움',height:1.65}));assert.match(s,/https:\/\/business.coex/);assert.match(s,/실시간/);assert.doesNotMatch(s,/하역장|8호기/);});
+test('numeric dates and long text do not fabricate places',()=>{assert.equal(extractDestinations('코엑스 2026-10-28 13:00').status,'unmatched');assert.equal(extractDestinations('a'.repeat(10001)).status,'invalid');});
+test('unmatched COEX room can be explicitly selected',()=>{const b=buildBrief({text:'코엑스 행사 안내',height:1.7,destinationId:'studio159'});assert.equal(b.destination.name,'스튜디오 159');assert.equal(b.status,'ready');});
+test('all supported places have no invented coordinates',()=>{assert.equal(DESTINATIONS.length,8);for(const d of DESTINATIONS)assert.equal('lat' in d,false);});
+
+test('contradictory venue and floor fail closed',()=>{for(const text of ['코엑스가 아닌 킨텍스 오디토리움에 갑니다','코엑스 회의실301호는 취소, 목적지는 벡스코입니다','코엑스 오디토리움 2층 행사']){const b=buildBrief({text,height:1.65});assert.equal(b.status,'needs_review');assert.equal(b.canConfirm,false);}});
+
+test('cancelled event and F-style floor fail closed',()=>{for(const text of ['코엑스 오디토리움 행사는 취소','코엑스 오디토리움이 아니다','코엑스 오디토리움 2F'])assert.equal(buildBrief({text,height:1.65}).status,'needs_review');});
