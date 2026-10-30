@@ -1,0 +1,74 @@
+{
+  "version": "0.2.0-prototype",
+  "apk": "apk/ArrivalBrief_release.apk",
+  "bytes": 8620730,
+  "sha256": "079ce46a3b6f5660e8808d0109033c5004c9fa8d910ac93d68668cdb2d0df16e",
+  "tests": [
+    {
+      "name": "studio.ax.arrival.BriefSessionTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "studio.ax.arrival.BriefEngineTest",
+      "tests": "13",
+      "failures": "0",
+      "errors": "0"
+    }
+  ],
+  "lint": [
+    {
+      "id": "DataExtractionRules",
+      "severity": "Warning",
+      "message": "The attribute `android:dataExtractionRules` only applies for Android 12 and higher; since `minSdkVersion` is API 28 you should also set `android:fullBackupContent`"
+    },
+    {
+      "id": "SetTextI18n",
+      "severity": "Warning",
+      "message": "String literal in `setText` can not be translated. Use Android resources instead."
+    },
+    {
+      "id": "SetTextI18n",
+      "severity": "Warning",
+      "message": "String literal in `setText` can not be translated. Use Android resources instead."
+    },
+    {
+      "id": "SetTextI18n",
+      "severity": "Warning",
+      "message": "String literal in `setText` can not be translated. Use Android resources instead."
+    }
+  ],
+  "runtime": {
+    "pleos": {
+      "status": "blocked_before_install",
+      "image": "Pleos Connect 2.1.0 API34 x86_64",
+      "image_sha1": "b4f858d5bcc6c71506d7edfc872bcb9e5a11acaa",
+      "host": "no GPU, no KVM",
+      "observed": "Boot did not complete; guest system services failed; adb install failed with PackageManagerInternal.freeStorage NullPointerException. Application was not launched.",
+      "required_followup": "Re-test installation, first launch, SDK services and UX restriction transitions on supported hardware.",
+      "requirements_url": "https://document.pleos.ai/docs/connect/guide/getting-started/application-development/configure-pleos-connect-emulator"
+    },
+    "aosp_android9": {
+      "status": "installed_and_launched",
+      "api": 28,
+      "abi": "x86",
+      "screen": "1280x800 @160dpi",
+      "image_sha1": "ce03c42d80c0fc6dc47f6455dbee7aa275d02780",
+      "install": "Success",
+      "launch": "Status: ok; Activity: studio.ax.arrival/.MainActivity; Complete",
+      "observed": [
+        "initial unknown state locks inputs",
+        "explicit demo consent dialog",
+        "demo UI displays Auditorium, north gate and B3 Blue zone",
+        "manual height and safe-parking confirmation enables brief confirmation",
+        "driving demo locks input and copy while retaining the confirmed brief"
+      ],
+      "limitations": [
+        "non-automotive simulation only",
+        "host has no hardware acceleration; Android System UI ANR dialog was dismissed",
+        "no Pleos SDK or vehicle UX transition success claimed"
+      ]
+    }
+  }
+}

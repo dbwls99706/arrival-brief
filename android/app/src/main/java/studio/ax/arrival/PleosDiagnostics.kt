@@ -15,10 +15,10 @@ class PleosDiagnostics(context:Context,private val report:(String)->Unit) {
  private val main=Handler(Looper.getMainLooper())
  private val vehicle=Vehicle(context.applicationContext)
  private val navi=NaviHelper(context.applicationContext)
- private var active=false
+ @Volatile private var active=false
  private var brake="Vehicle State 응답 대기"
  private var navigation="NaviHelper 연결 대기"
- private fun emit(){if(active)main.post{if(active)report("$brake\n$navigation\n주차 여부·OS 주행 규제는 별도 검증 필요. 실차 입력은 잠금 유지.")}}
+ private fun emit(){if(active)main.post{if(active)report("$brake\n$navigation\n읽기 진단 결과입니다. 입력 허용은 별도 CarUxRestrictions 상태로 결정하며, 브레이크 페달로 정차를 판단하지 않습니다.")}}
  private val listener=object:NaviHelperEventListener {
   override fun onDestinationInfo(destinationInfo:DestinationInfo){navigation="NaviHelper 목적지 정보 수신 성공 (개인 위치는 표시·저장하지 않음)";emit()}
   override fun onError(errorCode:NaviErrorCode){navigation="NaviHelper 조회 실패: $errorCode";emit()}
@@ -38,7 +38,7 @@ class PleosDiagnostics(context:Context,private val report:(String)->Unit) {
    )}catch(e:Exception){brake="Vehicle State 사용 불가: ${e.javaClass.simpleName}";emit()}},800)
   } catch(e:Exception){brake="Vehicle State 연결 불가: ${e.javaClass.simpleName}";emit()}
   try {
-   navi.initialize(onConnected={if(active){navigation="NaviHelper 연결됨 · 목적지 조회 중";emit();navi.addListener(listener);try{navi.getDestinationInfo()}catch(e:Exception){navigation="NaviHelper 권한 확인 필요: ${e.javaClass.simpleName}";emit()}}},onFailed={e->navigation="NaviHelper 연결 실패: ${e.javaClass.simpleName}";emit()})
+   navi.initialize(onConnected={if(active){navigation="NaviHelper 연결됨 · 목적지 조회 중";emit();try{navi.addListener(listener);navi.getDestinationInfo()}catch(e:Exception){navigation="NaviHelper 권한 확인 필요: ${e.javaClass.simpleName}";emit()}}},onFailed={e->navigation="NaviHelper 연결 실패: ${e.javaClass.simpleName}";emit()})
   }catch(e:Exception){navigation="NaviHelper 사용 불가: ${e.javaClass.simpleName}";emit()}
   main.postDelayed({if(active){if(brake.contains("응답 대기"))brake="Vehicle State 응답 없음 · 서비스·권한 확인 필요";if(navigation.contains("대기")||navigation.contains("조회 중"))navigation="NaviHelper 응답 없음 · 서비스·권한 확인 필요";emit()}},6000)
  }

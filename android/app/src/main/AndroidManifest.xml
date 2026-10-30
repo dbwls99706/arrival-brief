@@ -2,7 +2,8 @@
  <uses-permission android:name="pleos.car.permission.CAR_DRIVE" />
  <uses-permission android:name="pleos.car.permission.NAVI_ROUTE" />
  <uses-feature android:name="android.hardware.type.automotive" android:required="false" />
- <application android:allowBackup="false" android:label="Arrival Brief" android:theme="@style/AppTheme" android:supportsRtl="true">
+ <application android:allowBackup="false" android:fullBackupContent="false" android:dataExtractionRules="@xml/data_extraction_rules" android:label="Arrival Brief" android:icon="@drawable/ic_arrival" android:theme="@style/AppTheme" android:supportsRtl="true">
+  <uses-library android:name="android.car" android:required="false" />
   <activity android:name=".MainActivity" android:exported="true">
    <intent-filter><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent-filter>
   </activity>

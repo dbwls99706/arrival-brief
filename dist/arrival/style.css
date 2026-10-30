@@ -21,3 +21,8 @@ main{padding-top:29px}.intro{display:flex;justify-content:space-between;align-it
 /* Announce and reveal the confirmed result without changing driving restrictions. */
 #briefTitle{scroll-margin-top:28px}
 #briefTitle:focus{outline:2px solid #a7dcf1;outline-offset:6px;border-radius:2px}
+
+/* Conflicting facility sources are evidence to review, not a route to follow. */
+.source-conflict{padding:24px 0}.source-conflict h3{font-size:22px;line-height:1.5;margin:24px 0 12px}.source-conflict p{font-size:15px;line-height:1.8;color:var(--muted)}.conflict-evidence{list-style:none;padding:0;margin:20px 0;border-top:1px solid var(--line)}.conflict-evidence li{display:grid;gap:8px;padding:16px 0;border-bottom:1px solid var(--line)}.conflict-evidence a{font-size:14px;line-height:1.6;color:var(--accent);text-underline-offset:3px}.conflict-evidence strong{font-size:17px;color:var(--ink)}.conflict-evidence small{color:var(--muted);font-size:12px}.source-conflict .helper{font-size:13px}.destination-directory .gate-group:last-child:nth-child(3){grid-column:1 / -1}
+
+.source-grid a+a{display:block;margin-top:10px}.source-conflict h3{color:var(--warn)}

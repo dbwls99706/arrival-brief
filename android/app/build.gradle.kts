@@ -1,11 +1,28 @@
 plugins { id("com.android.application"); id("org.jetbrains.kotlin.android") }
 android {
+ useLibrary("android.car")
  namespace = "studio.ax.arrival"
  compileSdk = 35
- defaultConfig { applicationId = "studio.ax.arrival"; minSdk = 28; targetSdk = 35; versionCode = 1; versionName = "0.1.0-prototype" }
+ buildToolsVersion = "35.0.0"
+ defaultConfig { applicationId = "studio.ax.arrival"; minSdk = 28; targetSdk = 35; versionCode = 2; versionName = "0.2.0-prototype" }
  compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
  kotlinOptions { jvmTarget = "17" }
- buildTypes { getByName("release") { isMinifyEnabled = false } }
+ val releaseStore = providers.environmentVariable("ARRIVAL_RELEASE_KEYSTORE").orNull
+ val releasePassword = providers.environmentVariable("ARRIVAL_RELEASE_PASSWORD").orNull
+ if (!releaseStore.isNullOrBlank() && !releasePassword.isNullOrBlank()) {
+  signingConfigs.create("submission") {
+   storeFile = file(releaseStore)
+   storePassword = releasePassword
+   keyAlias = "arrival-release"
+   keyPassword = releasePassword
+  }
+ }
+ buildTypes {
+  getByName("release") {
+   isMinifyEnabled = false
+   if (signingConfigs.findByName("submission") != null) signingConfig = signingConfigs.getByName("submission")
+  }
+ }
 }
 
 dependencies {

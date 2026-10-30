@@ -7,11 +7,32 @@
       "width": 720,
       "height": 1280,
       "pix_fmt": "yuv420p",
-      "r_frame_rate": "24/1"
+      "r_frame_rate": "24/1",
+      "nb_frames": "792"
     }
   ],
   "format": {
     "duration": "33.000000",
-    "size": "2756363"
+    "size": "1747151"
+  },
+  "content": {
+    "title": "도착 안내",
+    "method": "실제 웹 화면 캡처 편집. 실시간 화면 녹화나 실차 영상이 아님.",
+    "stock_intro_seconds": 4,
+    "app_capture_seconds": 29,
+    "vehicle_state": "웹 시뮬레이션",
+    "capture_crop": [
+      0,
+      0,
+      540,
+      800
+    ],
+    "capture_scale": [
+      594,
+      880
+    ],
+    "font": "Noto Sans KR (OFL)",
+    "audio": "none",
+    "sha256": "7d18d350a8b284e731be20f13d66e46c528994fad85f4fb2ed58c94d27ec97b5"
   }
 }

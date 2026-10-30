@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="studio.ax.arrival.BriefEngineTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-28T14:44:09.177Z" hostname="build-host" time="0.107">
+<testsuite name="studio.ax.arrival.BriefEngineTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-10-30T11:04:40.377Z" hostname="2adca276fbc2" time="0.09">
   <properties/>
-  <testcase name="allEightOfficialMappings" classname="studio.ax.arrival.BriefEngineTest" time="0.082"/>
-  <testcase name="unconnectedVehicleFailsClosed" classname="studio.ax.arrival.BriefEngineTest" time="0.001"/>
-  <testcase name="cancelledAndFFloor" classname="studio.ax.arrival.BriefEngineTest" time="0.004"/>
+  <testcase name="invalidSelectionCannotFallBackToGuessedDestination" classname="studio.ax.arrival.BriefEngineTest" time="0.042"/>
+  <testcase name="sourceConflictCannotBeExported" classname="studio.ax.arrival.BriefEngineTest" time="0.01"/>
+  <testcase name="selectionCannotBypassFloorConflict" classname="studio.ax.arrival.BriefEngineTest" time="0.005"/>
+  <testcase name="cancelledAndFFloor" classname="studio.ax.arrival.BriefEngineTest" time="0.0"/>
+  <testcase name="uncontestedOfficialMappings" classname="studio.ax.arrival.BriefEngineTest" time="0.004"/>
   <testcase name="unknownAndOtherFacility" classname="studio.ax.arrival.BriefEngineTest" time="0.001"/>
-  <testcase name="conflictingVenueAndFloor" classname="studio.ax.arrival.BriefEngineTest" time="0.001"/>
-  <testcase name="invalidAndExcessHeight" classname="studio.ax.arrival.BriefEngineTest" time="0.002"/>
-  <testcase name="outputHasSourceAndNoLoadingDock" classname="studio.ax.arrival.BriefEngineTest" time="0.013"/>
-  <testcase name="ambiguityMustBeExplicit" classname="studio.ax.arrival.BriefEngineTest" time="0.002"/>
+  <testcase name="conflictingVenueAndFloor" classname="studio.ax.arrival.BriefEngineTest" time="0.0"/>
+  <testcase name="invalidAndExcessHeight" classname="studio.ax.arrival.BriefEngineTest" time="0.011"/>
+  <testcase name="conflictingOfficialSourcesBlockConfirmation" classname="studio.ax.arrival.BriefEngineTest" time="0.002"/>
+  <testcase name="heightBoundaryWarningSurvivesExport" classname="studio.ax.arrival.BriefEngineTest" time="0.009"/>
+  <testcase name="excessiveHeightTakesPriorityOverSourceConflict" classname="studio.ax.arrival.BriefEngineTest" time="0.001"/>
+  <testcase name="outputHasSourceAndNoLoadingDock" classname="studio.ax.arrival.BriefEngineTest" time="0.001"/>
+  <testcase name="ambiguityMustBeExplicit" classname="studio.ax.arrival.BriefEngineTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
