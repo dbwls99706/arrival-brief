@@ -1,54 +1,57 @@
 # Arrival Brief Android prototype
 
-Kotlin/native Android app for parked arrival preparation. Paste an event message, confirm the COEX room and the vehicle's total height, and keep a short, sourced arrival briefing. No remote AI call, API key, analytics, GPS fabrication, route mutation, or vehicle-control API is used.
+Kotlin/native Android app for parked arrival preparation. Select a supported room directly or paste an event notice, review the facility and total vehicle height, and confirm a sourced briefing. There is no external AI request, analytics, current-position tracking, fabricated route or vehicle-control call.
 
-## Build and tests
+## Build
 
-JDK 17, Android SDK platform 35 and build-tools 35.0.0 are required. The Gradle 8.13 wrapper distribution is checksum-pinned. Android Gradle Plugin 8.7.3 / Kotlin 2.0.21 / minSdk 28 / targetSdk 35.
+JDK 17, SDK platform 35, Build-Tools 35.0.0, Gradle 8.13 wrapper, AGP 8.7.3 and Kotlin 2.0.21. Minimum API 28, target API 35. The wrapper distribution is checksum-pinned.
 
 ```sh
 cd android
-# Set JAVA_HOME and ANDROID_HOME to your local installations.
-./gradlew :app:testDebugUnitTest :app:assembleDebug
+./gradlew :app:testDebugUnitTest :app:lintDebug :app:assembleRelease
 ```
 
-Debug output: `app/build/outputs/apk/debug/app-debug.apk`. Release signing and the submission artifact are managed from the repository's release instructions. A compiled or signed APK does not establish successful execution on a Pleos device or market approval.
+Release keys and passwords stay outside the repository. See [release build instructions](../docs/ANDROID_BUILD.md). Debug output is `app/build/outputs/apk/debug/app-debug.apk`; it is not the submission artifact.
 
-## Use and restrictions
+## Vehicle access
 
-The initial state is **UNKNOWN**, with input, confirmation and copying locked. On an Android Automotive device, `PlatformVehicleGateway` connects to the public AAOS `CarUxRestrictionsManager` through the optional `android.car` library. Input is enabled only after the platform reports `isRequiresDistractionOptimization == false` **and** no active restrictions. Missing values, unsupported platform, exceptions, disconnection and leaving the foreground lock input. Android 28 remains locked on automotive devices because this adapter uses the API 29 asynchronous lifecycle API.
+The initial state is **UNKNOWN** and input remains locked. On automotive hardware, `PlatformVehicleGateway` uses the optional `android.car` library and `CarUxRestrictionsManager`. Input is allowed only when distraction optimization is not required and active restrictions are zero. Missing values, disconnection, exceptions or leaving the foreground lock input. API 28 automotive stays locked because the adapter uses the API 29 asynchronous lifecycle API.
 
-A platform permission to interact is **not a physical parking measurement**. The UI says "플랫폼 UX 입력 허용" and asks the user to confirm safe parking before confirming or copying a briefing. Brake-pedal readings never unlock input. No activity declares distraction optimization; the OS may block the entire screen while driving, including a previously confirmed briefing.
+Platform input permission is not a physical parking measurement. The user must also confirm safe parking. No activity declares distraction optimization; the OS may block the whole activity while driving. The clearly labeled ordinary-Android demo is entered explicitly and is unavailable on hardware declaring `android.hardware.type.automotive`.
 
-For desktop/phone review, a clearly labeled demo can be entered only after an explicit explanation and confirmation. Demo controls can simulate parked, driving and unknown states, but are unavailable on devices declaring `android.hardware.type.automotive`. This is an interaction demonstration, not a vehicle simulator. Returning from the background resets the demo to UNKNOWN; explicitly select the parked example to continue.
+## NaviHelper in the review flow
 
-## Decision and session behavior
+`NavigationDestinationReader` requests destination information from official **NaviHelper 3.0.5**, only on user request and while the automotive platform allows input. It consumes `DestinationInfo.name` and `address` in memory; neither raw value is logged, stored or shown. No current location is read and no route is set.
 
-- Deterministic matching covers eight COEX meeting-room groups. Five groups can produce a briefing. Conference Room E, rooms 300-328 and rooms 400-403 return `source_conflict`: two official sources recommend different parking zones, so these briefings cannot be confirmed or copied.
-- Missing or conflicting locations, floor mismatches, cancelled venue notices, Magok facilities, malformed heights and excessive total heights block confirmation.
-- Selecting a room cannot bypass a contradictory floor. Correcting height preserves an explicitly selected room but clears its previous confirmation and height acknowledgement.
-- Total height must be entered in metres, with at most two decimal places. It must include roof boxes and other loads. Above 2.2 m is blocked. Exactly 2.2 m retains a prominent boundary warning in both the screen and copied text.
-- Both total-height review and safe-parking acknowledgement are required before confirmation. Editing the destination or height invalidates the old confirmation.
-- Restriction changes retain the already confirmed briefing in volatile memory while hiding input and copy actions. The OS can still restrict the full activity.
-- Rotation retains the session only in memory. Process recreation drops pasted messages, height and the confirmed briefing. Editable fields disable automatic view-state saving and autofill. There is no database or raw-ticket logging. Clipboard export is explicit and contains derived briefing information and its source, not the pasted message.
+`NavigationMatcher` distinguishes MATCHED, MISMATCH, UNKNOWN and UNAVAILABLE. A match requires an explicitly recognized convention-facility or supported meeting-room name and a supported exact Samseong address format. Nearby hotels, COEX Mall and arbitrary businesses containing “COEX” are not accepted as the convention facility. This is a facility-name/address check at one moment, not proof of the selected room, entrance or route. It does not continuously monitor navigation changes.
 
-`BriefEngineTest` and `BriefSessionTest` cover mapping, source conflicts, height limits and units, contradictory selections, default locking, separation of demo/platform signals, confirmation requirements, and invalidation/retention across state transitions.
+A known mismatch blocks briefing confirmation and cannot be cleared by manual acknowledgement, editing the notice, restoring a recent destination or a failed retry. A new matching check can resolve it. Unchecked/unknown/unavailable states require explicit manual facility review. CHECKING and MISMATCH block confirmation. Manual review is never labeled a successful SDK response.
 
-## Read-only Pleos SDK diagnostics
+The reader has a six-second timeout, one-shot request tokens and listener release. Input lock, notice changes and background transitions cancel pending work. Vehicle 2.3.2, brake-pedal reads and their unrelated permissions were removed. The manifest retains `pleos.car.permission.NAVI_ROUTE`; permission declaration is not proof it has been granted.
 
-`PleosDiagnostics` uses official **Vehicle 2.3.2** and **NaviHelper 3.0.5** dependencies. On request, it initializes services, checks brake-pedal read capability, reads the pedal state, and retrieves destination information through an event listener. Personal destination information is neither displayed nor retained. Failure and timeout are surfaced. Diagnostic results do not decide input access. Services and listeners are released when the activity leaves the foreground.
+## Source and session rules
 
-Automotive runtime permissions, service availability, the Car UX callbacks and OS activity blocking still require execution on the supplied Pleos environment and a compatible vehicle. Unit tests and compilation verify code behavior only. There is no verified entrance-coordinate handoff, live parking availability or passenger drop-off recommendation.
+- Eight COEX meeting-room groups are recognized. Five are guideable; Conference Room E, rooms 300-328 and rooms 400-403 are blocked due to conflicting official sources. Exhibition halls A/B/C/D are outside the scope.
+- Basement floors, unsupported room numbers, other/nearby facilities, cancelled notices and invalid heights require review or block confirmation. The common corpus `tests/decision-cases.tsv` is used by both web and Kotlin tests.
+- Explicit height review and safe-parking acknowledgement are required. Destination/height edits invalidate previous confirmations. Height above 2.2m is blocked; exactly 2.2m retains a boundary warning.
+- Rotation retains the volatile session. Process recreation drops the notice, height and confirmed briefing. A live in-memory confirmation may remain visible in restricted mode, subject to OS blocking.
+- The user can explicitly save one confirmed destination ID, timestamp and dataset version in private preferences for 24 hours. No raw notice, height, navigation name/address or confirmed driving card is persisted. Expired, future-dated, stale-version, unknown and source-conflict records are rejected.
+- Restore/delete require input access. Restore creates an unconfirmed draft with empty height and renewed checks. It does not recover a confirmed briefing during a restricted/driving restart and does not transfer anything from a phone.
+- Automatic backup and sensitive view-state saving are disabled. Copying the derived briefing is explicit and includes sources, not the pasted notice.
 
-## Sources checked 2026-10-30
+## Verification boundaries
 
-- COEX general-vehicle guidance: https://business.coex.co.kr/guide/conference-room-parking-information/general-vehicle/
-- COEX 2026-02-11 parking notice, whose destination recommendations conflict for three groups: https://business.coex.co.kr/post-meeting-notice/%EC%95%88%EB%82%B4%EC%9E%90%EB%A3%8C-%EC%BD%94%EC%97%91%EC%8A%A4-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%99%94%EB%AC%BC%EC%B0%A8-%EC%A7%84%EC%9E%85-%EC%95%BD%EB%8F%84/
-- Official Pleos UX restriction integration: https://document.pleos.ai/docs/pleos-only/vehicle-app-developer-guide/driving-restriction-development-guide
-- Public Android parked-app integration: https://developer.android.com/training/cars/parked/automotive-os
-- Vehicle SDK setup: https://document.pleos.ai/docs/pleos-only/connect-sdk-pleos/Vehicle/project-setup
-- Vehicle capability check: https://document.pleos.ai/docs/pleos-only/connect-sdk-pleos/Vehicle/check-capability
-- NaviHelper lifecycle: https://document.pleos.ai/docs/pleos-only/connect-sdk-pleos/NaviHelper/initialization-and-release
-- Official SDK Maven: https://nexus-playground.pleos.ai/repository/maven-releases/
+The current version, APK hash, test counts and lint findings are in [release-verification.json](../docs/verification/release-verification.json). Unit tests and compilation are separate from real SDK service behavior. See [runtime observations](../docs/verification/android-runtime.md) for the recorded APK version and environment. The current 0.3.0 release was installed and launched on AOSP Android 9. Explicit demo confirmation, restricted-mode display, destination-only saving and unconfirmed draft restore after force-stop/restart were observed. Restored height and review checks were empty; confirmation remained disabled. System UI ANR and intermittent UIAutomator null-root failures limit this software-emulated session. These observations do not validate real NaviHelper callbacks, automotive restrictions, performance or long-duration stability.
 
-SDKs retain their vendor licenses and permissions requirements. Android native widgets and a project-owned vector launcher icon are used; no Hyundai or Pleos logo is included. SDK compilation is not evidence of real vehicle validation.
+The Pleos emulator attempt failed during system initialization and installation on the available host. Actual permissions, destination responses, driving restrictions and activity blocking need a supported Pleos environment. There is no live parking service, indoor navigation, passenger drop-off recommendation or entrance-coordinate handoff.
+
+## Official sources
+
+- [COEX general-vehicle guidance](https://business.coex.co.kr/guide/conference-room-parking-information/general-vehicle/)
+- [COEX 2026-02-11 parking notice](https://business.coex.co.kr/post-meeting-notice/%EC%95%88%EB%82%B4%EC%9E%90%EB%A3%8C-%EC%BD%94%EC%97%91%EC%8A%A4-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%99%94%EB%AC%BC%EC%B0%A8-%EC%A7%84%EC%9E%85-%EC%95%BD%EB%8F%84/)
+- [Pleos driving restrictions](https://document.pleos.ai/docs/pleos-only/vehicle-app-developer-guide/driving-restriction-development-guide)
+- [Android parked-app integration](https://developer.android.com/training/cars/parked/automotive-os)
+- [NaviHelper lifecycle](https://document.pleos.ai/docs/pleos-only/connect-sdk-pleos/NaviHelper/initialization-and-release)
+- [Official SDK Maven](https://nexus-playground.pleos.ai/repository/maven-releases/)
+
+SDK vendor licensing and permission requirements still apply. Native widgets and an independently designed vector icon are used. No Hyundai or Pleos logo is included.

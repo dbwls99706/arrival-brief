@@ -21,10 +21,14 @@ object BriefEngine {
  fun resolve(text:String,heightText:String,selectedId:String?=null):Decision {
   if(text.isBlank()||text.length>10000)return Decision("invalid","행사 안내를 10,000자 이내로 입력하세요.")
   if(!Regex("코엑스|\\bcoex\\b",RegexOption.IGNORE_CASE).containsMatchIn(text)||Regex("마곡|\\bmagok\\b",RegexOption.IGNORE_CASE).containsMatchIn(text))return Decision("unsupported","현재 코엑스 삼성동 회의실만 지원합니다.")
-  if(Regex("킨텍스|벡스코|세텍|예술의전당|aT센터|아닌|아니라|아니다|취소|장소.{0,12}(변경|이전)|(변경|취소).{0,20}(목적지|행사장)|회의실.{0,12}취소",RegexOption.IGNORE_CASE).containsMatchIn(text))return Decision("review","다른 시설 또는 장소 변경 표현이 있습니다. 현재 유효한 장소만 남겨주세요.")
+  if(Regex("킨텍스|벡스코|세텍|예술의전당|aT센터|아닌|아니라|아니다|취소|장소.{0,12}(변경|이전)|(변경|취소).{0,20}(목적지|행사장)|회의실.{0,12}취소",setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL)).containsMatchIn(text))return Decision("review","다른 시설 또는 장소 변경 표현이 있습니다. 현재 유효한 장소만 남겨주세요.")
+  if(Regex("""호텔|\bhotel\b|인터컨티넨탈|intercontinental|파르나스|parnas|웨스틴|westin|(?:코엑스|\bcoex\b).{0,20}(?:인근|근처|주변|맞은편|건너편)|(?:인근|근처|주변|맞은편|건너편).{0,20}(?:코엑스|\bcoex\b)|\b(?:near|nearby|opposite|across\s+from)\b.{0,25}\bcoex\b|\bcoex\b.{0,25}\b(?:near|nearby|opposite|across\s+from)\b""",setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL)).containsMatchIn(text))return Decision("review","코엑스 외부 또는 호텔을 가리키는 표현이 있습니다. 코엑스 삼성동 내부 행사장인지 확인하세요.")
+  if(Regex("""지하\s*[1-9]\d*\s*(?:층|F\b)|\bB[1-9]\d*\s*(?:층|F\b|\b)|\bbasement\b""",RegexOption.IGNORE_CASE).containsMatchIn(text))return Decision("review","지하 층이나 주차장 안내가 포함되어 있습니다. 방문할 회의실의 장소와 층만 남겨주세요.")
+  if(Regex("""(?:[A-Z]\s*홀|\bhall\s*[A-Z]\b|전시(?:홀|관|장))""",RegexOption.IGNORE_CASE).containsMatchIn(text))return Decision("review","지원하지 않는 전시홀 안내가 포함되어 있습니다. 전시홀을 다른 회의실로 대신 선택할 수 없습니다.")
+  val roomNumbers=Regex("""(?:회의실|(?<!볼)룸|\broom)\s*(\d{1,4})(?:호|\b(?!\s*(?:층|F\b)))|(?<!\d)(\d{3,4})호""",RegexOption.IGNORE_CASE).findAll(text).map { (it.groupValues[1].ifEmpty { it.groupValues[2] }).toInt() }
+  if(roomNumbers.any { it !in 300..328 && it !in 400..403 })return Decision("review","지원하지 않는 회의실 번호가 있습니다. 다른 장소를 대신 선택하지 말고 행사장의 공식 명칭을 확인하세요.")
   val matches=destinations.filter { d->d.patterns.any { it.containsMatchIn(text) } }
-  val floors=Regex("(?<![\\dB])([1-9][0-9]?)\\s*(?:층|F\\b)",RegexOption.IGNORE_CASE).findAll(text).map { it.groupValues[1].toInt() }.toList()
-  if(Regex("(?:지하\\s*[1-9][0-9]*\\s*층|\\bB[1-9][0-9]*\\s*(?:층|F\\b))",RegexOption.IGNORE_CASE).containsMatchIn(text))return Decision("review","지하 층이 포함되어 있습니다. 주차장 안내를 제외하고 방문할 회의실의 안내만 남겨주세요.")
+  val floors=Regex("(?<![\\dB])([1-9][0-9]*)\\s*(?:층|F\\b)",RegexOption.IGNORE_CASE).findAll(text).map { it.groupValues[1].toIntOrNull() ?: Int.MAX_VALUE }.toList()
   if(matches.size==1&&floors.any { it!=matches[0].floor.first().digitToInt() })return Decision("review","입력 층과 공식 장소 층이 다릅니다. 안내를 확인해주세요.")
   if(selectedId!=null&&destinations.none { it.id==selectedId })return Decision("invalid","선택한 장소를 찾을 수 없습니다. 장소를 다시 선택하세요.")
   val d=if(selectedId!=null)destinations.find { it.id==selectedId } else matches.singleOrNull()

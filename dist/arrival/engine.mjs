@@ -1,3 +1,5 @@
+export const DATASET_VERSION = 'coex-2026-10-30-v2';
+export const RECENT_DESTINATION_TTL_MS = 24 * 60 * 60 * 1000;
 export const SOURCE = {url:'https://business.coex.co.kr/guide/conference-room-parking-information/general-vehicle/',title:'코엑스 공식 회의실 주차안내 · 일반차량',checkedAt:'2026-10-30'};
 export const NOTICE_SOURCE = {url:'https://business.coex.co.kr/post-meeting-notice/%EC%95%88%EB%82%B4%EC%9E%90%EB%A3%8C-%EC%BD%94%EC%97%91%EC%8A%A4-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%99%94%EB%AC%BC%EC%B0%A8-%EC%A7%84%EC%9E%85-%EC%95%BD%EB%8F%84/',title:'코엑스 공식 주차장·화물차 진입 약도 공지',publishedAt:'2026-02-11',checkedAt:'2026-10-30'};
 // The notice includes a separate destination parking table. Its relationship to
@@ -21,7 +23,12 @@ export function extractDestinations(text) {
  if(typeof text!=='string'||text.length>10000)return {status:'invalid',matches:[],message:'행사 안내는 10,000자 이내로 입력해주세요.'};
  if(!text.trim())return {status:'empty',matches:[],message:'행사 안내에서 코엑스와 세부 장소를 확인합니다.'};
  if(!/코엑스|\bcoex\b/i.test(text)||/마곡|\bmagok\b/i.test(text))return {status:'unsupported',matches:[],message:'현재 코엑스 삼성동의 회의실 8개 범위만 식별합니다. 다른 시설은 안내하지 않습니다.'};
- if(/(?:킨텍스|벡스코|세텍|예술의전당|aT센터|아닌|아니라|아니다|취소|장소.{0,12}(?:변경|이전)|(?:변경|취소).{0,20}(?:목적지|행사장)|회의실.{0,12}취소)/i.test(text))return {status:'needs_review',matches:[],message:'다른 시설 또는 장소 변경 표현이 있습니다. 현재 유효한 행사장과 장소만 남겨 다시 확인해주세요.'};
+ if(/(?:킨텍스|벡스코|세텍|예술의전당|aT센터|아닌|아니라|아니다|취소|장소.{0,12}(?:변경|이전)|(?:변경|취소).{0,20}(?:목적지|행사장)|회의실.{0,12}취소)/is.test(text))return {status:'needs_review',matches:[],message:'다른 시설 또는 장소 변경 표현이 있습니다. 현재 유효한 행사장과 장소만 남겨 다시 확인해주세요.'};
+ if(/호텔|\bhotel\b|인터컨티넨탈|intercontinental|파르나스|parnas|웨스틴|westin|(?:코엑스|\bcoex\b).{0,20}(?:인근|근처|주변|맞은편|건너편)|(?:인근|근처|주변|맞은편|건너편).{0,20}(?:코엑스|\bcoex\b)|\b(?:near|nearby|opposite|across\s+from)\b.{0,25}\bcoex\b|\bcoex\b.{0,25}\b(?:near|nearby|opposite|across\s+from)\b/is.test(text))return {status:'needs_review',matches:[],message:'코엑스 외부 또는 호텔을 가리키는 표현이 있습니다. 코엑스 삼성동 내부 행사장인지 확인하고 해당 장소의 안내만 남겨주세요.'};
+ if(/지하\s*[1-9]\d*\s*(?:층|F\b)|\bB[1-9]\d*\s*(?:층|F\b|\b)|\bbasement\b/i.test(text))return {status:'needs_review',matches:[],message:'지하 층이나 주차장 안내가 포함되어 있습니다. 방문할 회의실의 장소와 층만 남겨주세요.'};
+ if(/(?:[A-Z]\s*홀|\bhall\s*[A-Z]\b|전시(?:홀|관|장))/i.test(text))return {status:'needs_review',matches:[],message:'지원하지 않는 전시홀 또는 전시장 표현이 있습니다. 다른 회의실로 대신 선택하지 말고 행사장의 공식 명칭을 확인해주세요.'};
+ const roomNumbers=[...text.matchAll(/(?:회의실|(?<!볼)룸|\broom)\s*(\d{1,4})(?:호|\b(?!\s*(?:층|F\b)))|(?<!\d)(\d{3,4})호/gi)].map(m=>Number(m[1]||m[2]));
+ if(roomNumbers.some(n=>!(n>=300&&n<=328||n>=400&&n<=403)))return {status:'needs_review',matches:[],message:'지원하지 않는 회의실 번호가 있습니다. 다른 장소를 대신 선택하지 말고 행사장의 공식 명칭을 확인해주세요.'};
  const matches=DESTINATIONS.filter(d=>d.patterns.some(p=>p.test(text)));
  const floors=extractFloors(text);
  if(matches.length===1&&floors.length&&floors.some(f=>f!==parseInt(matches[0].floor)))return {status:'needs_review',matches:[],message:'입력한 층과 공식 안내의 장소 층이 다릅니다. 행사장 정보를 다시 확인해주세요.'};
@@ -39,7 +46,8 @@ export function buildBrief({text='',destinationId='',height='',mode='parked',con
  if(!destination)return {status:extraction.status,reason:extraction.message,extraction,canConfirm:false};
  if(extraction.matches.length&&destinationId&&!extraction.matches.some(d=>d.id===destinationId))return {status:'conflict',reason:'선택 장소와 입력한 행사 안내가 다릅니다. 행사 안내를 수정해주세요.',extraction,canConfirm:false};
  if(extractFloors(text).some(f=>f!==parseInt(destination.floor)))return {status:'needs_review',reason:'선택한 장소의 층과 안내문의 층이 다릅니다. 이번에 방문할 장소와 층만 남겨 다시 확인해주세요.',extraction,canConfirm:false};
- const heightValue=height===''||height==null?null:Number(height);
+ const heightText=height==null?'':String(height).trim();
+ const heightValue=heightText===''?null:/^[0-9]+(?:\.[0-9]{1,2})?$/.test(heightText)?Number(heightText):NaN;
  if(heightValue!==null&&(!Number.isFinite(heightValue)||heightValue<1||heightValue>5))return {status:'invalid',reason:'차량 전체 높이는 1.00~5.00m 범위로 입력해주세요.',extraction,canConfirm:false};
  if(heightValue>2.2)return {status:'blocked',reason:'차량 높이가 공식 지하주차장 진입 제한 2.2m를 초과합니다. 이 주차 동선을 사용하지 마세요.',destination,extraction,canConfirm:false};
  if(SOURCE_CONFLICTS[destination.id])return {status:'source_conflict',reason:'공식 자료의 추천 주차 구역이 서로 다릅니다. 시설의 최신 안내와 현장 표지를 확인할 때까지 진입문·주차 구역을 확정하지 않습니다.',destination,extraction,evidence:SOURCE_CONFLICTS[destination.id],canConfirm:false};
@@ -52,4 +60,27 @@ export function formatBrief(brief){
  if(!brief.destination||brief.status!=='ready')throw new Error('확정 가능한 브리핑이 없습니다.');
  const d=brief.destination;
  return `Arrival Brief | 코엑스 ${d.name} (${d.floor})\n\n진입구: ${d.gate} (${d.gateContext})\n추천 주차: ${d.level} ${d.zone}\n차량 높이: ${brief.height.toFixed(2)}m / 시설 제한: 2.2m\n\n${brief.warnings.join('\n')}\n\n출처: ${SOURCE.title}\n${SOURCE.url}\n자료 확인: ${SOURCE.checkedAt}\n\n본 문서는 출발 전 확인용 브리핑이며 실시간 내비게이션이 아닙니다.\n`;
+}
+
+
+/** UI confirmation requires explicit checks in addition to a valid destination. */
+export function reviewAllowsConfirmation(brief,{mode='unknown',heightReviewed=false,parkedConfirmed=false}={}){
+ return brief?.status==='ready' && brief.canConfirm===true && mode==='parked' && heightReviewed===true && parkedConfirmed===true;
+}
+
+/** Only an agreed destination is remembered. Invitation text and height never enter the record. */
+export function createRecentDestination(destinationId,now=Date.now()){
+ if(!DESTINATIONS.some(d=>d.id===destinationId)||SOURCE_CONFLICTS[destinationId]||!Number.isSafeInteger(now)||now<0)throw new Error('저장할 수 없는 장소입니다.');
+ return {destinationId,datasetVersion:DATASET_VERSION,savedAt:now};
+}
+export function inspectRecentDestination(raw,now=Date.now()){
+ if(raw==null)return {status:'empty'};
+ let record;
+ try{record=typeof raw==='string'?JSON.parse(raw):raw;}catch{return {status:'invalid'};}
+ if(!record||typeof record!=='object'||Array.isArray(record)||Object.keys(record).sort().join(',')!=='datasetVersion,destinationId,savedAt'||!Number.isSafeInteger(record.savedAt)||record.savedAt<0||!Number.isSafeInteger(now)||now<record.savedAt)return {status:'invalid'};
+ if(record.datasetVersion!==DATASET_VERSION)return {status:'version_mismatch'};
+ if(now-record.savedAt>=RECENT_DESTINATION_TTL_MS)return {status:'expired'};
+ const destination=DESTINATIONS.find(d=>d.id===record.destinationId);
+ if(!destination||SOURCE_CONFLICTS[destination.id])return {status:'unavailable'};
+ return {status:'available',destination,savedAt:record.savedAt};
 }

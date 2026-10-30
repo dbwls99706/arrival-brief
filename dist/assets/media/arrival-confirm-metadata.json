@@ -13,7 +13,7 @@
   ],
   "format": {
     "duration": "33.000000",
-    "size": "1753841"
+    "size": "1753439"
   },
   "content": {
     "title": "자료 상충 확인",
@@ -33,6 +33,12 @@
     ],
     "font": "Noto Sans KR (OFL)",
     "audio": "none",
-    "sha256": "46c00e67e39996938f04a9dc87aaf9e70c379b679ea4af49f04cb08086cc3b98"
+    "sha256": "a4eed22b21cc80f24453a940364aa96d26182a1c22ed0cc1d29a1186c56c9f0a",
+    "app_version": "0.3.0-prototype"
+  },
+  "validation": {
+    "full_decode": "passed",
+    "frames": 792,
+    "scope": "web capture edit, not native SDK demonstration"
   }
 }

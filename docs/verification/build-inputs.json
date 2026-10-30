@@ -1,0 +1,127 @@
+{
+  "version": "0.3.0-prototype",
+  "apk_sha256": "2c8c4e1c99ce27f1f5fc988ac1343476cfae24a5d6b30a5bcafea65271eb31c2",
+  "evidence": "Files present in the successful build checkout. Not a claim of byte-reproducible build.",
+  "files": [
+    {
+      "path": "android/.kotlin/errors/errors-1793358394008.log",
+      "sha256": "edd77ad522c2709b982b88dfec502e935fc7e175838e0ae343da3b10277872f0"
+    },
+    {
+      "path": "android/.kotlin/errors/errors-1793362330260.log",
+      "sha256": "edd77ad522c2709b982b88dfec502e935fc7e175838e0ae343da3b10277872f0"
+    },
+    {
+      "path": "android/app/build.gradle.kts",
+      "sha256": "1e27783a8f72a9eefc1aa3eec73f95a92916341bf43d3e1b8e304de49cb1fd3b"
+    },
+    {
+      "path": "android/app/src/main/AndroidManifest.xml",
+      "sha256": "c76fb2e60fc6183522de483b825c004d2cb45b2f3f4ce827c9dbafa379e73095"
+    },
+    {
+      "path": "android/app/src/main/java/studio/ax/arrival/BriefEngine.kt",
+      "sha256": "8918f8fdaa79a477d69dbbb97ca7ced6096e016e87316cc28c73a62eb6a66910"
+    },
+    {
+      "path": "android/app/src/main/java/studio/ax/arrival/BriefSession.kt",
+      "sha256": "8d07e8bd36a6a0a1ca939b51d22aa767baff7a138c8851f76defd1f0c145c74e"
+    },
+    {
+      "path": "android/app/src/main/java/studio/ax/arrival/MainActivity.kt",
+      "sha256": "66c209bd6273b11bbd87b71db188c0efc40865c3b33f427a87b8882a06116ed2"
+    },
+    {
+      "path": "android/app/src/main/java/studio/ax/arrival/NavigationCheck.kt",
+      "sha256": "70863109f9547206fabd43cef40ee9369f8905a2f13e467314e65a5b09ce9213"
+    },
+    {
+      "path": "android/app/src/main/java/studio/ax/arrival/NavigationDestinationReader.kt",
+      "sha256": "461d41a0dc50ad4eff1c80ebcf9b9b2a4694e7ad8a4b2574ad367b7d21b930bb"
+    },
+    {
+      "path": "android/app/src/main/java/studio/ax/arrival/PlatformVehicleGateway.kt",
+      "sha256": "1f93564e45d8172e40892ff46dd0850271b3090c0e373d3e2adaabfe998c47f9"
+    },
+    {
+      "path": "android/app/src/main/java/studio/ax/arrival/RecentDestination.kt",
+      "sha256": "29b6d5be5646f40695f2346f54da7dbe47cb3b0fd261f2d0a8fc1e9950eedfa0"
+    },
+    {
+      "path": "android/app/src/main/java/studio/ax/arrival/RecentDestinationStore.kt",
+      "sha256": "3043edd217188e70e1d6d871fcc4bdb40e47df9f14e34b11240788165172307f"
+    },
+    {
+      "path": "android/app/src/main/java/studio/ax/arrival/VehicleGateway.kt",
+      "sha256": "2fd579fe4de9aeb5c2bb7e688302f6d959852751a6eafd4c28d839eb4eec2934"
+    },
+    {
+      "path": "android/app/src/main/res/drawable/ic_arrival.xml",
+      "sha256": "a53c6592bcddb8bc856c00688ce6742d02c8f7d17e90a0c10f473d6450127a7f"
+    },
+    {
+      "path": "android/app/src/main/res/values/strings.xml",
+      "sha256": "49dd072ffd6398c52def08f6d525e3573f5ded9a6d9773c7f1fc078718c24e5f"
+    },
+    {
+      "path": "android/app/src/main/res/values/styles.xml",
+      "sha256": "fae04ef60bfebb25ceaa712296bd2764187043deed5695ff32dbc4a9476f45e7"
+    },
+    {
+      "path": "android/app/src/main/res/xml/backup_rules.xml",
+      "sha256": "865cae97840e81b9950d70457a05c5c1125a68364b0a83f44cd3daa030bc7e96"
+    },
+    {
+      "path": "android/app/src/main/res/xml/data_extraction_rules.xml",
+      "sha256": "cb029b35db0e976c087100424e16e14a6256b46962398887520e51508c3b5842"
+    },
+    {
+      "path": "android/app/src/test/java/studio/ax/arrival/BriefEngineTest.kt",
+      "sha256": "2fc3cf62bdf2ef1f089c523c21cb8fa88f4778cdd8dd658855fff27b798e4f9b"
+    },
+    {
+      "path": "android/app/src/test/java/studio/ax/arrival/BriefSessionTest.kt",
+      "sha256": "46757df4477afe722b86dd286cdd46623a95409387bb6ccef7e1894273603c9d"
+    },
+    {
+      "path": "android/app/src/test/java/studio/ax/arrival/NavigationCheckTest.kt",
+      "sha256": "141315fce8c4a8e02dce5c6bdc61183d901cb1aab1a0c005ef7eb097658a300c"
+    },
+    {
+      "path": "android/app/src/test/java/studio/ax/arrival/RecentDestinationTest.kt",
+      "sha256": "2c01aae03641a9622a52bbda9081c074969d43ecc0f76e84e089a9cceed9f187"
+    },
+    {
+      "path": "android/build.gradle.kts",
+      "sha256": "4a105b82fa7b138106c5d058e27c077248dc82a735680ee68b0ce3e5c4c4fcd6"
+    },
+    {
+      "path": "android/gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "81a82aaea5abcc8ff68b3dfcb58b3c3c429378efd98e7433460610fecd7ae45f"
+    },
+    {
+      "path": "android/gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "1bb6d43ff8af30abb0eaf03fe58f636ed9b37f758a748bf30a9cebd809639c9d"
+    },
+    {
+      "path": "android/gradle.properties",
+      "sha256": "d3377b161bac549c4206e67181feb45e8c5fe8fe1f642927920b70739e64477a"
+    },
+    {
+      "path": "android/gradlew",
+      "sha256": "734b3879d3501dce471cf0522d3bcbafe76873d9fc5129345b67fb43bd15e933"
+    },
+    {
+      "path": "android/gradlew.bat",
+      "sha256": "57931b17dd228e5c24dac90e815d0bf82477e831a4618dfab4136f5446b42a9f"
+    },
+    {
+      "path": "android/settings.gradle.kts",
+      "sha256": "fb8d6dbd06c36c142c0b4ec672e3f5065e8dc507e6cc85023e5af3a59bad742c"
+    },
+    {
+      "path": "tests/decision-cases.tsv",
+      "sha256": "c4a6a9669c32c4d582b58ea2a3cbd95db94d277c445c0a7439dfff3b968f7816"
+    }
+  ]
+}

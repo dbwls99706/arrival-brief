@@ -1,0 +1,51 @@
+case_id	text	height	selected_id	expected_ready
+auditorium	코엑스 오디토리움 3층 행사	1.65		true
+grand	코엑스 그랜드볼룸 1층 행사	1.65		true
+asem	코엑스 아셈볼룸 2층 행사	1.65		true
+studio	코엑스 스튜디오159 2층 행사	1.65		true
+platz	코엑스 THE PLATZ 2층 행사	1.65		true
+near_hotel	코엑스 맞은편 호텔 그랜드볼룸 1층에서 행사	1.65	grand	false
+near_facility	코엑스 인근 그랜드볼룸 1층 행사	1.65	grand	false
+hotel_english	Hotel near COEX grand ballroom 1F	1.65	grand	false
+opposite_english	grand ballroom opposite COEX 1F	1.65	grand	false
+basement_kr	코엑스 오디토리움 지하 3층 행사	1.65		false
+basement_b3f	코엑스 오디토리움 B3F 행사	1.65		false
+basement_b3	COEX auditorium B3	1.65		false
+basement_word	COEX auditorium basement	1.65		false
+mixed_parking	코엑스 오디토리움 3F, 주차 B3F	1.65		false
+unsupported_329	코엑스 회의실 329호	1.65	auditorium	false
+unsupported_999	코엑스 999호 행사	1.65	auditorium	false
+unsupported_201	코엑스 회의실 201호	1.65	asem	false
+unsupported_500	COEX room 500	1.65	auditorium	false
+unmatched_select	코엑스 삼성동 행사	1.65	studio159	true
+floor_suffix	코엑스 회의실 3층 오디토리움	1.65		true
+conflict_e	코엑스 컨퍼런스룸 E 3층	1.65		false
+conflict_300	코엑스 회의실 300호	1.65		false
+conflict_328	코엑스 회의실 328호	1.65		false
+conflict_400	코엑스 회의실 400호	1.65		false
+conflict_403	코엑스 회의실 403호	1.65		false
+height_limit	코엑스 오디토리움	2.2		true
+height_over	코엑스 오디토리움	2.21		false
+height_missing	코엑스 오디토리움			false
+height_exponent	코엑스 오디토리움	1e0		false
+height_three_decimals	코엑스 오디토리움	1.654		false
+magok	마곡 코엑스 오디토리움	1.65		false
+other_facility	코엑스가 아닌 킨텍스 오디토리움	1.65		false
+changed	코엑스 오디토리움 장소 변경	1.65		false
+cancelled	코엑스 오디토리움 행사 취소	1.65		false
+multi_no_choice	코엑스 오디토리움과 스튜디오159	1.65		false
+multi_with_choice	코엑스 오디토리움과 스튜디오159	1.65	studio159	true
+floor_mismatch	코엑스 오디토리움 2층	1.65		false
+floor_13	코엑스 오디토리움 13층	1.65		false
+invalid_choice	코엑스 오디토리움	1.65	missing	false
+choice_mismatch	코엑스 오디토리움	1.65	studio159	false
+basement_3f	코엑스 오디토리움 지하3F	1.65	auditorium	false
+basement_3_f	코엑스 오디토리움 지하 3 F	1.65	auditorium	false
+hotel_intercontinental	COEX Grand Intercontinental Grand Ballroom 1F	1.65	grand	false
+hotel_parnas	COEX Parnas Grand Ballroom 1F	1.65	grand	false
+hotel_westin	COEX Westin Grand Ballroom 1F	1.65	grand	false
+hall_a	코엑스 A홀	1.65	auditorium	false
+hall_b_floor	코엑스 B홀 1층	1.65	grand	false
+hall_english	COEX Hall A	1.65	auditorium	false
+hall_mixed	코엑스 오디토리움 및 A홀	1.65	auditorium	false
+exhibition_hall	코엑스 전시홀 A	1.65	auditorium	false

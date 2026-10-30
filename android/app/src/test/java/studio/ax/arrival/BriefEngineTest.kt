@@ -2,8 +2,41 @@ package studio.ax.arrival
 
 import org.junit.Assert.*
 import org.junit.Test
+import java.io.File
 
 class BriefEngineTest {
+    @Test fun sharedWebAndAndroidDecisionCorpus() {
+        val path = System.getProperty("arrival.decisionCases") ?: error("Shared decision corpus path is required")
+        val lines = File(path).readLines().drop(1).filter { it.isNotBlank() }
+        assertTrue("Shared corpus must contain representative cases", lines.size >= 40)
+        for (line in lines) {
+            val c = line.split('\t')
+            assertEquals("Malformed shared case", 5, c.size)
+            val result = BriefEngine.resolve(c[1], c[2], c[3].ifEmpty { null })
+            assertEquals(c[0] + ": " + result.message, c[4].toBoolean(), result.status == "ready")
+        }
+    }
+
+    @Test fun unboundedFloorNumbersCannotDisappear() {
+        for (floor in listOf("103층", "999999999999999999층", "13F", "B3", "B3F", "지하3층", "지하3F")) {
+            assertEquals(floor, "review", BriefEngine.resolve("코엑스 오디토리움 $floor", "1.65").status)
+        }
+    }
+    @Test fun exhibitionHallAndHotelCannotBeOverriddenByMeetingRoomSelection() {
+        for (text in listOf("코엑스 A홀", "코엑스 Hall A", "코엑스 전시장 B홀", "코엑스 오디토리움 및 A홀")) {
+            assertEquals(text, "review", BriefEngine.resolve(text, "1.65", "auditorium").status)
+        }
+        for (text in listOf("COEX Grand Intercontinental Grand Ballroom", "COEX Westin Seoul Grand Ballroom", "COEX Parnas Grand Ballroom", "코엑스 B홀 1층")) {
+            assertEquals(text, "review", BriefEngine.resolve(text, "1.65", "grand").status)
+        }
+    }
+
+    @Test fun pastedLineBreaksCannotBypassNearbyOrChangedVenueChecks() {
+        for (text in listOf("코엑스\n맞은편 오디토리움", "코엑스\n근처 그랜드볼룸", "코엑스 오디토리움 장소\n변경")) {
+            assertEquals(text, "review", BriefEngine.resolve(text, "1.65").status)
+        }
+    }
+
     @Test fun uncontestedOfficialMappings() {
         val cases = listOf("오디토리움" to "B3 블루존", "그랜드볼룸" to "B3 블루존", "아셈볼룸" to "B3 블루존", "스튜디오159" to "B2 퍼플존", "THE PLATZ" to "B2 지하 2층")
         for ((name, parking) in cases) {

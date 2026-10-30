@@ -2,7 +2,9 @@
 
 ## 시설 정보
 
-- [코엑스 회의실 주차안내](https://business.coex.co.kr/guide/conference-room-parking-information/general-vehicle/): 2026-10-28 확인한 목적지별 진입문·주차층·구역과 높이 제한을 정리했습니다. 실시간 운영 정보가 아니며 현장 표지와 최신 공식 안내를 우선합니다.
+- [코엑스 회의실 주차안내](https://business.coex.co.kr/guide/conference-room-parking-information/general-vehicle/): 2026-10-30 확인한 목적지별 진입문·주차층·구역과 높이 제한을 정리했습니다. 실시간 운영 정보가 아니며 현장 표지와 최신 공식 안내를 우선합니다.
+
+- [코엑스 주차장·화물차 진입 약도 공지](https://business.coex.co.kr/post-meeting-notice/%EC%95%88%EB%82%B4%EC%9E%90%EB%A3%8C-%EC%BD%94%EC%97%91%EC%8A%A4-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%99%94%EB%AC%BC%EC%B0%A8-%EC%A7%84%EC%9E%85-%EC%95%BD%EB%8F%84/): 2026-02-11 게시, 2026-10-30 확인. 회의실 고객 주차 추천 표와 일반차량 안내가 다른 세 분류의 상충 근거로 사용합니다. 화물차 진입 동선을 승용차 경로로 사용하지 않습니다.
 
 ## 시연 영상
 

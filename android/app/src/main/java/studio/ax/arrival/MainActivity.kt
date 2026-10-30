@@ -35,7 +35,8 @@ class MainActivity : Activity() {
     private val sim = SimulatorVehicleGateway()
     private var gateway: VehicleGateway = UnconnectedVehicleGateway()
     private var platform: PlatformVehicleGateway? = null
-    private var diagnostics: PleosDiagnostics? = null
+    private var navigationReader: NavigationDestinationReader? = null
+    private lateinit var recentStore: RecentDestinationStore
     private lateinit var session: BriefSession
     private var automotive = false
     private var demo = false
@@ -57,8 +58,13 @@ class MainActivity : Activity() {
     private lateinit var sources: TextView
     private lateinit var heightCheck: CheckBox
     private lateinit var parkedCheck: CheckBox
-    private lateinit var sdkStatus: TextView
-    private lateinit var sdkButton: Button
+    private lateinit var navigationStatus: TextView
+    private lateinit var navigationButton: Button
+    private lateinit var navigationManualCheck: CheckBox
+    private lateinit var recentStatus: TextView
+    private lateinit var restoreRecent: Button
+    private lateinit var deleteRecent: Button
+    private lateinit var saveRecent: Button
 
     private fun dp(n: Int) = (n * resources.displayMetrics.density).toInt()
     private fun textView(value: String, size: Float = 16f, color: Int = ink) = TextView(this).apply {
@@ -101,6 +107,7 @@ class MainActivity : Activity() {
         @Suppress("DEPRECATION")
         session = (lastNonConfigurationInstance as? BriefSession) ?: BriefSession()
         automotive = packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)
+        recentStore = RecentDestinationStore(this)
         window.statusBarColor = bg; window.navigationBarColor = bg
         val scroll = ScrollView(this).apply { setBackgroundColor(bg); isFillViewport = true }
         val root = column().apply { setPadding(dp(24), dp(20), dp(24), dp(28)) }
@@ -136,6 +143,19 @@ class MainActivity : Activity() {
         }
         root.addView(lockedNotice)
 
+        val recentPanel = card()
+        recentStatus = textView("", 13f, muted)
+        recentPanel.addView(recentStatus)
+        val recentActions = LinearLayout(this)
+        restoreRecent = button("보관한 목적지 불러오기", true) { restoreRecentDestination() }
+        deleteRecent = button("삭제", true) {
+            if (InputAccess.allowed(gateway)) { recentStore.clear(); render() }
+        }
+        recentActions.addView(restoreRecent, LinearLayout.LayoutParams(0, -2, 3f))
+        recentActions.addView(deleteRecent, LinearLayout.LayoutParams(0, -2, 1f))
+        recentPanel.addView(recentActions)
+        root.addView(recentPanel, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(16) })
+
         val workspace = LinearLayout(this).apply {
             orientation = if (resources.configuration.screenWidthDp >= 840) LinearLayout.HORIZONTAL else LinearLayout.VERTICAL
         }
@@ -143,18 +163,29 @@ class MainActivity : Activity() {
         form = card()
         form.addView(textView("01 / 안내 확인", 16f, accent))
         form.addView(textView("행사 장소가 적힌 문장", 19f).apply { setTypeface(null, Typeface.BOLD) })
+        form.addView(button("안내문 대신 회의실 목록에서 선택", true) {
+            if (InputAccess.allowed(gateway)) { notice.setText("코엑스"); hideKeyboard() }
+        })
         form.addView(textView("이름·전화번호 등 개인정보는 지우고 붙여넣으세요.", 12f, muted))
         notice = edit("예: 코엑스 오디토리움 3층 행사", true).apply { setText(session.notice); contentDescription = "행사 장소 안내" }
         form.addView(notice)
         val samples = LinearLayout(this)
-        samples.addView(button("오디토리움 예시", true) {
+        samples.addView(button("오디토리움 선택", true) {
             if (InputAccess.allowed(gateway)) notice.setText("코엑스 오디토리움 3층 행사")
         }, LinearLayout.LayoutParams(0, -2, 1f))
-        samples.addView(button("아셈볼룸 예시", true) {
+        samples.addView(button("아셈볼룸 선택", true) {
             if (InputAccess.allowed(gateway)) notice.setText("코엑스 아셈볼룸 2층 행사")
         }, LinearLayout.LayoutParams(0, -2, 1f))
         form.addView(samples)
         choices = column(); form.addView(choices)
+        form.addView(textView("차량 내비 목적지 대조", 16f))
+        navigationStatus = textView("", 13f, muted)
+        form.addView(navigationStatus)
+        navigationButton = button("내비 목적지와 행사 시설 대조", true) { compareNavigationDestination() }
+        form.addView(navigationButton)
+        navigationManualCheck = check("내비 대조 없이 코엑스 삼성동 행사 시설임을 직접 확인했습니다.")
+        form.addView(navigationManualCheck)
+        form.addView(textView("내비의 시설명·주소만 이번 확인에 사용합니다. 원문은 표시·보관하지 않으며 경로를 변경하지 않습니다.", 12f, muted))
         form.addView(textView("차량 전체 높이 · m", 16f))
         height = edit("직접 확인한 전체 높이 (예: 1.65)", false).apply { setText(session.heightText); contentDescription = "루프박스와 적재물을 포함한 차량 전체 높이, 미터" }
         form.addView(height)
@@ -181,6 +212,13 @@ class MainActivity : Activity() {
             }
         }
         panel.addView(copy)
+        saveRecent = button("목적지만 이 기기에 24시간 보관", true) {
+            if (InputAccess.allowed(gateway) && session.parkedConfirmed) session.confirmed?.destination?.let {
+                recentStore.save(it.id); render()
+                Toast.makeText(this, "목적지 1건을 보관했습니다. 안내문·높이는 저장하지 않습니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        panel.addView(saveRecent)
         if (workspace.orientation == LinearLayout.HORIZONTAL) {
             workspace.addView(form, LinearLayout.LayoutParams(0, -2, 1f).apply { marginEnd = dp(20) })
             workspace.addView(panel, LinearLayout.LayoutParams(0, -2, 1f))
@@ -190,16 +228,13 @@ class MainActivity : Activity() {
         }
         sources = textView("", 12f, muted)
         root.addView(sources, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(18) })
-        sdkButton = button("Pleos SDK 읽기 연결 진단", true) { runDiagnostics() }
-        root.addView(sdkButton)
-        sdkStatus = textView("Vehicle·NaviHelper 진단은 요청한 경우에만 실행됩니다.", 12f, muted)
-        root.addView(sdkStatus)
-        root.addView(textView("독립 출품 프로토타입 · 차량 실증 전\n실시간 주차·내비 경로·하차 지점은 제공하지 않습니다. 입력은 현재 세션에만 유지됩니다.", 12f, muted))
+        root.addView(textView("독립 출품 프로토타입 · 차량 실증 전\n실시간 주차·내비 경로·하차 지점·휴대폰에서 차량으로 전송은 제공하지 않습니다. 안내문과 높이는 현재 세션에만 유지됩니다.", 12f, muted))
 
-        notice.addTextChangedListener(watcher { session.updateNotice(it); refreshChoices(); render() })
+        notice.addTextChangedListener(watcher { navigationReader?.stop(); navigationReader = null; session.updateNotice(it); refreshChoices(); render() })
         height.addTextChangedListener(watcher { session.updateHeight(it); render() })
         heightCheck.setOnCheckedChangeListener { _, checked -> if (!synchronizingChecks) { session.reviewHeight(checked); render() } }
         parkedCheck.setOnCheckedChangeListener { _, checked -> if (!synchronizingChecks) { session.confirmParked(checked); render() } }
+        navigationManualCheck.setOnCheckedChangeListener { _, checked -> if (!synchronizingChecks) { session.reviewNavigationManually(checked); render() } }
         if (automotive && Build.VERSION.SDK_INT >= 29) {
             try {
                 platform = PlatformVehicleGateway(this) { message -> platformMessage = message; refreshMode() }
@@ -221,9 +256,9 @@ class MainActivity : Activity() {
             .setMessage("실제 차량 상태를 읽지 않습니다. 실제 운전 중에는 사용하지 마세요. 정차·주행 전환은 화면 동작을 확인하기 위한 예시입니다.")
             .setNegativeButton("취소", null).setPositiveButton("데모 시작") { _, _ ->
                 if (!automotive) {
-                    diagnostics?.stop(); diagnostics = null
+                    navigationReader?.stop(); navigationReader = null
                     demo = true; sim.state = VehicleMode.PARKED; gateway = sim
-                    if (session.notice.isBlank()) { notice.setText("코엑스 오디토리움 3층 행사"); height.setText("1.65") }
+                    if (session.notice.isBlank()) { notice.setText("코엑스 오디토리움 3층 행사"); height.setText(R.string.demo_height) }
                     refreshMode()
                 }
             }.show()
@@ -235,14 +270,28 @@ class MainActivity : Activity() {
         session.lock(); refreshMode()
     }
 
-    private fun runDiagnostics() {
-        if (automotive && !InputAccess.allowed(gateway)) return
-        diagnostics?.stop()
+    private fun compareNavigationDestination() {
+        if (!automotive || !InputAccess.allowed(gateway)) return
+        navigationReader?.stop()
+        session.updateNavigation(NavigationCheck.checking()); render()
         try {
-            diagnostics = PleosDiagnostics(this) { sdkStatus.text = it }
-            diagnostics?.start()
-        } catch (_: Exception) { sdkStatus.text = "SDK 초기화 불가 · 서비스와 권한을 확인하세요." }
-        catch (_: LinkageError) { sdkStatus.text = "SDK 런타임을 사용할 수 없습니다." }
+            navigationReader = NavigationDestinationReader(this) { result ->
+                if (InputAccess.allowed(gateway)) { session.updateNavigation(result); render() }
+            }
+            navigationReader?.start()
+        } catch (_: Exception) { session.updateNavigation(NavigationCheck.unavailable()); render() }
+        catch (_: LinkageError) { session.updateNavigation(NavigationCheck.unavailable()); render() }
+    }
+
+    private fun restoreRecentDestination() {
+        if (!InputAccess.allowed(gateway)) return
+        val record = recentStore.load() ?: run { render(); return }
+        navigationReader?.stop(); navigationReader = null
+        if (session.restoreDestination(record.destinationId)) {
+            notice.setText(session.notice); height.setText("")
+            refreshChoices(); render(); hideKeyboard()
+            Toast.makeText(this, "초안을 불러왔습니다. 시설·차량 높이·안전한 주차 상태를 다시 확인하세요.", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun refreshChoices() {
@@ -251,7 +300,7 @@ class MainActivity : Activity() {
         if (decision.status == "select") {
             choices.addView(textView(decision.message, 14f, warning))
             decision.candidates.forEach { destination ->
-                choices.addView(button("${destination.name} · ${destination.floor}", true) {
+                choices.addView(button("${destination.name} · ${destination.floor}${if (destination.id in setOf("conferenceE", "rooms300", "rooms400")) " · 자료 상충" else ""}", true) {
                     if (InputAccess.allowed(gateway)) { session.select(destination.id); refreshChoices(); render() }
                 })
             }
@@ -265,7 +314,7 @@ class MainActivity : Activity() {
     }
 
     private fun refreshMode() {
-        if (!InputAccess.allowed(gateway)) { session.lock(); hideKeyboard() }
+        if (!InputAccess.allowed(gateway)) { navigationReader?.stop(); navigationReader = null; session.lock(); hideKeyboard() }
         status.text = if (demo) "DEMO · ${when (sim.state) {
             VehicleMode.PARKED -> "정차 예시 · 입력 가능"
             VehicleMode.DRIVING -> "주행 예시 · 입력 잠금"
@@ -285,13 +334,23 @@ class MainActivity : Activity() {
         else "차량 상태를 확인하기 전에는 입력할 수 없습니다. 연결된 차량에서 플랫폼이 입력을 허용하거나, 차량 밖에서 데모를 시작하세요."
         synchronizingChecks = true
         heightCheck.isChecked = session.heightReviewed; parkedCheck.isChecked = session.parkedConfirmed
+        navigationManualCheck.isChecked = session.navigationReviewedManually
         synchronizingChecks = false
         confirm.isEnabled = session.canConfirm(gateway)
         confirm.alpha = if (confirm.isEnabled) 1f else 0.45f
         copy.visibility = if (editable && session.confirmed != null) View.VISIBLE else View.GONE
         copy.isEnabled = editable && session.parkedConfirmed
-        sdkButton.isEnabled = !automotive || editable
-        sdkButton.visibility = if (automotive && !editable) View.GONE else View.VISIBLE
+        saveRecent.visibility = copy.visibility
+        saveRecent.isEnabled = editable && session.parkedConfirmed && session.confirmed != null
+        navigationButton.isEnabled = editable && automotive && session.navigationCheck.status != NavigationStatus.CHECKING
+        navigationStatus.text = if (!automotive) getString(R.string.navigation_demo_only)
+            else session.navigationCheck.message
+        navigationManualCheck.visibility = if (session.navigationCheck.status in setOf(NavigationStatus.MATCHED, NavigationStatus.MISMATCH, NavigationStatus.CHECKING)) View.GONE else View.VISIBLE
+        val recent = recentStore.load()
+        val recentPlace = BriefEngine.destinations.find { it.id == recent?.destinationId }
+        recentStatus.text = recentPlace?.let { getString(R.string.recent_destination_message, it.name) } ?: getString(R.string.recent_none)
+        restoreRecent.isEnabled = editable && recent != null
+        deleteRecent.isEnabled = editable && recent != null
         val decision = if (editable) session.current else session.confirmed
         brief.removeAllViews()
         briefBadge.text = when {
@@ -338,7 +397,7 @@ class MainActivity : Activity() {
     }
 
     override fun onPause() {
-        diagnostics?.stop(); diagnostics = null
+        navigationReader?.stop(); navigationReader = null
         platform?.stop()
         platformMessage = "차량 상태 다시 확인 중 · 입력 잠금"
         sim.state = VehicleMode.UNKNOWN
@@ -351,6 +410,6 @@ class MainActivity : Activity() {
     override fun onRetainNonConfigurationInstance(): Any = session
 
     override fun onDestroy() {
-        diagnostics?.stop(); platform?.stop(); super.onDestroy()
+        navigationReader?.stop(); platform?.stop(); super.onDestroy()
     }
 }

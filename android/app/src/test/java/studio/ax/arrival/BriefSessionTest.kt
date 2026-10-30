@@ -10,6 +10,7 @@ class BriefSessionTest {
         updateHeight("1.65")
         reviewHeight(true)
         confirmParked(true)
+        reviewNavigationManually(true)
     }
 
     @Test fun defaultAndUnknownModesFailClosed() {
@@ -97,6 +98,7 @@ class BriefSessionTest {
         session.updateHeight("1.65")
         session.select("auditorium")
         session.reviewHeight(true); session.confirmParked(true)
+        session.reviewNavigationManually(true)
         assertTrue(session.confirm(demoParked))
         session.updateHeight("1.8")
         assertEquals("auditorium", session.selectedId)
@@ -109,6 +111,7 @@ class BriefSessionTest {
     @Test fun editingNoticeInvalidatesOldConfirmationAndSelection() {
         val session = readySession()
         session.select("auditorium")
+        session.reviewHeight(true); session.confirmParked(true)
         assertTrue(session.confirm(demoParked))
         session.updateNotice("코엑스 아셈볼룸 2층")
         assertNull(session.selectedId); assertNull(session.confirmed)

@@ -4,9 +4,12 @@ android {
  namespace = "studio.ax.arrival"
  compileSdk = 35
  buildToolsVersion = "35.0.0"
- defaultConfig { applicationId = "studio.ax.arrival"; minSdk = 28; targetSdk = 35; versionCode = 2; versionName = "0.2.0-prototype" }
+ defaultConfig { applicationId = "studio.ax.arrival"; minSdk = 28; targetSdk = 35; versionCode = 3; versionName = "0.3.0-prototype" }
  compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
  kotlinOptions { jvmTarget = "17" }
+ testOptions.unitTests.all {
+  it.systemProperty("arrival.decisionCases", rootProject.file("../tests/decision-cases.tsv").absolutePath)
+ }
  val releaseStore = providers.environmentVariable("ARRIVAL_RELEASE_KEYSTORE").orNull
  val releasePassword = providers.environmentVariable("ARRIVAL_RELEASE_PASSWORD").orNull
  if (!releaseStore.isNullOrBlank() && !releasePassword.isNullOrBlank()) {
@@ -26,7 +29,6 @@ android {
 }
 
 dependencies {
- implementation("ai.pleos.playground:Vehicle:2.3.2")
  implementation("ai.pleos.playground:NaviHelper:3.0.5")
  testImplementation("junit:junit:4.13.2")
 }

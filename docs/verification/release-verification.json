@@ -1,44 +1,39 @@
 {
-  "version": "0.2.0-prototype",
+  "version": "0.3.0-prototype",
   "apk": "apk/ArrivalBrief_release.apk",
-  "bytes": 8620730,
-  "sha256": "079ce46a3b6f5660e8808d0109033c5004c9fa8d910ac93d68668cdb2d0df16e",
+  "bytes": 5067560,
+  "sha256": "2c8c4e1c99ce27f1f5fc988ac1343476cfae24a5d6b30a5bcafea65271eb31c2",
   "tests": [
+    {
+      "name": "studio.ax.arrival.BriefEngineTest",
+      "tests": "17",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
     {
       "name": "studio.ax.arrival.BriefSessionTest",
       "tests": "10",
       "failures": "0",
-      "errors": "0"
+      "errors": "0",
+      "skipped": "0"
     },
     {
-      "name": "studio.ax.arrival.BriefEngineTest",
-      "tests": "13",
+      "name": "studio.ax.arrival.NavigationCheckTest",
+      "tests": "8",
       "failures": "0",
-      "errors": "0"
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "studio.ax.arrival.RecentDestinationTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
     }
   ],
-  "lint": [
-    {
-      "id": "DataExtractionRules",
-      "severity": "Warning",
-      "message": "The attribute `android:dataExtractionRules` only applies for Android 12 and higher; since `minSdkVersion` is API 28 you should also set `android:fullBackupContent`"
-    },
-    {
-      "id": "SetTextI18n",
-      "severity": "Warning",
-      "message": "String literal in `setText` can not be translated. Use Android resources instead."
-    },
-    {
-      "id": "SetTextI18n",
-      "severity": "Warning",
-      "message": "String literal in `setText` can not be translated. Use Android resources instead."
-    },
-    {
-      "id": "SetTextI18n",
-      "severity": "Warning",
-      "message": "String literal in `setText` can not be translated. Use Android resources instead."
-    }
-  ],
+  "lint": [],
   "runtime": {
     "pleos": {
       "status": "blocked_before_install",
@@ -47,7 +42,9 @@
       "host": "no GPU, no KVM",
       "observed": "Boot did not complete; guest system services failed; adb install failed with PackageManagerInternal.freeStorage NullPointerException. Application was not launched.",
       "required_followup": "Re-test installation, first launch, SDK services and UX restriction transitions on supported hardware.",
-      "requirements_url": "https://document.pleos.ai/docs/connect/guide/getting-started/application-development/configure-pleos-connect-emulator"
+      "requirements_url": "https://document.pleos.ai/docs/connect/guide/getting-started/application-development/configure-pleos-connect-emulator",
+      "attempted_app_version": "0.2.0-prototype",
+      "latest_version_verified": false
     },
     "aosp_android9": {
       "status": "installed_and_launched",
@@ -58,17 +55,26 @@
       "install": "Success",
       "launch": "Status: ok; Activity: studio.ax.arrival/.MainActivity; Complete",
       "observed": [
-        "initial unknown state locks inputs",
-        "explicit demo consent dialog",
-        "demo UI displays Auditorium, north gate and B3 Blue zone",
-        "manual height and safe-parking confirmation enables brief confirmation",
-        "driving demo locks input and copy while retaining the confirmed brief"
+        "release upgrade install succeeded with original signing key",
+        "initial UNKNOWN state locks inputs",
+        "explicit non-vehicle demo entry",
+        "manual facility, total-height and safe-parking checks enable confirmation",
+        "confirmed Auditorium brief shows north gate and B3 Blue zone",
+        "driving demo locks input and retains confirmed briefing in current process",
+        "explicit destination-only save survives force-stop and restart",
+        "restored destination has empty height, unchecked reviews and disabled confirmation",
+        "explicit delete removes the remembered destination and disables restore"
       ],
       "limitations": [
-        "non-automotive simulation only",
-        "host has no hardware acceleration; Android System UI ANR dialog was dismissed",
-        "no Pleos SDK or vehicle UX transition success claimed"
-      ]
+        "non-automotive simulation only; no Pleos SDK success claimed",
+        "host lacks GPU/KVM; System UI ANR dismissed, UIAutomator intermittently returned null root",
+        "no performance, long-duration or real vehicle validation"
+      ],
+      "verified_version": "0.3.0-prototype",
+      "latest_version_status": "installed_launched_demo_confirmed_and_draft_restored"
     }
-  }
+  },
+  "version_code": 3,
+  "web_tests": 21,
+  "shared_decision_cases": 50
 }

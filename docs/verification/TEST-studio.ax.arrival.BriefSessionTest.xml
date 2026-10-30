@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="studio.ax.arrival.BriefSessionTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-30T11:04:40.471Z" hostname="2adca276fbc2" time="0.008">
-  <properties/>
-  <testcase name="defaultAndUnknownModesFailClosed" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
-  <testcase name="reconnectRejectsPreviousServiceCallbacks" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
-  <testcase name="lockingRetainsConfirmedBriefAndRequiresReconfirmation" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
-  <testcase name="editingNoticeInvalidatesOldConfirmationAndSelection" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
-  <testcase name="platformRequiresExplicitUnrestrictedValues" classname="studio.ax.arrival.BriefSessionTest" time="0.0"/>
-  <testcase name="lateUnrestrictedCallbackCannotUnlockDisconnectedService" classname="studio.ax.arrival.BriefSessionTest" time="0.0"/>
-  <testcase name="heightCorrectionPreservesSelectedPlaceButInvalidatesReview" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
-  <testcase name="conflictedSourcesNeverConfirmEvenWithAllChecks" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
-  <testcase name="platformAndSimulationSignalsCannotBeConfused" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
-  <testcase name="confirmationRequiresBothHumanChecks" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="studio.ax.arrival.BriefSessionTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-30T12:12:22.902Z" time="0.007">
+  <properties />
+  <testcase name="defaultAndUnknownModesFailClosed" classname="studio.ax.arrival.BriefSessionTest" time="0.002" />
+  <testcase name="reconnectRejectsPreviousServiceCallbacks" classname="studio.ax.arrival.BriefSessionTest" time="0.0" />
+  <testcase name="lockingRetainsConfirmedBriefAndRequiresReconfirmation" classname="studio.ax.arrival.BriefSessionTest" time="0.001" />
+  <testcase name="editingNoticeInvalidatesOldConfirmationAndSelection" classname="studio.ax.arrival.BriefSessionTest" time="0.001" />
+  <testcase name="platformRequiresExplicitUnrestrictedValues" classname="studio.ax.arrival.BriefSessionTest" time="0.0" />
+  <testcase name="lateUnrestrictedCallbackCannotUnlockDisconnectedService" classname="studio.ax.arrival.BriefSessionTest" time="0.001" />
+  <testcase name="heightCorrectionPreservesSelectedPlaceButInvalidatesReview" classname="studio.ax.arrival.BriefSessionTest" time="0.0" />
+  <testcase name="conflictedSourcesNeverConfirmEvenWithAllChecks" classname="studio.ax.arrival.BriefSessionTest" time="0.001" />
+  <testcase name="platformAndSimulationSignalsCannotBeConfused" classname="studio.ax.arrival.BriefSessionTest" time="0.001" />
+  <testcase name="confirmationRequiresBothHumanChecks" classname="studio.ax.arrival.BriefSessionTest" time="0.0" />
+  <system-out />
+  <system-err />
 </testsuite>

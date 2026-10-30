@@ -1,0 +1,29 @@
+✔ official destination mappings (4.715243ms)
+✔ reject unsupported facilities including Magok (0.365933ms)
+✔ ambiguous destinations require selection (0.323368ms)
+✔ selected destination cannot contradict parsed ticket (0.193242ms)
+✔ height fail closed for missing, invalid and over limit (0.407636ms)
+✔ driving and unknown state prohibit confirmation (0.260223ms)
+✔ exports contain source and limitations and no loading instruction (0.405733ms)
+✔ numeric dates and long text do not fabricate places (0.175305ms)
+✔ unmatched COEX room can be explicitly selected (0.217529ms)
+✔ all supported places have no invented coordinates (0.259662ms)
+✔ contradictory venue and floor fail closed (0.305702ms)
+✔ cancelled event and F-style floor fail closed (1.082495ms)
+✔ conflicting official sources block confirmation and export for every affected range (1.884276ms)
+✔ manual destination selection cannot bypass floor validation or accept an unknown ID (0.315586ms)
+✔ basement and nearby hotel descriptions cannot produce a confirmed route (0.429309ms)
+✔ an explicit unsupported room cannot be replaced by a supported manual choice (0.308526ms)
+✔ confirmation requires both actual height review and safe parking review (0.30444ms)
+✔ height input follows the same decimal contract as Android (0.339022ms)
+✔ remembered destination contains no raw notice or height and expires after 24 hours (1.367055ms)
+✔ shared Android and web decision fixtures reject the same unsafe drafts (1.111434ms)
+✔ multiline invitations cannot bypass nearby venue or changed location review (0.140483ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121.023351

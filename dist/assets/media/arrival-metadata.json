@@ -13,7 +13,7 @@
   ],
   "format": {
     "duration": "33.000000",
-    "size": "1747151"
+    "size": "1758264"
   },
   "content": {
     "title": "도착 안내",
@@ -33,6 +33,12 @@
     ],
     "font": "Noto Sans KR (OFL)",
     "audio": "none",
-    "sha256": "7d18d350a8b284e731be20f13d66e46c528994fad85f4fb2ed58c94d27ec97b5"
+    "sha256": "61dd9da303eaf582521f13c2cb2c0fc4fa6773637e5c364296fb21cf3045abdf",
+    "app_version": "0.3.0-prototype"
+  },
+  "validation": {
+    "full_decode": "passed",
+    "frames": 792,
+    "scope": "web capture edit, not native SDK demonstration"
   }
 }
