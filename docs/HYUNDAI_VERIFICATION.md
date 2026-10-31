@@ -1,6 +1,6 @@
 # Arrival Brief 검증 기록과 남은 범위
 
-배포 APK는 `0.3.0-prototype`입니다. 아래 기능의 실제 Pleos 서비스 응답은 아직 검증되지 않았습니다.
+배포 APK는 `0.4.0-prototype`입니다. 아래 기능의 실제 Pleos 서비스 응답은 아직 검증되지 않았습니다.
 
 ## 현재 보존된 결과
 
@@ -8,16 +8,22 @@
 | --- | --- | --- |
 | Android JUnit | 37개 통과 | `TEST-*.xml`, 검증 JSON |
 | 웹 시험 | 21개 통과 | `tests/arrival.test.mjs` |
-| release | `0.3.0-prototype`, 5,067,560바이트 | 패키지·서명·빌드 로그 |
+| release | `0.4.0-prototype`, 5,077,368바이트 | 패키지·서명·빌드 로그 |
 | Lint | 오류 0개, 경고 0개 | 검증 JSON·정적 검사 보고서 |
-| 일반 Android 9 | 0.3.0 설치·데모 확정·목적지 저장·프로세스 재시작 후 초안 복구 확인 | [런타임 기록](verification/android-runtime.md) |
+| 일반 Android 9 | 0.4.0 설치·첫 실행·새 화면 동작 확인. 시나리오별 실제 관찰과 이전 버전은 기록에서 구분 | [런타임 기록](verification/android-runtime.md) |
 | 실제 Pleos | 설치·첫 실행·SDK·UX 전환 미검증 | [런타임 기록](verification/android-runtime.md) |
 
 ```text
-APK SHA-256 2c8c4e1c99ce27f1f5fc988ac1343476cfae24a5d6b30a5bcafea65271eb31c2
+APK SHA-256 40ce148be83d608acae1e7bd1bb381619c8ad7896ee7f01fa2cd354d6e4a276f
 ```
 
 [release-verification.json](verification/release-verification.json)을 APK·시험·런타임 상태의 기준으로 사용한다. 단위 시험, 일반 Android의 데모, 실제 차량 서비스를 서로 바꿔 표현하지 않는다.
+
+## 화면 개편과 재검토
+
+0.4.0은 장소 선택 → 차량 확인 → 도착 브리핑의 순서를 웹과 Android에 맞췄다. 미확정 상태에서는 경로값 대신 확인 목록을 보여주고 확정 후에만 진입문·주차 구역을 강조한다. 안내문·지원 범위·출처 등 보조 정보는 펼침 방식으로 정리했다.
+
+[외부 설계 근거](../research/design-reference-2026-10-31.md)와 [모의 전문가 검토·수정·재검토 기록](design-review.md)을 제공한다. 화면 캡처의 시각 검토는 실제 사용자 연구나 차량 디스플레이의 물리적 시인성 검증과 구분한다.
 
 ## 모의심사에서 수정한 기능
 
@@ -34,6 +40,8 @@ APK SHA-256 2c8c4e1c99ce27f1f5fc988ac1343476cfae24a5d6b30a5bcafea65271eb31c2
 
 ## 런타임과 저장의 경계
 
+- 0.4.0은 일반 Android 9에 새 APK를 설치하고 새 화면의 실제 동작을 확인했다. 시나리오별 관찰, 캡처, 환경 한계는 [런타임 기록](verification/android-runtime.md)의 0.4.0 항목을 따른다. 아래 0.3.0 기록을 새 버전의 실행 결과로 옮겨 적지 않는다.
+
 - 일반 Android 9에서 0.3.0의 업그레이드 설치·첫 실행·명시적 데모·시설/높이/안전 주차 확인 후 확정·주행 예시 잠금·목적지 보관·프로세스 종료 후 초안 복구를 확인했다. 복구한 초안은 높이가 비어 있고 모든 확인이 해제되며 확정 버튼도 비활성 상태였다. 실제 NaviHelper 응답과 차량 UX 전환을 확인한 결과는 아니다. 소프트웨어 에뮬레이션 환경의 System UI 응답 지연·UIAutomator null root로 성능과 장시간 안정성은 평가하지 않았다. 이전 0.2.0 결과와 최신 실행 캡처는 [런타임 기록](verification/android-runtime.md)에서 버전별로 구분한다.
 - Pleos 2.1.0 공식 이미지의 해시 확인 후 부팅을 시도했으나 OS 초기화와 APK 설치가 실패했다. 현재 환경은 공식 GPU 요건을 충족하지 않으며 실패의 단일 원인을 확정하지 않는다.
 - NaviHelper는 조회 시점의 시설 이름·주소만 대조한다. 회의실·진입문·주차경로 검증, 연속 목적지 감시, 실제 서비스 응답 성공을 뜻하지 않는다.
@@ -42,9 +50,9 @@ APK SHA-256 2c8c4e1c99ce27f1f5fc988ac1343476cfae24a5d6b30a5bcafea65271eb31c2
 
 ## 영상과 제출 파일
 
-두 세로 영상은 0.3.0 시점의 웹 화면으로 갱신했다. 각 33초, 720×1280, 24fps, 792프레임이며 전체 디코딩 검사를 통과했다. 스톡 도입 4초와 웹 캡처 편집 29초로 구성했고 실제 차량 촬영·연속 화면 녹화가 아니다. [도착 안내 metadata](../dist/assets/media/arrival-metadata.json)와 [자료 상충 metadata](../dist/assets/media/arrival-confirm-metadata.json)에 캡처 범위·파일 해시·디코딩 결과를 기록했다. 영상은 네이티브 SDK 응답의 증거가 아니다.
+두 세로 영상은 0.4.0의 개편한 웹 화면으로 갱신했다. 각 33초, 720×1280, 24fps, 792프레임이며 전체 디코딩 검사를 통과했다. 스톡 도입 4초와 웹 캡처 편집 29초로 구성했고 실제 차량 촬영·연속 화면 녹화가 아니다. [도착 안내 metadata](../dist/assets/media/arrival-metadata.json)와 [자료 상충 metadata](../dist/assets/media/arrival-confirm-metadata.json)에 캡처 범위·파일 해시·디코딩 결과를 기록했다. 영상은 네이티브 SDK 응답의 증거가 아니다.
 
-[scripts/package-submission.py](../scripts/package-submission.py)는 심사용 웹·APK·코드와 운영용 목록을 분리한다. 실제 생성된 패키지의 파일 해시·익명 정보 검사·정적 배포 APK 경로를 검사한 결과와 별도로, 본인 서명·동의·심사용 계정 접근·이메일 접수는 사람이 완료해야 한다. 도구가 해당 절차를 자동 완료하지 않는다.
+[scripts/package-submission.py](../scripts/package-submission.py)는 심사용 웹·APK·코드와 운영용 목록을 분리한다. 실제 생성된 패키지의 파일 해시·익명 정보 검사·정적 배포 APK 경로를 검사한 결과와 별도로, 별도 접수양식의 동의·서명·날짜와 공개 저장소 접근, 최종 첨부물은 운영용 제출 목록에서 확인한다. 패키징 도구가 이메일 접수를 완료하지는 않는다.
 
 ## 남은 확인
 
@@ -52,6 +60,6 @@ APK SHA-256 2c8c4e1c99ce27f1f5fc988ac1343476cfae24a5d6b30a5bcafea65271eb31c2
 2. 휴대폰 안내에서 차량 앱으로 이어지는 전달 경로를 검증한다. 현재 목록 직접 선택과 같은 기기의 초안 복구로 이를 대체했다고 표현하지 않는다.
 3. 자료가 상충하는 3개 분류의 최신 기준은 시설 원문·운영 정보로 확인해야 한다.
 4. 사용자 시간 절감·만족도·재사용·제휴·MAU·매출은 측정·확보하지 않았다. [사업 가설](USER_EVIDENCE.md)의 숫자는 근거 없는 조건을 넣은 계산 예시다.
-5. 익명 제출·저장소 전달 방식, 심사 계정 접근, 최종 첨부 파일명·동의·서명을 마친 뒤 접수한다.
+5. 공개 저장소와 APK 접근, 신청서 첨부 파일명·동의·서명을 최종 대조한 뒤 이메일로 접수한다. 개인 GitHub 주소의 전달 방식은 운영 안내에 따른다.
 
 [모의심사 수정표](REVIEW_ROUND2.md)는 개선을 위한 내부 검토다. 공식 심사 결과나 수상 가능성으로 해석하지 않는다.

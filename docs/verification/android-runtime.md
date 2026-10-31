@@ -45,7 +45,7 @@ DeadSystemException: The system died; earlier logs will point to the root cause
 - Android JUnit 23개와 웹 엔진 14개 테스트 통과
 - 실제 Pleos 앱 설치·서비스 연결·UX 제한 전환은 아직 검증되지 않았다는 상태
 
-이전 Pleos 시도 대상은 0.2.0 APK이며 SHA-256은 다음과 같다. 현재 경로의 APK는 0.3.0으로 교체되었다.
+이전 Pleos 시도 대상은 0.2.0 APK이며 SHA-256은 다음과 같다. 현재 경로의 APK는 0.4.0으로 교체되었다.
 
 ```text
 079ce46a3b6f5660e8808d0109033c5004c9fa8d910ac93d68668cdb2d0df16e
@@ -100,3 +100,24 @@ DeadSystemException: The system died; earlier logs will point to the root cause
 ![0.3.0 프로세스 재시작 후 미확정 초안 복구](android-aosp28-v03-restored.png)
 
 이 실행에서는 실제 차량 NaviHelper 응답을 받지 않았다. 데모가 시설 수동 확인을 요구하는 화면을 확인한 것이며 SDK 연결 성공이 아니다. 호스트가 하드웨어 가속을 제공하지 않아 System UI 응답 지연 경고를 닫았고 UIAutomator도 일부 시도에서 null root를 반환했다. 화면 캡처와 직접 조작으로 위 흐름을 확인했으며 응답 속도나 안정성 수치를 제시하지 않는다.
+
+
+## 0.4.0 UI 개편 실행 검증
+
+기록일: 2026-10-31(KST). 공식 AOSP Android 9(API28) x86 이미지에서 새 release APK를 원래 서명키로 업그레이드 설치했습니다. `adb install -r`의 `Success`, `am start -W`의 `Status: ok`와 `Complete`를 확인했습니다. 버전은 0.4.0-prototype/versionCode 4입니다. APK SHA-256: `40ce148be83d608acae1e7bd1bb381619c8ad7896ee7f01fa2cd354d6e4a276f`.
+
+- 첫 실행은 차량 상태 미확인으로 입력을 숨깁니다. 차량 밖에서 데모를 시작하는 안내는 별도 확인이 필요합니다.
+- 정차 데모는 오디토리움과 1.65m 예시를 채우지만 입구·주차 경로는 아직 보여주지 않습니다. 시설·전체 높이·안전 주차 확인이 모두 선택되기 전에는 확정 버튼이 비활성입니다.
+- 세 조건을 확인하면 버튼과 우측 확인 목록이 바뀝니다. 확정 시 짙은 브리핑에 북문·B3블루존이 표시되며 결과 시작으로 이동합니다.
+- 주행 시뮬레이션에서는 입력·복사·보관 조작이 사라지고 확정된 브리핑과 입력 잠금 표시를 유지합니다.
+- 1280×800, 160dpi에서 정차/확정/주행 화면을 확인했습니다. 논리 화면 960×600에서도 목적지·진입문·주차구역·높이·현장 표지 우선 문구가 보였습니다. 해당 캡처는 에뮬레이터의 1280×800 프레임버퍼에 스케일된 원본입니다.
+
+![0.4.0 정차 준비](android-aosp28-v04-parked.png)
+
+![0.4.0 확정된 브리핑](android-aosp28-v04-confirmed.png)
+
+![0.4.0 주행 시뮬레이션의 입력 잠금](android-aosp28-v04-driving.png)
+
+![960×600 논리 화면에서의 확정 브리핑](android-aosp28-v04-960.png)
+
+이 기록은 실제 차량이나 Pleos SDK 응답 검증이 아닙니다. GPU/KVM 없는 소프트웨어 에뮬레이션에서 초기 Android System UI 응답 지연 경고를 닫은 뒤 확인했습니다. 앱 성능·장기 안정성 수치를 측정하지 않았습니다. 목적지 저장 후 프로세스 종료·복구·삭제 UI 흐름은 이번 0.4.0 실행에서 반복하지 않았으며 위 0.3.0 관측 기록과 구분합니다. 현재 저장 동작의 회귀 조건은 단위테스트로 확인했습니다.

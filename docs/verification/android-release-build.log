@@ -1,7 +1,6 @@
 Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.13/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
 Daemon will be stopped at the end of the build 
-Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
 > Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
 > Task :app:preBuild UP-TO-DATE
 > Task :app:preDebugBuild UP-TO-DATE
@@ -45,12 +44,6 @@ Warning: SDK processing. This version only understands SDK XML versions up to 3 
 > Task :app:stripReleaseDebugSymbols NO-SOURCE
 > Task :app:extractReleaseNativeSymbolTables NO-SOURCE
 > Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
-
-> Task :app:compileDebugKotlin
-e: The daemon has terminated unexpectedly on startup attempt #1 with error code: 0. The daemon process output:
-    1. Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts
-    2. Kotlin compile daemon is ready
-
 > Task :app:checkReleaseDuplicateClasses UP-TO-DATE
 > Task :app:desugarReleaseFileDependencies UP-TO-DATE
 > Task :app:mergeReleaseStartupProfile UP-TO-DATE
@@ -68,15 +61,25 @@ e: The daemon has terminated unexpectedly on startup attempt #1 with error code:
 > Task :app:validateSigningRelease UP-TO-DATE
 > Task :app:writeReleaseAppMetadata UP-TO-DATE
 > Task :app:writeReleaseSigningConfigVersions UP-TO-DATE
+
+> Task :app:compileDebugKotlin
+w: file://<PROJECT>/android/app/src/main/java/studio/ax/arrival/MainActivity.kt:142:16 'var statusBarColor: Int' is deprecated. Deprecated in Java.
+w: file://<PROJECT>/android/app/src/main/java/studio/ax/arrival/MainActivity.kt:142:44 'var navigationBarColor: Int' is deprecated. Deprecated in Java.
+
 > Task :app:compileReleaseKotlin
+w: file://<PROJECT>/android/app/src/main/java/studio/ax/arrival/MainActivity.kt:142:16 'var statusBarColor: Int' is deprecated. Deprecated in Java.
+w: file://<PROJECT>/android/app/src/main/java/studio/ax/arrival/MainActivity.kt:142:44 'var navigationBarColor: Int' is deprecated. Deprecated in Java.
+
 > Task :app:compileDebugJavaWithJavac NO-SOURCE
 > Task :app:processDebugJavaRes UP-TO-DATE
 > Task :app:bundleDebugClassesToRuntimeJar
 > Task :app:bundleDebugClassesToCompileJar
-> Task :app:generateDebugAndroidTestLintModel
 > Task :app:generateDebugLintReportModel
+> Task :app:generateDebugAndroidTestLintModel
 > Task :app:generateDebugUnitTestLintModel
+> Task :app:compileReleaseJavaWithJavac NO-SOURCE
 > Task :app:compileDebugUnitTestKotlin
+> Task :app:generateReleaseLintVitalReportModel
 > Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
 > Task :app:processDebugUnitTestJavaRes UP-TO-DATE
 
@@ -84,24 +87,22 @@ e: The daemon has terminated unexpectedly on startup attempt #1 with error code:
 Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts
 
 > Task :app:lintAnalyzeDebugAndroidTest
-> Task :app:compileReleaseJavaWithJavac NO-SOURCE
-> Task :app:generateReleaseLintVitalReportModel
-> Task :app:lintAnalyzeDebugUnitTest
 > Task :app:dexBuilderRelease
-> Task :app:mergeDexRelease
 > Task :app:mergeReleaseGlobalSynthetics UP-TO-DATE
-> Task :app:compileReleaseArtProfile
 > Task :app:processReleaseJavaRes UP-TO-DATE
 > Task :app:mergeReleaseJavaResource UP-TO-DATE
+> Task :app:mergeDexRelease
+> Task :app:compileReleaseArtProfile
 > Task :app:packageRelease
 > Task :app:createReleaseApkListingFileRedirect UP-TO-DATE
-> Task :app:lintAnalyzeDebug
-> Task :app:lintReportDebug UP-TO-DATE
-> Task :app:lintDebug
+> Task :app:lintAnalyzeDebugUnitTest
 > Task :app:lintVitalAnalyzeRelease
 > Task :app:lintVitalReportRelease UP-TO-DATE
 > Task :app:lintVitalRelease
 > Task :app:assembleRelease
+> Task :app:lintAnalyzeDebug
+> Task :app:lintReportDebug UP-TO-DATE
+> Task :app:lintDebug
 
 [Incubating] Problems report is available at: file://<PROJECT>/android/build/reports/problems/problems-report.html
 
@@ -111,5 +112,5 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 36s
+BUILD SUCCESSFUL in 32s
 76 actionable tasks: 20 executed, 56 up-to-date

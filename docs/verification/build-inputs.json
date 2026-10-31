@@ -1,19 +1,11 @@
 {
-  "version": "0.3.0-prototype",
-  "apk_sha256": "2c8c4e1c99ce27f1f5fc988ac1343476cfae24a5d6b30a5bcafea65271eb31c2",
+  "version": "0.4.0-prototype",
+  "apk_sha256": "40ce148be83d608acae1e7bd1bb381619c8ad7896ee7f01fa2cd354d6e4a276f",
   "evidence": "Files present in the successful build checkout. Not a claim of byte-reproducible build.",
   "files": [
     {
-      "path": "android/.kotlin/errors/errors-1793358394008.log",
-      "sha256": "edd77ad522c2709b982b88dfec502e935fc7e175838e0ae343da3b10277872f0"
-    },
-    {
-      "path": "android/.kotlin/errors/errors-1793362330260.log",
-      "sha256": "edd77ad522c2709b982b88dfec502e935fc7e175838e0ae343da3b10277872f0"
-    },
-    {
       "path": "android/app/build.gradle.kts",
-      "sha256": "1e27783a8f72a9eefc1aa3eec73f95a92916341bf43d3e1b8e304de49cb1fd3b"
+      "sha256": "c754547153133fb74b8705b10aa257597a88161e2d690844dfcf29f564a657e8"
     },
     {
       "path": "android/app/src/main/AndroidManifest.xml",
@@ -29,7 +21,7 @@
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/MainActivity.kt",
-      "sha256": "66c209bd6273b11bbd87b71db188c0efc40865c3b33f427a87b8882a06116ed2"
+      "sha256": "1c548baeb8b791026b5c0e0cdfb2937f6bb904e29ef3c3366ca5544abeb47a07"
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/NavigationCheck.kt",
@@ -61,11 +53,11 @@
     },
     {
       "path": "android/app/src/main/res/values/strings.xml",
-      "sha256": "49dd072ffd6398c52def08f6d525e3573f5ded9a6d9773c7f1fc078718c24e5f"
+      "sha256": "0a583b17e9304d7a217ad68a5f8a33dd7f09e00dcc388e71c31c943b18a8ae19"
     },
     {
       "path": "android/app/src/main/res/values/styles.xml",
-      "sha256": "fae04ef60bfebb25ceaa712296bd2764187043deed5695ff32dbc4a9476f45e7"
+      "sha256": "5e72c159df883032dd101bfc4bc52a32044d83d78d324cb2792243c139b168b0"
     },
     {
       "path": "android/app/src/main/res/xml/backup_rules.xml",

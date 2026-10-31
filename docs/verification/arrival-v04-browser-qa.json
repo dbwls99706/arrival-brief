@@ -1,0 +1,41 @@
+{
+  "version": "0.4.0-prototype",
+  "date": "2026-10-31",
+  "method": "supported browser UI interactions; screenshots reviewed separately by independent AI critic",
+  "viewports": [
+    [
+      1280,
+      720
+    ],
+    [
+      960,
+      600
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      540,
+      800
+    ]
+  ],
+  "passed_observed": [
+    "direct room selection, height and two reviews enable confirmation",
+    "confirmed outcome visually distinct from draft; final action shows completed state",
+    "driving and unknown modes hide and disable input/export controls",
+    "returning to parked requires parking recheck before export",
+    "source conflict blocks confirmation despite completed height/parking reviews",
+    "height 2.3m blocks confirmation",
+    "explicit remembered destination restores a draft with blank height and unchecked reviews",
+    "delete removes remembered destination",
+    "390px layout DOM probe found no visible horizontal overflow",
+    "960x600 driving critical route and site-sign priority line visible after compact toolbar fix"
+  ],
+  "boundaries": [
+    "browser simulations only; not real vehicle validation",
+    "not a user interview or measured user study",
+    "screenshots include viewport-review wrapper; stale intermediate screenshots excluded",
+    "no claim of full accessibility conformance or 200 percent zoom coverage"
+  ]
+}

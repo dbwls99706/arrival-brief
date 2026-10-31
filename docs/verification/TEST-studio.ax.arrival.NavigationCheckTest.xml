@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
-<testsuite name="studio.ax.arrival.NavigationCheckTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-30T12:12:22.911Z" time="0.008">
+<testsuite name="studio.ax.arrival.NavigationCheckTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-31T02:10:10.565Z" time="0.007">
   <properties />
   <testcase name="magokHotelsAndOtherFacilitiesCannotMatch" classname="studio.ax.arrival.NavigationCheckTest" time="0.001" />
-  <testcase name="businessNamesAndUnrelatedNumbersCannotMasqueradeAsFacility" classname="studio.ax.arrival.NavigationCheckTest" time="0.002" />
+  <testcase name="businessNamesAndUnrelatedNumbersCannotMasqueradeAsFacility" classname="studio.ax.arrival.NavigationCheckTest" time="0.001" />
   <testcase name="cancelledOrSupersededCallbacksCannotFinish" classname="studio.ax.arrival.NavigationCheckTest" time="0.0" />
-  <testcase name="mismatchCannotBeOverriddenByManualCheckOrFailedRetry" classname="studio.ax.arrival.NavigationCheckTest" time="0.002" />
+  <testcase name="mismatchCannotBeOverriddenByManualCheckOrFailedRetry" classname="studio.ax.arrival.NavigationCheckTest" time="0.001" />
   <testcase name="facilityNameRequiresSpecificSamseongAddress" classname="studio.ax.arrival.NavigationCheckTest" time="0.001" />
   <testcase name="supportedMeetingRoomAliasesVerifyOnlyTheFacility" classname="studio.ax.arrival.NavigationCheckTest" time="0.001" />
-  <testcase name="rawNavigationDataIsNotReturnedInVerdict" classname="studio.ax.arrival.NavigationCheckTest" time="0.001" />
-  <testcase name="unconnectedOrUnknownDestinationNeedsExplicitManualReview" classname="studio.ax.arrival.NavigationCheckTest" time="0.0" />
+  <testcase name="rawNavigationDataIsNotReturnedInVerdict" classname="studio.ax.arrival.NavigationCheckTest" time="0.0" />
+  <testcase name="unconnectedOrUnknownDestinationNeedsExplicitManualReview" classname="studio.ax.arrival.NavigationCheckTest" time="0.001" />
   <system-out />
   <system-err />
 </testsuite>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<testsuite name="studio.ax.arrival.RecentDestinationTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-30T12:12:22.921Z" time="0.002">
+<testsuite name="studio.ax.arrival.RecentDestinationTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-31T02:10:10.573Z" time="0.002">
   <properties />
   <testcase name="restorationNeverRestoresHeightOrConsentOrConfirmation" classname="studio.ax.arrival.RecentDestinationTest" time="0.001" />
   <testcase name="ttlFutureAndDatasetChangesInvalidateRecentDestination" classname="studio.ax.arrival.RecentDestinationTest" time="0.001" />

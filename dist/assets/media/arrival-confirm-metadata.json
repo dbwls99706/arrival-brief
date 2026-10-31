@@ -13,7 +13,7 @@
   ],
   "format": {
     "duration": "33.000000",
-    "size": "1753439"
+    "size": "1744403"
   },
   "content": {
     "title": "자료 상충 확인",
@@ -22,23 +22,18 @@
     "app_capture_seconds": 29,
     "vehicle_state": "웹 시뮬레이션",
     "capture_crop": [
-      0,
-      0,
+      412,
+      40,
       540,
       800
     ],
+    "app_version": "0.4.0-prototype",
     "capture_scale": [
       594,
       880
     ],
     "font": "Noto Sans KR (OFL)",
     "audio": "none",
-    "sha256": "a4eed22b21cc80f24453a940364aa96d26182a1c22ed0cc1d29a1186c56c9f0a",
-    "app_version": "0.3.0-prototype"
-  },
-  "validation": {
-    "full_decode": "passed",
-    "frames": 792,
-    "scope": "web capture edit, not native SDK demonstration"
+    "sha256": "a364db814b6888a4288649dc86c6bb344d014e1b69b0095c8a8f7f63c4a4ffa6"
   }
 }

@@ -1,4 +1,4 @@
-package: name='studio.ax.arrival' versionCode='3' versionName='0.3.0-prototype' platformBuildVersionName='15' platformBuildVersionCode='35' compileSdkVersion='35' compileSdkVersionCodename='15'
+package: name='studio.ax.arrival' versionCode='4' versionName='0.4.0-prototype' platformBuildVersionName='15' platformBuildVersionCode='35' compileSdkVersion='35' compileSdkVersionCodename='15'
 sdkVersion:'28'
 targetSdkVersion:'35'
 uses-permission: name='pleos.car.permission.NAVI_ROUTE'

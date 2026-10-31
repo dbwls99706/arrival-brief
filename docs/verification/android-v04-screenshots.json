@@ -1,0 +1,27 @@
+{
+  "app_version": "0.4.0-prototype",
+  "apk_sha256": "40ce148be83d608acae1e7bd1bb381619c8ad7896ee7f01fa2cd354d6e4a276f",
+  "environment": "AOSP Android9 API28 x86, non-vehicle simulation. Framebuffer captures are unedited. 960 image uses960x600 logical wm override with1280x800 framebuffer.",
+  "files": [
+    {
+      "path": "docs/verification/android-aosp28-v04-start.png",
+      "sha256": "ee76337b8b08712745a4f1197ff04a732ee3950884885a8543e371a673483718"
+    },
+    {
+      "path": "docs/verification/android-aosp28-v04-parked.png",
+      "sha256": "02c5a1e4475bbeddf367ac6f5f905e4021100e0b8e2fe5cd92d9dc9758327ad0"
+    },
+    {
+      "path": "docs/verification/android-aosp28-v04-confirmed.png",
+      "sha256": "66083fcc540d08f4e5b340e89d5775b348e0424b1aa39531a0d9f5579ffbe1f1"
+    },
+    {
+      "path": "docs/verification/android-aosp28-v04-driving.png",
+      "sha256": "5ec747b0f2212b24e78ee8f07999c790de199c9655633d3308a1766c0d40fe81"
+    },
+    {
+      "path": "docs/verification/android-aosp28-v04-960.png",
+      "sha256": "f85116f3645e22564c1267144c934438d0aa7f456269ff051e2bd8364c7347b3"
+    }
+  ]
+}

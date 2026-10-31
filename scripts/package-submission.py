@@ -53,14 +53,15 @@ def allowed(path):
         return path.suffix == '.py'
     if parts[0] == 'docs':
         if len(parts) == 2:
-            return path.name in {'ANDROID_BUILD.md', 'ARRIVAL_PLAN.md', 'HYUNDAI_FOCUS.md', 'HYUNDAI_VERIFICATION.md', 'USER_EVIDENCE.md', 'SUBMISSION.md'}
+            return path.name in {'ANDROID_BUILD.md', 'ARRIVAL_PLAN.md', 'HYUNDAI_FOCUS.md', 'HYUNDAI_VERIFICATION.md', 'USER_EVIDENCE.md', 'SUBMISSION.md', 'design-review.md'}
         if len(parts) == 3 and parts[1] == 'verification':
             return (path.name in {'build-inputs.json', 'release-verification.json', 'android-lint.txt', 'android-release-build.log', 'android-release-signature.txt', 'android-release-package.txt', 'android-runtime.md'}
                     or (path.name.startswith('TEST-') and path.suffix == '.xml')
-                    or (path.name.startswith('android-aosp28-') and path.suffix == '.png'))
+                    or (path.name.startswith('android-aosp28-') and path.suffix == '.png')
+                    or (path.name.startswith('arrival-v04-') and path.suffix in {'.jpg', '.png', '.json'}))
         return False
     if parts[0] == 'research':
-        return path.name in {'OFL.txt', 'frontend-design-LICENSE.txt', 'frontend-design-SKILL.md'}
+        return path.name in {'OFL.txt', 'frontend-design-LICENSE.txt', 'frontend-design-SKILL.md', 'design-reference-2026-10-31.md'}
     return False
 
 
@@ -190,7 +191,8 @@ def main():
                     'source_tree_sha256': source_digest, 'source_files': source, 'files': files,
                     'anonymized_documents': transformed,
                     'evidence_boundary': 'Source digest verifies checkout/package parity; it is not a claim of byte-reproducible APK build or successful Pleos execution.',
-                    'manual_review_remaining': ['Applicant consent/signature/date', 'Official judging account access', 'Organizer-approved anonymous GitHub delivery', 'Visual review of screenshot/video content']}
+                    'operator_checks': ['Signed official application delivered separately', 'Public repository and APK access', 'Organizer instructions for applicant-identifying repository links', 'Attachment names and media content'],
+                    'not_completed_by_packaging': ['Email submission', 'Pleos vehicle runtime verification']}
         (staging / 'SUBMISSION-MANIFEST.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
         subprocess.run([sys.executable, str(ROOT / 'scripts/check-paths.py'), '--root', str(staging), '--static-root', 'dist'], check=True)
         zip_path = output / ('ArrivalBrief-review-' + version + '.zip')
@@ -204,7 +206,7 @@ def main():
         verify_archive(zip_path, ROOT)
         zip_hash = digest(zip_path.read_bytes())
     checklist = output / 'ArrivalBrief-operator-checklist.md'
-    checklist.write_text(f'''# Arrival Brief 운영용 제출 목록\n\n이 문서는 운영 전달용이며 익명 심사용 ZIP에 포함하지 않습니다.\n\n- 저장소: {args.repository_url}\n- APK 경로: apk/ArrivalBrief_release.apk\n- APK 버전: {version}\n- APK SHA-256: {actual_hash}\n- 익명 검토 ZIP: {zip_path.name}\n- ZIP SHA-256: {zip_hash}\n- 앱 소스 목록 SHA-256: {source_digest}\n- 영상: dist/assets/media/arrival-reel.mp4, arrival-confirm-reel.mp4\n- 영상은 0.3.0 시점 웹 캡처 편집본이며 차량 SDK의 실제 응답을 촬영한 영상은 아닙니다.\n\n## 본인 또는 운영 확인이 필요한 항목\n\n- [ ] 공식 접수양식의 동의 여부·본인 서명·서명일자 작성\n- [ ] 공식 파일명 형식과 익명 심사 지침에 맞는 APK 제출명 확인\n- [ ] 공지된 심사용 GitHub 계정 및 비공개 저장소 접근 확인\n- [ ] 개인 계정이 표시되는 GitHub 주소의 익명 전달 방식 확인\n- [ ] 신청서 7번 첨부 파일명과 실제 첨부물 일치 확인\n- [ ] 화면·영상에 개인정보가 없는지 육안 확인\n- [ ] 지원 환경에서 실제 Pleos 설치·SDK·UX 제한 재검증\n\nAPK 단독 제출을 대신하는 ZIP이 아닙니다. 공식 안내는 GitHub에 소스와 APK를 함께 제출하도록 하며, 이 ZIP만으로 접근·익명 요건이 해결됐다고 간주하지 않습니다. 서명키 백업·연락처·동의서는 리뷰 ZIP에 넣지 않았습니다. 이메일은 발송하지 않았습니다.\n''')
+    checklist.write_text(f'''# Arrival Brief 운영용 제출 목록\n\n이 문서는 운영 전달용이며 익명 심사용 ZIP에 포함하지 않습니다.\n\n- 저장소: {args.repository_url}\n- APK 경로: apk/ArrivalBrief_release.apk\n- APK 버전: {version}\n- APK SHA-256: {actual_hash}\n- 익명 검토 ZIP: {zip_path.name}\n- ZIP SHA-256: {zip_hash}\n- 앱 소스 목록 SHA-256: {source_digest}\n- 영상: dist/assets/media/arrival-reel.mp4, arrival-confirm-reel.mp4\n- 영상은 동봉한 웹 프로토타입의 캡처 편집본이며 차량 SDK의 실제 응답을 촬영한 영상은 아닙니다.\n\n## 본인 또는 운영 확인이 필요한 항목\n\n- [ ] 별도 공식 접수양식의 동의 여부·본인 서명·서명일자 확인\n- [ ] 공식 파일명 형식과 익명 심사 지침에 맞는 APK 제출명 확인\n- [ ] 공개 저장소의 소스·APK 접근 확인(비공개 전환 시 심사용 계정 접근 확인)\n- [ ] 개인 계정이 표시되는 GitHub 주소의 익명 전달 방식 확인\n- [ ] 신청서 7번 첨부 파일명과 실제 첨부물 일치 확인\n- [ ] 화면·영상에 개인정보가 없는지 육안 확인\n- [ ] 지원 환경에서 실제 Pleos 설치·SDK·UX 제한 재검증\n\nAPK 단독 제출을 대신하는 ZIP이 아닙니다. 공식 안내는 GitHub에 소스와 APK를 함께 제출하도록 하며, 이 ZIP만으로 접근·익명 요건이 해결됐다고 간주하지 않습니다. 서명키 백업·연락처·동의서는 리뷰 ZIP에 넣지 않았습니다. 이메일은 발송하지 않았습니다.\n''')
     print(json.dumps({'review_zip': str(zip_path), 'operator_checklist': str(checklist), 'version': version, 'files': len(files), 'source_tree_sha256': source_digest, 'apk_sha256': actual_hash, 'zip_sha256': zip_hash, 'status': 'prepared_not_submitted'}, ensure_ascii=False))
 
 

@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='utf-8'?>
-<testsuite name="studio.ax.arrival.BriefEngineTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2026-10-30T12:12:22.748Z" time="0.151">
+<testsuite name="studio.ax.arrival.BriefEngineTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2026-10-31T02:10:10.442Z" time="0.113">
   <properties />
-  <testcase name="invalidSelectionCannotFallBackToGuessedDestination" classname="studio.ax.arrival.BriefEngineTest" time="0.057" />
-  <testcase name="unboundedFloorNumbersCannotDisappear" classname="studio.ax.arrival.BriefEngineTest" time="0.014" />
-  <testcase name="sourceConflictCannotBeExported" classname="studio.ax.arrival.BriefEngineTest" time="0.011" />
-  <testcase name="selectionCannotBypassFloorConflict" classname="studio.ax.arrival.BriefEngineTest" time="0.011" />
-  <testcase name="sharedWebAndAndroidDecisionCorpus" classname="studio.ax.arrival.BriefEngineTest" time="0.027" />
+  <testcase name="invalidSelectionCannotFallBackToGuessedDestination" classname="studio.ax.arrival.BriefEngineTest" time="0.042" />
+  <testcase name="unboundedFloorNumbersCannotDisappear" classname="studio.ax.arrival.BriefEngineTest" time="0.009" />
+  <testcase name="sourceConflictCannotBeExported" classname="studio.ax.arrival.BriefEngineTest" time="0.008" />
+  <testcase name="selectionCannotBypassFloorConflict" classname="studio.ax.arrival.BriefEngineTest" time="0.003" />
+  <testcase name="sharedWebAndAndroidDecisionCorpus" classname="studio.ax.arrival.BriefEngineTest" time="0.024" />
   <testcase name="cancelledAndFFloor" classname="studio.ax.arrival.BriefEngineTest" time="0.001" />
-  <testcase name="uncontestedOfficialMappings" classname="studio.ax.arrival.BriefEngineTest" time="0.003" />
-  <testcase name="unknownAndOtherFacility" classname="studio.ax.arrival.BriefEngineTest" time="0.006" />
-  <testcase name="pastedLineBreaksCannotBypassNearbyOrChangedVenueChecks" classname="studio.ax.arrival.BriefEngineTest" time="0.001" />
+  <testcase name="uncontestedOfficialMappings" classname="studio.ax.arrival.BriefEngineTest" time="0.002" />
+  <testcase name="unknownAndOtherFacility" classname="studio.ax.arrival.BriefEngineTest" time="0.0" />
+  <testcase name="pastedLineBreaksCannotBypassNearbyOrChangedVenueChecks" classname="studio.ax.arrival.BriefEngineTest" time="0.0" />
   <testcase name="conflictingVenueAndFloor" classname="studio.ax.arrival.BriefEngineTest" time="0.0" />
-  <testcase name="invalidAndExcessHeight" classname="studio.ax.arrival.BriefEngineTest" time="0.003" />
+  <testcase name="invalidAndExcessHeight" classname="studio.ax.arrival.BriefEngineTest" time="0.009" />
   <testcase name="conflictingOfficialSourcesBlockConfirmation" classname="studio.ax.arrival.BriefEngineTest" time="0.001" />
   <testcase name="heightBoundaryWarningSurvivesExport" classname="studio.ax.arrival.BriefEngineTest" time="0.009" />
-  <testcase name="excessiveHeightTakesPriorityOverSourceConflict" classname="studio.ax.arrival.BriefEngineTest" time="0.001" />
+  <testcase name="excessiveHeightTakesPriorityOverSourceConflict" classname="studio.ax.arrival.BriefEngineTest" time="0.0" />
   <testcase name="outputHasSourceAndNoLoadingDock" classname="studio.ax.arrival.BriefEngineTest" time="0.001" />
-  <testcase name="exhibitionHallAndHotelCannotBeOverriddenByMeetingRoomSelection" classname="studio.ax.arrival.BriefEngineTest" time="0.002" />
-  <testcase name="ambiguityMustBeExplicit" classname="studio.ax.arrival.BriefEngineTest" time="0.001" />
+  <testcase name="exhibitionHallAndHotelCannotBeOverriddenByMeetingRoomSelection" classname="studio.ax.arrival.BriefEngineTest" time="0.001" />
+  <testcase name="ambiguityMustBeExplicit" classname="studio.ax.arrival.BriefEngineTest" time="0.0" />
   <system-out />
   <system-err />
 </testsuite>

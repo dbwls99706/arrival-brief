@@ -1,8 +1,8 @@
 {
-  "version": "0.3.0-prototype",
+  "version": "0.4.0-prototype",
   "apk": "apk/ArrivalBrief_release.apk",
-  "bytes": 5067560,
-  "sha256": "2c8c4e1c99ce27f1f5fc988ac1343476cfae24a5d6b30a5bcafea65271eb31c2",
+  "bytes": 5077368,
+  "sha256": "40ce148be83d608acae1e7bd1bb381619c8ad7896ee7f01fa2cd354d6e4a276f",
   "tests": [
     {
       "name": "studio.ax.arrival.BriefEngineTest",
@@ -50,6 +50,38 @@
       "status": "installed_and_launched",
       "api": 28,
       "abi": "x86",
+      "screen": "1280x800 @160dpi; logical display override 960x600 also checked",
+      "image_sha1": "ce03c42d80c0fc6dc47f6455dbee7aa275d02780",
+      "install": "Success",
+      "launch": "Status: ok; Activity: studio.ax.arrival/.MainActivity; Complete",
+      "observed": [
+        "release update installed with original signing key",
+        "initial UNKNOWN state hides input and offers explicit non-vehicle demo entry",
+        "explicit demo begins with example Auditorium and height1.65m",
+        "manual facility, total-height and safe-parking checks gate confirmation",
+        "unconfirmed preview shows checklist without gate/parking route values",
+        "confirmed Auditorium shows north gate and B3 Blue zone in dark briefing panel",
+        "driving demo hides input, copy and save actions while retaining confirmed brief",
+        "960x600 logical display retains locked confirmed briefing with destination, gate, parking, height and field-signage priority text visible"
+      ],
+      "limitations": [
+        "non-automotive AOSP simulation only; no Pleos SDK or live vehicle signal success claimed",
+        "software rendering and CPU emulation without GPU/KVM; Android System UI ANR was dismissed during initial host setup",
+        "no performance, long-duration, real vehicle or 0.4.0 process-restart storage UI validation; prior0.3.0 storage observations are preserved separately"
+      ],
+      "verified_version": "0.4.0-prototype",
+      "verified_apk_sha256": "40ce148be83d608acae1e7bd1bb381619c8ad7896ee7f01fa2cd354d6e4a276f",
+      "latest_version_status": "installed_launched_and_core_ui_checked"
+    }
+  },
+  "version_code": 4,
+  "web_tests": 21,
+  "shared_decision_cases": 50,
+  "runtime_history": {
+    "aosp_android9_0.3.0": {
+      "status": "installed_and_launched",
+      "api": 28,
+      "abi": "x86",
       "screen": "1280x800 @160dpi",
       "image_sha1": "ce03c42d80c0fc6dc47f6455dbee7aa275d02780",
       "install": "Success",
@@ -71,10 +103,7 @@
         "no performance, long-duration or real vehicle validation"
       ],
       "verified_version": "0.3.0-prototype",
-      "latest_version_status": "installed_launched_demo_confirmed_and_draft_restored"
+      "latest_version_status": "pending_0.4.0_runtime_check"
     }
-  },
-  "version_code": 3,
-  "web_tests": 21,
-  "shared_decision_cases": 50
+  }
 }
