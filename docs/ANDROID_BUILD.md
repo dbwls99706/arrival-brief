@@ -1,13 +1,13 @@
 # Arrival Brief Android 빌드 검증
 
-배포 APK는 `0.3.0-prototype`입니다. 아래 기능의 실제 Pleos 서비스 응답은 아직 검증되지 않았습니다.
+배포 APK는 `0.4.0-prototype`입니다. 아래 기능의 실제 Pleos 서비스 응답은 아직 검증되지 않았습니다.
 
 ## APK와 시험 근거
 
 | 항목 | 기록 |
 | --- | --- |
-| 증거 버전 | `0.3.0-prototype` - 최신 배포 APK |
-| APK | `apk/ArrivalBrief_release.apk`, 5,067,560바이트 |
+| 증거 버전 | `0.4.0-prototype` - 최신 배포 APK |
+| APK | `apk/ArrivalBrief_release.apk`, 5,077,368바이트 |
 | 패키지 | `studio.ax.arrival` |
 | compile / minimum / target | 35 / 28 / 35 |
 | 서명 | APK v2 검증, RSA 3072비트, CN=Arrival Brief |
@@ -15,7 +15,7 @@
 | Pleos 실행 | 시스템 초기화·설치 실패, 실제 서비스 응답 미검증 |
 
 ```text
-SHA-256 2c8c4e1c99ce27f1f5fc988ac1343476cfae24a5d6b30a5bcafea65271eb31c2
+SHA-256 40ce148be83d608acae1e7bd1bb381619c8ad7896ee7f01fa2cd354d6e4a276f
 ```
 
 | JUnit 클래스 | 시험 | 실패 | 오류 |
@@ -39,7 +39,9 @@ SDK 콜백의 데이터 타입을 확인하고 상태 로직을 시험한 사실
 
 ## 일반 Android 실행
 
-일반 Android 9에서 0.3.0의 업그레이드 설치·첫 실행·명시적 데모·시설/높이/안전 주차 확인 후 확정·주행 예시 잠금·목적지 보관·프로세스 종료 후 초안 복구를 확인했다. 복구한 초안은 높이가 비어 있고 모든 확인이 해제되며 확정 버튼도 비활성 상태였다. 실제 NaviHelper 응답과 차량 UX 전환을 확인한 결과는 아니다. 소프트웨어 에뮬레이션 환경의 System UI 응답 지연·UIAutomator null root로 성능과 장시간 안정성은 평가하지 않았다. 상세 캡처는 [런타임 기록](verification/android-runtime.md)에 있다.
+현재 0.4.0 APK의 일반 Android 9 설치·첫 실행·명시적 데모·확정·주행 잠금과 가로 화면 표시를 확인했습니다. 실제 Pleos 환경 검증과는 구분합니다.
+
+아래는 이전 0.3.0의 기록입니다. 일반 Android 9에서 0.3.0의 업그레이드 설치·첫 실행·명시적 데모·시설/높이/안전 주차 확인 후 확정·주행 예시 잠금·목적지 보관·프로세스 종료 후 초안 복구를 확인했다. 복구한 초안은 높이가 비어 있고 모든 확인이 해제되며 확정 버튼도 비활성 상태였다. 실제 NaviHelper 응답과 차량 UX 전환을 확인한 결과는 아니다. 소프트웨어 에뮬레이션 환경의 System UI 응답 지연·UIAutomator null root로 성능과 장시간 안정성은 평가하지 않았다. 상세 캡처는 [런타임 기록](verification/android-runtime.md)에 있다.
 
 ## 정적 검사
 

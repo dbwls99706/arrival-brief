@@ -9,7 +9,7 @@
 - APK 버전: 0.4.0-prototype
 - APK SHA-256: 40ce148be83d608acae1e7bd1bb381619c8ad7896ee7f01fa2cd354d6e4a276f
 - 익명 검토 ZIP: ArrivalBrief-review-0.4.0-prototype.zip
-- ZIP SHA-256: 022e9481c95e74ba03c15986433c6155c87936bab64488ef1ae80786e079b70a
+- ZIP SHA-256: e25e8cbb61843ff01a01dc603bb2fca07bbced1f5d30c0182312c00951f9bd01
 - 앱 소스 목록 SHA-256: ff76c9e2ffb369623a496cd5daffb3c17acc7fe3fbad4091a2338b27bab47306
 - 영상: dist/assets/media/arrival-reel.mp4, arrival-confirm-reel.mp4
 - 영상은 0.4.0의 웹 캡처 편집본이며 실제 차량 SDK 응답이나 연속 화면 녹화가 아닙니다.
