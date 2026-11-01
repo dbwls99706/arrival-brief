@@ -53,15 +53,15 @@ def allowed(path):
         return path.suffix == '.py'
     if parts[0] == 'docs':
         if len(parts) == 2:
-            return path.name in {'ANDROID_BUILD.md', 'ARRIVAL_PLAN.md', 'HYUNDAI_FOCUS.md', 'HYUNDAI_VERIFICATION.md', 'USER_EVIDENCE.md', 'SUBMISSION.md', 'design-review.md'}
+            return path.name in {'ANDROID_BUILD.md', 'ARRIVAL_PLAN.md', 'HYUNDAI_FOCUS.md', 'HYUNDAI_VERIFICATION.md', 'USER_EVIDENCE.md', 'SUBMISSION.md', 'design-review.md', 'REVIEW_ROUND2.md'}
         if len(parts) == 3 and parts[1] == 'verification':
             return (path.name in {'build-inputs.json', 'release-verification.json', 'android-lint.txt', 'android-release-build.log', 'android-release-signature.txt', 'android-release-package.txt', 'android-runtime.md', 'android-v04-screenshots.json'}
                     or (path.name.startswith('TEST-') and path.suffix == '.xml')
                     or (path.name.startswith('android-aosp28-') and path.suffix == '.png')
-                    or (path.name.startswith('arrival-v04-') and path.suffix in {'.jpg', '.png', '.json'}))
+                    or (path.name.startswith(('arrival-v04-', 'arrival-v05-')) and path.suffix in {'.jpg', '.png', '.json'}))
         return False
     if parts[0] == 'research':
-        return path.name in {'OFL.txt', 'frontend-design-LICENSE.txt', 'frontend-design-SKILL.md', 'design-reference-2026-10-31.md'}
+        return path.name in {'OFL.txt', 'frontend-design-LICENSE.txt', 'frontend-design-SKILL.md', 'design-reference-2026-10-31.md', 'design-reference-2026-11-01.md'}
     return False
 
 

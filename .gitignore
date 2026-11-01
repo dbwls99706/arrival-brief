@@ -23,3 +23,6 @@ __pycache__/
 
 .openai/
 *signing-private*
+
+# Local Kotlin compiler sessions
+android/.kotlin/

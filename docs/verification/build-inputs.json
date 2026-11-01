@@ -1,15 +1,19 @@
 {
-  "version": "0.4.0-prototype",
-  "apk_sha256": "40ce148be83d608acae1e7bd1bb381619c8ad7896ee7f01fa2cd354d6e4a276f",
+  "version": "0.5.0-prototype",
+  "apk_sha256": "c8ba298b9396aa567e84b2e6e5cdfb2f0dbcc2c50788042ea85620f9649f39f4",
   "evidence": "Files present in the successful build checkout. Not a claim of byte-reproducible build.",
   "files": [
     {
       "path": "android/app/build.gradle.kts",
-      "sha256": "c754547153133fb74b8705b10aa257597a88161e2d690844dfcf29f564a657e8"
+      "sha256": "3ceabf3e96bf9c8766589129c80c10c4f1d1a0b6673064b33bee142cdde22819"
     },
     {
       "path": "android/app/src/main/AndroidManifest.xml",
       "sha256": "c76fb2e60fc6183522de483b825c004d2cb45b2f3f4ce827c9dbafa379e73095"
+    },
+    {
+      "path": "android/app/src/main/java/studio/ax/arrival/ArrivalSceneView.kt",
+      "sha256": "6c6f4db28657d63f77c60315cd328107008df739c498eb49f36b00193defe5d7"
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/BriefEngine.kt",
@@ -21,7 +25,7 @@
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/MainActivity.kt",
-      "sha256": "1c548baeb8b791026b5c0e0cdfb2937f6bb904e29ef3c3366ca5544abeb47a07"
+      "sha256": "080b14a7f71d2275f6b943f2e0373d244c31fa6108b158fcf3c3c00ad6bf379c"
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/NavigationCheck.kt",
@@ -49,7 +53,7 @@
     },
     {
       "path": "android/app/src/main/res/drawable/ic_arrival.xml",
-      "sha256": "a53c6592bcddb8bc856c00688ce6742d02c8f7d17e90a0c10f473d6450127a7f"
+      "sha256": "3f860067f32ec06e544692091bec46243b92182fda09be9c37e9c71d30f0968c"
     },
     {
       "path": "android/app/src/main/res/values/strings.xml",
@@ -88,16 +92,16 @@
       "sha256": "4a105b82fa7b138106c5d058e27c077248dc82a735680ee68b0ce3e5c4c4fcd6"
     },
     {
+      "path": "android/gradle.properties",
+      "sha256": "d3377b161bac549c4206e67181feb45e8c5fe8fe1f642927920b70739e64477a"
+    },
+    {
       "path": "android/gradle/wrapper/gradle-wrapper.jar",
       "sha256": "81a82aaea5abcc8ff68b3dfcb58b3c3c429378efd98e7433460610fecd7ae45f"
     },
     {
       "path": "android/gradle/wrapper/gradle-wrapper.properties",
       "sha256": "1bb6d43ff8af30abb0eaf03fe58f636ed9b37f758a748bf30a9cebd809639c9d"
-    },
-    {
-      "path": "android/gradle.properties",
-      "sha256": "d3377b161bac549c4206e67181feb45e8c5fe8fe1f642927920b70739e64477a"
     },
     {
       "path": "android/gradlew",

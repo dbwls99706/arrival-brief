@@ -2,7 +2,7 @@
 
 행사 장소를 확인하고, 출발 전에 진입문·주차 구역을 정리하는 차량용 앱 프로토타입입니다. 초기 대상은 지원하는 코엑스 삼성동 회의실의 행사에 처음 차량으로 방문하는 운전자입니다. 전시장 Hall A/B/C/D는 현재 지원하지 않습니다.
 
-배포 APK는 `0.4.0-prototype`입니다. 아래 기능의 실제 Pleos 서비스 응답은 아직 검증되지 않았습니다.
+배포 APK는 `0.5.0-prototype`입니다. 아래 기능의 실제 Pleos 서비스 응답은 아직 검증되지 않았습니다.
 
 ## 사용 흐름
 
@@ -18,9 +18,9 @@
 
 ## 화면 구성
 
-장소 선택 → 차량 확인 → 도착 브리핑 순서로 준비합니다. 안내문 입력과 출처·지원 범위는 필요할 때 펼칩니다. 확인을 마치기 전에는 진입문·주차 구역 대신 남은 확인 항목을 보여주고, 확정한 결과는 짙은 패널과 큰 글자로 구분합니다.
+입력은 개방된 준비 영역, 결과는 짙은 도착 패스로 구분합니다. 차량·루프박스 높이 그림, 진입문→주차→행사장의 안내 관계도, 확인/보류 상태의 색상을 사용합니다. 관계도는 실제 지도가 아니며 확인 전에는 진입문·주차 값을 보여주지 않습니다. 주행 화면에서는 확정한 핵심 정보만 표시하고 그림과 모션을 숨깁니다.
 
-외부 공개 자료인 Impeccable, Anthony Hobday의 시각 설계 원칙, Linear의 디자인 회고와 Pleos 공식 가이드를 참고했습니다. 자료를 참고한 설계와 독립 에이전트의 모의 전문가 검토이며, 실제 사용자 조사나 공식 심사 결과는 아닙니다. [선정 근거](research/design-reference-2026-10-31.md)와 [지적·수정·재검토 기록](docs/design-review.md)을 함께 제공합니다. 화면 검토 캡처: [가로 화면](docs/verification/arrival-v04-desktop.jpg) · [모바일](docs/verification/arrival-v04-mobile.jpg) · [주행 시뮬레이션](docs/verification/arrival-v04-driving.jpg).
+소개 첫 화면은 오디토리움(북문·B3 블루존)과 스튜디오159(동문·B2 퍼플존) 예시를 직접 전환합니다. [설계 근거](research/design-reference-2026-11-01.md), [독립 모의 검토 기록](docs/design-review.md), [새 화면](docs/verification/arrival-v05-initial.jpg), [확정 결과](docs/verification/arrival-v05-confirmed.jpg)를 제공합니다. 실제 사용자 연구나 공식 심사 결과가 아닙니다.
 
 ## 실행
 
@@ -60,18 +60,18 @@ Windows는 `gradlew.bat`를 사용합니다. SDK 위치와 release 서명 환경
 | Android JUnit | 37개 통과 |
 | 웹 시험 | 21개 통과 |
 | 공통 판단 사례 | 50개 - 자동 시험 내 입력 사례 |
-| APK | `0.4.0-prototype`, 5,077,368바이트 - 최신 배포 APK |
+| APK | `0.5.0-prototype`, 5,082,664바이트 - 최신 배포 APK |
 | 서명 | apksigner v2 검증, RSA 3072비트 |
 | Lint | 검증 JSON 기준 오류 0개·경고 0개 |
 | Pleos 실행 | OS 초기화·설치 실패로 서비스 응답과 차량 UX 전환 미검증 |
 
 ```text
-SHA-256 40ce148be83d608acae1e7bd1bb381619c8ad7896ee7f01fa2cd354d6e4a276f
+SHA-256 c8ba298b9396aa567e84b2e6e5cdfb2f0dbcc2c50788042ea85620f9649f39f4
 ```
 
-일반 Android 9에서 `0.4.0-prototype`의 설치·첫 실행과 새 화면의 동작을 확인했습니다. 상세 시나리오와 캡처는 [런타임 기록](docs/verification/android-runtime.md)에 남겼습니다. 일반 Android 9에서 `0.3.0-prototype` 설치·첫 실행·데모 확정·주행 예시 잠금과 목적지 저장 후 프로세스 재시작·초안 복구를 확인했습니다. 복구한 초안은 높이가 비어 있고 다시 확인해야 합니다. [런타임 기록](docs/verification/android-runtime.md)에 환경의 응답 지연과 캡처 범위를 남겼습니다. 실제 Pleos 차량 서비스 응답·성능·장시간 안정성을 검증한 결과는 아닙니다.
+0.5.0은 release 빌드·JUnit·Lint·서명을 확인했습니다. 새 네이티브 화면의 APK 설치·실행은 이번 환경에서 재검증하지 못했습니다. 일반 Android 9에서의 0.4.0 설치·화면 실행과 0.3.0 저장·재시작·복구는 [과거 런타임 기록](docs/verification/android-runtime.md)으로 구분합니다. 실제 Pleos 응답·성능·장시간 안정성을 확인한 결과가 아닙니다.
 
-[도착 준비 영상](dist/assets/media/arrival-reel.mp4)과 [자료 상충 확인 영상](dist/assets/media/arrival-confirm-reel.mp4)은 각 33초 세로 영상입니다. 스톡 도입과 웹 화면 캡처를 편집했으며 실제 차량 영상이 아닙니다. 촬영·캡처 범위와 파일 해시는 [검증 기록](docs/HYUNDAI_VERIFICATION.md)에서 확인할 수 있습니다.
+웹은 1348×926 데스크톱과 390×844 모바일 viewport에서 시각 검토했고, 장소·높이 확인→확정→주행 잠금→정차 복귀→자료 상충 보류를 조작했습니다. [도착 준비 영상](dist/assets/media/arrival-reel.mp4)과 [자료 상충 영상](dist/assets/media/arrival-confirm-reel.mp4)은 각 30초, 1280×720 화면 캡처 편집본입니다. 실차 촬영·연속 화면 녹화가 아닙니다.
 
 ```sh
 node --test tests/arrival.test.mjs
@@ -91,7 +91,7 @@ python scripts/check-paths.py
 
 [scripts/package-submission.py](scripts/package-submission.py)는 소스·APK·영상·검증 기록을 묶는 도구입니다. 접수양식·동의서·연락처·서명 이미지와 서명 개인키는 저장소와 검토용 ZIP에 포함하지 않습니다. 공식 접수양식과 저장소 링크는 운영 접수 이메일로 전달합니다.
 
-`submission/ArrivalBrief-review-0.4.0-prototype.zip`은 새 화면과 검증 기록을 포함한 현재 검토본입니다. 이전 0.3.0 ZIP은 당시 소스와 산출물을 보존한 기록입니다. 현재 공개 저장소에는 별도 심사 계정 초대가 필요하지 않습니다. 제출 경로는 [운영용 제출 목록](submission/ArrivalBrief-operator-checklist.md)을 기준으로 확인합니다.
+`submission/ArrivalBrief-review-0.5.0-prototype.zip`은 새 화면과 검증 기록을 포함한 현재 검토본입니다. 이전 ZIP은 당시 소스와 산출물을 보존한 기록입니다. 현재 공개 저장소에는 별도 심사 계정 초대가 필요하지 않습니다. 제출 경로는 [운영용 제출 목록](submission/ArrivalBrief-operator-checklist.md)을 기준으로 확인합니다.
 
 ## 관련 문서
 

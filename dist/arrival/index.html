@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f4f5f5">
+  <meta name="theme-color" content="#edf3fa">
   <title>Arrival Brief · 도착 준비</title>
   <link rel="icon" href="../assets/arrival-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../design.css">
@@ -17,7 +17,7 @@
   <span class="prototype"><span aria-hidden="true"></span>웹 프로토타입</span>
 </header>
 <main>
-  <div class="app-toolbar"><div class="page-heading parked-content"><div><p class="eyebrow">코엑스 삼성동 · 출발 전 확인</p><h1>도착 준비</h1></div></div>
+  <div class="app-toolbar"><div class="page-heading parked-content"><div><p class="eyebrow">코엑스 삼성동 · 출발 전 확인</p><h1>어느 문으로 들어갈까요?</h1><p class="heading-note">행사장을 고르면, 진입문과 주차 구역을 한 장으로.</p></div></div>
   <div class="modebar"><div class="modebar-copy"><span class="mode-indicator" aria-hidden="true"></span><strong id="modeLabel">정차 화면 체험 중</strong><span>실제 차량 연결 없음</span></div><div class="segmented" role="group" aria-label="차량 상태 시뮬레이션"><button type="button" data-mode="parked" class="active" aria-pressed="true">정차</button><button type="button" data-mode="driving" aria-pressed="false">주행</button><button type="button" data-mode="unknown" aria-pressed="false">미확인</button></div></div></div>
   <div id="motionBanner" class="motion-banner" hidden role="status"></div>
   <div class="workspace">
@@ -34,7 +34,7 @@
           <button type="button" id="quickSelect" class="text-button">입력 지우고 직접 선택</button>
         </div></details>
         <div class="panel-title vehicle-title"><span class="step">02</span><h2>차량 확인</h2><span class="height-limit">진입 제한 <strong>2.2m</strong></span></div>
-        <div class="height-field"><div><label for="height">차량 전체 높이</label><div class="height-input"><input id="height" type="number" min="1" max="5" step="0.01" placeholder="1.65" aria-label="차량 전체 높이 (m). 1.65는 입력 형식의 예시입니다." inputmode="decimal" aria-describedby="heightHelp"><span>m</span></div></div><p class="helper" id="heightHelp">루프박스·적재물을 포함한 실제 높이를 입력하세요.</p></div>
+        <div class="height-illustration" aria-hidden="true"><svg viewBox="0 0 360 90"><path d="M18 73H340" stroke="#bacbdc" stroke-width="2"/><path d="M258 73V14H60" fill="none" stroke="#203650" stroke-width="5" stroke-linecap="round"/><path d="M62 14H244" stroke="#f5c85c" stroke-width="6" stroke-dasharray="16 10"/><rect x="112" y="26" width="66" height="12" rx="6" fill="#24775b"/><path d="M85 57 102 39H181L203 57 220 61V74H70V62Z" fill="#365bd6"/><path d="M111 43H143V55H101ZM150 43H176L190 55H150Z" fill="#dbe9fb"/><circle cx="98" cy="73" r="12" fill="#203650"/><circle cx="192" cy="73" r="12" fill="#203650"/><circle cx="98" cy="73" r="5" fill="#e7f0fa"/><circle cx="192" cy="73" r="5" fill="#e7f0fa"/><path d="M284 22V70m-5-43 5-5 5 5m-10 38 5 5 5-5" fill="none" stroke="#7e5e13" stroke-width="2"/><text x="302" y="50" fill="#203650" font-size="17" font-weight="700">2.2m</text></svg><span>루프박스까지, 가장 높은 곳을 확인하세요.</span></div><div class="height-field"><div><label for="height">차량 전체 높이</label><div class="height-input"><input id="height" type="number" min="1" max="5" step="0.01" placeholder="1.65" aria-label="차량 전체 높이 (m). 1.65는 입력 형식의 예시입니다." inputmode="decimal" aria-describedby="heightHelp"><span>m</span></div></div><p class="helper" id="heightHelp">루프박스·적재물을 포함한 실제 높이를 입력하세요.</p></div>
         <div class="review-checks">
           <label class="check-row"><input id="heightReviewed" type="checkbox"><span>차량 전체 높이를 직접 확인했어요.</span></label>
           <label class="check-row"><input id="parkedConfirmed" type="checkbox"><span>안전하게 주차한 상태예요.</span></label>
@@ -46,7 +46,7 @@
       <p class="privacy"><svg class="ui-icon" aria-hidden="true"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6l-8-3Z"/><path d="m8.5 12 2.3 2.3 4.7-5"/></svg><span>입력한 안내는 이 브라우저에서만 처리됩니다.</span></p>
     </section>
     <section class="brief-panel" aria-labelledby="briefTitle">
-      <div class="panel-title"><span class="step">03</span><h2 id="briefTitle" tabindex="-1">도착 브리핑</h2><span id="briefBadge" class="status-badge">확인 전</span></div>
+      <div class="panel-title"><span class="step">03</span><h2 id="briefTitle" tabindex="-1">나의 도착 패스</h2><span id="briefBadge" class="status-badge">확인 전</span></div>
       <div id="briefBody" aria-live="polite"></div>
       <div id="briefActions" class="brief-actions"><button id="download" disabled><svg class="ui-icon" aria-hidden="true"><use href="../assets/icons.svg#download"/></svg>브리핑 저장</button><button id="copy" disabled>내용 복사</button></div>
       <div id="actionStatus" role="status" class="action-status"></div>

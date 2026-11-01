@@ -4,7 +4,7 @@ android {
  namespace = "studio.ax.arrival"
  compileSdk = 35
  buildToolsVersion = "35.0.0"
- defaultConfig { applicationId = "studio.ax.arrival"; minSdk = 28; targetSdk = 35; versionCode = 4; versionName = "0.4.0-prototype" }
+ defaultConfig { applicationId = "studio.ax.arrival"; minSdk = 28; targetSdk = 35; versionCode = 5; versionName = "0.5.0-prototype" }
  compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
  kotlinOptions { jvmTarget = "17" }
  testOptions.unitTests.all {

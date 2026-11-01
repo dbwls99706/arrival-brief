@@ -26,14 +26,15 @@ import android.widget.*
 
 /** Parked preparation screen. No distraction-optimized declaration or route-control calls. */
 class MainActivity : Activity() {
-    private val bg = Color.rgb(242, 244, 243)
+    private val bg = Color.rgb(240, 245, 250)
     private val surface = Color.WHITE
-    private val field = Color.rgb(235, 240, 241)
-    private val ink = Color.rgb(20, 44, 60)
-    private val accent = Color.rgb(0, 61, 94)
-    private val muted = Color.rgb(74, 94, 106)
+    private val field = Color.rgb(231, 238, 249)
+    private val ink = Color.rgb(32, 54, 80)
+    private val accent = Color.rgb(54, 91, 214)
+    private val muted = Color.rgb(79, 99, 122)
+    private val green = Color.rgb(36, 119, 91)
     private val warning = Color.rgb(126, 76, 13)
-    private val briefSurface = Color.rgb(17, 39, 54)
+    private val briefSurface = Color.rgb(32, 54, 80)
     private val briefInk = Color.rgb(247, 250, 251)
     private val briefMuted = Color.rgb(189, 207, 216)
     private val briefAccent = Color.rgb(183, 226, 244)
@@ -88,7 +89,7 @@ class MainActivity : Activity() {
         text = value; textSize = size; setTextColor(color)
         setPadding(0, dp(5), 0, dp(5)); setLineSpacing(dp(3).toFloat(), 1f)
     }
-    private fun shape(color: Int, radius: Int = 18) = GradientDrawable().apply {
+    private fun shape(color: Int, radius: Int = 22) = GradientDrawable().apply {
         setColor(color); cornerRadius = dp(radius).toFloat()
     }
     private fun column() = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
@@ -180,13 +181,13 @@ class MainActivity : Activity() {
         header.addView(headerTools, LinearLayout.LayoutParams(if (wideHeader) -2 else -1, -2))
         root.addView(header)
         val titleRow = LinearLayout(this).apply {
-            orientation = if (wideHeader) LinearLayout.HORIZONTAL else LinearLayout.VERTICAL
+            orientation = LinearLayout.VERTICAL
             gravity = Gravity.CENTER_VERTICAL
             setPadding(0, dp(12), 0, 0)
         }
-        titleRow.addView(textView("도착 준비", 29f).apply { setTypeface(null, Typeface.BOLD) })
-        titleRow.addView(textView("코엑스 삼성동 · 회의실 주차 안내", 16f, muted),
-            LinearLayout.LayoutParams(-2, -2).apply { if (wideHeader) marginStart = dp(20) })
+        titleRow.addView(textView("어느 입구로 들어갈까요?", 29f).apply { setTypeface(null, Typeface.BOLD) })
+        titleRow.addView(textView("코엑스 삼성동 · 출발 전에 준비하는 도착 한 장", 16f, muted),
+            LinearLayout.LayoutParams(-1, -2))
         root.addView(titleRow)
         demoStatePanel = column().apply { visibility = View.GONE }
         demoStatePanel.addView(textView("화면 동작 체험 · 실제 차량 미연결", 15f, muted))
@@ -212,7 +213,7 @@ class MainActivity : Activity() {
         }
         root.addView(workspace, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(20) })
         form = card()
-        form.addView(textView("01  목적지", 16f, muted).apply { setTypeface(null, Typeface.BOLD) })
+        form.addView(textView("01  방문 장소", 16f, accent).apply { setTypeface(null, Typeface.BOLD) })
         destinationSummary = textView("방문할 회의실", 25f).apply { setTypeface(null, Typeface.BOLD) }
         destinationDetail = textView("목록에서 고르거나 행사 안내문을 붙여넣으세요.", 16f, muted)
         form.addView(destinationSummary); form.addView(destinationDetail)
@@ -232,7 +233,7 @@ class MainActivity : Activity() {
         choices = column(); form.addView(choices)
 
         form.addView(divider())
-        form.addView(textView("02  차량 확인", 16f, muted).apply { setTypeface(null, Typeface.BOLD) })
+        form.addView(textView("02  차량 확인", 16f, green).apply { setTypeface(null, Typeface.BOLD) })
         form.addView(textView("차량 전체 높이", 23f).apply { setTypeface(null, Typeface.BOLD) })
         form.addView(textView("시설 제한 2.2m · 루프박스와 적재물 포함", 16f, muted))
         height = edit("예: 1.65", false).apply {
@@ -486,7 +487,7 @@ class MainActivity : Activity() {
         val contentMuted = if (confirmed) briefMuted else muted
         val contentAccent = if (confirmed) briefAccent else accent
         val contentWarning = if (confirmed) briefWarning else warning
-        briefingPanel.background = shape(if (confirmed) briefSurface else surface)
+        briefingPanel.background = shape(if (confirmed) briefSurface else Color.rgb(227, 237, 250))
         briefHeading.setTextColor(contentMuted)
         brief.removeAllViews()
         briefBadge.text = when {
@@ -497,13 +498,19 @@ class MainActivity : Activity() {
             else -> "미리보기 · 아직 확정 전"
         }
         briefBadge.setTextColor(if (confirmed) contentAccent else contentWarning)
+        // A preparation diagram explains the product without inventing a geographic route.
+        // Actual entrance and parking labels remain behind the existing confirmation gate.
+        if ((editable || (!automotive && !demo && session.confirmed == null)) && decision?.status != "source_conflict" && decision?.status != "blocked") {
+            brief.addView(ArrivalSceneView(this, confirmed), LinearLayout.LayoutParams(-1, dp(190)))
+            brief.addView(textView("준비 흐름도 · 실제 지도나 주행 경로가 아닙니다.", 13f, contentMuted))
+        }
         if (decision?.status == "ready" && confirmed) {
             val place = decision.destination!!
             brief.addView(textView("${place.name}  ${place.floor}", 27f, contentInk).apply { setTypeface(null, Typeface.BOLD) })
             brief.addView(textView("코엑스 삼성동", 17f, contentMuted))
             brief.addView(divider(dark = confirmed))
             val gate = place.gate.split(" · ", limit = 2)
-            addBriefRow("진입 방향", gate.first(), gate.getOrNull(1))
+            addBriefRow("진입문", gate.first(), gate.getOrNull(1))
             addBriefRow("공식 안내 주차 구역", place.parking)
             brief.addView(divider(dark = confirmed))
             brief.addView(textView("차량 ${decision.height}m  /  시설 제한 2.2m", 18f, contentMuted))
@@ -515,13 +522,13 @@ class MainActivity : Activity() {
             brief.addView(textView("${place.name}  ${place.floor}", 26f, contentInk).apply { setTypeface(null, Typeface.BOLD) })
             brief.addView(textView("코엑스 삼성동", 17f, contentMuted))
             brief.addView(divider())
-            brief.addView(textView("확인을 마치면\n도착 브리핑이 열립니다.", 25f, contentInk).apply { setTypeface(null, Typeface.BOLD) })
+            brief.addView(textView("출발 전, 세 가지만 확인해요.", 25f, contentInk).apply { setTypeface(null, Typeface.BOLD) })
             listOf(
                 session.heightReviewed to "전체 높이 ${decision.height}m · 제한 2.2m",
                 session.navigationAllowsConfirmation() to "코엑스 삼성동 행사 시설 확인",
                 session.parkedConfirmed to "안전하게 주차한 상태 확인"
             ).forEach { (done, label) ->
-                brief.addView(textView("${if (done) "완료" else "확인 필요"} · $label", 18f, if (done) contentAccent else contentMuted).apply {
+                brief.addView(textView("${if (done) "✓" else "○"}  $label", 18f, if (done) green else contentMuted).apply {
                     setPadding(0, dp(12), 0, dp(12))
                 })
             }
@@ -535,12 +542,12 @@ class MainActivity : Activity() {
                 brief.addView(divider(dark = confirmed))
             }
             brief.addView(textView(if (decision == null || session.notice.isBlank())
-                "입구부터 주차 구역까지,\n도착 전에 확인하세요." else decision.message, if (place == null) 25f else 22f, contentInk))
+                "장소를 고르면,\n도착 준비가 시작돼요." else decision.message, if (place == null) 25f else 22f, contentInk))
             if (decision?.status == "source_conflict") {
                 brief.addView(textView("공식 자료의 추천 구역이 서로 다릅니다. 확인 전에는 주차 동선을 제시하지 않습니다.", 18f, contentMuted))
             } else if (session.notice.isBlank() || decision == null) {
                 brief.addView(divider(dark = confirmed))
-                listOf("1  방문할 회의실 선택", "2  차량 높이와 시설 확인", "3  도착 브리핑 확정").forEach {
+                listOf("행사 안내에서 장소 찾기", "내 차의 높이와 방문 시설 확인", "진입문·주차 구역을 한 장으로").forEach {
                     brief.addView(textView(it, 18f, contentMuted).apply { setPadding(0, dp(10), 0, dp(10)) })
                 }
             }

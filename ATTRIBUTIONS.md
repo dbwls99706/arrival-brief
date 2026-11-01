@@ -8,8 +8,8 @@
 
 ## 시연 영상
 
-- 실사 도입: [Rasul Yarichev / Pexels](https://www.pexels.com/video/high-rise-cityscape-overlooking-parking-lot-30527770/), [Pexels License](https://www.pexels.com/license/). 일반 도시와 주차장 촬영이며 코엑스·서울의 실제 장면이나 제공 기관의 제휴·추천을 뜻하지 않습니다. 소개 영상의 일부로 편집했으며 원본 스톡 파일은 배포하지 않습니다.
-- 나머지 장면: 직접 구현한 웹 프로토타입을 실행해 얻은 화면 캡처의 편집입니다. 실시간 화면 녹화·실제 차량 연결·고객 사용 검증으로 표현하지 않습니다.
+- 이전 0.4.0 영상의 실사 도입 (0.5.0 영상에서는 사용하지 않음): [Rasul Yarichev / Pexels](https://www.pexels.com/video/high-rise-cityscape-overlooking-parking-lot-30527770/), [Pexels License](https://www.pexels.com/license/). 일반 도시와 주차장 촬영이며 코엑스·서울의 실제 장면이나 제공 기관의 제휴·추천을 뜻하지 않습니다. 이전 소개 영상의 일부로 편집했으며 원본 스톡 파일은 배포하지 않습니다.
+- 0.5.0 영상 전체: 직접 구현한 웹 프로토타입을 실행해 얻은 화면 캡처의 편집입니다. 실시간 화면 녹화·실제 차량 연결·고객 사용 검증으로 표현하지 않습니다.
 - 서체: [Noto Sans KR](https://github.com/google/fonts/tree/main/ofl/notosanskr), SIL Open Font License 1.1. [라이선스 사본](research/media/fonts/OFL.txt)을 보존합니다.
 - 두 영상은 무음이며 음악·음성 트랙을 포함하지 않습니다.
 

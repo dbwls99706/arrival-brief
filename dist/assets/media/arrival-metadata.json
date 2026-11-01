@@ -4,36 +4,75 @@
     {
       "codec_name": "h264",
       "codec_type": "video",
-      "width": 720,
-      "height": 1280,
+      "width": 1280,
+      "height": 720,
       "pix_fmt": "yuv420p",
       "r_frame_rate": "24/1",
-      "nb_frames": "792"
+      "nb_frames": "720"
     }
   ],
   "format": {
-    "duration": "33.000000",
-    "size": "1719893"
+    "duration": "30.000000",
+    "size": "320859"
   },
   "content": {
-    "title": "도착 안내",
+    "title": "도착 준비: 장소 확인부터 주행 화면까지",
     "method": "실제 웹 화면 캡처 편집. 실시간 화면 녹화나 실차 영상이 아님.",
-    "stock_intro_seconds": 4,
-    "app_capture_seconds": 29,
+    "app_version": "0.5.0-prototype",
     "vehicle_state": "웹 시뮬레이션",
-    "capture_crop": [
-      412,
-      40,
-      540,
-      800
-    ],
-    "app_version": "0.4.0-prototype",
-    "capture_scale": [
-      594,
-      880
-    ],
-    "font": "Noto Sans KR (OFL)",
     "audio": "none",
-    "sha256": "058e3df268d60d79d0c10151f69fbb1e443f762b145cccd8e2dd21caa362ab6a"
+    "font": "Noto Sans KR (OFL)",
+    "screenshot_fit": "비율 유지. 일부 장면은 핵심 입력·결과 영역을 확대.",
+    "scenes": [
+      {
+        "start": 0.0,
+        "duration": 7.5,
+        "source": "arrival-v05-landing.jpg",
+        "crop": [
+          0,
+          85,
+          1333,
+          780
+        ],
+        "title": "코엑스에 도착했는데, 어느 입구로?"
+      },
+      {
+        "start": 7.5,
+        "duration": 7.5,
+        "source": "arrival-v05-initial.jpg",
+        "crop": [
+          34,
+          235,
+          606,
+          847
+        ],
+        "title": "장소를 고르고, 내 차량을 확인합니다."
+      },
+      {
+        "start": 15.0,
+        "duration": 7.5,
+        "source": "arrival-v05-confirmed.jpg",
+        "crop": [
+          620,
+          225,
+          1300,
+          900
+        ],
+        "title": "확정하면, 도착에 필요한 정보가 한 장에."
+      },
+      {
+        "start": 22.5,
+        "duration": 7.5,
+        "source": "arrival-v05-driving.jpg",
+        "crop": [
+          30,
+          45,
+          1330,
+          610
+        ],
+        "title": "주행 화면에서는 확정한 안내만 남깁니다."
+      }
+    ],
+    "sha256": "dc0b346974654f6e9b3be978a4f24b77a8c90032df0d400cc1142328ec298274"
   }
 }

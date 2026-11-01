@@ -4,36 +4,70 @@
     {
       "codec_name": "h264",
       "codec_type": "video",
-      "width": 720,
-      "height": 1280,
+      "width": 1280,
+      "height": 720,
       "pix_fmt": "yuv420p",
       "r_frame_rate": "24/1",
-      "nb_frames": "792"
+      "nb_frames": "720"
     }
   ],
   "format": {
-    "duration": "33.000000",
-    "size": "1744403"
+    "duration": "30.000000",
+    "size": "324914"
   },
   "content": {
-    "title": "자료 상충 확인",
+    "title": "자료 상충: 출처 비교와 확정 보류",
     "method": "실제 웹 화면 캡처 편집. 실시간 화면 녹화나 실차 영상이 아님.",
-    "stock_intro_seconds": 4,
-    "app_capture_seconds": 29,
+    "app_version": "0.5.0-prototype",
     "vehicle_state": "웹 시뮬레이션",
-    "capture_crop": [
-      412,
-      40,
-      540,
-      800
-    ],
-    "app_version": "0.4.0-prototype",
-    "capture_scale": [
-      594,
-      880
-    ],
-    "font": "Noto Sans KR (OFL)",
     "audio": "none",
-    "sha256": "a364db814b6888a4288649dc86c6bb344d014e1b69b0095c8a8f7f63c4a4ffa6"
+    "font": "Noto Sans KR (OFL)",
+    "screenshot_fit": "비율 유지. 일부 장면은 핵심 입력·결과 영역을 확대.",
+    "scenes": [
+      {
+        "start": 0.0,
+        "duration": 7.5,
+        "source": "arrival-v05-conflict.jpg",
+        "crop": null,
+        "title": "안내 자료가 서로 다르면, 어떻게 할까요?"
+      },
+      {
+        "start": 7.5,
+        "duration": 7.5,
+        "source": "arrival-v05-conflict.jpg",
+        "crop": [
+          630,
+          305,
+          1290,
+          795
+        ],
+        "title": "서로 다른 원문과 확인 날짜를 함께 보여줍니다."
+      },
+      {
+        "start": 15.0,
+        "duration": 7.5,
+        "source": "arrival-v05-conflict.jpg",
+        "crop": [
+          34,
+          240,
+          605,
+          848
+        ],
+        "title": "보류 상태에서는 브리핑 확정을 막습니다."
+      },
+      {
+        "start": 22.5,
+        "duration": 7.5,
+        "source": "arrival-v05-conflict.jpg",
+        "crop": [
+          630,
+          228,
+          1294,
+          800
+        ],
+        "title": "확인한 정보는 명료하게, 불확실한 정보는 보류."
+      }
+    ],
+    "sha256": "14538ce6db0e94232007c81a6964a80fa40a931b412b099ae08e31c56de3374f"
   }
 }

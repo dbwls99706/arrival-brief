@@ -1,6 +1,6 @@
 # Arrival Brief 검증 기록과 남은 범위
 
-배포 APK는 `0.4.0-prototype`입니다. 아래 기능의 실제 Pleos 서비스 응답은 아직 검증되지 않았습니다.
+배포 APK는 `0.5.0-prototype`입니다. 아래 기능의 실제 Pleos 서비스 응답은 아직 검증되지 않았습니다.
 
 ## 현재 보존된 결과
 
@@ -8,18 +8,24 @@
 | --- | --- | --- |
 | Android JUnit | 37개 통과 | `TEST-*.xml`, 검증 JSON |
 | 웹 시험 | 21개 통과 | `tests/arrival.test.mjs` |
-| release | `0.4.0-prototype`, 5,077,368바이트 | 패키지·서명·빌드 로그 |
+| release | `0.5.0-prototype`, 5,082,664바이트 | 패키지·서명·빌드 로그 |
 | Lint | 오류 0개, 경고 0개 | 검증 JSON·정적 검사 보고서 |
-| 일반 Android 9 | 0.4.0 설치·첫 실행·새 화면 동작 확인. 시나리오별 실제 관찰과 이전 버전은 기록에서 구분 | [런타임 기록](verification/android-runtime.md) |
+| 일반 Android 9 | 신규 0.5.0 설치·실행 미검증. 0.4.0 설치·실행은 과거 버전 기록 | [런타임 기록](verification/android-runtime.md) |
 | 실제 Pleos | 설치·첫 실행·SDK·UX 전환 미검증 | [런타임 기록](verification/android-runtime.md) |
 
 ```text
-APK SHA-256 40ce148be83d608acae1e7bd1bb381619c8ad7896ee7f01fa2cd354d6e4a276f
+APK SHA-256 c8ba298b9396aa567e84b2e6e5cdfb2f0dbcc2c50788042ea85620f9649f39f4
 ```
 
 [release-verification.json](verification/release-verification.json)을 APK·시험·런타임 상태의 기준으로 사용한다. 단위 시험, 일반 Android의 데모, 실제 차량 서비스를 서로 바꿔 표현하지 않는다.
 
-## 화면 개편과 재검토
+## 0.5.0 화면 개편과 검증
+
+입력 영역의 외곽 박스를 제거하고 결과만 도착 패스로 강조했다. 높이 도식, 진입문·주차 관계도, 블루/그린/앰버 상태 표현과 소개페이지 실제 예시 전환을 추가했다. 관계도는 실제 지도나 길찾기가 아니다. 주행 화면과 reduced-motion에서는 모션을 끈다.
+
+실제 웹 브라우저에서 초기·확정·보류·주행 화면과 390×844 모바일을 확인했다. `arrival-v05-*.jpg`가 이번 캡처다. APK는 빌드·단위시험·정적검사·서명을 확인했으나 신규 네이티브 UI 실행은 미검증이다. 과거 설치·실행 성공을 이번 버전 검증으로 대체하지 않는다.
+
+## 이전 화면 개편 기록
 
 0.4.0은 장소 선택 → 차량 확인 → 도착 브리핑의 순서를 웹과 Android에 맞췄다. 미확정 상태에서는 경로값 대신 확인 목록을 보여주고 확정 후에만 진입문·주차 구역을 강조한다. 안내문·지원 범위·출처 등 보조 정보는 펼침 방식으로 정리했다.
 
@@ -50,7 +56,7 @@ APK SHA-256 40ce148be83d608acae1e7bd1bb381619c8ad7896ee7f01fa2cd354d6e4a276f
 
 ## 영상과 제출 파일
 
-두 세로 영상은 0.4.0의 개편한 웹 화면으로 갱신했다. 각 33초, 720×1280, 24fps, 792프레임이며 전체 디코딩 검사를 통과했다. 스톡 도입 4초와 웹 캡처 편집 29초로 구성했고 실제 차량 촬영·연속 화면 녹화가 아니다. [도착 안내 metadata](../dist/assets/media/arrival-metadata.json)와 [자료 상충 metadata](../dist/assets/media/arrival-confirm-metadata.json)에 캡처 범위·파일 해시·디코딩 결과를 기록했다. 영상은 네이티브 SDK 응답의 증거가 아니다.
+두 영상은 0.5.0 웹 실제 캡처를 편집했다. 각 30초, 1280×720, 24fps, 720프레임이며 전체 디코딩 검사를 통과했다. 외부 스톡은 사용하지 않았다. 실차 촬영이나 연속 화면 녹화가 아니다. [도착 안내 metadata](../dist/assets/media/arrival-metadata.json)와 [자료 상충 metadata](../dist/assets/media/arrival-confirm-metadata.json)에 캡처 범위·영상 해시·사양을 기록했다. 영상은 네이티브 SDK 응답의 증거가 아니다.
 
 [scripts/package-submission.py](../scripts/package-submission.py)는 심사용 웹·APK·코드와 운영용 목록을 분리한다. 실제 생성된 패키지의 파일 해시·익명 정보 검사·정적 배포 APK 경로를 검사한 결과와 별도로, 별도 접수양식의 동의·서명·날짜와 공개 저장소 접근, 최종 첨부물은 운영용 제출 목록에서 확인한다. 패키징 도구가 이메일 접수를 완료하지는 않는다.
 
