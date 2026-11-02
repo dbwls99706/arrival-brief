@@ -27,6 +27,8 @@ RC2에서는 영문 회의실 번호와 비정상 층 표기를 다른 장소의
 
 소개 첫 화면은 오디토리움(북문·B3 블루존)과 스튜디오159(동문·B2 퍼플존) 예시를 직접 전환하고, 공식 추천과 사용자가 적은 주차 위치를 나눠 보여줍니다. [설계 근거](research/design-reference-2026-11-01.md), [독립 모의 검토 기록](docs/design-review.md), [Android 확정 화면](docs/verification/android-aosp28-rc2-confirmed.png), [Android 메모 QR](docs/verification/android-aosp28-rc2-qr.png)를 제공합니다. Android 캡처는 일반 Android의 debug 자동 UI 시험에서 확보한 화면입니다. 정확한 빌드와 시험 결과는 런타임 기록을 따르며 실제 Pleos 서비스 화면으로 표시하지 않습니다. 실제 사용자 연구나 공식 심사 결과가 아닙니다.
 
+[앱 스크린샷 모음](screenshots/README.md)에서 실제 Android 앱 원본 30장, 대표 화면 8장, 모음 이미지, PDF와 ZIP을 확인할 수 있습니다. 가로 1280×800의 일반 Android 9 에뮬레이터 캡처이며, release 첫 실행·설치 아이콘과 debug UI 시험 화면을 구분했습니다.
+
 ## 실행
 
 ### 웹
