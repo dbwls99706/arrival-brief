@@ -1,0 +1,17 @@
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=Arrival Brief, OU=Independent Development, O=Arrival Brief, C=KR
+Signer #1 certificate SHA-256 digest: 5beae876e311240cd57d9a18d9cad248a29b6ffd4e2d7e4e37fecf808f6b0893
+Signer #1 certificate SHA-1 digest: a2ac7719c3de33559bc1a8073940c7e0a956d587
+Signer #1 certificate MD5 digest: 562303544145f2bd741e3a73be26412d
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 3072
+Signer #1 public key SHA-256 digest: 9b9a5a8adcba615720098899c8973aa8a49fe6e26884ed5007206fc752123163
+Signer #1 public key SHA-1 digest: 3a201cfa5c7527e620f5607a7dbecf9b1bd4c836
+Signer #1 public key MD5 digest: d68412224eda79b99873d2088fefeefc

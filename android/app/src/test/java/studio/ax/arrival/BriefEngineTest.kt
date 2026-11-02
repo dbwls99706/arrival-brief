@@ -5,6 +5,39 @@ import org.junit.Test
 import java.io.File
 
 class BriefEngineTest {
+    @Test fun completeTimetablePreservesTheOriginalWithoutClaimingOccurrence() {
+        for(note in listOf("행사는 10:00에 시작하여 18:00에 종료됩니다.","행사는 0:00에 시작하여 0:01에 종료됩니다.","행사는 23:58에 시작하여 23:59에 종료됩니다.")) {
+            val d=BriefEngine.resolve("장소: 코엑스 아셈볼룸 2층\n$note","1.65")
+            assertEquals("ready",d.status)
+            assertEquals(listOf(note),d.scheduleNotes)
+            assertEquals("asem",d.destination?.id)
+            assertTrue(BriefEngine.export(d).contains(note))
+            assertTrue(BriefEngine.export(d).contains("현재 개최 여부를 확인한 결과가 아닙니다"))
+        }
+    }
+    @Test fun registrationLobbyPreservesItsOwnFloorAndOriginalWords() {
+        for(note in listOf("참가 등록은 1층 로비에서 진행합니다.","등록은 4층 로비에서 진행합니다.")) {
+            val d=BriefEngine.resolve("장소: 코엑스 아셈볼룸 2층\n$note","1.65")
+            assertEquals("ready",d.status)
+            assertEquals(listOf(note),d.registrationNotes)
+            assertEquals("2F",d.destination?.floor)
+            assertTrue(BriefEngine.export(d).contains(note))
+            assertTrue(BriefEngine.export(d).contains("실내 이동 경로가 아닙니다"))
+        }
+    }
+    @Test fun separatedScheduleAndRegistrationNeverEraseGlobalConstraints() {
+        val text="장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다."
+        val ready=BriefEngine.resolve(text,"1.65")
+        assertEquals("ready",ready.status)
+        assertEquals(1,ready.scheduleNotes.size)
+        assertEquals(1,ready.registrationNotes.size)
+        assertEquals("blocked",BriefEngine.resolve(text,"2.35").status)
+        for(note in listOf("행사가 취소되었습니다.","행사장은 송도컨벤시아로 변경되었습니다.","북문을 이용할 수 없습니다.","주차: B2 퍼플존","금일 휴관합니다.","종료되었습니다.","등록은 3층 로비에서 진행합니다.","행사는 09:00에 시작하여 17:00에 종료됩니다."))for(selected in listOf(null,"asem")) {
+            val d=BriefEngine.resolve("$text\n$note","1.65",selected)
+            assertEquals(note,"review",d.status)
+            assertThrows(IllegalArgumentException::class.java) { BriefEngine.export(d) }
+        }
+    }
     @Test fun subjectlessCompletionKeepsOriginalMeaning() {
         for(note in listOf("종료되었습니다.", "일정이 끝났습니다.", "모두 마쳤습니다.", "It has ended.", "It is over.", "It’s over.", "This is over.", "Already completed.", "Now finished.", "Concluded yesterday."))for(selected in listOf(null,"auditorium")) {
             val d=BriefEngine.resolve("코엑스 오디토리움 3층\n$note","1.65",selected)

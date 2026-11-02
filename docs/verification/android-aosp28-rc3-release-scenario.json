@@ -1,0 +1,239 @@
+{
+  "run_id": "45d522aa8042487194de4f94d1944511",
+  "remote_video": "/sdcard/arrival-rc3-release-scenario-45d522aa8042487194de4f94d1944511.mp4",
+  "version": "1.0.0-rc3",
+  "build_type": "release",
+  "automation": "Public accessibility UI actions from a separate self-targeted test harness; no app-private API or app instrumentation.",
+  "notice": "학술대회 안내\n장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다.",
+  "memo": "B3 블루존 E12",
+  "launch": "Starting: Intent { act=android.intent.action.SEND typ=text/plain cmp=studio.ax.arrival/.MainActivity (has extras) }\nStatus: ok\nActivity: studio.ax.arrival/.MainActivity\nThisTime: 6704\nTotalTime: 6704\nWaitTime: 7210\nComplete\n",
+  "recording_start_verified": true,
+  "demo_entry_public_touch_fallback": false,
+  "status": "passed",
+  "recording_closed": true,
+  "events": [
+    {
+      "label": "recording-start",
+      "seconds_from_recording_start": 4.291
+    },
+    {
+      "label": "shared-notice-before-import",
+      "seconds_from_recording_start": 7.004
+    },
+    {
+      "label": "notice-imported",
+      "seconds_from_recording_start": 33.733
+    },
+    {
+      "label": "confirmed",
+      "seconds_from_recording_start": 56.48
+    },
+    {
+      "label": "schedule-registration-notes",
+      "seconds_from_recording_start": 59.433
+    },
+    {
+      "label": "driving-locked",
+      "seconds_from_recording_start": 72.982
+    },
+    {
+      "label": "memo-saved",
+      "seconds_from_recording_start": 94.046
+    },
+    {
+      "label": "qr",
+      "seconds_from_recording_start": 103.479
+    },
+    {
+      "label": "scenario-complete",
+      "seconds_from_recording_start": 110.511
+    }
+  ],
+  "configured_recording_limit_seconds": 180,
+  "release_apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+  "installed_apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+  "after_installed_apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+  "harness_apk_sha256": "9deadf69bd80ba62f635f5561d45846973edb4266a01753270fe69dad5c2fc62",
+  "harness_package": "studio.ax.arrival.journeytest",
+  "harness_target_package": "studio.ax.arrival.journeytest",
+  "host_validation_complete": true,
+  "host_validation_method": "Post-run verification of existing captured device hashes and ordered original-video frames; original host elapsed-time guard failure is preserved below.",
+  "video": {
+    "file": "release-scenario-uncut.mp4",
+    "sha256": "af42bf4f48b3b824b5592f28526af68902199a1212bca3b6ec118d70fe123636",
+    "bytes": 1469754,
+    "actual_duration_seconds": 98.1939,
+    "configured_time_limit_seconds": 180,
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 800,
+          "avg_frame_rate": "940000/981939"
+        }
+      ],
+      "format": {
+        "duration": "98.193900"
+      }
+    },
+    "frame_count": 94,
+    "variable_frame_rate": true,
+    "path": "android-aosp28-rc3-release-journey-original.mp4"
+  },
+  "screenshots": [
+    {
+      "path": "android-aosp28-rc3-release-scenario-shared-notice-before-import.png",
+      "sha256": "7ed2bf357a87dc7c4149fa2b8603495700cd171ab542bac8c26eaf11f9dc9555",
+      "bytes": 75304,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+      "font_scale": 1.0,
+      "source": "/workspace/arrival-runtime-rc3/release-final/release-scenario/release-shared-notice-before-import.png",
+      "scene": "shared-notice-before-import"
+    },
+    {
+      "path": "android-aosp28-rc3-release-scenario-notice-imported.png",
+      "sha256": "d9e97fa3c2f39b9d0af8f80c46a834ca91c088fe2eaf67e40935e3252d5126a7",
+      "bytes": 105242,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+      "font_scale": 1.0,
+      "source": "/workspace/arrival-runtime-rc3/release-final/release-scenario/release-notice-imported.png",
+      "scene": "notice-imported"
+    },
+    {
+      "path": "android-aosp28-rc3-release-scenario-confirmed.png",
+      "sha256": "c43835c93ef4f195073a3441bc4fcd8a32cf5d2952aee4efcfb8dbe37d2171de",
+      "bytes": 50467,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+      "font_scale": 1.0,
+      "source": "/workspace/arrival-runtime-rc3/release-final/release-scenario/release-confirmed.png",
+      "scene": "confirmed"
+    },
+    {
+      "path": "android-aosp28-rc3-release-scenario-schedule-registration-notes.png",
+      "sha256": "e0f68f6aa7e51a35ffef8a2ab2dafd9cefdd38a76da0fe9b9acda9ef9d60dda0",
+      "bytes": 64435,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+      "font_scale": 1.0,
+      "source": "/workspace/arrival-runtime-rc3/release-final/release-scenario/release-schedule-registration-notes.png",
+      "scene": "schedule-registration-notes"
+    },
+    {
+      "path": "android-aosp28-rc3-release-scenario-driving-locked.png",
+      "sha256": "6e57f3b4f2496091889686f40f41987a2c5c3c8452ee579fab1f2c54e0f0bfa8",
+      "bytes": 49185,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+      "font_scale": 1.0,
+      "source": "/workspace/arrival-runtime-rc3/release-final/release-scenario/release-driving-locked.png",
+      "scene": "driving-locked"
+    },
+    {
+      "path": "android-aosp28-rc3-release-scenario-memo-saved.png",
+      "sha256": "9a80fac2d539a57a11e1a023aff7947f0e861efe89d941fab968bbf29ac4752c",
+      "bytes": 82025,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+      "font_scale": 1.0,
+      "source": "/workspace/arrival-runtime-rc3/release-final/release-scenario/release-memo-saved.png",
+      "scene": "memo-saved"
+    },
+    {
+      "path": "android-aosp28-rc3-release-scenario-qr.png",
+      "sha256": "5c598df643fe01b36ddb4d1fb064aedfd5d6ee927c8abacddf6bd4fddd0c53ef",
+      "bytes": 39407,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+      "font_scale": 1.0,
+      "source": "/workspace/arrival-runtime-rc3/release-final/release-scenario/release-qr.png",
+      "scene": "qr"
+    }
+  ],
+  "original_host_result": {
+    "status": "failed_elapsed_vs_encoded_duration_guard",
+    "exit": 1,
+    "result_file": "340-release-scenario.result.json",
+    "result_sha256": "20cedff4c1ffdcb68ad606a6b6b5756fd7632a5e4fe5688cc2b47577cd8d471b",
+    "trace_file": "340-release-scenario.txt",
+    "trace_sha256": "fa9b82a190185691948b9d175b4c721ecca5009576d43b684d764ee5bbbddefd",
+    "helper_elapsed_seconds": 110.511,
+    "encoded_duration_seconds": 98.1939,
+    "note": "These are distinct clocks; the initial <=2-second equivalence assumption failed. The original result and trace are unchanged. No cause is asserted."
+  },
+  "post_run_validation": {
+    "status": "passed_for_ordered_scene_coverage",
+    "checked_utc": "2026-11-02T07:14:28.812467+00:00",
+    "before_after_installed_apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+    "frame_validation_file": "video-scene-frame-validation.json",
+    "frame_validation_sha256": "24064b27babe2a58d3b8264d752c491edd23219e083751385ee69a84083f5d58",
+    "ordered_scenes": [
+      "shared-notice-before-import",
+      "notice-imported",
+      "confirmed",
+      "schedule-registration-notes",
+      "driving-locked",
+      "memo-saved",
+      "qr"
+    ],
+    "frame_count": 94,
+    "final_frame_contains_qr": true,
+    "visual_review": "All seven decoded matching frames were visually inspected; imported original notice, confirmed pass, separate schedule/registration notes, locked driving view, saved memo, and final QR are present.",
+    "scope": "One continuous screenrecord file with variable frame timestamps. Scene coverage is verified; playback is not a measurement of elapsed interaction time. The final 7-second helper wait is not claimed as 7 seconds of encoded QR display."
+  },
+  "cleanup_note": "The original host assertion stopped before explicit helper uninstall. The disposable read-only emulator was then stopped by the supervisor; no new device run was performed.",
+  "separate_from_debug_ui_run": true,
+  "execution_run": "Dedicated AOSP28 release-only cold boot, using the same frozen signed APK; the debug18+6 evidence comes from the preceding AOSP run.",
+  "runtime_cleanup": {
+    "timestampUtc": "2026-11-02T07:07:44Z",
+    "emulator_exit": -10
+  },
+  "public_video_metadata": "dist/assets/media/arrival-native-journey.json",
+  "public_video": {
+    "path": "dist/assets/media/arrival-native-journey.mp4",
+    "sha256": "3b0a9ab3a35977759d70be388ace3501fefaf728f98f3cba9c74ee7caa08f899",
+    "bytes": 880742,
+    "duration_seconds": 98.25,
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "avg_frame_rate": "1880/2037"
+        }
+      ],
+      "format": {
+        "duration": "98.250000"
+      }
+    },
+    "no_cuts": true,
+    "transcoding": "H.264 CRF22, original dimensions and all 94 frames in the same order; no cuts, inserted holds, crop, audio or intentional speed change. Encoding introduces timestamp rounding: duration98.25 seconds versus98.1939 seconds in the source.",
+    "encoded_duration_delta_seconds": 0.0561,
+    "frame_timing_validation": {
+      "source_frame_count": 94,
+      "published_frame_count": 94,
+      "maximum_absolute_frame_pts_shift_seconds": 0.073911,
+      "source_duration_seconds": 98.1939,
+      "published_duration_seconds": 98.25
+    }
+  }
+}

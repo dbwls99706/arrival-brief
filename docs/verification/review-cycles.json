@@ -117,7 +117,7 @@
     }
   ],
   "score_policy": "Never award missing evidence or change the rubric to force100. Unverified optical phone scan, live Pleos SDK and field outcomes remain separate.",
-  "final_apk_sha256": "779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f",
+  "final_apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
   "incomplete_attempts": [
     {
       "round": 6,
@@ -191,12 +191,37 @@
         "Recognize complete basement and malformed numeric floor tokens before manual selection, including B prefixes, signs, decimals, comma, fraction and exponent forms"
       ],
       "scope": "Web and separately compiled Kotlin: 330 fixed cases each; existing 87-case regression repeated. Final APK delivery appendix records runtime and package evidence separately. No new overall product score."
+    },
+    {
+      "phase": "rc3_independent_challenge",
+      "agent": "completion_review",
+      "status": "completed",
+      "score": null,
+      "assessment_type": "bounded_source_and_state_challenge",
+      "report": "award-independent-review.md",
+      "evidence": "award-independent-review.json",
+      "fixes": [
+        "Distinguish complete scheduled-event and lobby-registration clauses from event completion and venue floors while preserving original text",
+        "Present the confirmed native pass in a focused layout; editing clears confirmation and all three reviews",
+        "Keep live driving/UNKNOWN gates on edits and source-note expansion"
+      ],
+      "scope": "76 post-implementation, non-blind cases in web and compiled Kotlin; 1824 web and 18300 Kotlin state assertions. Source review of the native layout; runtime UI evidence is reported separately. No new overall product score or real-user result."
+    },
+    {
+      "phase": "rc3_release_video",
+      "agent": "completion_review",
+      "status": "completed",
+      "score": null,
+      "assessment_type": "bounded_offline_video_validation",
+      "report": "rc3-release-video-review.md",
+      "fixes": [],
+      "scope": "Seven actual release screenshot states visually inspected and matched in order to a single VFR screenrecord source. Original host elapsed-duration gate failed and exit1 remains preserved; offline state inclusion, encoded timestamps and before/after APK hashes were verified separately. Two SystemUI ANRs are classified separately from app outcomes. No real-time performance or Pleos claim."
     }
   ],
   "latest_overall_score": {
     "score": 88,
     "version": "1.0.0-rc1",
     "report": "resume-review-final.md",
-    "note": "Historical holistic assessment; RC2 bounded verification has no replacement overall score."
+    "note": "Historical holistic assessment of RC1 only; RC2/RC3 bounded verification has no replacement overall score."
   }
 }

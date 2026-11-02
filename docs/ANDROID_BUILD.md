@@ -1,13 +1,13 @@
 # Arrival Brief Android 빌드 검증
 
-배포 후보는 `1.0.0-rc2`입니다. 빌드·단위시험·서명과 일반 Android 실행, 실제 Pleos 서비스 응답을 각각 구분합니다.
+배포 후보는 `1.0.0-rc3`입니다. 빌드·단위시험·서명과 일반 Android 실행, 실제 Pleos 서비스 응답을 각각 구분합니다.
 
 ## APK와 시험 근거
 
 | 항목 | 기록 |
 | --- | --- |
-| 증거 버전 | `1.0.0-rc2` (versionCode 11) |
-| APK | `apk/ArrivalBrief_release.apk`, 6,659,947바이트 |
+| 증거 버전 | `1.0.0-rc3` (versionCode 12) |
+| APK | `apk/ArrivalBrief_release.apk`, 6,668,191바이트 |
 | 패키지 | `studio.ax.arrival` |
 | compile / minimum / target | 35 / 28 / 35 |
 | 서명 | APK v2 검증, RSA 3072비트, CN=Arrival Brief |
@@ -15,12 +15,12 @@
 | 일반 Android / Pleos 실행 | APK 버전·해시별 [런타임 기록](verification/android-runtime.md) 참조 |
 
 ```text
-SHA-256 779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f
+SHA-256 fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50
 ```
 
 | JUnit 클래스 | 시험 | 실패 | 오류 |
 | --- | ---: | ---: | ---: |
-| BriefEngineTest | 42 | 0 | 0 |
+| BriefEngineTest | 45 | 0 | 0 |
 | BriefSessionTest | 12 | 0 | 0 |
 | NavigationCheckTest | 8 | 0 | 0 |
 | ParkingMemoQrTest | 5 | 0 | 0 |
@@ -29,11 +29,11 @@ SHA-256 779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f
 
 
 
-합계 74개는 검증 JSON에 보존된 단위시험 결과입니다. 웹 55개와 공통 입력 387건을 별도로 기록하며 공통 사례를 시험 수에 중복 합산하지 않습니다. 실제 차량 시나리오를 같은 수만큼 통과했다는 뜻은 아닙니다.
+합계 77개는 검증 JSON에 보존된 단위시험 결과입니다. 웹 60개와 공통 입력 433건을 별도로 기록하며 공통 사례를 시험 수에 중복 합산하지 않습니다. 실제 차량 시나리오를 같은 수만큼 통과했다는 뜻은 아닙니다.
 
 ## 현재 소스의 주요 구조
 
-`BriefEngine`과 웹 엔진은 같은 입력 fixture를 검사한다. `BriefSession`은 장소·높이·주차·시설 확인과 확정 상태를 관리한다. `PlatformVehicleGateway`는 실제 플랫폼의 UX 제한을 입력 허용 판단에 연결하며 물리적 정차를 추정하지 않는다.
+`BriefEngine`과 웹 엔진은 같은 입력 fixture를 검사한다. RC3는 완전한 정형 시간표와 1~4층 로비 등록 문장을 주행사장 층에서 구분하고 원문을 보존한다. 시각만으로 현재 행사 진행 여부를 추정하지 않는다. `BriefSession`은 장소·높이·주차·시설 확인과 확정 상태를 관리한다. `PlatformVehicleGateway`는 실제 플랫폼의 UX 제한을 입력 허용 판단에 연결하며 물리적 정차를 추정하지 않는다.
 
 `NavigationDestinationReader`는 NaviHelper 3.0.5의 목적지 이름·주소를 조회하고 순수한 `NavigationMatcher`에 전달한다. 시설명·주소가 일치한 결과만 MATCHED로 분류한다. 미확인·오류·미설정·불일치와 수동 확인을 구분한다. 이름·주소는 저장하지 않고 목적지나 경로도 바꾸지 않는다. Vehicle SDK와 브레이크 읽기는 제거했다.
 
@@ -45,7 +45,7 @@ SDK 콜백의 데이터 타입을 확인하고 상태 로직을 시험한 사실
 
 ## 일반 Android와 Pleos 실행
 
-일반 Android 9에서 최종 서명 release의 RC1→RC2 업데이트 설치·첫 실행과 기기 내 APK SHA-256 일치를 확인했습니다. 같은 main 소스로 만든 별도 debug APK에서 표준 UI 16개와 글자 크기 1.3배 반복 6개를 통과했습니다. 영문 방 번호·음수 층·B03/B0층의 수동 선택 우회 방지를 포함하며, 반복 6개는 새로운 기능 수로 합산하지 않습니다. [최종 런타임 JSON](verification/android-runtime-rc2.json)에 환경·빌드 종류·해시를 기록했습니다.
+RC3의 서명 release 설치·업데이트·첫 실행과 기기 APK 해시 일치를 확인했습니다. 같은 main 소스의 별도 debug 표준 UI 18개와 글자 크기 1.3배 반복 6개가 통과했습니다. 실제 서명 release에서는 안내 가져오기부터 메모 QR까지 7개 상태를 별도로 확인했습니다. 단일 screenrecord의 VFR 원본과 공개본은 원본98.1939초와 공개본98.25초의 인코딩 타임라인을 보존하며, helper의 벽시계 110.511초와 다릅니다. 촬영 host 명령의 종료 코드 1과 사후 장면 대조 결과를 함께 [런타임 기록](verification/android-runtime.md)에 남겼으며 동작 속도 측정으로 해석하지 않습니다. RC2의 16+6 결과는 별도 역사입니다.
 
 현재 APK의 설치·업데이트·첫 실행 관찰은 [런타임 기록](verification/android-runtime.md)에서 해당 버전과 해시를 대조합니다. Debug instrumentation으로 조작한 시나리오는 서명 release APK의 단순 설치·실행 결과와 별도로 표시합니다. 환경의 실제 오류와 미완료 항목을 보존하고 일반 Android 데모를 Pleos 서비스의 응답 성공으로 바꾸지 않습니다.
 
@@ -79,10 +79,10 @@ adb install -r apk/ArrivalBrief_release.apk
 - [build-inputs.json](verification/build-inputs.json): 성공한 빌드의 APK·입력 해시. 패키징 시 현재 소스와 ZIP 원본을 대조하며 바이트 재현 빌드를 주장하지 않음
 
 - [release-verification.json](verification/release-verification.json): APK·시험·Lint·런타임 버전별 상태
-- [android-aosp28-rc2-build.log](verification/android-aosp28-rc2-build.log): 현재 RC2 빌드 로그
-- [android-aosp28-rc2-signature.txt](verification/android-aosp28-rc2-signature.txt): 현재 RC2 서명 검사
-- [android-aosp28-rc2-package.txt](verification/android-aosp28-rc2-package.txt): 현재 RC2 패키지 검사
-- `TEST-rc2-*.xml`: 현재 RC2 빌드의 JUnit 결과
+- [android-aosp28-rc3-build.log](verification/android-aosp28-rc3-build.log): 현재 RC3 빌드 로그
+- [android-aosp28-rc3-signature.txt](verification/android-aosp28-rc3-signature.txt): 현재 RC3 서명 검사
+- [android-aosp28-rc3-package.txt](verification/android-aosp28-rc3-package.txt): 현재 RC3 패키지 검사
+- `TEST-rc3-*.xml`: 현재 RC3 빌드의 JUnit 결과
 - [현재 검증 기록](HYUNDAI_VERIFICATION.md): 기능·수정·미완료 경계
 
-이전 커밋의 0.1.0 debug와 0.2.0 release 증거는 이전 버전의 결과다. 새 기능의 성공 근거로 재사용하지 않는다. 이전의 `android-release-*` 로그와 RC1 시험 XML은 이력으로 보존하며, 현행 근거는 위 RC2 파일로 대조한다.
+이전 커밋의 0.1.0 debug와 0.2.0 release 증거는 이전 버전의 결과다. 새 기능의 성공 근거로 재사용하지 않는다. 이전의 `android-release-*` 로그와 RC1·RC2 시험·실행 근거는 이력으로 보존하며, 현행 근거는 위 RC3 파일로 대조한다.

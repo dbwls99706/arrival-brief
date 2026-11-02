@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0-rc2",
-  "version_code": 11,
-  "apk_sha256": "779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f",
+  "version": "1.0.0-rc3",
+  "version_code": 12,
+  "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
   "source_snapshot_match": true,
   "source_input_count": 43,
   "evidence": "All 43 inputs in the successful isolated checkout match the working tree byte-for-byte. This does not claim byte-reproducible APK builds.",
@@ -9,11 +9,11 @@
   "files": [
     {
       "path": "android/app/build.gradle.kts",
-      "sha256": "27a1857f26c8225bfb43a9e36aeb7d1dc4a55aec593911ac1be7427853f65253"
+      "sha256": "f910bc84d30f1c1e398cbe4f97e093f99565699e2420fb537311c729fcc8eb3b"
     },
     {
       "path": "android/app/src/androidTest/java/studio/ax/arrival/VisitFlowInstrumentedTest.kt",
-      "sha256": "48c201bb9c0147e51a7b257040db67a42fb9b9b242a4452ccfe1519a97919053"
+      "sha256": "bc9578cee63a2997e36c49f291eb1764a13927c497f4ad8f8a38d1c6447089ea"
     },
     {
       "path": "android/app/src/main/AndroidManifest.xml",
@@ -33,7 +33,7 @@
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/BriefEngine.kt",
-      "sha256": "3b471854725bc3bb270e80891f88f8dd2962519abbe19ee61e89d40d90a381da"
+      "sha256": "7c717b1be0531a002cea7d40931033be7c653a1221aa1cc19d5d01eda1ec22b6"
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/BriefSession.kt",
@@ -41,7 +41,7 @@
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/MainActivity.kt",
-      "sha256": "d6ea7c73c1051209a1722c7700ce40f6183eeb08743c2f6d8dc9336d4e42b71f"
+      "sha256": "db6b57b243363a4b7b2c94142c164cec0cf26bcbbfb95729f082d724d105bb23"
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/NavigationCheck.kt",
@@ -125,7 +125,7 @@
     },
     {
       "path": "android/app/src/test/java/studio/ax/arrival/BriefEngineTest.kt",
-      "sha256": "162e6fac7edfa3bb681f91acae9423555b28f4fbdf2c01a96cc8b17312b2c744"
+      "sha256": "82bbe2ac10fbbaf85f5b36d8b8ec7dc420474961beaeeea3928eeed2a63b4307"
     },
     {
       "path": "android/app/src/test/java/studio/ax/arrival/BriefSessionTest.kt",
@@ -177,7 +177,7 @@
     },
     {
       "path": "tests/decision-cases.tsv",
-      "sha256": "d55b1c358b017e01e28a39eb35ef83156d25668fe7b934952cdddb85bc489dc2"
+      "sha256": "0cc54c261e6192c7e0cd57587290bda1b521c3fc2aaf109dbce5c0d859353e4a"
     }
   ]
 }

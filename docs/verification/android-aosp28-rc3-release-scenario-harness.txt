@@ -1,0 +1,100 @@
+[AndroidManifest.xml]
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="studio.ax.arrival.journeytest" android:versionCode="1" android:versionName="1.0"><uses-sdk android:minSdkVersion="28" android:targetSdkVersion="28"/><application android:label="Arrival release UI evidence" android:debuggable="true"/><instrumentation android:name=".JourneyInstrumentation" android:targetPackage="studio.ax.arrival.journeytest" android:functionalTest="true"/></manifest>
+
+[JourneyInstrumentation.java]
+package studio.ax.arrival.journeytest;
+import android.app.Instrumentation;
+import android.app.UiAutomation;
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.os.ParcelFileDescriptor;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.MotionEvent;
+import android.view.InputDevice;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import org.json.JSONObject;
+import org.json.JSONArray;
+import java.io.*;
+import java.util.*;
+
+/** Drives public accessibility UI of a separately installed, unchanged release APK. */
+public final class JourneyInstrumentation extends Instrumentation {
+ private UiAutomation ui; private File out; private long started; private long recordPid=-1; private String runId, remoteVideo;
+ private final JSONArray events=new JSONArray(); private final JSONObject result=new JSONObject();
+ private final String notice="학술대회 안내\n장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다.";
+ @Override public void onCreate(Bundle args){super.onCreate(args);runId=args.getString("run_id","");if(!runId.matches("[0-9a-f]{32}"))throw new IllegalArgumentException("Fresh run_id required");remoteVideo="/sdcard/arrival-rc3-release-scenario-"+runId+".mp4";start();}
+ private int shellSequence=0;
+ private String shell(String command) throws Exception {
+  // UiAutomation executes an argv-style command, not shell syntax. Put all
+  // quoting, redirections and background jobs in a UTF-8 script first.
+  File script=new File(out,"journey-command-"+(shellSequence++)+".sh");
+  try(FileOutputStream file=new FileOutputStream(script)){file.write(("#!/system/bin/sh\n"+command+"\n").getBytes("UTF-8"));}
+  try(ParcelFileDescriptor fd=ui.executeShellCommand("/system/bin/sh "+script.getAbsolutePath());InputStream in=new ParcelFileDescriptor.AutoCloseInputStream(fd);ByteArrayOutputStream b=new ByteArrayOutputStream()){
+   byte[] buf=new byte[8192];int n;while((n=in.read(buf))!=-1)b.write(buf,0,n);return b.toString("UTF-8");
+  }finally{script.delete();}
+ }
+ private String quote(String s){return "'"+s.replace("'","'\\''")+"'";}
+ private void waitUi(){SystemClock.sleep(220);try{ui.waitForIdle(120,1800);}catch(Exception ignored){}}
+ private AccessibilityNodeInfo find(AccessibilityNodeInfo node,String text,boolean desc,boolean contains){
+  if(node==null)return null;CharSequence cs=desc?node.getContentDescription():node.getText();String val=cs==null?"":cs.toString();
+  if(node.isVisibleToUser()&&(contains?val.contains(text):val.equals(text)))return node;
+  for(int i=0;i<node.getChildCount();i++){AccessibilityNodeInfo hit=find(node.getChild(i),text,desc,contains);if(hit!=null)return hit;}return null;
+ }
+ private AccessibilityNodeInfo scrollNode(AccessibilityNodeInfo n){if(n==null)return null;if(n.isScrollable()&&n.isVisibleToUser())return n;for(int i=0;i<n.getChildCount();i++){AccessibilityNodeInfo hit=scrollNode(n.getChild(i));if(hit!=null)return hit;}return null;}
+ private AccessibilityNodeInfo locate(String text,boolean desc,boolean contains,boolean up) throws Exception {
+  for(int attempt=0;attempt<9;attempt++){
+   waitUi();AccessibilityNodeInfo root=ui.getRootInActiveWindow();AccessibilityNodeInfo hit=find(root,text,desc,contains);if(hit!=null)return hit;
+   AccessibilityNodeInfo scroller=scrollNode(root);if(scroller!=null)scroller.performAction(up?AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD:AccessibilityNodeInfo.ACTION_SCROLL_FORWARD);
+   // ACTION_CLICK is asynchronous. A dialog with no scroller may still be
+   // closing while the next target is absent; retry the fresh active root.
+   SystemClock.sleep(450);
+  }throw new AssertionError("Visible target absent: "+text);
+ }
+ private void tap(String text) throws Exception {tap(text,false,false);}
+ private void tap(String text,boolean contains,boolean up) throws Exception {AccessibilityNodeInfo n=locate(text,false,contains,up);if(!n.isEnabled())throw new AssertionError("Disabled target: "+text);while(n!=null&&!n.isClickable())n=n.getParent();if(n==null||!n.performAction(AccessibilityNodeInfo.ACTION_CLICK))throw new AssertionError("Click failed: "+text);waitUi();}
+ private void enterDemoAndAwaitSharedCheck() throws Exception {
+  tap("차량 밖에서 데모 시작");tap("데모 시작");
+  long start=SystemClock.elapsedRealtime(),deadline=start+15000;boolean touchFallback=false;
+  while(SystemClock.elapsedRealtime()<deadline){
+   AccessibilityNodeInfo root=ui.getRootInActiveWindow();
+   if(find(root,"공유한 안내를 가져오기 전, 안전하게 주차했어요.",false,false)!=null){result.put("demo_entry_public_touch_fallback",touchFallback);return;}
+   // ACTION_CLICK may acknowledge before a slow dialog transition. If the
+   // exact public dialog button is still visible, one touch uses its fresh bounds.
+   if(!touchFallback&&SystemClock.elapsedRealtime()-start>=5000){
+    AccessibilityNodeInfo button=find(root,"데모 시작",false,false);
+    if(button!=null&&button.isEnabled()){
+     Rect bounds=new Rect();button.getBoundsInScreen(bounds);if(bounds.isEmpty())throw new AssertionError("Demo dialog button has no visible bounds");
+     long down=SystemClock.uptimeMillis();MotionEvent press=MotionEvent.obtain(down,down,MotionEvent.ACTION_DOWN,bounds.exactCenterX(),bounds.exactCenterY(),0);press.setSource(InputDevice.SOURCE_TOUCHSCREEN);
+     boolean pressed=ui.injectInputEvent(press,true);press.recycle();SystemClock.sleep(70);
+     MotionEvent release=MotionEvent.obtain(down,SystemClock.uptimeMillis(),MotionEvent.ACTION_UP,bounds.exactCenterX(),bounds.exactCenterY(),0);release.setSource(InputDevice.SOURCE_TOUCHSCREEN);
+     boolean released=ui.injectInputEvent(release,true);release.recycle();if(!pressed||!released)throw new AssertionError("Public demo dialog touch failed");touchFallback=true;
+    }
+   }
+   SystemClock.sleep(300);
+  }
+  throw new AssertionError("Demo confirmation did not expose shared parking check within 15 seconds");
+ }
+ private void set(String desc,String value) throws Exception {AccessibilityNodeInfo n=locate(desc,true,false,false);Bundle b=new Bundle();b.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE,value);if(!n.isEnabled()||!n.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT,b))throw new AssertionError("Set text failed: "+desc);waitUi();}
+ private void check(String text,boolean contains) throws Exception {AccessibilityNodeInfo n=locate(text,false,contains,false);if(!n.isChecked()){if(!n.isEnabled()||!n.performAction(AccessibilityNodeInfo.ACTION_CLICK))throw new AssertionError("Check failed:"+text);waitUi();}}
+ private void event(String label) throws Exception {JSONObject e=new JSONObject();e.put("label",label);e.put("seconds_from_recording_start",(SystemClock.elapsedRealtime()-started)/1000.0);events.put(e);Bundle b=new Bundle();b.putString("stream",label+"\n");sendStatus(1,b);}
+ private void capture(String label) throws Exception {Bitmap b=ui.takeScreenshot();if(b==null)throw new AssertionError("Screenshot absent");try(FileOutputStream f=new FileOutputStream(new File(out,"release-"+label+".png"))){b.compress(Bitmap.CompressFormat.PNG,100,f);}b.recycle();event(label);}
+ private String allText(AccessibilityNodeInfo n){if(n==null||!n.isVisibleToUser())return "";StringBuilder b=new StringBuilder();if(n.getText()!=null)b.append(n.getText()).append('\n');for(int i=0;i<n.getChildCount();i++)b.append(allText(n.getChild(i)));return b.toString();}
+ @Override public void onStart(){boolean passed=false;try{
+  ui=getUiAutomation();out=getContext().getExternalFilesDir(null);out.mkdirs();for(File prior:out.listFiles()){if(prior.isFile()&&(prior.getName().startsWith("release-")||prior.getName().equals("release-scenario.json"))&&!prior.delete())throw new IOException("Cannot isolate prior helper artifact");}result.put("run_id",runId);result.put("remote_video",remoteVideo);
+  result.put("version","1.0.0-rc3");result.put("build_type","release");result.put("automation","Public accessibility UI actions from a separate self-targeted test harness; no app-private API or app instrumentation.");result.put("notice",notice);result.put("memo","B3 블루존 E12");
+  shell("settings put system font_scale 1.0");shell("am force-stop studio.ax.arrival");String launch=shell("am start -W -a android.intent.action.SEND -t text/plain --es android.intent.extra.TEXT "+quote(notice)+" -n studio.ax.arrival/.MainActivity");result.put("launch",launch);if(!launch.contains("Status: ok"))throw new AssertionError("Launch failed");waitUi();
+  if(!shell("test ! -e "+remoteVideo+"; echo $?").trim().equals("0"))throw new IOException("Recording path is not fresh");
+  recordPid=Long.parseLong(shell("screenrecord --size 1280x800 --bit-rate 3000000 --time-limit 180 "+remoteVideo+" >/sdcard/arrival-rc3-release-record-"+runId+".log 2>&1 </dev/null & echo $!").trim());started=SystemClock.elapsedRealtime();boolean recordingReady=false;
+  for(int i=0;i<30;i++){if(shell("kill -0 "+recordPid+" 2>/dev/null && test -s "+remoteVideo+"; echo $?").trim().equals("0")){recordingReady=true;break;}SystemClock.sleep(100);}
+  if(!recordingReady)throw new IOException("Fresh recorder is not alive with a new output file");result.put("recording_start_verified",true);event("recording-start");capture("shared-notice-before-import");
+  enterDemoAndAwaitSharedCheck();check("공유한 안내를 가져오기 전, 안전하게 주차했어요.",false);tap("공유한 행사 안내 가져오기");if(!notice.contentEquals(locate("행사 장소 안내",true,false,false).getText()))throw new AssertionError("Imported original notice changed");capture("notice-imported");
+  set("루프박스와 적재물을 포함한 차량 전체 높이, 미터","1.65");check("적재물을 포함한 전체 높이를 확인했습니다.",false);check("현재 유효한 행사의 실제 방문 장소",true);check("안전하게 주차한 상태입니다.",false);tap("도착 브리핑 확정");
+  String confirmed=allText(ui.getRootInActiveWindow());if(!confirmed.contains("아셈볼룸")||!confirmed.contains("북문")||!confirmed.contains("B3 블루존"))throw new AssertionError("Confirmed pass lacks expected destination/entrance/parking");SystemClock.sleep(3500);capture("confirmed");
+  tap("일정·등록 원문 보기");locate("참가 등록은 1층 로비에서 진행합니다.",false,false,false);String notes=allText(ui.getRootInActiveWindow());if(!notes.contains("행사는 10:00에 시작하여 18:00에 종료됩니다.")||!notes.contains("참가 등록은 1층 로비에서 진행합니다."))throw new AssertionError("Schedule/registration original not both visible");capture("schedule-registration-notes");SystemClock.sleep(1800);tap("일정·등록 원문 접기",false,true);
+  tap("데모 상태 변경",false,true);tap("주행");AccessibilityNodeInfo lockedRoot=ui.getRootInActiveWindow();String lockedText=allText(lockedRoot);if(!lockedText.contains("입력 잠금")||!lockedText.contains("아셈볼룸")||find(lockedRoot,"안내 수정",false,false)!=null||find(lockedRoot,"브리핑 복사",false,false)!=null||find(lockedRoot,"행사 장소 안내",true,false)!=null)throw new AssertionError("Driving lock is not visible or editing/export remains visible");capture("driving-locked");SystemClock.sleep(2500);tap("정차",false,true);
+  tap("주차 위치 기록");check("차량을 안전하게 주차했고, 위치 메모를 확인할게요.",false);set("직접 적는 주차 위치 메모, 최대 64자","B3 블루존 E12");tap("주차 위치 24시간 기억");if(!"B3 블루존 E12".contentEquals(locate("직접 적는 주차 위치 메모, 최대 64자",true,false,true).getText()))throw new AssertionError("Saved memo text changed");locate("주차 위치를 이 기기에 기억했어요.",false,true,false);SystemClock.sleep(2000);capture("memo-saved");tap("휴대폰으로 가져가기");AccessibilityNodeInfo qr=locate("저장한 주차 위치를 휴대폰으로 가져가는 QR",true,false,false);Rect qrBounds=new Rect();qr.getBoundsInScreen(qrBounds);if(qrBounds.left<0||qrBounds.right>1280||qrBounds.top<24||qrBounds.bottom>752||qrBounds.width()<256)throw new AssertionError("QR not fully visible: "+qrBounds);capture("qr");SystemClock.sleep(7000);event("scenario-complete");
+  if(SystemClock.elapsedRealtime()-started>=178000)throw new AssertionError("Scenario exceeded continuous recording budget");result.put("status","passed");passed=true;
+ }catch(Throwable error){try{result.put("status","failed_or_incomplete");result.put("error",error.toString());if(ui!=null){result.put("failure_visible_text",allText(ui.getRootInActiveWindow()));}if(ui!=null&&out!=null)capture("failure");}catch(Exception ignored){}Bundle b=new Bundle();b.putString("stream",error.toString()+"\n");sendStatus(-1,b);
+ }finally{try{if(recordPid>0){shell("kill -2 "+recordPid+" 2>/dev/null");boolean closed=false;for(int i=0;i<40;i++){if(!shell("kill -0 "+recordPid+" 2>/dev/null; echo $?").trim().equals("0")){closed=true;break;}SystemClock.sleep(100);}result.put("recording_closed",closed);if(!closed){passed=false;result.put("status","failed_or_incomplete");result.put("error","Recorder did not finish after SIGINT");}}result.put("events",events);result.put("configured_recording_limit_seconds",180);try(FileOutputStream f=new FileOutputStream(new File(out,"release-scenario.json"))){f.write(result.toString(2).getBytes("UTF-8"));}}catch(Exception ignored){}Bundle done=new Bundle();done.putString("stream",passed?"RELEASE JOURNEY PASSED\n":"RELEASE JOURNEY INCOMPLETE\n");finish(passed?-1:0,done);}}
+}

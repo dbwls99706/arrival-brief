@@ -1,49 +1,49 @@
 {
-  "version": "1.0.0-rc2",
+  "version": "1.0.0-rc3",
   "kind": "edited_stills_from_actual_android_instrumentation",
   "duration_seconds": 30,
   "width": 1280,
   "height": 720,
   "fps": 30,
-  "release_apk_sha256": "779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f",
-  "tested_debug_apk_sha256": "d9aab1943fa677799bf70d830a9b8fab4ae405546af45b082780be59fa2cba4b",
+  "release_apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+  "tested_debug_apk_sha256": "6130b0f8641ac172dd5a244cf3fe5a1d6922d8c5007717fb2520254dbced1823",
   "note": "Separate debug instrumentation, same main source as release. No continuous screen recording or live Pleos response is claimed. Phone optical QR scan is unverified.",
   "screenshots": [
     {
       "file": "arrival-confirmed-parked.png",
-      "packaged_screenshot": "docs/verification/android-aosp28-rc2-confirmed.png",
-      "sha256": "71749f0576e2e6372bd913b63eda7e902144ac2ec595292e93dd56cb5eee06cc",
+      "packaged_screenshot": "docs/verification/android-aosp28-rc3-confirmed.png",
+      "sha256": "964d5c52b6f59df5adf585fcddb9266a4477a1f1d7faa5927b2c1187bc0421a4",
       "start_seconds": 0,
       "duration_seconds": 6
     },
     {
       "file": "arrival-source-conflict-evidence.png",
-      "packaged_screenshot": "docs/verification/android-aosp28-rc2-source-conflict.png",
-      "sha256": "65dfa650b9588a2b0261f934c102dfa818f7c8dd534300134783e9096697e92e",
+      "packaged_screenshot": "docs/verification/android-aosp28-rc3-source-conflict.png",
+      "sha256": "df83e23105a0e845c8a9a6a3365c7dc35d864d56b7aa00086a481f3a45a81d87",
       "start_seconds": 6,
       "duration_seconds": 6
     },
     {
       "file": "arrival-parking-memo-restored.png",
-      "packaged_screenshot": "docs/verification/android-aosp28-rc2-memo.png",
-      "sha256": "62d9f33d3795d806444901a5a3aae79c2c70847d43a0746b395ab3c2c9ee6126",
+      "packaged_screenshot": "docs/verification/android-aosp28-rc3-memo.png",
+      "sha256": "d5c55cdcf8317b52c738efcfe294ec5d7039e250a0b26571204b76befffb5646",
       "start_seconds": 12,
       "duration_seconds": 6
     },
     {
       "file": "arrival-saved-memo-qr.png",
-      "packaged_screenshot": "docs/verification/android-aosp28-rc2-qr.png",
-      "sha256": "050b9260230881ed292371b60d8ab745b8a25dd7064ea832902be4667244d761",
+      "packaged_screenshot": "docs/verification/android-aosp28-rc3-qr.png",
+      "sha256": "686053c2a9f40f0d7470af86d28ff90ea4f080f01f7ef424086acce257a68956",
       "start_seconds": 18,
       "duration_seconds": 6
     },
     {
       "file": "arrival-confirmed-driving-locked.png",
-      "packaged_screenshot": "docs/verification/android-aosp28-rc2-driving.png",
-      "sha256": "99d1a2a3a609cc7b91ca82ceec59da8c9fc09e71f7a501ef0b8514206ced801c",
+      "packaged_screenshot": "docs/verification/android-aosp28-rc3-driving.png",
+      "sha256": "e54d956dafdcc268d845d73a69d9d3d8b8e1fc0237d737162822d537a4756912",
       "start_seconds": 24,
       "duration_seconds": 6
     }
   ],
-  "video_sha256": "895bffc6277e11e44b5891d1fbb82c5de3e3b8da07f4dedca6645c0f401dd211"
+  "video_sha256": "61cedb7feb882022197b922cfc32fb3e0c671304b40b7386c188fd35eb6c9f0b"
 }

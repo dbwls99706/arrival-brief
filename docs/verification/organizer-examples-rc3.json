@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "version": "1.0.0-rc3",
+  "generated_at": "2026-11-02T06:23:04.756Z",
+  "kind": "synthetic-organizer-examples",
+  "status": "passed",
+  "scope": "Web decision-engine checks against authored synthetic notices; not human research, Android runtime, vehicle compatibility, organizer adoption or business outcomes.",
+  "dataset_version": "coex-2026-10-30-v2",
+  "source_metadata": {
+    "general": {
+      "url": "https://business.coex.co.kr/guide/conference-room-parking-information/general-vehicle/",
+      "dataset_checked_at": "2026-10-30"
+    },
+    "notice": {
+      "url": "https://business.coex.co.kr/post-meeting-notice/%EC%95%88%EB%82%B4%EC%9E%90%EB%A3%8C-%EC%BD%94%EC%97%91%EC%8A%A4-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%99%94%EB%AC%BC%EC%B0%A8-%EC%A7%84%EC%9E%85-%EC%95%BD%EB%8F%84/",
+      "dataset_checked_at": "2026-10-30",
+      "published_at": "2026-02-11"
+    }
+  },
+  "examples_reviewed_at": "2026-11-02",
+  "engine_sha256": "8e4860de73d077058e32abce43c84e6229d392de65c215608202da6b010c7633",
+  "manifest_sha256": "e44bfc060d51bb0b5d0682e1d1b622f35f735a000fbeedff9213b43c3529ed24",
+  "script_sha256": "d7bfb36c31c434e4b4d448a40b5b68ed2bb8eef57a669f0952d4b1c9b2ac4fee",
+  "cases": [
+    {
+      "id": "AB-DEMO-01",
+      "file": "examples/organizer/01-auditorium.txt",
+      "sha256": "0ffe35c27d138c9cb994e5b5df0589619d0cab3a9b028bcd2fbe57e0afb3ea75",
+      "destination_id": "auditorium",
+      "policy": "guide-after-review",
+      "status": "ready",
+      "candidate_reference": {
+        "gate": "북문",
+        "level": "B3",
+        "zone": "블루존"
+      },
+      "candidate_briefing_format_allowed": true,
+      "eligible_after_explicit_test_reviews": true,
+      "auto_confirmed": false,
+      "source_ids": [
+        "general"
+      ],
+      "passed": true
+    },
+    {
+      "id": "AB-DEMO-02",
+      "file": "examples/organizer/02-grand.txt",
+      "sha256": "d87af115aca8384deb69765b09f3d11a1e9fbfbd992ff8514071dd7d539e98cc",
+      "destination_id": "grand",
+      "policy": "guide-after-review",
+      "status": "ready",
+      "candidate_reference": {
+        "gate": "북문",
+        "level": "B3",
+        "zone": "블루존"
+      },
+      "candidate_briefing_format_allowed": true,
+      "eligible_after_explicit_test_reviews": true,
+      "auto_confirmed": false,
+      "source_ids": [
+        "general"
+      ],
+      "passed": true
+    },
+    {
+      "id": "AB-DEMO-03",
+      "file": "examples/organizer/03-asem.txt",
+      "sha256": "9826eb134556033726b0f590bf8f69c7e6d8f1f89370a51861d708f91632c568",
+      "destination_id": "asem",
+      "policy": "guide-after-review",
+      "status": "ready",
+      "candidate_reference": {
+        "gate": "북문",
+        "level": "B3",
+        "zone": "블루존"
+      },
+      "candidate_briefing_format_allowed": true,
+      "eligible_after_explicit_test_reviews": true,
+      "auto_confirmed": false,
+      "source_ids": [
+        "general"
+      ],
+      "passed": true
+    },
+    {
+      "id": "AB-DEMO-04",
+      "file": "examples/organizer/04-studio159.txt",
+      "sha256": "00b55f65d08d6d7d9be8e19ddb48de57c4e73786bb4e10ead4ee73d019b1ad14",
+      "destination_id": "studio159",
+      "policy": "guide-after-review",
+      "status": "ready",
+      "candidate_reference": {
+        "gate": "동문",
+        "level": "B2",
+        "zone": "퍼플존"
+      },
+      "candidate_briefing_format_allowed": true,
+      "eligible_after_explicit_test_reviews": true,
+      "auto_confirmed": false,
+      "source_ids": [
+        "general"
+      ],
+      "passed": true
+    },
+    {
+      "id": "AB-DEMO-05",
+      "file": "examples/organizer/05-platz.txt",
+      "sha256": "aed3410f78c08175d34d66c1c2cc9a79c641d825be6ea78c9740a360a771979b",
+      "destination_id": "platz",
+      "policy": "guide-after-review",
+      "status": "ready",
+      "candidate_reference": {
+        "gate": "동문",
+        "level": "B2",
+        "zone": "지하 2층"
+      },
+      "candidate_briefing_format_allowed": true,
+      "eligible_after_explicit_test_reviews": true,
+      "auto_confirmed": false,
+      "source_ids": [
+        "general"
+      ],
+      "passed": true
+    },
+    {
+      "id": "AB-DEMO-06",
+      "file": "examples/organizer/06-conferencee.txt",
+      "sha256": "5d3fc55a5bd02ae76b677c2d855d3037434664efcf71d8762f5b52519bd7c251",
+      "destination_id": "conferenceE",
+      "policy": "hold-source-conflict",
+      "status": "source_conflict",
+      "candidate_reference": {
+        "gate": "동문",
+        "level": "B2",
+        "zone": "퍼플존"
+      },
+      "candidate_briefing_format_allowed": false,
+      "eligible_after_explicit_test_reviews": false,
+      "auto_confirmed": false,
+      "source_ids": [
+        "general",
+        "notice"
+      ],
+      "passed": true
+    },
+    {
+      "id": "AB-DEMO-07",
+      "file": "examples/organizer/07-rooms300.txt",
+      "sha256": "a34e0d8376b8875e5a1b4289cf1c81805431aa60638d8e66d974eb6b45b30787",
+      "destination_id": "rooms300",
+      "policy": "hold-source-conflict",
+      "status": "source_conflict",
+      "candidate_reference": {
+        "gate": "동문",
+        "level": "B2",
+        "zone": "그린존"
+      },
+      "candidate_briefing_format_allowed": false,
+      "eligible_after_explicit_test_reviews": false,
+      "auto_confirmed": false,
+      "source_ids": [
+        "general",
+        "notice"
+      ],
+      "passed": true
+    },
+    {
+      "id": "AB-DEMO-08",
+      "file": "examples/organizer/08-rooms400.txt",
+      "sha256": "0d3f0a8258efefd92b0d304b75eadfcf7d2a64bb0e90a59f190cf5505246e036",
+      "destination_id": "rooms400",
+      "policy": "hold-source-conflict",
+      "status": "source_conflict",
+      "candidate_reference": {
+        "gate": "동문",
+        "level": "B2",
+        "zone": "그린존"
+      },
+      "candidate_briefing_format_allowed": false,
+      "eligible_after_explicit_test_reviews": false,
+      "auto_confirmed": false,
+      "source_ids": [
+        "general",
+        "notice"
+      ],
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "guide_after_review": 5,
+    "held_source_conflict": 3,
+    "passed": 8
+  },
+  "checks": [
+    "source URLs and dates",
+    "dataset and eight destination scope",
+    "five guide and three hold policies",
+    "expected gate/level/zone references",
+    "no automatic confirmation",
+    "all explicit human-check flags required",
+    "driving/unknown input lock",
+    "over-height rejection",
+    "conflict evidence and manual-bypass rejection"
+  ]
+}

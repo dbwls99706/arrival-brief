@@ -1,0 +1,151 @@
+{
+  "version": "1.0.0-rc3",
+  "date": "2026-11-02",
+  "environment": "Cloud Chromium; local managed preview; simulated vehicle state",
+  "observation_method": "Direct browser UI actions and accessibility observations by the primary agent; actual viewport screenshot files independently inspected for this report.",
+  "scenarios": [
+    {
+      "id": "schedule-registration",
+      "input": "학술대회 안내\n장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다.",
+      "observed": "Asem Ballroom selected; confirmation requires venue, total vehicle height and safely parked reviews. Height 1.65 m plus all three reviews produces north gate/B3 Blue Zone. Expanded schedule/registration notes preserve both original clauses.",
+      "screenshot": "arrival-rc3-web-context.jpg"
+    },
+    {
+      "id": "auditorium-confirm",
+      "observed": "Auditorium at 1.65 m with all three reviews confirms north gate/B3 Blue Zone.",
+      "screenshots": [
+        "arrival-rc3-final-web-initial.jpg",
+        "arrival-rc3-final-web-confirmed.jpg"
+      ]
+    },
+    {
+      "id": "driving-lock",
+      "observed": "Current RC3 auditorium flow was repeated through direct destination selection, 1.65 m height, three reviews and confirmation before activating driving simulation. Editing/export are hidden; the confirmed north gate/B3 pass remains.",
+      "screenshot": "arrival-rc3-final-web-driving.jpg"
+    },
+    {
+      "id": "parked-return",
+      "observed": "Returning to parked clears the safety confirmation and blocks copy/export until reconfirmed.",
+      "evidence": "Direct UI/accessibility observation; no separate screenshot retained."
+    },
+    {
+      "id": "official-conflict",
+      "observed": "Conference E displays conflicting official parking zones and holds confirmation.",
+      "screenshot": "arrival-rc3-final-web-conflict.jpg"
+    },
+    {
+      "id": "closed",
+      "input": "코엑스 오디토리움 3층 행사\n금일 휴관합니다.",
+      "observed": "Closure notice preserved verbatim and confirmation held.",
+      "screenshot": "arrival-rc3-final-web-closed.jpg"
+    }
+  ],
+  "screenshots": [
+    {
+      "scenario": "initial",
+      "file": "arrival-rc3-final-web-initial.jpg",
+      "bytes": 82026,
+      "width": 1348,
+      "height": 926,
+      "sha256": "28560a5f31faad7a06c427693c0a56e0e4ec65fbae859405b024add81c0831af"
+    },
+    {
+      "scenario": "confirmed",
+      "file": "arrival-rc3-final-web-confirmed.jpg",
+      "bytes": 98340,
+      "width": 1348,
+      "height": 926,
+      "sha256": "6128636f2592b87e9a539b2a7e0483c26e6af601347ee8fff51ec33570ea4bf2"
+    },
+    {
+      "scenario": "driving",
+      "file": "arrival-rc3-final-web-driving.jpg",
+      "bytes": 47829,
+      "width": 1363,
+      "height": 936,
+      "sha256": "1d9ebf861a925d094907108a7ec8dd224fd98db50c768070c255448ad203ec6b",
+      "identical_to_historical_capture": "arrival-rc2-final-web-driving.jpg",
+      "fresh_capture_observation": "Primary agent repeated direct auditorium selection, 1.65 m height, all three reviews, confirmation and driving-button activation in the current RC3 browser session, then saved this viewport image."
+    },
+    {
+      "scenario": "conflict",
+      "file": "arrival-rc3-final-web-conflict.jpg",
+      "bytes": 89414,
+      "width": 1348,
+      "height": 926,
+      "sha256": "ef2da17e148597434be1736ac66b2beaa82786d65584dafde38d591b9262faf9"
+    },
+    {
+      "scenario": "closed",
+      "file": "arrival-rc3-final-web-closed.jpg",
+      "bytes": 92367,
+      "width": 1348,
+      "height": 926,
+      "sha256": "fd42637b8d45063feade72806aa9a06837e20a3e72e211517500366c948d1c9a"
+    },
+    {
+      "scenario": "context",
+      "file": "arrival-rc3-web-context.jpg",
+      "bytes": 116323,
+      "width": 1363,
+      "height": 936,
+      "sha256": "05a205dc633983bb3b951449fb6c35743ae12b749b147c8e3e8c7ef49c46d7d9"
+    }
+  ],
+  "source_sha256": {
+    "dist/arrival/engine.mjs": "8e4860de73d077058e32abce43c84e6229d392de65c215608202da6b010c7633",
+    "dist/arrival/visit.mjs": "ebdbbde21ad35e83c4c010f41e9863350d7765919d4a947aec0686e154fa7d3d",
+    "dist/arrival/app.mjs": "976bd08be69f05486cb8afc8dea68c561d77c5b0a1c299b1916ec2910258ab2f",
+    "dist/arrival/index.html": "97e49ee3c92312c33f705de042ff879d7ea48b59ed9aeff73a2a09d84a060840",
+    "dist/arrival/style.css": "dba480b366483c76535b3d7e52dc68443c338e00dd75090cadbd12229ae19124",
+    "dist/design.css": "70d315c5e0270e65fce171c2003d8b9a0138616205a554ab763a7bb65b4a7f39"
+  },
+  "historical_web_media_archived": [
+    {
+      "file": "dist/assets/media/arrival-reel-rc2.mp4",
+      "bytes": 284136,
+      "sha256": "4d1604b01724a5ba848952134821df97860e0fd1206ebf2991c2ab110ee7ba71"
+    },
+    {
+      "file": "dist/assets/media/arrival-poster-rc2.jpg",
+      "bytes": 47164,
+      "sha256": "d853acd87fc6753b0f45dad1c4c9aeb65aebe84f747b980c00dd6d468548c1d6"
+    },
+    {
+      "file": "dist/assets/media/arrival-metadata-rc2.json",
+      "bytes": 2889,
+      "sha256": "4ba5b0ac2af2483e31c4ccff2e60694bc70481f2e6785d5778a8c3498cc36eac"
+    },
+    {
+      "file": "dist/assets/media/arrival-reel-rc2.vtt",
+      "bytes": 734,
+      "sha256": "50cb814178f745c98bce047a2aa8611c9772858bedc0098585f18a117000a658"
+    },
+    {
+      "file": "dist/assets/media/arrival-confirm-reel-rc2.mp4",
+      "bytes": 323124,
+      "sha256": "565358cf948eda9cf4c294bad00085f63f712199be7200f5d9fb983fc13d8967"
+    },
+    {
+      "file": "dist/assets/media/arrival-confirm-poster-rc2.jpg",
+      "bytes": 37535,
+      "sha256": "e7fe9f8e21e1b6a88bc7e291e1b911e30c2161b8beefcd75ec4fcc933c8d5dfe"
+    },
+    {
+      "file": "dist/assets/media/arrival-confirm-metadata-rc2.json",
+      "bytes": 2882,
+      "sha256": "86ef8250347a536a2f0b51dbc4bd4be3454539becbfd27cb2f69adc1d97bd5f8"
+    },
+    {
+      "file": "dist/assets/media/arrival-confirm-reel-rc2.vtt",
+      "bytes": 736,
+      "sha256": "e498cac49ae75b66185a1a9fc612c80512b9757c3d3d0833d4b6cd4e7e32727a"
+    }
+  ],
+  "limitations": [
+    "Browser simulation does not verify a physical vehicle or Pleos services.",
+    "These are actual UI still captures, not a continuous screen recording.",
+    "The past-tense event-ended UI case was not completed in this capture pass and is not claimed here.",
+    "The driving view is visually unchanged and its bytes match the historical RC2 image; the current-version claim additionally rests on a freshly repeated RC3 UI execution and recapture, rather than image appearance alone."
+  ]
+}

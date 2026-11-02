@@ -4,7 +4,7 @@
 
 ## 두 가지 전달 자료
 
-- 익명 검토 ZIP: 앱 소스, APK, 웹 체험, 영상 3편, 검증 기록과 출처를 포함합니다. 개인 GitHub 링크를 지우고 연락처·서명키·빌드 캐시·과거 debug APK는 제외합니다. 외부 라이선스와 원저작자 표시는 보존합니다. 외부 디자인 근거와 모의 전문가 검토 기록도 포함하되, 공식 심사 결과나 사용자 조사로 표현하지 않습니다. 임시 QA 페이지는 포함하지 않습니다.
+- 익명 검토 ZIP: 앱 소스, APK, 웹 체험, 영상, 검증 기록·사업 가설·운영자용 안내 준비 묶음과 출처를 포함합니다. 개인 GitHub 링크를 지우고 연락처·서명키·빌드 캐시·과거 debug APK는 제외합니다. 외부 라이선스와 원저작자 표시는 보존합니다. 외부 디자인 근거와 모의 전문가 검토 기록도 포함하되, 공식 심사 결과나 사용자 조사로 표현하지 않습니다. 임시 QA 페이지는 포함하지 않습니다.
 - 운영용 체크리스트: 실제 개인 저장소 주소, APK 경로, 파일 해시와 본인/운영 확인 항목을 기록합니다. 익명 ZIP에는 포함하지 않습니다.
 
 공개 저장소의 소스와 APK는 별도 계정 초대 없이 열 수 있습니다. 실제 저장소 링크는 운영 접수 이메일에 기재하고, 심사용 ZIP에서는 신청자 식별 정보를 제외합니다. 이 분리 자체가 운영 측의 익명 심사 승인을 뜻하지는 않습니다. GitHub 링크도 함께 제공하며 ZIP 단독 제출로 대체하지 않습니다.
@@ -31,21 +31,34 @@ python scripts/check-paths.py --static-root dist
 python scripts/package-submission.py --verify /absolute/path/to/ArrivalBrief-review-VERSION.zip
 ```
 
-익명 ZIP은 전송 용량을 줄이기 위해 APK를 한 번만 넣고, 현재 후보의 캡처·직접 참조하는 증거·30초 편집 영상 3편과 검증 결과를 중심으로 구성합니다. 이전 캡처와 연속 원본 영상은 전체 운영 ZIP의 `evidence-history/`와 공개 저장소의 개별 파일에 별도로 보존합니다. 앱 소스와 APK 바이트를 수정하지 않으며, 제외 파일의 원래 경로·보존 경로·해시는 ZIP의 `PACKAGE-CONTENTS.md` 및 manifest에 기록합니다.
+익명 ZIP은 전송 용량을 줄이기 위해 APK를 한 번만 넣고, 현재 후보의 캡처·직접 참조하는 증거·30초 편집 영상 3편과 검증 결과를 중심으로 구성합니다. RC3에는 실제 서명 release 과업의 연속 시연도 별도 metadata로 구분합니다. 같은 현재 PNG의 친숙한 파일명 사본은 원본 한 곳으로 재연결하며 픽셀을 바꾸지 않습니다. 이전 캡처·큰 원문 로그, 연속 원본 영상과 파생 분석 프레임·overview는 전체 운영 ZIP의 `evidence-history/`와 공개 저장소의 개별 파일에 별도로 보존합니다. 현재 갤러리의 개별 원본 화면과 영상4편은 검토 ZIP에 포함합니다. 검증 JSON은 서로 원본 해시를 참조하므로 바이트와 원래 경로를 유지하고 별도 제공·중복 경로는 manifest에서 찾습니다. 앱 소스와 APK 바이트를 수정하지 않으며, 제외 파일의 원래 경로·보존 경로·해시는 ZIP의 `PACKAGE-CONTENTS.md` 및 manifest에 기록합니다.
 
 ZIP 안의 `SUBMISSION-MANIFEST.json`은 파일별 크기·SHA-256과 앱 소스 목록을 담습니다. 검사는 ZIP의 앱 소스가 현재 작업 폴더와 같은지도 비교합니다. 이 비교는 소스 전달 누락과 변경을 찾는 것이며 APK의 비트 단위 재현 빌드나 실제 Pleos 실행을 증명하지 않습니다.
 
 검토 ZIP을 풀고 저장소 최상위에서 `python -m http.server 8000 --bind 127.0.0.1`을 실행하면 웹 체험과 다운로드를 열 수 있습니다. 정적 배포는 `dist`를 루트로 사용합니다. 실제 HTTP 검사에서는 내려받은 APK의 SHA-256도 원본과 같아야 합니다.
 
+## 운영자용 자료 실행
+
+[행사 운영자용 준비 묶음](../examples/organizer/README.md)은 안내문 양식·검토표·확대 조건과 합성 예시를 포함합니다. 실제 제휴나 참가자 배포를 완료했다는 뜻은 아닙니다.
+
+```sh
+node scripts/check-organizer-examples.mjs
+node scripts/evaluate-arrival-scenarios.mjs . /tmp/arrival-scenarios.json
+```
+
+두 검사는 공개 입력과 현재 웹 엔진의 동작을 재현합니다. 실제 사용자 효과나 독립된 미관측 평가셋의 정확도로 표현하지 않습니다.
+
 ## 최종 확인
 
 운영 제출용 APK는 공식 형식인 `참가명_앱이름_release.apk`를 사용하고, 익명 검토 ZIP에는 `ArrivalBrief_release.apk`로 넣습니다. 파일명은 달라도 바이트와 서명이 같아야 합니다. 실제 파일명·해시는 운영용 제출 목록에서 대조합니다.
 
-현재 후보 버전은 `1.0.0-rc2`입니다. 기능·검증의 한계는 [제품 범위](PRODUCT_SCOPE.md)와 [검증 기록](HYUNDAI_VERIFICATION.md)에 함께 기록합니다.
+현재 후보 버전은 `1.0.0-rc3`입니다. 기능·검증의 한계는 [제품 범위](PRODUCT_SCOPE.md)와 [검증 기록](HYUNDAI_VERIFICATION.md)에 함께 기록합니다.
 
-두 웹 영상은 `1.0.0-rc2`의 실제 화면 캡처를 편집한 자료입니다. 각각 30초·1280×720이며 도착 준비·확정·주행 시뮬레이션, 공식 자료 상충과 운영 제한에 따른 보류를 보여줍니다. 웹의 차량 상태는 시뮬레이션이며 연속 녹화·실차 촬영·Pleos 서비스 응답의 증거가 아닙니다. 영상 metadata에 정확한 버전·캡처 방식·소스 해시를 기록하며 일반 Android·Pleos 검증과 구분합니다.
+두 웹 영상은 `1.0.0-rc3`의 실제 화면 캡처를 편집한 자료입니다. 각각 30초·1280×720이며 도착 준비·확정·주행 시뮬레이션, 공식 자료 상충과 운영 제한에 따른 보류를 보여줍니다. 웹의 차량 상태는 시뮬레이션이며 연속 녹화·실차 촬영·Pleos 서비스 응답의 증거가 아닙니다. 영상 metadata에 정확한 버전·캡처 방식·소스 해시를 기록하며 일반 Android·Pleos 검증과 구분합니다.
 
-새 Android 검증 영상 `arrival-native-validation.mp4`는 현재 후보의 일반 Android debug 자동 UI 시험에서 얻은 실제 화면 5장면을 편집한 30초 자료입니다. 확정·자료 상충·메모 복구·QR·주행 잠금을 보여줍니다. 연속 화면 녹화, Pleos 서비스 성공, 휴대폰 광학 스캔의 증거는 아닙니다. APK·캡처의 정확한 버전과 해시는 영상 metadata와 런타임 기록을 따릅니다.
+Android 편집 영상 `arrival-native-validation.mp4`는 현재 후보의 일반 Android debug 자동 UI 시험에서 얻은 실제 화면 5장면을 편집한 30초 자료입니다. 확정·자료 상충·메모 복구·QR·주행 잠금을 보여줍니다. 연속 화면 녹화, Pleos 서비스 성공, 휴대폰 광학 스캔의 증거는 아닙니다. APK·캡처의 정확한 버전과 해시는 영상 metadata와 런타임 기록을 따릅니다.
+
+실제 서명 release의 [arrival-native-journey 연속 시연](../dist/assets/media/arrival-native-journey.mp4)은 debug 편집 영상과 구분합니다. 단일 screenrecord의 VFR 원본에서 7개 UI 상태의 순서를 대조했으며 공개본은 98.25초로 원본98.1939초의 인코딩 타임라인을 보존합니다. helper 벽시계 110.511초와 다른 값으로 동작 속도 측정이 아닙니다. [영상 metadata](../dist/assets/media/arrival-native-journey.json)와 런타임 `release_scenario`는 APK·원본·배포 영상·관측 단계의 해시, 촬영 host 종료 코드 1 및 사후 검증 범위를 함께 기록합니다.
 
 공식 기준: [제출 안내](https://appdevchallenge.auto-hmg.io/guide/submission), [FAQ](https://appdevchallenge.auto-hmg.io/faq), [심사 기준](https://appdevchallenge.auto-hmg.io/guide/judging-awards).
 

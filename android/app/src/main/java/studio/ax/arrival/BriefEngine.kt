@@ -1,7 +1,7 @@
 package studio.ax.arrival
 
 data class Destination(val id:String,val name:String,val floor:String,val gate:String,val parking:String,val patterns:List<Regex>)
-data class Decision(val status:String,val message:String,val candidates:List<Destination> = emptyList(),val destination:Destination?=null,val height:Double?=null,val parkingNotes:List<String> = emptyList(),val unparsedParkingNotes:List<String> = emptyList(),val entryNotes:List<String> = emptyList(),val facilityNotes:List<String> = emptyList(),val eventNotes:List<String> = emptyList())
+data class Decision(val status:String,val message:String,val candidates:List<Destination> = emptyList(),val destination:Destination?=null,val height:Double?=null,val parkingNotes:List<String> = emptyList(),val unparsedParkingNotes:List<String> = emptyList(),val entryNotes:List<String> = emptyList(),val facilityNotes:List<String> = emptyList(),val eventNotes:List<String> = emptyList(),val scheduleNotes:List<String> = emptyList(),val registrationNotes:List<String> = emptyList())
 object BriefEngine {
  const val SOURCE="https://business.coex.co.kr/guide/conference-room-parking-information/general-vehicle/"
  const val CONFLICT_SOURCE="https://business.coex.co.kr/post-meeting-notice/%EC%95%88%EB%82%B4%EC%9E%90%EB%A3%8C-%EC%BD%94%EC%97%91%EC%8A%A4-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%99%94%EB%AC%BC%EC%B0%A8-%EC%A7%84%EC%9E%85-%EC%95%BD%EB%8F%84/"
@@ -89,11 +89,23 @@ object BriefEngine {
  // The subject is often omitted after a venue line; keep completion clauses for review.
  private val subjectlessCompletion=Regex("""종료|끝(?:났|나|납|난|낼|냅)|마쳤|완료|(?<![A-Za-z0-9_])(?:ended|ending|ends|completed|finished|concluded)(?![A-Za-z0-9_])|(?<![A-Za-z0-9_])(?:it|this|that)\s*(?:is|was|'s|’s)\s+over(?![A-Za-z0-9_])""",RegexOption.IGNORE_CASE)
  private val knownHeightNotice=Regex("""^(?:(?:(?:코엑스|시설)(?:의)?\s*)?(?:(?:지하\s*)?주차장\s*)?(?:차량\s*)?(?:진입\s*)?제한\s*높이\s*[:：]?\s*2\.20?\s*(?:m|미터)(?:입니다)?|(?:(?:facility|parking|car\s+park)\s+)?(?:(?:entry|entrance|access|drive[\s-]?in)\s+)?(?:height\s+limit|maximum\s+height)\s*[:：]?\s*2\.20?\s*m)[.!。]?$""",RegexOption.IGNORE_CASE)
- private data class NoticeParts(val venueText:String,val parkingNotes:List<String>,val unparsedParkingNotes:List<String>,val entryNotes:List<String>,val facilityNotes:List<String>,val eventNotes:List<String>)
+ // A strict same-day timetable is a note, never evidence of current occurrence.
+ // Keep the untouched input for facility/change/operating checks below.
+ private val scheduleNotice=Regex("""^행사는\s*([01]?\d|2[0-3]):([0-5]\d)에\s*시작하여\s*([01]?\d|2[0-3]):([0-5]\d)에\s*종료됩니다[.。]?$""")
+ private val registrationNotice=Regex("""^(?:참가\s*)?등록은\s*[1-4]층\s*로비에서\s*진행합니다[.。]?$""")
+ private val registrationLocation=Regex("""^(?:참가\s*)?등록(?:\s*(?:장소|위치|층))?\s*(?:은|는|이|가|을|를|[:：])|등록[\s\S]*(?:층|로비)|(?:층|로비)[\s\S]*등록""")
+ private fun isScheduleNotice(clause:String):Boolean {
+  val match=scheduleNotice.matchEntire(clause) ?: return false
+  val g=match.groupValues
+  return g[1].toInt()*60+g[2].toInt()<g[3].toInt()*60+g[4].toInt()
+ }
+ private data class NoticeParts(val venueText:String,val parkingNotes:List<String>,val unparsedParkingNotes:List<String>,val entryNotes:List<String>,val facilityNotes:List<String>,val eventNotes:List<String>,val scheduleNotes:List<String>,val registrationNotes:List<String>)
  private fun noticeParts(text:String):NoticeParts {
-  val notes=mutableListOf<String>(); val unparsed=mutableListOf<String>();val entries=mutableListOf<String>();val facilities=mutableListOf<String>();val events=mutableListOf<String>();val venues=mutableListOf<String>()
+  val notes=mutableListOf<String>(); val unparsed=mutableListOf<String>();val entries=mutableListOf<String>();val facilities=mutableListOf<String>();val events=mutableListOf<String>();val schedules=mutableListOf<String>();val registrations=mutableListOf<String>();val venues=mutableListOf<String>()
   for(original in text.split(Regex("""\r?\n|(?<=[.!?。])\s+"""))){
    val clause=original.trim().replace(Regex("""^[-•]\s*"""),"")
+   if(isScheduleNotice(clause)){schedules.add(original.trim());continue}
+   if(registrationNotice.matches(clause)){registrations.add(original.trim());continue}
    if(knownHeightNotice.matches(clause)){venues.add(original);continue}
    val labelled=Regex("""^(?:주차(?:\s*(?:안내|정보|구역))?|parking(?:\s*(?:info|information))?)(?:\s*[:：]\s*|\s*는\s*|\s+)""",RegexOption.IGNORE_CASE).find(clause)
    val locationFirst=Regex("""^(?:지하\s*[1-9]\d*\s*(?:층|F\b)|B[1-9]\d*\s*(?:층|F(?![A-Za-z0-9])|(?![A-Za-z0-9])))""",RegexOption.IGNORE_CASE).containsMatchIn(clause)&&clause.contains("주차장")
@@ -107,10 +119,10 @@ object BriefEngine {
     if(parkingReference.containsMatchIn(clause))unparsed.add(original.trim())
     if(accessOperation.containsMatchIn(clause))entries.add(original.trim())
     if(facilityOperation.containsMatchIn(clause))facilities.add(original.trim())
-    if(subjectlessCompletion.containsMatchIn(clause)||eventStatusReference.containsMatchIn(clause)||(eventSubject.containsMatchIn(clause)&&(eventNegation.containsMatchIn(clause)||eventLifecycle.containsMatchIn(clause))))events.add(original.trim())
+    if(registrationLocation.containsMatchIn(clause)||subjectlessCompletion.containsMatchIn(clause)||eventStatusReference.containsMatchIn(clause)||(eventSubject.containsMatchIn(clause)&&(eventNegation.containsMatchIn(clause)||eventLifecycle.containsMatchIn(clause))))events.add(original.trim())
    }
   }
-  return NoticeParts(venues.joinToString("\n"),notes,unparsed,entries,facilities,events)
+  return NoticeParts(venues.joinToString("\n"),notes,unparsed,entries,facilities,events,schedules,registrations)
  }
  private fun parkingNotesAgree(notes:List<String>,destination:Destination):Boolean {
   val expectedFloor=destination.parking.substringAfter('B').takeWhile { it.isDigit() }.toInt()
@@ -134,6 +146,8 @@ object BriefEngine {
   if(text.isBlank()||text.length>10000)return Decision("invalid","행사 안내를 10,000자 이내로 입력하세요.")
   if(!Regex("코엑스|\\bcoex\\b",RegexOption.IGNORE_CASE).containsMatchIn(text)||Regex("마곡|\\bmagok\\b",RegexOption.IGNORE_CASE).containsMatchIn(text))return Decision("unsupported","현재 코엑스 삼성동 회의실만 지원합니다.")
   val parts=noticeParts(text); val venueText=parts.venueText
+  if(parts.scheduleNotes.distinct().size>1||parts.registrationNotes.distinct().size>1)return Decision("review","서로 다른 일정 또는 등록 안내가 함께 있습니다. 이번 방문의 시간표와 등록 장소를 원문에서 직접 확인하세요.",scheduleNotes=parts.scheduleNotes,registrationNotes=parts.registrationNotes)
+  if(parts.eventNotes.any { registrationLocation.containsMatchIn(it.replace(Regex("""^[-•]\s*"""),"")) })return Decision("review","등록 장소와 다른 일정의 안내를 명확히 구분할 수 없습니다. 등록 장소의 시설·층과 실제 행사장을 원문에서 직접 확인하고, 다른 시설·제약 정보를 임의로 생략하지 마세요.",eventNotes=parts.eventNotes,scheduleNotes=parts.scheduleNotes,registrationNotes=parts.registrationNotes)
   if(parts.unparsedParkingNotes.isNotEmpty()||parts.entryNotes.isNotEmpty()||parts.facilityNotes.isNotEmpty()||parts.eventNotes.isNotEmpty())return Decision("review","해석하지 못한 행사 상태·시설 운영·주차·출입 안내가 있습니다. 실제 현장 개최 여부와 이용 가능 상태를 주최 측·시설의 최신 안내로 확인하세요. 원문 정보를 임의로 바꾸거나 생략하지 마세요.",parkingNotes=parts.parkingNotes,unparsedParkingNotes=parts.unparsedParkingNotes,entryNotes=parts.entryNotes,facilityNotes=parts.facilityNotes,eventNotes=parts.eventNotes)
   if(otherFacility.containsMatchIn(text)||noticeChange.containsMatchIn(text)||hasConflictingVenueClaims(text)||hasUnownedVenueMentions(text))return Decision("review","다른 시설, 장소 변경·취소 또는 시설 귀속이 확인되지 않은 장소 안내가 있습니다. 현재 방문할 장소를 코엑스 세부장소 층으로 확인하고, 원문의 다른 시설·제약 정보를 임의로 생략하지 마세요.")
   if(Regex("""호텔|\bhotel\b|인터컨티넨탈|intercontinental|파르나스|parnas|웨스틴|westin|(?:코엑스|\bcoex\b).{0,20}(?:인근|근처|주변|맞은편|건너편)|(?:인근|근처|주변|맞은편|건너편).{0,20}(?:코엑스|\bcoex\b)|\b(?:near|nearby|opposite|across\s+from)\b.{0,25}\bcoex\b|\bcoex\b.{0,25}\b(?:near|nearby|opposite|across\s+from)\b""",setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL)).containsMatchIn(text))return Decision("review","코엑스 외부 또는 호텔을 가리키는 표현이 있습니다. 코엑스 삼성동 내부 행사장인지 확인하세요.")
@@ -165,11 +179,13 @@ object BriefEngine {
   if(h==null||!h.isFinite()||h<1.0||h>5.0)return Decision("invalid","전체 높이를 1.00~5.00m 범위의 숫자로 입력하세요. 단위 없이 소수점 둘째 자리까지 입력할 수 있습니다.",destination=d)
   if(h>2.2)return Decision("blocked","차량 높이가 시설 제한 2.2m를 초과합니다. 이 주차 동선을 사용하지 마세요.",destination=d,height=h)
   if(d.id in conflictingIds)return Decision("source_conflict","공식 자료의 주차 구역이 서로 다릅니다. ${d.name} 주차 브리핑은 확정할 수 없습니다. 코엑스 현장 안내로 확인하세요.",destination=d,height=h)
-  return Decision("ready",if(h==2.2)"제한 높이와 같습니다. 현장 표지와 적재물을 확인하세요." else "지원 목록의 장소명 후보를 찾았습니다. 현재 행사장이 맞는지 안내문 원본을 직접 확인하세요.",destination=d,height=h,parkingNotes=parts.parkingNotes)
+  return Decision("ready",if(h==2.2)"제한 높이와 같습니다. 현장 표지와 적재물을 확인하세요." else "지원 목록의 장소명 후보를 찾았습니다. 현재 행사장이 맞는지 안내문 원본을 직접 확인하세요.",destination=d,height=h,parkingNotes=parts.parkingNotes,scheduleNotes=parts.scheduleNotes,registrationNotes=parts.registrationNotes)
  }
  fun export(d:Decision):String {
   require(d.status=="ready")
   val p=d.destination!!
-  return "Arrival Brief\n코엑스 ${p.name} (${p.floor})\n진입구: ${p.gate}\n추천 주차: ${p.parking}\n차량 전체 높이: ${d.height}m / 시설 제한 2.2m\n${d.message}\n\n실시간 빈자리·입구 좌표·실내 동선·승객 하차 지점은 제공하지 않습니다. 현장 표지와 안내를 우선하세요.\n\n코엑스 공식 회의실 주차안내\n$SOURCE\n자료 확인: $VERIFIED_DATE\n"
+  val notes=d.scheduleNotes.map { "일정 안내 원문: $it\n시간표만 구분한 것이며 현재 개최 여부를 확인한 결과가 아닙니다." }+d.registrationNotes.map { "등록 안내 원문: $it\n등록층은 행사장 층과 구분한 안내이며 실내 이동 경로가 아닙니다." }
+  val noteText=if(notes.isEmpty()) "" else "\n\n"+notes.joinToString("\n\n")
+  return "Arrival Brief\n코엑스 ${p.name} (${p.floor})\n진입구: ${p.gate}\n추천 주차: ${p.parking}\n차량 전체 높이: ${d.height}m / 시설 제한 2.2m\n${d.message}\n\n실시간 빈자리·입구 좌표·실내 동선·승객 하차 지점은 제공하지 않습니다. 현장 표지와 안내를 우선하세요.$noteText\n\n코엑스 공식 회의실 주차안내\n$SOURCE\n자료 확인: $VERIFIED_DATE\n"
  }
 }

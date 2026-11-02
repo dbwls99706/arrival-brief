@@ -1,0 +1,150 @@
+{
+  "kind": "synthetic-organizer-examples",
+  "description": "기계가 작성한 가상 기능 재현 예시. 실제 행사·운영자 배포·사용자 효용 증거가 아님. reference_gate/level/zone은 정적 후보 데이터이며 보류 사례에서 추천으로 발행하지 않음.",
+  "examples_reviewed_at": "2026-11-02",
+  "dataset_version": "coex-2026-10-30-v2",
+  "sources": {
+    "general": {
+      "url": "https://business.coex.co.kr/guide/conference-room-parking-information/general-vehicle/",
+      "dataset_checked_at": "2026-10-30"
+    },
+    "notice": {
+      "url": "https://business.coex.co.kr/post-meeting-notice/%EC%95%88%EB%82%B4%EC%9E%90%EB%A3%8C-%EC%BD%94%EC%97%91%EC%8A%A4-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%99%94%EB%AC%BC%EC%B0%A8-%EC%A7%84%EC%9E%85-%EC%95%BD%EB%8F%84/",
+      "dataset_checked_at": "2026-10-30",
+      "published_at": "2026-02-11"
+    }
+  },
+  "cases": [
+    {
+      "id": "AB-DEMO-01",
+      "file": "01-auditorium.txt",
+      "destination_id": "auditorium",
+      "policy": "guide-after-review",
+      "source_ids": [
+        "general"
+      ],
+      "expected": {
+        "status": "ready",
+        "reference_gate": "북문",
+        "reference_level": "B3",
+        "reference_zone": "블루존",
+        "can_confirm_after_review": true
+      }
+    },
+    {
+      "id": "AB-DEMO-02",
+      "file": "02-grand.txt",
+      "destination_id": "grand",
+      "policy": "guide-after-review",
+      "source_ids": [
+        "general"
+      ],
+      "expected": {
+        "status": "ready",
+        "reference_gate": "북문",
+        "reference_level": "B3",
+        "reference_zone": "블루존",
+        "can_confirm_after_review": true
+      }
+    },
+    {
+      "id": "AB-DEMO-03",
+      "file": "03-asem.txt",
+      "destination_id": "asem",
+      "policy": "guide-after-review",
+      "source_ids": [
+        "general"
+      ],
+      "expected": {
+        "status": "ready",
+        "reference_gate": "북문",
+        "reference_level": "B3",
+        "reference_zone": "블루존",
+        "can_confirm_after_review": true
+      }
+    },
+    {
+      "id": "AB-DEMO-04",
+      "file": "04-studio159.txt",
+      "destination_id": "studio159",
+      "policy": "guide-after-review",
+      "source_ids": [
+        "general"
+      ],
+      "expected": {
+        "status": "ready",
+        "reference_gate": "동문",
+        "reference_level": "B2",
+        "reference_zone": "퍼플존",
+        "can_confirm_after_review": true
+      }
+    },
+    {
+      "id": "AB-DEMO-05",
+      "file": "05-platz.txt",
+      "destination_id": "platz",
+      "policy": "guide-after-review",
+      "source_ids": [
+        "general"
+      ],
+      "expected": {
+        "status": "ready",
+        "reference_gate": "동문",
+        "reference_level": "B2",
+        "reference_zone": "지하 2층",
+        "can_confirm_after_review": true
+      }
+    },
+    {
+      "id": "AB-DEMO-06",
+      "file": "06-conferencee.txt",
+      "destination_id": "conferenceE",
+      "policy": "hold-source-conflict",
+      "source_ids": [
+        "general",
+        "notice"
+      ],
+      "expected": {
+        "status": "source_conflict",
+        "reference_gate": "동문",
+        "reference_level": "B2",
+        "reference_zone": "퍼플존",
+        "can_confirm_after_review": false
+      }
+    },
+    {
+      "id": "AB-DEMO-07",
+      "file": "07-rooms300.txt",
+      "destination_id": "rooms300",
+      "policy": "hold-source-conflict",
+      "source_ids": [
+        "general",
+        "notice"
+      ],
+      "expected": {
+        "status": "source_conflict",
+        "reference_gate": "동문",
+        "reference_level": "B2",
+        "reference_zone": "그린존",
+        "can_confirm_after_review": false
+      }
+    },
+    {
+      "id": "AB-DEMO-08",
+      "file": "08-rooms400.txt",
+      "destination_id": "rooms400",
+      "policy": "hold-source-conflict",
+      "source_ids": [
+        "general",
+        "notice"
+      ],
+      "expected": {
+        "status": "source_conflict",
+        "reference_gate": "동문",
+        "reference_level": "B2",
+        "reference_zone": "그린존",
+        "can_confirm_after_review": false
+      }
+    }
+  ]
+}

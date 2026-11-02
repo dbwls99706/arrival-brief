@@ -1,0 +1,89 @@
+{
+  "version": "1.0.0-rc3",
+  "checked_utc": "2026-11-02T07:17:01.599930+00:00",
+  "scope": "Decode original full-screen PNG bytes from this exact RC3 run; no crops, resizing, padding or phone camera used.",
+  "release_apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+  "source_qr_sha256": "59a1b3808f059bdf94cec6c9168fd2b1afebd5e58f88ae2f94b2c1af328e796b",
+  "tool_script_sha256": "1074f5c8cf8f2798d7b64e088216a12eeb866b9c92af061ac8bda318eea1cd95",
+  "jsqr_bundle_sha256": "3325b0888fa4745c4e6940897d8c4f426fbaae76901fcbfe1871a04e90a51655",
+  "tool_versions": {
+    "opencv": "4.12.0",
+    "jsqr": "1.4.0"
+  },
+  "screenshots": [
+    {
+      "label": "standard",
+      "path": "docs/verification/android-aosp28-rc3-qr.png",
+      "sha256": "686053c2a9f40f0d7470af86d28ff90ea4f080f01f7ef424086acce257a68956",
+      "build_type": "debug",
+      "apk_sha256": "6130b0f8641ac172dd5a244cf3fe5a1d6922d8c5007717fb2520254dbced1823",
+      "decoded": {
+        "opencv": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 15:35:12 KST\n휴대폰 복사본은 자동 삭제되지 않음.",
+        "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 15:35:12 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+      },
+      "matches_current_payload": {
+        "opencv": true,
+        "jsqr": true
+      },
+      "both_decoders_agree": true,
+      "incorrect_nonempty": {
+        "opencv": false,
+        "jsqr": false
+      }
+    },
+    {
+      "label": "large_font_1_3",
+      "path": "docs/verification/android-aosp28-rc3-large-qr.png",
+      "sha256": "fcbc4c36f70218edf92948c25af9392b6c00c2f3b9b29866be5702478368158e",
+      "build_type": "debug",
+      "apk_sha256": "6130b0f8641ac172dd5a244cf3fe5a1d6922d8c5007717fb2520254dbced1823",
+      "decoded": {
+        "opencv": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 15:41:50 KST\n휴대폰 복사본은 자동 삭제되지 않음.",
+        "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 15:41:50 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+      },
+      "matches_current_payload": {
+        "opencv": true,
+        "jsqr": true
+      },
+      "both_decoders_agree": true,
+      "incorrect_nonempty": {
+        "opencv": false,
+        "jsqr": false
+      }
+    },
+    {
+      "label": "release_journey",
+      "path": "docs/verification/android-aosp28-rc3-release-scenario-qr.png",
+      "sha256": "5c598df643fe01b36ddb4d1fb064aedfd5d6ee927c8abacddf6bd4fddd0c53ef",
+      "build_type": "release",
+      "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+      "decoded": {
+        "opencv": null,
+        "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 16:07:16 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+      },
+      "matches_current_payload": {
+        "opencv": false,
+        "jsqr": true
+      },
+      "both_decoders_agree": false,
+      "incorrect_nonempty": {
+        "opencv": false,
+        "jsqr": false
+      }
+    }
+  ],
+  "summary": {
+    "standard_large_comparisons": 4,
+    "standard_large_pass": 4,
+    "release_comparisons": 2,
+    "release_pass": 1,
+    "all_comparisons": 6,
+    "all_pass": 5,
+    "incorrect_nonempty_decodes": 0
+  },
+  "limitations": [
+    "Software decoder success/failure is separate from physical phone-camera scanning.",
+    "Timestamps are observations from decoder output, not an independent saved-time oracle.",
+    "Existing RC2 3/4 screenshot record and synthetic stress results remain historical and are not replaced by this report."
+  ]
+}

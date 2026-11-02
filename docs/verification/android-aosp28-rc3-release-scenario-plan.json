@@ -1,0 +1,94 @@
+[
+  {
+    "args": [
+      "wait-for-device"
+    ],
+    "timeout": 300,
+    "name": "001-wait"
+  },
+  {
+    "args": [
+      "shell",
+      "until settings put global hide_error_dialogs 1; do sleep 1; done"
+    ],
+    "timeout": 300,
+    "name": "002-hide-os-dialogs"
+  },
+  {
+    "args": [
+      "shell",
+      "while [ \"$(getprop sys.boot_completed)\" != \"1\" ]; do sleep 1; done; getprop sys.boot_completed"
+    ],
+    "timeout": 300,
+    "name": "003-boot"
+  },
+  {
+    "args": [
+      "shell",
+      "for attempt in 1 2 3; do settings put global window_animation_scale 0 && exit 0; sleep 2; done; exit 1"
+    ],
+    "timeout": 300,
+    "name": "004-animation-window",
+    "allowed_failure": true
+  },
+  {
+    "args": [
+      "shell",
+      "for attempt in 1 2 3; do settings put global transition_animation_scale 0 && exit 0; sleep 2; done; exit 1"
+    ],
+    "timeout": 300,
+    "name": "005-animation-transition",
+    "allowed_failure": true
+  },
+  {
+    "args": [
+      "shell",
+      "for attempt in 1 2 3; do settings put global animator_duration_scale 0 && exit 0; sleep 2; done; exit 1"
+    ],
+    "timeout": 300,
+    "name": "006-animation-animator",
+    "allowed_failure": true
+  },
+  {
+    "name": "286-clear-app",
+    "args": [
+      "uninstall",
+      "studio.ax.arrival"
+    ],
+    "timeout": 120
+  },
+  {
+    "name": "330-release-reinstall-for-journey",
+    "args": [
+      "install",
+      "-r",
+      "/workspace/arrival-runtime-rc3/ArrivalBrief_release.apk"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "331-release-journey-package",
+    "args": [
+      "shell",
+      "dumpsys",
+      "package",
+      "studio.ax.arrival"
+    ],
+    "timeout": 120
+  },
+  {
+    "name": "332-release-journey-device-sha",
+    "args": [
+      "shell",
+      "sha256sum $(pm path studio.ax.arrival | cut -d: -f2)"
+    ],
+    "timeout": 60
+  },
+  {
+    "name": "340-release-scenario",
+    "tool": "python",
+    "script": "/workspace/arrival-runtime-rc3/release-scenario.py",
+    "args": [],
+    "timeout": 300
+  }
+]

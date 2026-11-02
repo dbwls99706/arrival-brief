@@ -11,6 +11,7 @@ import android.view.View
 import android.graphics.drawable.BitmapDrawable
 import android.widget.ImageView
 import android.widget.CheckBox
+import android.widget.Button
 import com.google.zxing.BinaryBitmap
 import com.google.zxing.RGBLuminanceSource
 import com.google.zxing.common.HybridBinarizer
@@ -125,18 +126,105 @@ class VisitFlowInstrumentedTest {
         onView(withText("주행")).perform(scrollTo(), click())
         onView(withContentDescription("루프박스와 적재물을 포함한 차량 전체 높이, 미터")).check(matches(not(isDisplayed())))
         onView(withText("브리핑 복사")).check(matches(not(isDisplayed())))
+        onView(withText("안내 수정")).check(matches(not(isDisplayed()))).check(matches(not(isEnabled())))
+        // A queued callback must still honor the current vehicle gate.
+        onView(withText("안내 수정")).perform(object : ViewAction {
+            override fun getDescription() = "Deliver a stale edit click while driving"
+            override fun getConstraints(): org.hamcrest.Matcher<View> = isAssignableFrom(Button::class.java)
+            override fun perform(ui: UiController, view: View) { view.performClick(); ui.loopMainThreadUntilIdle() }
+        })
         onView(withText("주차 위치 기록")).check(matches(not(isDisplayed())))
         onView(withText("공식 안내 주차 구역")).perform(scrollTo()).check(matches(isDisplayed()))
         onView(withSubstring("확정된 브리핑 · 입력 잠금")).perform(scrollTo()).check(matches(isDisplayed()))
         capture("confirmed-driving-locked")
+        onView(withText("미확인")).perform(scrollTo(), click())
+        onView(withText("안내 수정")).check(matches(not(isDisplayed()))).check(matches(not(isEnabled())))
+        onView(withContentDescription("루프박스와 적재물을 포함한 차량 전체 높이, 미터")).check(matches(not(isDisplayed())))
+        onView(withSubstring("확정된 브리핑 · 입력 잠금")).perform(scrollTo()).check(matches(isDisplayed()))
         onView(withText("정차")).perform(scrollTo(), click())
-        onView(withText("안전하게 주차한 상태입니다.")).perform(scrollTo(), click())
+        onView(withContentDescription("루프박스와 적재물을 포함한 차량 전체 높이, 미터")).check(matches(not(isDisplayed())))
         onView(withText("브리핑 복사")).perform(scrollTo()).check(matches(not(isEnabled())))
         onView(withText("목적지 24시간 보관")).perform(scrollTo()).check(matches(not(isEnabled())))
         capture("return-checks-required")
+        onView(withText("안내 수정")).perform(scrollTo(), click())
+        onView(withText("적재물을 포함한 전체 높이를 확인했습니다.")).check(matches(not(isChecked())))
+        onView(withText("안전하게 주차한 상태입니다.")).check(matches(not(isChecked())))
+        onView(withText("‘오디토리움’이 현재 유효한 행사의 실제 방문 장소임을 확인했습니다.")).check(matches(not(isChecked())))
+        onView(withText("브리핑 복사")).check(matches(not(isDisplayed())))
+        onView(withText("도착 브리핑 확정")).perform(scrollTo()).check(matches(not(isEnabled())))
+        onView(withText("안전하게 주차한 상태입니다.")).perform(scrollTo(), click())
+        onView(withText("적재물을 포함한 전체 높이를 확인했습니다.")).perform(scrollTo(), click())
+        onView(withText("도착 브리핑 확정")).perform(scrollTo()).check(matches(not(isEnabled())))
         onView(withText("‘오디토리움’이 현재 유효한 행사의 실제 방문 장소임을 확인했습니다.")).perform(scrollTo(), click())
+        onView(withText("도착 브리핑 확정")).perform(scrollTo()).check(matches(isEnabled())).perform(click())
         onView(withText("브리핑 복사")).perform(scrollTo()).check(matches(isEnabled()))
         onView(withText("목적지 24시간 보관")).perform(scrollTo()).check(matches(isEnabled()))
+    }
+    @Test fun confirmedPassFocusesTheResultAndEditingRequiresAllChecksAgain() {
+        scenario = ActivityScenario.launch(MainActivity::class.java)
+        enterDemo()
+        onView(withText("행사 안내문으로 찾기")).perform(scrollTo(), click())
+        onView(withContentDescription("행사 장소 안내")).perform(scrollTo(), replaceText("코엑스"), closeSoftKeyboard())
+        onView(withText("회의실 선택")).perform(scrollTo(), click())
+        onView(withText("스튜디오 159 · 2F")).perform(click())
+        reviewAndConfirmPreparation()
+        onView(withText("회의실 선택")).check(matches(not(isDisplayed())))
+        onView(withContentDescription("루프박스와 적재물을 포함한 차량 전체 높이, 미터")).check(matches(not(isDisplayed())))
+        onView(withText("동문")).check(matches(isCompletelyDisplayed()))
+        onView(withText("B2 퍼플존")).check(matches(isCompletelyDisplayed()))
+        onView(withText("안내 수정")).perform(scrollTo()).check(matches(isEnabled()))
+        capture("confirmed-focused-pass")
+        onView(withText("안내 수정")).perform(click())
+        onView(withContentDescription("행사 장소 안내")).check(matches(withText("코엑스")))
+        onView(withText("스튜디오 159")).perform(scrollTo()).check(matches(isDisplayed()))
+        onView(withContentDescription("루프박스와 적재물을 포함한 차량 전체 높이, 미터")).check(matches(withText("1.65")))
+        onView(withText("적재물을 포함한 전체 높이를 확인했습니다.")).check(matches(not(isChecked())))
+        onView(allOf(isAssignableFrom(CheckBox::class.java), withText(containsString("현재 유효")))).check(matches(not(isChecked())))
+        onView(withText("안전하게 주차한 상태입니다.")).check(matches(not(isChecked())))
+        onView(withText("브리핑 복사")).check(matches(not(isDisplayed())))
+        onView(withText("안내 수정")).check(matches(not(isDisplayed())))
+        onView(withText("도착 브리핑 확정")).perform(scrollTo()).check(matches(not(isEnabled())))
+        capture("focused-pass-edit-requires-review")
+        reviewAndConfirmPreparation()
+        onView(withText("동문")).check(matches(isCompletelyDisplayed()))
+        onView(withText("B2 퍼플존")).check(matches(isCompletelyDisplayed()))
+        onView(withText("브리핑 복사")).perform(scrollTo()).check(matches(isEnabled()))
+    }
+    private fun reviewAndConfirmPreparation() {
+        onView(withText("적재물을 포함한 전체 높이를 확인했습니다.")).perform(scrollTo(), click())
+        onView(allOf(isAssignableFrom(CheckBox::class.java), withText(containsString("현재 유효")))).perform(scrollTo(), click())
+        onView(withText("안전하게 주차한 상태입니다.")).perform(scrollTo(), click())
+        onView(withText("도착 브리핑 확정")).perform(scrollTo()).check(matches(isEnabled())).perform(click())
+    }
+    @Test fun scheduledEndingAndRegistrationFloorPreserveOriginalNotesWithoutBlockingTheVenue() {
+        data class NoticeExample(val notice: String, val note: String, val heading: String, val place: String, val evidence: String)
+        val examples = listOf(
+            NoticeExample("정기총회 안내\n장소: 코엑스 그랜드볼룸 1층\n행사는 10:00에 시작하여 18:00에 종료됩니다.",
+                "행사는 10:00에 시작하여 18:00에 종료됩니다.", "일정 안내 · 현재 개최 여부는 직접 확인", "그랜드볼룸", "scheduled-ending-original-retained"),
+            NoticeExample("학술대회 안내\n장소: 코엑스 아셈볼룸 2층\n참가 등록은 1층 로비에서 진행합니다.",
+                "참가 등록은 1층 로비에서 진행합니다.", "등록 안내 · 행사장과 구분", "아셈볼룸", "registration-floor-original-retained")
+        )
+        examples.forEachIndexed { index, example ->
+            if (index > 0) scenario.close()
+            scenario = ActivityScenario.launch(MainActivity::class.java)
+            enterDemo()
+            onView(withText("행사 안내문으로 찾기")).perform(scrollTo(), click())
+            onView(withContentDescription("행사 장소 안내")).perform(scrollTo(), replaceText(example.notice), closeSoftKeyboard())
+            onView(withText(example.place)).perform(scrollTo()).check(matches(isDisplayed()))
+            reviewAndConfirmPreparation()
+            onView(withContentDescription("행사 장소 안내")).check(matches(not(isDisplayed())))
+            onView(withText("북문")).check(matches(isCompletelyDisplayed()))
+            onView(withText("B3 블루존")).check(matches(isCompletelyDisplayed()))
+            onView(withText("일정·등록 원문 보기")).perform(scrollTo(), click())
+            onView(withText(example.heading)).perform(scrollTo()).check(matches(isDisplayed()))
+            onView(withText(example.note)).perform(scrollTo()).check(matches(isDisplayed()))
+            capture(example.evidence)
+            onView(withText("일정·등록 원문 접기")).perform(scrollTo(), click())
+            onView(withText(example.note)).check(matches(not(isDisplayed())))
+            onView(withText("안내 수정")).perform(scrollTo(), click())
+            onView(withContentDescription("행사 장소 안내")).perform(scrollTo()).check(matches(withText(example.notice)))
+            onView(withText("도착 브리핑 확정")).perform(scrollTo()).check(matches(not(isEnabled())))
+        }
     }
     @Test fun conflictingSourcesShowBothValuesAndPreventConfirmation() {
         scenario = ActivityScenario.launch(MainActivity::class.java)
@@ -375,10 +463,19 @@ class VisitFlowInstrumentedTest {
     @Test fun warmShareKeepsCurrentDraftUntilExplicitImport() {
         scenario = ActivityScenario.launch(MainActivity::class.java)
         enterDemo()
+        reviewAndConfirmPreparation()
         scenario.onActivity { it.startActivity(share("코엑스 스튜디오 159 2층 행사").addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)) }
         onView(withText("데모 상태 변경")).perform(scrollTo(), click())
         onView(withText("정차")).perform(scrollTo(), click())
         onView(withText("공유한 행사 안내 가져오기")).check(matches(not(isEnabled())))
-        onView(withText("오디토리움")).perform(scrollTo()).check(matches(isDisplayed()))
+        onView(withText("오디토리움  3F")).perform(scrollTo()).check(matches(isDisplayed()))
+        onView(withText("회의실 선택")).check(matches(not(isDisplayed())))
+        onView(withText("브리핑 복사")).perform(scrollTo()).check(matches(not(isEnabled())))
+        onView(withText("공유한 안내를 가져오기 전, 안전하게 주차했어요.")).perform(scrollTo(), click())
+        onView(withText("공유한 행사 안내 가져오기")).perform(scrollTo(), click())
+        onView(withText("스튜디오 159")).perform(scrollTo()).check(matches(isDisplayed()))
+        onView(withContentDescription("루프박스와 적재물을 포함한 차량 전체 높이, 미터")).check(matches(withText("")))
+        onView(withText("안내 수정")).check(matches(not(isDisplayed())))
+        onView(withText("도착 브리핑 확정")).perform(scrollTo()).check(matches(not(isEnabled())))
     }
 }

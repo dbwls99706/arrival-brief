@@ -1,0 +1,7 @@
+{
+  "scope": "Separate self-targeted UI automation tool; not part of the production APK",
+  "java_sha256": "cba695a4b7151779c02c8ea6acc67b92d66740d16b16043403914b9ff3a8a2fa",
+  "manifest_sha256": "7d4a61274d020942534f34f02120c07abb58053dfcaa64910b948232f82cce60",
+  "apk_sha256": "9deadf69bd80ba62f635f5561d45846973edb4266a01753270fe69dad5c2fc62",
+  "bytes": 24919
+}

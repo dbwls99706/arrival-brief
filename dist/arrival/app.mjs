@@ -20,6 +20,13 @@ function reviewExcerpts(brief){
  if(!notes.length)return '';
  return `<section class="review-excerpts" aria-label="확인이 필요한 원문"><h4>확인이 필요한 원문</h4>${notes.slice(0,3).map(note=>`<blockquote>${esc(note.length>240?note.slice(0,240)+'… (이하 원문 생략)':note)}</blockquote>`).join('')}<p>${notes.length>3?`외 ${notes.length-3}개 문장도 확인이 필요합니다. `:''}입력한 원문은 그대로 보관되어 있어요. 주최 측의 최신 안내와 대조해주세요.</p></section>`;
 }
+function contextualNotice(brief){
+ if(mode!=='parked')return '';
+ const source=brief?.extraction;
+ const groups=[['일정 안내 · 현재 개최 여부는 직접 확인',source?.scheduleNotes||[]],['등록 안내 · 행사장과 구분',source?.registrationNotes||[]]].filter(([,notes])=>notes.length);
+ if(!groups.length)return '';
+ return `<details class="context-notes"><summary>일정·등록 원문 보기</summary>${groups.map(([label,notes])=>`<section><h4>${esc(label)}</h4>${notes.map(note=>`<blockquote>${esc(note)}</blockquote>`).join('')}</section>`).join('')}<p>예정 시각과 별도 등록 안내를 구분해 보관합니다. 현재 개최 여부와 등록 장소의 운영 상태를 자동 확인한 결과는 아닙니다.</p></details>`;
+}
 function updateOptions(){
  const result=extractDestinations($('ticket').value);
  const choices=result.matches.length?result.matches:DESTINATIONS;
@@ -30,6 +37,7 @@ function updateOptions(){
  $('parseStatus').classList.toggle('error',!['matched','empty'].includes(result.status));
  $('parseStatus').classList.toggle('matched',result.status==='matched');
  if(result.parkingNotes?.length){$('parseStatus').append(document.createTextNode(' 행사장과 구분한 주차 문장: '+result.parkingNotes.join(' / ')));}
+ if(result.scheduleNotes?.length||result.registrationNotes?.length){$('parseStatus').append(document.createTextNode(' 일정·등록 문장은 아래 원문 보기에서 구분해 확인하세요. 현재 유효한 행사인지 직접 확인해야 합니다.'));}
 }
 function remainingReview(brief){
  if(mode!=='parked')return '정차 화면에서만 확인할 수 있습니다.';
@@ -78,10 +86,10 @@ function render(){
  const d=visible.destination;
  if(!isConfirmed){
   const checks=[{done:$('venueReviewed').checked,label:`현재 행사장: ${d.name}`},{done:visible.height!==null&&$('heightReviewed').checked,label:visible.height===null?'차량 전체 높이 확인':`차량 전체 높이 ${visible.height.toFixed(2)}m 확인`},{done:$('parkedConfirmed').checked,label:'안전한 주차 상태 확인'}];
-  $('briefBody').innerHTML=`${arrivalScene()}<div class="draft-destination"><span class="eyebrow">확인 중인 목적지</span><h3>${esc(d.name)}<span class="floor-tag">${esc(d.floor)}</span></h3><p class="draft-caption">코엑스 삼성동 · 아직 확정하지 않은 안내입니다.</p></div><ol class="draft-checklist">${checks.map((c,i)=>`<li class="${c.done?'complete':''}"><span class="check-dot" aria-hidden="true">${c.done?'✓':i+1}</span><span>${esc(c.label)}</span></li>`).join('')}</ol><p class="draft-note">현재 행사장·차량 높이·주차 상태를 검토한 뒤 확정하세요.<br>진입문과 추천 주차 구역은 확정 후 표시됩니다.</p>`;
+  $('briefBody').innerHTML=`${arrivalScene()}<div class="draft-destination"><span class="eyebrow">확인 중인 목적지</span><h3>${esc(d.name)}<span class="floor-tag">${esc(d.floor)}</span></h3><p class="draft-caption">코엑스 삼성동 · 아직 확정하지 않은 안내입니다.</p></div><ol class="draft-checklist">${checks.map((c,i)=>`<li class="${c.done?'complete':''}"><span class="check-dot" aria-hidden="true">${c.done?'✓':i+1}</span><span>${esc(c.label)}</span></li>`).join('')}</ol><p class="draft-note">현재 행사장·차량 높이·주차 상태를 검토한 뒤 확정하세요.<br>진입문과 추천 주차 구역은 확정 후 표시됩니다.</p>${contextualNotice(visible)}`;
   return;
  }
- $('briefBody').innerHTML=`<div class="destination-line"><span>COEX</span><strong>${esc(d.name)}</strong><span>${esc(d.floor)}</span></div><div class="route-main"><div class="route-cell"><div class="route-label">${icon('door')}진입문</div><div class="gate-title">${esc(d.gate)}</div><div class="gate-sub">${esc(d.gateContext)}</div></div><div class="route-cell"><div class="route-label">${icon('parking')}추천 주차</div><div class="parking-floor">${esc(d.level)}</div><div class="parking-zone"><span class="dot ${d.color}" aria-hidden="true"></span>${esc(d.zone)}</div></div></div>${routeRibbon(d)}<div class="height-confirmed"><span>확인한 차량 높이 <strong>${visible.height.toFixed(2)}m</strong></span><span>시설 제한 <strong>2.2m</strong></span></div><div class="brief-note"><strong>현장 표지와 안내를 우선하세요.</strong><span class="note-context">${mode==='parked'?'출발 전에 확인한 도착 브리핑입니다.':'출발 전에 확정한 안내를 표시하고 있습니다.'}</span></div><ul class="warnings">${visible.warnings.map(w=>`<li>${esc(w)}</li>`).join('')}</ul><a class="source-line" href="${SOURCE.url}" target="_blank" rel="noopener noreferrer">${icon('source')}코엑스 공식 안내 확인 ↗</a>`;
+ $('briefBody').innerHTML=`<div class="destination-line"><span>COEX</span><strong>${esc(d.name)}</strong><span>${esc(d.floor)}</span></div><div class="route-main"><div class="route-cell"><div class="route-label">${icon('door')}진입문</div><div class="gate-title">${esc(d.gate)}</div><div class="gate-sub">${esc(d.gateContext)}</div></div><div class="route-cell"><div class="route-label">${icon('parking')}추천 주차</div><div class="parking-floor">${esc(d.level)}</div><div class="parking-zone"><span class="dot ${d.color}" aria-hidden="true"></span>${esc(d.zone)}</div></div></div>${routeRibbon(d)}<div class="height-confirmed"><span>확인한 차량 높이 <strong>${visible.height.toFixed(2)}m</strong></span><span>시설 제한 <strong>2.2m</strong></span></div><div class="brief-note"><strong>현장 표지와 안내를 우선하세요.</strong><span class="note-context">${mode==='parked'?'출발 전에 확인한 도착 브리핑입니다.':'출발 전에 확정한 안내를 표시하고 있습니다.'}</span></div><ul class="warnings">${visible.warnings.map(w=>`<li>${esc(w)}</li>`).join('')}</ul><a class="source-line" href="${SOURCE.url}" target="_blank" rel="noopener noreferrer">${icon('source')}코엑스 공식 안내 확인 ↗</a>${contextualNotice(visible)}`;
 }
 function syncScenarioState(){document.querySelectorAll('[data-example]').forEach(b=>{const active=$('ticket').value===examples[b.dataset.example];b.setAttribute('aria-pressed',String(active));b.classList.toggle('active',active);});}
 function invalidate(){noticeImportGeneration++;$('importStatus').textContent='';confirmedBrief=null;$('venueReviewed').checked=false;$('heightReviewed').checked=false;$('parkedConfirmed').checked=false;$('actionStatus').textContent='';render();}

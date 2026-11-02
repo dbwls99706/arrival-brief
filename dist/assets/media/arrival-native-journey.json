@@ -1,0 +1,205 @@
+{
+  "version": "1.0.0-rc3",
+  "kind": "continuous_actual_release_ui",
+  "release_apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+  "installed_apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+  "harness_apk_sha256": "9deadf69bd80ba62f635f5561d45846973edb4266a01753270fe69dad5c2fc62",
+  "automation_scope": "Public accessibility UI actions from a separate self-targeted test harness; no app-private API or app instrumentation.",
+  "source_video": {
+    "path": "docs/verification/android-aosp28-rc3-release-journey-original.mp4",
+    "local_path": "/workspace/arrival-runtime-rc3/release-final/release-scenario/release-scenario-uncut.mp4",
+    "sha256": "af42bf4f48b3b824b5592f28526af68902199a1212bca3b6ec118d70fe123636",
+    "bytes": 1469754,
+    "actual_duration_seconds": 98.1939,
+    "helper_elapsed_seconds": 110.511,
+    "frame_count": 94,
+    "variable_frame_rate": true,
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "avg_frame_rate": "940000/981939"
+        }
+      ],
+      "format": {
+        "duration": "98.193900"
+      }
+    }
+  },
+  "published_video": {
+    "path": "dist/assets/media/arrival-native-journey.mp4",
+    "sha256": "3b0a9ab3a35977759d70be388ace3501fefaf728f98f3cba9c74ee7caa08f899",
+    "bytes": 880742,
+    "duration_seconds": 98.25,
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "avg_frame_rate": "1880/2037"
+        }
+      ],
+      "format": {
+        "duration": "98.250000"
+      }
+    },
+    "no_cuts": true,
+    "transcoding": "H.264 CRF22, original dimensions and all 94 frames in the same order; no cuts, inserted holds, crop, audio or intentional speed change. Encoding introduces timestamp rounding: duration98.25 seconds versus98.1939 seconds in the source.",
+    "encoded_duration_delta_seconds": 0.0561,
+    "frame_timing_validation": {
+      "source_frame_count": 94,
+      "published_frame_count": 94,
+      "maximum_absolute_frame_pts_shift_seconds": 0.073911,
+      "source_duration_seconds": 98.1939,
+      "published_duration_seconds": 98.25
+    }
+  },
+  "poster": {
+    "path": "dist/assets/media/arrival-native-journey-poster.jpg",
+    "sha256": "3cc458a1a73ee0043d6f7e894adc80d95926832a4d9bf516a7d49720dd6c7844",
+    "source_screenshot": "docs/verification/android-aosp28-rc3-release-scenario-confirmed.png"
+  },
+  "captions": {
+    "path": "dist/assets/media/arrival-native-journey.vtt",
+    "sha256": "df624beaee92bbb696e9adcc5c96fba407285cba0f8c4c36b5fe24bfac1cd5f1",
+    "timing_note": "Captions use actual encoded video frame PTS, verified by matching the seven lossless screenshots to decoded frames. Helper elapsed times are preserved separately and are not equivalent to video playback time."
+  },
+  "original_host_result": {
+    "status": "failed_elapsed_vs_encoded_duration_guard",
+    "exit": 1,
+    "result_file": "340-release-scenario.result.json",
+    "result_sha256": "20cedff4c1ffdcb68ad606a6b6b5756fd7632a5e4fe5688cc2b47577cd8d471b",
+    "trace_file": "340-release-scenario.txt",
+    "trace_sha256": "fa9b82a190185691948b9d175b4c721ecca5009576d43b684d764ee5bbbddefd",
+    "helper_elapsed_seconds": 110.511,
+    "encoded_duration_seconds": 98.1939,
+    "note": "These are distinct clocks; the initial <=2-second equivalence assumption failed. The original result and trace are unchanged. No cause is asserted."
+  },
+  "post_run_validation": {
+    "status": "passed_for_ordered_scene_coverage",
+    "checked_utc": "2026-11-02T07:14:28.812467+00:00",
+    "before_after_installed_apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+    "frame_validation_file": "video-scene-frame-validation.json",
+    "frame_validation_sha256": "24064b27babe2a58d3b8264d752c491edd23219e083751385ee69a84083f5d58",
+    "ordered_scenes": [
+      "shared-notice-before-import",
+      "notice-imported",
+      "confirmed",
+      "schedule-registration-notes",
+      "driving-locked",
+      "memo-saved",
+      "qr"
+    ],
+    "frame_count": 94,
+    "final_frame_contains_qr": true,
+    "visual_review": "All seven decoded matching frames were visually inspected; imported original notice, confirmed pass, separate schedule/registration notes, locked driving view, saved memo, and final QR are present.",
+    "scope": "One continuous screenrecord file with variable frame timestamps. Scene coverage is verified; playback is not a measurement of elapsed interaction time. The final 7-second helper wait is not claimed as 7 seconds of encoded QR display."
+  },
+  "frame_validation": {
+    "path": "docs/verification/android-aosp28-rc3-release-scenario-frame-validation.json",
+    "sha256": "24064b27babe2a58d3b8264d752c491edd23219e083751385ee69a84083f5d58"
+  },
+  "events": [
+    {
+      "label": "recording-start",
+      "seconds_from_recording_start": 4.291,
+      "encoded_video_seconds": 0.0,
+      "description": "실제 서명 release 앱의 연속 자동 UI 시연 · 일반 Android · 실제 차량 미연결"
+    },
+    {
+      "label": "shared-notice-before-import",
+      "seconds_from_recording_start": 7.004,
+      "encoded_video_seconds": 14.399667,
+      "description": "행사 안내를 공유받아 안전 확인 후 명시적으로 가져옵니다.",
+      "path": "docs/verification/android-aosp28-rc3-release-scenario-shared-notice-before-import.png",
+      "screenshot": "docs/verification/android-aosp28-rc3-release-scenario-shared-notice-before-import.png",
+      "sha256": "7ed2bf357a87dc7c4149fa2b8603495700cd171ab542bac8c26eaf11f9dc9555",
+      "build_type": "release",
+      "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50"
+    },
+    {
+      "label": "notice-imported",
+      "seconds_from_recording_start": 33.733,
+      "encoded_video_seconds": 26.169689,
+      "description": "행사장 2층·등록 1층·18시 종료 예정 문장을 함께 입력합니다.",
+      "path": "docs/verification/android-aosp28-rc3-release-scenario-notice-imported.png",
+      "screenshot": "docs/verification/android-aosp28-rc3-release-scenario-notice-imported.png",
+      "sha256": "d9e97fa3c2f39b9d0af8f80c46a834ca91c088fe2eaf67e40935e3252d5126a7",
+      "build_type": "release",
+      "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50"
+    },
+    {
+      "label": "confirmed",
+      "seconds_from_recording_start": 56.48,
+      "encoded_video_seconds": 50.8502,
+      "description": "차량 높이·현재 행사장·안전한 주차를 확인한 뒤 도착패스를 확정합니다.",
+      "path": "docs/verification/android-aosp28-rc3-release-scenario-confirmed.png",
+      "screenshot": "docs/verification/android-aosp28-rc3-release-scenario-confirmed.png",
+      "sha256": "c43835c93ef4f195073a3441bc4fcd8a32cf5d2952aee4efcfb8dbe37d2171de",
+      "build_type": "release",
+      "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50"
+    },
+    {
+      "label": "schedule-registration-notes",
+      "seconds_from_recording_start": 59.433,
+      "encoded_video_seconds": 54.2913,
+      "description": "일정과 등록 안내의 원문을 펼쳐 확인합니다.",
+      "path": "docs/verification/android-aosp28-rc3-release-scenario-schedule-registration-notes.png",
+      "screenshot": "docs/verification/android-aosp28-rc3-release-scenario-schedule-registration-notes.png",
+      "sha256": "e0f68f6aa7e51a35ffef8a2ab2dafd9cefdd38a76da0fe9b9acda9ef9d60dda0",
+      "build_type": "release",
+      "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50"
+    },
+    {
+      "label": "driving-locked",
+      "seconds_from_recording_start": 72.982,
+      "encoded_video_seconds": 65.939078,
+      "description": "데모 주행 상태에서 확정 안내를 유지하고 입력을 잠급니다.",
+      "path": "docs/verification/android-aosp28-rc3-release-scenario-driving-locked.png",
+      "screenshot": "docs/verification/android-aosp28-rc3-release-scenario-driving-locked.png",
+      "sha256": "6e57f3b4f2496091889686f40f41987a2c5c3c8452ee579fab1f2c54e0f0bfa8",
+      "build_type": "release",
+      "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50"
+    },
+    {
+      "label": "memo-saved",
+      "seconds_from_recording_start": 94.046,
+      "encoded_video_seconds": 86.913778,
+      "description": "정차 체험으로 돌아와 주차 위치 B3 블루존 E12를 직접 기록합니다.",
+      "path": "docs/verification/android-aosp28-rc3-release-scenario-memo-saved.png",
+      "screenshot": "docs/verification/android-aosp28-rc3-release-scenario-memo-saved.png",
+      "sha256": "9a80fac2d539a57a11e1a023aff7947f0e861efe89d941fab968bbf29ac4752c",
+      "build_type": "release",
+      "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50"
+    },
+    {
+      "label": "qr",
+      "seconds_from_recording_start": 103.479,
+      "encoded_video_seconds": 97.629856,
+      "description": "저장 메모 QR",
+      "path": "docs/verification/android-aosp28-rc3-release-scenario-qr.png",
+      "screenshot": "docs/verification/android-aosp28-rc3-release-scenario-qr.png",
+      "sha256": "5c598df643fe01b36ddb4d1fb064aedfd5d6ee927c8abacddf6bd4fddd0c53ef",
+      "build_type": "release",
+      "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50"
+    },
+    {
+      "label": "scenario-complete",
+      "seconds_from_recording_start": 110.511,
+      "encoded_video_seconds": 98.25,
+      "description": "실제 차량·휴대폰 카메라 시험은 포함하지 않습니다."
+    }
+  ],
+  "limitations": [
+    "One continuous screenrecord with variable frame timestamps; not an elapsed interaction-time measurement. Helper completion110.511 seconds and encoded playback98.1939 seconds are distinct observations, with no cause asserted.",
+    "The original host elapsed-vs-encoded-duration guard failed (exit1); ordered scene coverage and before/after device identity were validated separately afterward.",
+    "Ordinary Android9 software emulator; not Pleos SDK or physical vehicle evidence.",
+    "Accessibility-driven automatic UI demonstration; no physical person or phone-camera scan is claimed.",
+    "The 18+6 debug instrumentation runs are separate from this signed-release scenario."
+  ]
+}

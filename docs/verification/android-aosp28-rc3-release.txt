@@ -1,0 +1,39 @@
+Final release APK SHA-256: fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50
+
+Signed update: final RC2 versionCode11 → RC3 versionCode12. Release installation/launch precede separate debug instrumentation.
+
+[287-baseline-final.txt]
+Performing Streamed Install
+Success
+
+
+[288-baseline-final-version.txt]
+    versionCode=11 minSdk=28 targetSdk=35
+    versionName=1.0.0-rc2
+
+[289-final-update.txt]
+Performing Streamed Install
+Success
+
+
+[290-final-installed-package.txt]
+    versionCode=12 minSdk=28 targetSdk=35
+    versionName=1.0.0-rc3
+
+[292-final-launch.txt]
+Starting: Intent { cmp=studio.ax.arrival/.MainActivity }
+Status: ok
+Activity: studio.ax.arrival/.MainActivity
+ThisTime: 5578
+TotalTime: 5578
+WaitTime: 6522
+Complete
+
+
+[293-final-process.txt]
+3035
+
+
+[296-final-device-sha.txt]
+fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50  /data/app/studio.ax.arrival-tSKMG4xwAtpH-Q9u8JX_Tg==/base.apk
+

@@ -38,3 +38,5 @@ main{margin:28px auto 0;width:min(1256px,calc(100% - 64px))}.app-toolbar{display
 
 /* Shared generated arrival mark: keep brand artwork distinct from action icons. */
 .mark{overflow:hidden;background:#203650}.mark img{display:block;width:100%;height:100%;object-fit:cover}
+
+.context-notes{margin-top:18px;border-top:1px solid #b9c9dc;padding-top:14px;color:#dce8f5}.context-notes summary{cursor:pointer;font-weight:700;min-height:44px;display:list-item}.context-notes h4{font-size:16px;margin:12px 0 8px}.context-notes blockquote{margin:0 0 12px;padding:10px 14px;border-left:3px solid #9fc1e5;background:#203650;color:#fff;overflow-wrap:anywhere}.context-notes p{font-size:14px;line-height:1.6}.driving .context-notes{display:none}

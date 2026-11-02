@@ -386,3 +386,49 @@ completion_floor_token_27_ko	코엑스 오디토리움 3 / 3층	1.65	auditorium	
 completion_floor_token_27_en	코엑스 오디토리움 3 / 3F	1.65	auditorium	false
 completion_floor_token_28_ko	코엑스 오디토리움 3, 3층	1.65	auditorium	false
 completion_floor_token_28_en	코엑스 오디토리움 3, 3F	1.65	auditorium	false
+context_normal_0	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.	1.65		true
+context_normal_1	장소: 코엑스 아셈볼룸 2층\n행사는 0:00에 시작하여 0:01에 종료됩니다.	1.65		true
+context_normal_2	장소: 코엑스 아셈볼룸 2층\n행사는 23:58에 시작하여 23:59에 종료됩니다.	1.65		true
+context_normal_3	장소: 코엑스 아셈볼룸 2층\n행사는 09:00에 시작하여 18:00에 종료됩니다.	1.65		true
+context_normal_4	장소: 코엑스 아셈볼룸 2층\n참가 등록은 1층 로비에서 진행합니다.	1.65		true
+context_normal_5	장소: 코엑스 아셈볼룸 2층\n등록은 4층 로비에서 진행합니다.	1.65		true
+context_normal_6	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다.	1.65		true
+context_normal_7	장소: 코엑스 아셈볼룸 2층\n• 행사는 10:00에 시작하여 18:00에 종료됩니다.\n- 참가 등록은 1층 로비에서 진행합니다.	1.65		true
+context_schedule_held_0	장소: 코엑스 아셈볼룸 2층\n행사는 24:00에 시작하여 25:00에 종료됩니다.	1.65	asem	false
+context_schedule_held_1	장소: 코엑스 아셈볼룸 2층\n행사는 10:60에 시작하여 18:00에 종료됩니다.	1.65	asem	false
+context_schedule_held_2	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:60에 종료됩니다.	1.65	asem	false
+context_schedule_held_3	장소: 코엑스 아셈볼룸 2층\n행사는 18:00에 시작하여 10:00에 종료됩니다.	1.65	asem	false
+context_schedule_held_4	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 10:00에 종료됩니다.	1.65	asem	false
+context_schedule_held_5	장소: 코엑스 아셈볼룸 2층\n행사는 10:0에 시작하여 18:00에 종료됩니다.	1.65	asem	false
+context_schedule_held_6	장소: 코엑스 아셈볼룸 2층\n행사는 -1:00에 시작하여 18:00에 종료됩니다.	1.65	asem	false
+context_schedule_held_7	장소: 코엑스 아셈볼룸 2층\n행사는 10.00에 시작하여 18:00에 종료됩니다.	1.65	asem	false
+context_schedule_held_8	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료되었습니다.	1.65	asem	false
+context_schedule_held_9	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다?	1.65	asem	false
+context_schedule_held_10	장소: 코엑스 아셈볼룸 2층\n이미 행사는 10:00에 시작하여 18:00에 종료됩니다.	1.65	asem	false
+context_schedule_held_11	장소: 코엑스 아셈볼룸 2층\n행사는 18시에 종료 예정입니다.	1.65	asem	false
+context_schedule_held_12	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n종료되었습니다.	1.65	asem	false
+context_schedule_held_13	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다. 하지만 행사가 취소되었습니다.	1.65	asem	false
+context_schedule_held_14	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n행사는 09:00에 시작하여 17:00에 종료됩니다.	1.65	asem	false
+context_registration_held_0	장소: 코엑스 아셈볼룸 2층\n참가 등록은 한빛센터 2층 로비에서 진행합니다.	1.65	asem	false
+context_registration_held_1	장소: 코엑스 아셈볼룸 2층\n참가 등록은 코엑스 마곡 2층 로비에서 진행합니다.	1.65	asem	false
+context_registration_held_2	장소: 코엑스 아셈볼룸 2층\n참가 등록은 코엑스 스튜디오159 2층에서 진행합니다.	1.65	asem	false
+context_registration_held_3	장소: 코엑스 아셈볼룸 2층\n참가 등록은 0층 로비에서 진행합니다.	1.65	asem	false
+context_registration_held_4	장소: 코엑스 아셈볼룸 2층\n참가 등록은 02층 로비에서 진행합니다.	1.65	asem	false
+context_registration_held_5	장소: 코엑스 아셈볼룸 2층\n참가 등록은 -2층 로비에서 진행합니다.	1.65	asem	false
+context_registration_held_6	장소: 코엑스 아셈볼룸 2층\n참가 등록은 2.0층 로비에서 진행합니다.	1.65	asem	false
+context_registration_held_7	장소: 코엑스 아셈볼룸 2층\n참가 등록은 5층 로비에서 진행합니다.	1.65	asem	false
+context_registration_held_8	장소: 코엑스 아셈볼룸 2층\n참가 등록은 B2 로비에서 진행합니다.	1.65	asem	false
+context_registration_held_9	장소: 코엑스 아셈볼룸 2층\n참가 등록은 2층 로비에서 진행하지 않습니다.	1.65	asem	false
+context_registration_held_10	장소: 코엑스 아셈볼룸 2층\n참가 등록은 2층 로비에서 진행합니다만 장소 변경입니다.	1.65	asem	false
+context_registration_held_11	장소: 코엑스 아셈볼룸 2층\n참가 등록은 1층 로비에서 진행합니다.\n등록은 3층 로비에서 진행합니다.	1.65	asem	false
+context_registration_held_12	장소: 코엑스 아셈볼룸 2층\n참가 등록은 1층 로비에서 진행합니다.\n행사장 3층	1.65	asem	false
+context_registration_held_13	장소: 코엑스 아셈볼룸 2층\n등록 장소: 한빛센터 2층 로비	1.65	asem	false
+context_registration_held_14	장소: 코엑스 아셈볼룸 2층\n코엑스 인근 호텔 2층 로비에서 등록해주세요.	1.65	asem	false
+context_whole_notice_held_0	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다.\n행사가 취소되었습니다.	1.65	asem	false
+context_whole_notice_held_1	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다.\n행사장은 송도컨벤시아로 변경되었습니다.	1.65	asem	false
+context_whole_notice_held_2	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다.\n북문을 이용할 수 없습니다.	1.65	asem	false
+context_whole_notice_held_3	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다.\n주차: B2 퍼플존	1.65	asem	false
+context_whole_notice_held_4	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다.\n금일 휴관합니다.	1.65	asem	false
+context_whole_notice_held_5	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다.\n행사는 온라인으로 전환되었습니다.	1.65	asem	false
+context_height_held	장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다.	2.35		false
+context_source_held	장소: 코엑스 회의실 301호 3층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다.	1.65		false

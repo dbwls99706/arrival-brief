@@ -1,0 +1,41 @@
+{
+  "total_fatal_or_anr_signature_lines": 2,
+  "app_related_fatal_or_anr_signature_lines": 0,
+  "non_app_fatal_or_anr_signature_lines": 2,
+  "reviewed_non_app_incidents": [
+    {
+      "package": "com.android.systemui",
+      "pid": 2030,
+      "type": "ANR",
+      "reason": "executing service com.android.systemui/.SystemUIService",
+      "log_timestamp": "11-01 23:03:56.502",
+      "log_line": 2603,
+      "log_sha256": "1ac6b4ecac4e1b8f4659160eecd0630b49cd66f1865379a3f95c5ec6098a8503",
+      "app_start_timestamp": "11-01 23:05:39.111",
+      "app_pid": 3202,
+      "classification": "Observed during OS startup before the app process started; separate from the completed app UI scenario. No underlying cause or blanket crash-free claim."
+    },
+    {
+      "package": "com.android.systemui",
+      "pid": 2023,
+      "type": "ANR",
+      "reason": "Broadcast of Intent android.intent.action.TIME_TICK",
+      "log_timestamp": "11-01 22:41:28.845",
+      "log_line": 417,
+      "log_sha256": "abcea51ba6ab774e24b8a9f387318e69397e9d532709cbce608548137063ca29",
+      "app_pid": 3749,
+      "test_completion": "TestRunner completed 6 tests, 0 failed, 0 ignored at 22:44:19.957",
+      "classification": "SystemUI incident during the large-font UI run, distinct from app/test PID3749. UI6 later completed; no underlying cause or blanket crash-free claim."
+    }
+  ],
+  "scope": "Release first launch, actual release scenario, standard18 and font1.3 six UI log windows.",
+  "cleanup": {
+    "timestampUtc": "2026-11-02T06:45:07Z",
+    "emulator_exit": -10
+  },
+  "release_capture_cleanup": {
+    "timestampUtc": "2026-11-02T07:07:44Z",
+    "emulator_exit": -10
+  },
+  "note": "UI18+6 and release-only scenario were separate AOSP runs; prior incomplete capture preparation attempts are recorded separately."
+}

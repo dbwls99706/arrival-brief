@@ -1,0 +1,53 @@
+{
+  "run_id": "45d522aa8042487194de4f94d1944511",
+  "remote_video": "\/sdcard\/arrival-rc3-release-scenario-45d522aa8042487194de4f94d1944511.mp4",
+  "version": "1.0.0-rc3",
+  "build_type": "release",
+  "automation": "Public accessibility UI actions from a separate self-targeted test harness; no app-private API or app instrumentation.",
+  "notice": "학술대회 안내\n장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다.",
+  "memo": "B3 블루존 E12",
+  "launch": "Starting: Intent { act=android.intent.action.SEND typ=text\/plain cmp=studio.ax.arrival\/.MainActivity (has extras) }\nStatus: ok\nActivity: studio.ax.arrival\/.MainActivity\nThisTime: 6704\nTotalTime: 6704\nWaitTime: 7210\nComplete\n",
+  "recording_start_verified": true,
+  "demo_entry_public_touch_fallback": false,
+  "status": "passed",
+  "recording_closed": true,
+  "events": [
+    {
+      "label": "recording-start",
+      "seconds_from_recording_start": 4.291
+    },
+    {
+      "label": "shared-notice-before-import",
+      "seconds_from_recording_start": 7.004
+    },
+    {
+      "label": "notice-imported",
+      "seconds_from_recording_start": 33.733
+    },
+    {
+      "label": "confirmed",
+      "seconds_from_recording_start": 56.48
+    },
+    {
+      "label": "schedule-registration-notes",
+      "seconds_from_recording_start": 59.433
+    },
+    {
+      "label": "driving-locked",
+      "seconds_from_recording_start": 72.982
+    },
+    {
+      "label": "memo-saved",
+      "seconds_from_recording_start": 94.046
+    },
+    {
+      "label": "qr",
+      "seconds_from_recording_start": 103.479
+    },
+    {
+      "label": "scenario-complete",
+      "seconds_from_recording_start": 110.511
+    }
+  ],
+  "configured_recording_limit_seconds": 180
+}

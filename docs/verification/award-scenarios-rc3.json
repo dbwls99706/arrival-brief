@@ -1,0 +1,945 @@
+{
+  "generatedAt": "2026-11-02T06:11:52.866Z",
+  "corpusId": "arrival-controlled-invitations-v1",
+  "corpusSha256": "a79c994b2eb87025e1506920af56f028d73152a5317b273068fa03511509399b",
+  "sourceCommit": "8ed826c0f541a2605a41fbc0e92a15e7d78cf090",
+  "sourceWorktreeChangedFromCommit": true,
+  "engineSha256": "8e4860de73d077058e32abce43c84e6229d392de65c215608202da6b010c7633",
+  "interpretation": "Development-discovered, fixed-case improvement recheck, not independent holdout accuracy. Constructed-case parser/guard evaluation only. No human baseline was measured. This does not estimate real-world accuracy, time saved, customer demand, accident prevention, Pleos behavior, or award probability.",
+  "summary": {
+    "all": {
+      "passed": 10,
+      "total": 10
+    },
+    "normal": {
+      "passed": 5,
+      "total": 5
+    },
+    "constraint": {
+      "passed": 5,
+      "total": 5
+    }
+  },
+  "results": [
+    {
+      "id": "S01",
+      "label": "도착 준비 기본",
+      "group": "normal",
+      "input": {
+        "text": "[행사 안내]\n일시: 2026년 11월 7일 14:00\n장소: 코엑스 오디토리움 3층\n입장은 13:30부터 가능합니다.",
+        "height": "1.65"
+      },
+      "expected": {
+        "status": "ready",
+        "canConfirm": true,
+        "destination": "auditorium",
+        "gate": "북문",
+        "level": "B3",
+        "zone": "블루존"
+      },
+      "actual": {
+        "status": "ready",
+        "canConfirm": true,
+        "destination": "auditorium",
+        "gate": "북문",
+        "level": "B3",
+        "zone": "블루존",
+        "permittedWithReviews": true,
+        "permittedWithoutReviews": false,
+        "exportAvailable": true,
+        "exportSourceUrl": true,
+        "exportHasHeightLimit": true,
+        "reason": null
+      },
+      "checks": [
+        {
+          "field": "status",
+          "expected": "ready",
+          "actual": "ready",
+          "pass": true
+        },
+        {
+          "field": "canConfirm",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "destination",
+          "expected": "auditorium",
+          "actual": "auditorium",
+          "pass": true
+        },
+        {
+          "field": "gate",
+          "expected": "북문",
+          "actual": "북문",
+          "pass": true
+        },
+        {
+          "field": "level",
+          "expected": "B3",
+          "actual": "B3",
+          "pass": true
+        },
+        {
+          "field": "zone",
+          "expected": "블루존",
+          "actual": "블루존",
+          "pass": true
+        },
+        {
+          "field": "permittedWithReviews",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "permittedWithoutReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "exportAvailable",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "exportSourceUrl",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "exportHasHeightLimit",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "driving.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "unknown.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "S02",
+      "label": "영문 초대장",
+      "group": "normal",
+      "input": {
+        "text": "Research Workshop\nVenue: COEX Studio159 2F\nDate: 7 November 2026, 10:00\nPlease bring your registration confirmation.",
+        "height": "1.80"
+      },
+      "expected": {
+        "status": "ready",
+        "canConfirm": true,
+        "destination": "studio159",
+        "gate": "동문",
+        "level": "B2",
+        "zone": "퍼플존"
+      },
+      "actual": {
+        "status": "ready",
+        "canConfirm": true,
+        "destination": "studio159",
+        "gate": "동문",
+        "level": "B2",
+        "zone": "퍼플존",
+        "permittedWithReviews": true,
+        "permittedWithoutReviews": false,
+        "exportAvailable": true,
+        "exportSourceUrl": true,
+        "exportHasHeightLimit": true,
+        "reason": null
+      },
+      "checks": [
+        {
+          "field": "status",
+          "expected": "ready",
+          "actual": "ready",
+          "pass": true
+        },
+        {
+          "field": "canConfirm",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "destination",
+          "expected": "studio159",
+          "actual": "studio159",
+          "pass": true
+        },
+        {
+          "field": "gate",
+          "expected": "동문",
+          "actual": "동문",
+          "pass": true
+        },
+        {
+          "field": "level",
+          "expected": "B2",
+          "actual": "B2",
+          "pass": true
+        },
+        {
+          "field": "zone",
+          "expected": "퍼플존",
+          "actual": "퍼플존",
+          "pass": true
+        },
+        {
+          "field": "permittedWithReviews",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "permittedWithoutReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "exportAvailable",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "exportSourceUrl",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "exportHasHeightLimit",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "driving.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "unknown.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "S03",
+      "label": "정상 일정의 종료 시각 포함",
+      "group": "normal",
+      "input": {
+        "text": "정기총회 안내\n장소: 코엑스 그랜드볼룸 1층\n행사는 10:00에 시작하여 18:00에 종료됩니다.",
+        "height": "1.65"
+      },
+      "expected": {
+        "status": "ready",
+        "canConfirm": true,
+        "destination": "grand",
+        "gate": "북문",
+        "level": "B3",
+        "zone": "블루존"
+      },
+      "actual": {
+        "status": "ready",
+        "canConfirm": true,
+        "destination": "grand",
+        "gate": "북문",
+        "level": "B3",
+        "zone": "블루존",
+        "permittedWithReviews": true,
+        "permittedWithoutReviews": false,
+        "exportAvailable": true,
+        "exportSourceUrl": true,
+        "exportHasHeightLimit": true,
+        "reason": null
+      },
+      "checks": [
+        {
+          "field": "status",
+          "expected": "ready",
+          "actual": "ready",
+          "pass": true
+        },
+        {
+          "field": "canConfirm",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "destination",
+          "expected": "grand",
+          "actual": "grand",
+          "pass": true
+        },
+        {
+          "field": "gate",
+          "expected": "북문",
+          "actual": "북문",
+          "pass": true
+        },
+        {
+          "field": "level",
+          "expected": "B3",
+          "actual": "B3",
+          "pass": true
+        },
+        {
+          "field": "zone",
+          "expected": "블루존",
+          "actual": "블루존",
+          "pass": true
+        },
+        {
+          "field": "permittedWithReviews",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "permittedWithoutReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "exportAvailable",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "exportSourceUrl",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "exportHasHeightLimit",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "driving.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "unknown.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "S04",
+      "label": "행사장과 등록층 분리",
+      "group": "normal",
+      "input": {
+        "text": "학술대회 안내\n장소: 코엑스 아셈볼룸 2층\n참가 등록은 1층 로비에서 진행합니다.",
+        "height": "1.65"
+      },
+      "expected": {
+        "status": "ready",
+        "canConfirm": true,
+        "destination": "asem",
+        "gate": "북문",
+        "level": "B3",
+        "zone": "블루존"
+      },
+      "actual": {
+        "status": "ready",
+        "canConfirm": true,
+        "destination": "asem",
+        "gate": "북문",
+        "level": "B3",
+        "zone": "블루존",
+        "permittedWithReviews": true,
+        "permittedWithoutReviews": false,
+        "exportAvailable": true,
+        "exportSourceUrl": true,
+        "exportHasHeightLimit": true,
+        "reason": null
+      },
+      "checks": [
+        {
+          "field": "status",
+          "expected": "ready",
+          "actual": "ready",
+          "pass": true
+        },
+        {
+          "field": "canConfirm",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "destination",
+          "expected": "asem",
+          "actual": "asem",
+          "pass": true
+        },
+        {
+          "field": "gate",
+          "expected": "북문",
+          "actual": "북문",
+          "pass": true
+        },
+        {
+          "field": "level",
+          "expected": "B3",
+          "actual": "B3",
+          "pass": true
+        },
+        {
+          "field": "zone",
+          "expected": "블루존",
+          "actual": "블루존",
+          "pass": true
+        },
+        {
+          "field": "permittedWithReviews",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "permittedWithoutReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "exportAvailable",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "exportSourceUrl",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "exportHasHeightLimit",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "driving.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "unknown.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "S05",
+      "label": "색상 없는 공식 추천",
+      "group": "normal",
+      "input": {
+        "text": "제품 발표회\n장소: 코엑스 THE PLATZ 2층\n11월 7일 오전 10시입니다.",
+        "height": "1.65"
+      },
+      "expected": {
+        "status": "ready",
+        "canConfirm": true,
+        "destination": "platz",
+        "gate": "동문",
+        "level": "B2",
+        "zone": "지하 2층"
+      },
+      "actual": {
+        "status": "ready",
+        "canConfirm": true,
+        "destination": "platz",
+        "gate": "동문",
+        "level": "B2",
+        "zone": "지하 2층",
+        "permittedWithReviews": true,
+        "permittedWithoutReviews": false,
+        "exportAvailable": true,
+        "exportSourceUrl": true,
+        "exportHasHeightLimit": true,
+        "reason": null
+      },
+      "checks": [
+        {
+          "field": "status",
+          "expected": "ready",
+          "actual": "ready",
+          "pass": true
+        },
+        {
+          "field": "canConfirm",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "destination",
+          "expected": "platz",
+          "actual": "platz",
+          "pass": true
+        },
+        {
+          "field": "gate",
+          "expected": "동문",
+          "actual": "동문",
+          "pass": true
+        },
+        {
+          "field": "level",
+          "expected": "B2",
+          "actual": "B2",
+          "pass": true
+        },
+        {
+          "field": "zone",
+          "expected": "지하 2층",
+          "actual": "지하 2층",
+          "pass": true
+        },
+        {
+          "field": "permittedWithReviews",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "permittedWithoutReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "exportAvailable",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "exportSourceUrl",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "exportHasHeightLimit",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "field": "driving.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "unknown.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "S06",
+      "label": "공식 자료 상충",
+      "group": "constraint",
+      "input": {
+        "text": "실무 세미나\n장소: 코엑스 회의실 301호 3층\n일시: 2026년 11월 7일 11:00",
+        "height": "1.65"
+      },
+      "expected": {
+        "status": "source_conflict",
+        "canConfirm": false
+      },
+      "actual": {
+        "status": "source_conflict",
+        "canConfirm": false,
+        "destination": "rooms300",
+        "gate": "동문",
+        "level": "B2",
+        "zone": "그린존",
+        "permittedWithReviews": false,
+        "permittedWithoutReviews": false,
+        "exportAvailable": false,
+        "exportSourceUrl": false,
+        "exportHasHeightLimit": false,
+        "reason": "공식 자료의 추천 주차 구역이 서로 다릅니다. 시설의 최신 안내와 현장 표지를 확인할 때까지 진입문·주차 구역을 확정하지 않습니다."
+      },
+      "checks": [
+        {
+          "field": "status",
+          "expected": "source_conflict",
+          "actual": "source_conflict",
+          "pass": true
+        },
+        {
+          "field": "canConfirm",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "permittedWithoutReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "exportAvailable",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "driving.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "unknown.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "S07",
+      "label": "루프박스 전체 높이 초과",
+      "group": "constraint",
+      "input": {
+        "text": "장소: 코엑스 오디토리움 3층\n일시: 2026년 11월 7일 14:00",
+        "height": "2.35"
+      },
+      "expected": {
+        "status": "blocked",
+        "canConfirm": false
+      },
+      "actual": {
+        "status": "blocked",
+        "canConfirm": false,
+        "destination": "auditorium",
+        "gate": "북문",
+        "level": "B3",
+        "zone": "블루존",
+        "permittedWithReviews": false,
+        "permittedWithoutReviews": false,
+        "exportAvailable": false,
+        "exportSourceUrl": false,
+        "exportHasHeightLimit": false,
+        "reason": "차량 높이가 공식 지하주차장 진입 제한 2.2m를 초과합니다. 이 주차 동선을 사용하지 마세요."
+      },
+      "checks": [
+        {
+          "field": "status",
+          "expected": "blocked",
+          "actual": "blocked",
+          "pass": true
+        },
+        {
+          "field": "canConfirm",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "permittedWithoutReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "exportAvailable",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "driving.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "unknown.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "S08",
+      "label": "장소 변경 원문",
+      "group": "constraint",
+      "input": {
+        "text": "기존 장소: 코엑스 오디토리움 3층\n최종 행사장은 송도컨벤시아로 변경되었습니다.",
+        "height": "1.65"
+      },
+      "expected": {
+        "status": "needs_review",
+        "canConfirm": false
+      },
+      "actual": {
+        "status": "needs_review",
+        "canConfirm": false,
+        "destination": null,
+        "gate": null,
+        "level": null,
+        "zone": null,
+        "permittedWithReviews": false,
+        "permittedWithoutReviews": false,
+        "exportAvailable": false,
+        "exportSourceUrl": false,
+        "exportHasHeightLimit": false,
+        "reason": "다른 시설, 장소 변경·취소 또는 시설 귀속이 확인되지 않은 장소 안내가 있습니다. 현재 방문할 장소를 “코엑스 세부장소 층”으로 확인하고, 원문의 다른 시설·제약 정보를 임의로 생략하지 마세요."
+      },
+      "checks": [
+        {
+          "field": "status",
+          "expected": "needs_review",
+          "actual": "needs_review",
+          "pass": true
+        },
+        {
+          "field": "canConfirm",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "permittedWithoutReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "exportAvailable",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "driving.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "unknown.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "S09",
+      "label": "주차 안내 불일치",
+      "group": "constraint",
+      "input": {
+        "text": "장소: 코엑스 스튜디오159 2층\n주차: B3 블루존",
+        "height": "1.65"
+      },
+      "expected": {
+        "status": "needs_review",
+        "canConfirm": false
+      },
+      "actual": {
+        "status": "needs_review",
+        "canConfirm": false,
+        "destination": null,
+        "gate": null,
+        "level": null,
+        "zone": null,
+        "permittedWithReviews": false,
+        "permittedWithoutReviews": false,
+        "exportAvailable": false,
+        "exportSourceUrl": false,
+        "exportHasHeightLimit": false,
+        "reason": "안내문의 주차층·구역·진입문과 공식 추천이 다릅니다. 주최 측과 시설의 최신 안내를 확인해주세요."
+      },
+      "checks": [
+        {
+          "field": "status",
+          "expected": "needs_review",
+          "actual": "needs_review",
+          "pass": true
+        },
+        {
+          "field": "canConfirm",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "permittedWithoutReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "exportAvailable",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "driving.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "unknown.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "S10",
+      "label": "지원 밖 전시장",
+      "group": "constraint",
+      "input": {
+        "text": "11월 7일 코엑스 Hall A 1층에서 열리는 전시회입니다.",
+        "height": "1.65"
+      },
+      "expected": {
+        "status": "needs_review",
+        "canConfirm": false
+      },
+      "actual": {
+        "status": "needs_review",
+        "canConfirm": false,
+        "destination": null,
+        "gate": null,
+        "level": null,
+        "zone": null,
+        "permittedWithReviews": false,
+        "permittedWithoutReviews": false,
+        "exportAvailable": false,
+        "exportSourceUrl": false,
+        "exportHasHeightLimit": false,
+        "reason": "지원하지 않는 전시홀 또는 전시장 표현이 있습니다. 다른 회의실로 대신 선택하지 말고 행사장의 공식 명칭을 확인해주세요."
+      },
+      "checks": [
+        {
+          "field": "status",
+          "expected": "needs_review",
+          "actual": "needs_review",
+          "pass": true
+        },
+        {
+          "field": "canConfirm",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "permittedWithoutReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "exportAvailable",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "driving.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "field": "unknown.permittedWithReviews",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "pass": true
+    }
+  ]
+}

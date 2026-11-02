@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/arrival-runtime-rc3/release-scenario.py", line 35, in <module>
+    last=report['events'][-1];assert last['label']=='scenario-complete' and last['seconds_from_recording_start']<=duration+2
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

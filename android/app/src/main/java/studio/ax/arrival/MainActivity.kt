@@ -61,6 +61,8 @@ class MainActivity : Activity() {
     private lateinit var choices: LinearLayout
     private lateinit var confirm: Button
     private lateinit var copy: Button
+    private lateinit var editBriefing: Button
+    private lateinit var briefActions: LinearLayout
     private lateinit var demoEntry: Button
     private lateinit var demoControls: LinearLayout
     private lateinit var demoStatePanel: LinearLayout
@@ -338,6 +340,9 @@ class MainActivity : Activity() {
         briefBadge = textView("아직 확정 전", 17f, briefWarning)
         briefingPanel.addView(briefBadge)
         brief = column(); briefingPanel.addView(brief)
+        briefActions = LinearLayout(this).apply {
+            orientation = if (wideHeader) LinearLayout.HORIZONTAL else LinearLayout.VERTICAL
+        }
         copy = button("브리핑 복사", secondary = true, dark = true) {
             if (session.canExport(gateway)) session.confirmed?.let {
                 (getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager)
@@ -345,14 +350,35 @@ class MainActivity : Activity() {
                 Toast.makeText(this, "브리핑을 복사했습니다.", Toast.LENGTH_SHORT).show()
             }
         }
-        briefingPanel.addView(copy)
         saveRecent = button("목적지 24시간 보관", secondary = true, dark = true) {
             if (session.canExport(gateway)) session.confirmed?.destination?.let {
                 recentStore.save(it.id); render()
                 Toast.makeText(this, "목적지 1건을 보관했습니다. 안내문·높이는 저장하지 않습니다.", Toast.LENGTH_SHORT).show()
             }
         }
-        briefingPanel.addView(saveRecent)
+        editBriefing = button("안내 수정", secondary = true, dark = true) {
+            // A stale click after a vehicle-state change must not reopen preparation.
+            if (InputAccess.allowed(gateway) && session.confirmed != null) {
+                navigationReader?.stop(); navigationReader = null
+                session.lock()
+                session.reviewHeight(false)
+                session.reviewNavigationManually(false)
+                session.confirmParked(false)
+                hideKeyboard(); render()
+                form.post {
+                    if (InputAccess.allowed(gateway) && session.confirmed == null) {
+                        mainScroll.scrollTo(0, workspace.top)
+                        destinationSummary.announceForAccessibility("안내를 수정합니다. 행사장·차량 높이·안전한 주차 상태를 다시 확인하세요.")
+                    }
+                }
+            }
+        }
+        listOf(copy, saveRecent, editBriefing).forEachIndexed { index, action ->
+            briefActions.addView(action, if (wideHeader) LinearLayout.LayoutParams(0, -2, 1f).apply {
+                topMargin = dp(8); if (index < 2) marginEnd = dp(8)
+            } else LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(8) })
+        }
+        briefingPanel.addView(briefActions)
         if (workspace.orientation == LinearLayout.HORIZONTAL) {
             workspace.addView(form, LinearLayout.LayoutParams(0, -2, 1f).apply { marginEnd = dp(20) })
             workspace.addView(briefingPanel, LinearLayout.LayoutParams(0, -2, 1f))
@@ -590,7 +616,10 @@ class MainActivity : Activity() {
     private fun render() {
         val editable = InputAccess.allowed(gateway)
         renderVisitTools(editable)
-        form.visibility = if (editable) View.VISIBLE else View.GONE
+        // A confirmed pass owns the screen until the user explicitly starts editing.
+        // Returning from a locked state keeps the pass but never restores its checks.
+        val focusedPass = session.confirmed != null
+        form.visibility = if (editable && !focusedPass) View.VISIBLE else View.GONE
         lockedNotice.visibility = if (editable) View.GONE else View.VISIBLE
         lockedNotice.text = if (session.confirmed != null)
             "입력 잠금 · 마지막으로 확정한 브리핑입니다. 현장 안내를 우선하세요."
@@ -607,6 +636,9 @@ class MainActivity : Activity() {
         copy.isEnabled = session.canExport(gateway)
         saveRecent.visibility = copy.visibility
         saveRecent.isEnabled = session.canExport(gateway)
+        briefActions.visibility = copy.visibility
+        editBriefing.visibility = copy.visibility
+        editBriefing.isEnabled = editable && focusedPass
         navigationButton.visibility = if (automotive) View.VISIBLE else View.GONE
         navigationButton.isEnabled = editable && automotive && session.navigationCheck.status != NavigationStatus.CHECKING
         navigationStatus.text = if (!automotive) "내비 미연결 · 방문 시설을 직접 확인하세요."
@@ -645,13 +677,13 @@ class MainActivity : Activity() {
             decision == null -> "아직 확정 전"
             decision.status == "source_conflict" -> "자료 확인 필요 · 확정 불가"
             decision.status == "blocked" -> "높이 제한 초과 · 확정 불가"
-            session.confirmed != null -> "확정된 브리핑${if (!editable) " · 입력 잠금" else ""}${if (demo) " · 데모" else ""}"
+            session.confirmed != null -> "확정된 브리핑${if (!editable) " · 입력 잠금" else if (!session.canExport(gateway)) " · 수정 후 다시 확인" else ""}${if (demo) " · 데모" else ""}"
             else -> "미리보기 · 아직 확정 전"
         }
         briefBadge.setTextColor(if (confirmed) contentAccent else contentWarning)
         // A preparation diagram explains the product without inventing a geographic route.
         // Actual entrance and parking labels remain behind the existing confirmation gate.
-        if ((editable || (!automotive && !demo && session.confirmed == null)) && decision?.status != "source_conflict" && decision?.status != "blocked") {
+        if (!confirmed && (editable || (!automotive && !demo)) && decision?.status != "source_conflict" && decision?.status != "blocked") {
             brief.addView(ArrivalSceneView(this, confirmed), LinearLayout.LayoutParams(-1, dp(190)))
             brief.addView(textView("준비 흐름도 · 실제 지도나 주행 경로가 아닙니다.", 13f, contentMuted))
         }
@@ -661,8 +693,19 @@ class MainActivity : Activity() {
             brief.addView(textView("코엑스 삼성동", 17f, contentMuted))
             brief.addView(divider(dark = confirmed))
             val gate = place.gate.split(" · ", limit = 2)
-            addBriefRow("진입문", gate.first(), gate.getOrNull(1))
-            addBriefRow("공식 안내 주차 구역", place.parking)
+            if (resources.configuration.screenWidthDp / resources.configuration.fontScale.coerceAtLeast(1f) >= 840) {
+                val route = LinearLayout(this).apply { gravity = Gravity.TOP }
+                val entrance = column()
+                val parking = column()
+                route.addView(entrance, LinearLayout.LayoutParams(0, -2, 1f).apply { marginEnd = dp(24) })
+                route.addView(parking, LinearLayout.LayoutParams(0, -2, 1f))
+                addBriefRow("진입문", gate.first(), gate.getOrNull(1), entrance)
+                addBriefRow("공식 안내 주차 구역", place.parking, target = parking)
+                brief.addView(route)
+            } else {
+                addBriefRow("진입문", gate.first(), gate.getOrNull(1))
+                addBriefRow("공식 안내 주차 구역", place.parking)
+            }
             brief.addView(divider(dark = confirmed))
             brief.addView(textView("차량 ${decision.height}m  /  시설 제한 2.2m", 18f, contentMuted))
             if (decision.height == 2.2) brief.addView(textView(decision.message, 18f, contentWarning))
@@ -724,6 +767,28 @@ class MainActivity : Activity() {
                     brief.addView(textView(it, 18f, contentMuted).apply { setPadding(0, dp(10), 0, dp(10)) })
                 }
             }
+        }
+        if (editable && decision != null &&
+            (decision.scheduleNotes.isNotEmpty() || decision.registrationNotes.isNotEmpty())) {
+            val originalNotes = column().apply { visibility = View.GONE }
+            if (decision.scheduleNotes.isNotEmpty()) {
+                originalNotes.addView(textView("일정 안내 · 현재 개최 여부는 직접 확인", 17f, contentWarning).apply { setTypeface(null, Typeface.BOLD) })
+                decision.scheduleNotes.forEach { note -> originalNotes.addView(textView(note, 17f, contentInk)) }
+            }
+            if (decision.registrationNotes.isNotEmpty()) {
+                originalNotes.addView(textView("등록 안내 · 행사장과 구분", 17f, contentWarning).apply { setTypeface(null, Typeface.BOLD) })
+                decision.registrationNotes.forEach { note -> originalNotes.addView(textView(note, 17f, contentInk)) }
+                originalNotes.addView(textView("등록층을 구분한 안내이며 실내 이동 경로는 아닙니다.", 15f, contentMuted))
+            }
+            lateinit var notesToggle: Button
+            notesToggle = button("일정·등록 원문 보기", secondary = true, dark = confirmed) {
+                if (InputAccess.allowed(gateway)) {
+                    originalNotes.visibility = if (originalNotes.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+                    notesToggle.text = if (originalNotes.visibility == View.VISIBLE) "일정·등록 원문 접기" else "일정·등록 원문 보기"
+                }
+            }
+            brief.addView(notesToggle)
+            brief.addView(originalNotes)
         }
         sources.text = Html.fromHtml("근거: <a href='${BriefEngine.SOURCE}'>코엑스 공식 회의실 주차안내</a><br>자료 확인 ${BriefEngine.VERIFIED_DATE}" +
             if (decision?.status == "source_conflict") "<br>교차 확인: <a href='${BriefEngine.CONFLICT_SOURCE}'>2026-02-11 공식 주차장 공지</a>" else "", Html.FROM_HTML_MODE_LEGACY)
@@ -895,10 +960,10 @@ class MainActivity : Activity() {
         }
     }
 
-    private fun addBriefRow(label: String, value: String, detail: String? = null) {
-        brief.addView(textView(label, 17f, briefMuted).apply { setPadding(0, dp(12), 0, dp(4)) })
-        brief.addView(textView(value, 32f, briefInk).apply { setTypeface(null, Typeface.BOLD) })
-        if (detail != null) brief.addView(textView(detail, 18f, briefMuted))
+    private fun addBriefRow(label: String, value: String, detail: String? = null, target: LinearLayout = brief) {
+        target.addView(textView(label, 17f, briefMuted).apply { setPadding(0, dp(12), 0, dp(4)) })
+        target.addView(textView(value, 32f, briefInk).apply { setTypeface(null, Typeface.BOLD) })
+        if (detail != null) target.addView(textView(detail, 18f, briefMuted))
     }
 
     override fun onResume() {

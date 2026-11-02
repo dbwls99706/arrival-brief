@@ -95,10 +95,21 @@ const EVENT_LIFECYCLE = /종료|끝(?:났|나|납|난|낼|냅)|마쳤|마침|완
 // Status clauses often omit the event subject after a venue line.
 const SUBJECTLESS_COMPLETION = /종료|끝(?:났|나|납|난|낼|냅)|마쳤|완료|(?<![A-Za-z0-9_])(?:ended|ending|ends|completed|finished|concluded)(?![A-Za-z0-9_])|(?<![A-Za-z0-9_])(?:it|this|that)\s*(?:is|was|'s|’s)\s+over(?![A-Za-z0-9_])/i;
 const KNOWN_HEIGHT_NOTICE = /^(?:(?:(?:코엑스|시설)(?:의)?\s*)?(?:(?:지하\s*)?주차장\s*)?(?:차량\s*)?(?:진입\s*)?제한\s*높이\s*[:：]?\s*2\.20?\s*(?:m|미터)(?:입니다)?|(?:(?:facility|parking|car\s+park)\s+)?(?:(?:entry|entrance|access|drive[\s-]?in)\s+)?(?:height\s+limit|maximum\s+height)\s*[:：]?\s*2\.20?\s*m)[.!。]?$/i;
+// Recognise only complete, unambiguous notes. A schedule is not proof that an
+// event is currently taking place; the explicit venue review remains required.
+const SCHEDULE_NOTICE = /^행사는\s*([01]?\d|2[0-3]):([0-5]\d)에\s*시작하여\s*([01]?\d|2[0-3]):([0-5]\d)에\s*종료됩니다[.。]?$/;
+const REGISTRATION_NOTICE = /^(?:참가\s*)?등록은\s*[1-4]층\s*로비에서\s*진행합니다[.。]?$/;
+const REGISTRATION_LOCATION = /^(?:참가\s*)?등록(?:\s*(?:장소|위치|층))?\s*(?:은|는|이|가|을|를|[:：])|등록[\s\S]*(?:층|로비)|(?:층|로비)[\s\S]*등록/;
+function isScheduleNotice(clause){
+ const m=SCHEDULE_NOTICE.exec(clause);
+ return !!m&&(Number(m[1])*60+Number(m[2])<Number(m[3])*60+Number(m[4]));
+}
 function noticeParts(text){
- const parkingNotes=[],unparsedParkingNotes=[],entryNotes=[],facilityNotes=[],eventNotes=[],venueClauses=[];
+ const parkingNotes=[],unparsedParkingNotes=[],entryNotes=[],facilityNotes=[],eventNotes=[],scheduleNotes=[],registrationNotes=[],venueClauses=[];
  for(const original of text.split(/\r?\n|(?<=[.!?。])\s+/u)){
   const clause=original.trim().replace(/^[-•]\s*/, '');
+  if(isScheduleNotice(clause)){scheduleNotes.push(original.trim());continue;}
+  if(REGISTRATION_NOTICE.test(clause)){registrationNotes.push(original.trim());continue;}
   if(KNOWN_HEIGHT_NOTICE.test(clause)){venueClauses.push(original);continue;}
   const labelled=/^(?:주차(?:\s*(?:안내|정보|구역))?|parking(?:\s*(?:info|information))?)(?:\s*[:：]\s*|\s*는\s*|\s+)/i.exec(clause);
   const locationFirst=/^(?:지하\s*[1-9]\d*\s*(?:층|F\b)|B[1-9]\d*\s*(?:층|F(?![A-Za-z0-9])|(?![A-Za-z0-9])))/i.test(clause)&&/주차장/.test(clause);
@@ -113,10 +124,10 @@ function noticeParts(text){
    if(PARKING_REFERENCE.test(clause))unparsedParkingNotes.push(original.trim());
    if(ACCESS_OPERATION.test(clause))entryNotes.push(original.trim());
    if(FACILITY_OPERATION.test(clause))facilityNotes.push(original.trim());
-   if(SUBJECTLESS_COMPLETION.test(clause)||EVENT_STATUS_REFERENCE.test(clause)||(EVENT_SUBJECT.test(clause)&&(EVENT_NEGATION.test(clause)||EVENT_LIFECYCLE.test(clause))))eventNotes.push(original.trim());
+   if(REGISTRATION_LOCATION.test(clause)||SUBJECTLESS_COMPLETION.test(clause)||EVENT_STATUS_REFERENCE.test(clause)||(EVENT_SUBJECT.test(clause)&&(EVENT_NEGATION.test(clause)||EVENT_LIFECYCLE.test(clause))))eventNotes.push(original.trim());
   }
  }
- return {venueText:venueClauses.join('\n'),parkingNotes,unparsedParkingNotes,entryNotes,facilityNotes,eventNotes};
+ return {venueText:venueClauses.join('\n'),parkingNotes,unparsedParkingNotes,entryNotes,facilityNotes,eventNotes,scheduleNotes,registrationNotes};
 }
 function parkingNotesAgree(notes,destination){
  const expectedFloor=Number(destination.level.slice(1));
@@ -140,6 +151,8 @@ export function extractDestinations(text) {
  if(!text.trim())return {status:'empty',matches:[],message:'행사 안내에서 코엑스와 세부 장소를 확인합니다.'};
  if(!/코엑스|\bcoex\b/i.test(text)||/마곡|\bmagok\b/i.test(text))return {status:'unsupported',matches:[],message:'현재 코엑스 삼성동의 회의실 8개 범위만 식별합니다. 다른 시설은 안내하지 않습니다.'};
  const parts=noticeParts(text),venueText=parts.venueText;
+ if(new Set(parts.scheduleNotes).size>1||new Set(parts.registrationNotes).size>1)return {status:'needs_review',matches:[],...parts,message:'서로 다른 일정 또는 등록 안내가 함께 있습니다. 이번 방문의 시간표와 등록 장소를 원문에서 직접 확인해주세요.'};
+ if(parts.eventNotes.some(note=>REGISTRATION_LOCATION.test(note.replace(/^[-•]\s*/,''))))return {status:'needs_review',matches:[],...parts,message:'등록 장소와 다른 일정의 안내를 명확히 구분할 수 없습니다. 등록 장소의 시설·층과 실제 행사장을 원문에서 직접 확인하고, 다른 시설·제약 정보를 임의로 생략하지 마세요.'};
  if(parts.unparsedParkingNotes.length||parts.entryNotes.length||parts.facilityNotes.length||parts.eventNotes.length)return {status:'needs_review',matches:[],...parts,message:'해석하지 못한 행사 상태·시설 운영·주차·출입 안내가 있습니다. 실제 현장 개최 여부와 이용 가능 상태를 주최 측·시설의 최신 안내로 확인해주세요. 원문 정보를 임의로 바꾸거나 생략하지 마세요.'};
  if(OTHER_FACILITY.test(text)||NOTICE_CHANGE.test(text)||hasConflictingVenueClaims(text)||hasUnownedVenueMentions(text))return {status:'needs_review',matches:[],message:'다른 시설, 장소 변경·취소 또는 시설 귀속이 확인되지 않은 장소 안내가 있습니다. 현재 방문할 장소를 “코엑스 세부장소 층”으로 확인하고, 원문의 다른 시설·제약 정보를 임의로 생략하지 마세요.'};
  if(/호텔|\bhotel\b|인터컨티넨탈|intercontinental|파르나스|parnas|웨스틴|westin|(?:코엑스|\bcoex\b).{0,20}(?:인근|근처|주변|맞은편|건너편)|(?:인근|근처|주변|맞은편|건너편).{0,20}(?:코엑스|\bcoex\b)|\b(?:near|nearby|opposite|across\s+from)\b.{0,25}\bcoex\b|\bcoex\b.{0,25}\b(?:near|nearby|opposite|across\s+from)\b/is.test(text))return {status:'needs_review',matches:[],message:'코엑스 외부 또는 호텔을 가리키는 표현이 있습니다. 코엑스 삼성동 내부 행사장인지 확인하고 해당 장소의 안내만 남겨주세요.'};
@@ -192,7 +205,11 @@ export function buildBrief({text='',destinationId='',height='',mode='parked',con
 export function formatBrief(brief){
  if(!brief.destination||brief.status!=='ready')throw new Error('확정 가능한 브리핑이 없습니다.');
  const d=brief.destination;
- return `Arrival Brief | 코엑스 ${d.name} (${d.floor})\n\n진입구: ${d.gate} (${d.gateContext})\n추천 주차: ${d.level} ${d.zone}\n차량 높이: ${brief.height.toFixed(2)}m / 시설 제한: 2.2m\n\n${brief.warnings.join('\n')}\n\n출처: ${SOURCE.title}\n${SOURCE.url}\n자료 확인: ${SOURCE.checkedAt}\n\n본 문서는 출발 전 확인용 브리핑이며 실시간 내비게이션이 아닙니다.\n`;
+ const notes=[
+  ...(brief.extraction?.scheduleNotes||[]).map(note=>`일정 안내 원문: ${note}\n시간표만 구분한 것이며 현재 개최 여부를 확인한 결과가 아닙니다.`),
+  ...(brief.extraction?.registrationNotes||[]).map(note=>`등록 안내 원문: ${note}\n등록층은 행사장 층과 구분한 안내이며 실내 이동 경로가 아닙니다.`)
+ ];
+ return `Arrival Brief | 코엑스 ${d.name} (${d.floor})\n\n진입구: ${d.gate} (${d.gateContext})\n추천 주차: ${d.level} ${d.zone}\n차량 높이: ${brief.height.toFixed(2)}m / 시설 제한: 2.2m\n\n${brief.warnings.join('\n')}${notes.length?'\n\n'+notes.join('\n\n'):''}\n\n출처: ${SOURCE.title}\n${SOURCE.url}\n자료 확인: ${SOURCE.checkedAt}\n\n본 문서는 출발 전 확인용 브리핑이며 실시간 내비게이션이 아닙니다.\n`;
 }
 
 

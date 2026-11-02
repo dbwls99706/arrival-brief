@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "corpusId": "arrival-controlled-invitations-v1",
+  "frozenAtKst": "2026-11-02",
+  "origin": "Ten machine-constructed invitation examples, authored before the proposed parser changes. These are not real invitations, human observations, a representative sample, or estimates of user accuracy/time saved.",
+  "referenceDateKst": "2026-11-02",
+  "sources": [
+    "https://business.coex.co.kr/guide/conference-room-parking-information/general-vehicle/",
+    "https://business.coex.co.kr/post-meeting-notice/%EC%95%88%EB%82%B4%EC%9E%90%EB%A3%8C-%EC%BD%94%EC%97%91%EC%8A%A4-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%99%94%EB%AC%BC%EC%B0%A8-%EC%A7%84%EC%9E%85-%EC%95%BD%EB%8F%84/"
+  ],
+  "cases": [
+    {"id":"S01","label":"도착 준비 기본","group":"normal","text":"[행사 안내]\n일시: 2026년 11월 7일 14:00\n장소: 코엑스 오디토리움 3층\n입장은 13:30부터 가능합니다.","height":"1.65","expected":{"status":"ready","canConfirm":true,"destination":"auditorium","gate":"북문","level":"B3","zone":"블루존"}},
+    {"id":"S02","label":"영문 초대장","group":"normal","text":"Research Workshop\nVenue: COEX Studio159 2F\nDate: 7 November 2026, 10:00\nPlease bring your registration confirmation.","height":"1.80","expected":{"status":"ready","canConfirm":true,"destination":"studio159","gate":"동문","level":"B2","zone":"퍼플존"}},
+    {"id":"S03","label":"정상 일정의 종료 시각 포함","group":"normal","text":"정기총회 안내\n장소: 코엑스 그랜드볼룸 1층\n행사는 10:00에 시작하여 18:00에 종료됩니다.","height":"1.65","expected":{"status":"ready","canConfirm":true,"destination":"grand","gate":"북문","level":"B3","zone":"블루존"},"expectedRationale":"The paired start/end times describe a schedule, not evidence that the event has already ended. Readiness means a reviewable route candidate only; explicit current-venue, height and safe-parking confirmation remains mandatory. Do not infer current occurrence from these times."},
+    {"id":"S04","label":"행사장과 등록층 분리","group":"normal","text":"학술대회 안내\n장소: 코엑스 아셈볼룸 2층\n참가 등록은 1층 로비에서 진행합니다.","height":"1.65","expected":{"status":"ready","canConfirm":true,"destination":"asem","gate":"북문","level":"B3","zone":"블루존"},"expectedRationale":"An explicitly labelled registration-only clause does not redefine the stated event venue. It must remain visible as a separate note; other facilities, cancellations, changes and unknown clauses must not be discarded."},
+    {"id":"S05","label":"색상 없는 공식 추천","group":"normal","text":"제품 발표회\n장소: 코엑스 THE PLATZ 2층\n11월 7일 오전 10시입니다.","height":"1.65","expected":{"status":"ready","canConfirm":true,"destination":"platz","gate":"동문","level":"B2","zone":"지하 2층"}},
+    {"id":"S06","label":"공식 자료 상충","group":"constraint","text":"실무 세미나\n장소: 코엑스 회의실 301호 3층\n일시: 2026년 11월 7일 11:00","height":"1.65","expected":{"status":"source_conflict","canConfirm":false}},
+    {"id":"S07","label":"루프박스 전체 높이 초과","group":"constraint","text":"장소: 코엑스 오디토리움 3층\n일시: 2026년 11월 7일 14:00","height":"2.35","expected":{"status":"blocked","canConfirm":false}},
+    {"id":"S08","label":"장소 변경 원문","group":"constraint","text":"기존 장소: 코엑스 오디토리움 3층\n최종 행사장은 송도컨벤시아로 변경되었습니다.","height":"1.65","expected":{"status":"needs_review","canConfirm":false}},
+    {"id":"S09","label":"주차 안내 불일치","group":"constraint","text":"장소: 코엑스 스튜디오159 2층\n주차: B3 블루존","height":"1.65","expected":{"status":"needs_review","canConfirm":false}},
+    {"id":"S10","label":"지원 밖 전시장","group":"constraint","text":"11월 7일 코엑스 Hall A 1층에서 열리는 전시회입니다.","height":"1.65","expected":{"status":"needs_review","canConfirm":false}}
+  ]
+}

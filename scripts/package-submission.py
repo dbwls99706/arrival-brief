@@ -18,7 +18,7 @@ import sys
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-TEXT = {'.md', '.txt', '.py', '.mjs', '.css', '.html', '.svg', '.xml', '.json', '.properties', '.kts', '.kt', '.bat', '.vtt'}
+TEXT = {'.md', '.txt', '.py', '.mjs', '.css', '.html', '.svg', '.xml', '.json', '.properties', '.kts', '.kt', '.bat', '.vtt', '.csv'}
 BLOCKED_PARTS = {'.git', '.openai', '.gradle', '.kotlin', 'build', 'node_modules', '__pycache__', '.idea', '.rsync-tmp'}
 PACKAGED_APK = 'dist/downloads/ArrivalBrief_release.apk'
 IMAGE_SUFFIXES = {'.png', '.jpg', '.jpeg', '.webp'}
@@ -55,12 +55,16 @@ def allowed(path):
             return False
         return path.suffix in {'.html', '.css', '.mjs', '.svg', '.mp4', '.vtt', '.jpg', '.png', '.webp', '.woff2', '.json'} or name == 'dist/downloads/ArrivalBrief_release.apk'
     if parts[0] == 'tests':
-        return path.suffix in {'.mjs', '.tsv'}
+        return path.suffix in {'.mjs', '.tsv', '.json'}
     if parts[0] == 'scripts':
-        return path.suffix == '.py'
+        return path.suffix in {'.py', '.mjs'}
+    if parts[0] == 'examples':
+        return len(parts) >= 3 and parts[1] == 'organizer' and path.suffix in {'.md', '.txt', '.json'}
+    if parts[0] == 'screenshots':
+        return path.suffix in IMAGE_SUFFIXES | {'.md', '.csv', '.json', '.pdf', '.zip'}
     if parts[0] == 'docs':
         if len(parts) == 2:
-            return path.name in {'ANDROID_BUILD.md', 'ARRIVAL_PLAN.md', 'HYUNDAI_FOCUS.md', 'HYUNDAI_VERIFICATION.md', 'USER_EVIDENCE.md', 'SUBMISSION.md', 'design-review.md', 'REVIEW_ROUND2.md', 'PRODUCT_SCOPE.md'} or (path.name.startswith('completion-') and path.suffix in {'.md', '.json', '.py'})
+            return path.name in {'ANDROID_BUILD.md', 'ARRIVAL_PLAN.md', 'HYUNDAI_FOCUS.md', 'HYUNDAI_VERIFICATION.md', 'USER_EVIDENCE.md', 'BUSINESS_VALIDATION.md', 'REVIEW_START.md', 'SUBMISSION.md', 'design-review.md', 'REVIEW_ROUND2.md', 'PRODUCT_SCOPE.md'} or (path.name.startswith('completion-') and path.suffix in {'.md', '.json', '.py'})
         if len(parts) == 3 and parts[1] == 'verification':
             return (path.name in {'build-inputs.json', 'release-verification.json', 'android-lint.txt', 'android-release-build.log', 'android-release-signature.txt', 'android-release-package.txt', 'android-runtime.md', 'android-v04-screenshots.json', 'brand-icon-generation.json', 'review-cycles.json'}
                     or (path.name.startswith('TEST-') and path.suffix == '.xml')
@@ -68,6 +72,7 @@ def allowed(path):
                     or (path.name.startswith(('android-runtime-', 'build-inputs-', 'release-verification-')) and path.suffix == '.json')
                     or (path.name.startswith('web-tests-') and path.suffix == '.log')
                     or (path.name.startswith('web-') and path.suffix == '.json')
+                    or (path.name.startswith(('award-scenarios', 'award-independent-review', 'organizer-examples', 'rc3-')) and path.suffix in {'.md', '.json', '.txt', '.log'})
                     or (path.name.startswith('android-aosp28-') and path.suffix in {'.png', '.json', '.log', '.txt', '.mp4'})
                     or (path.name.startswith('pleos-') and path.suffix in {'.json', '.log', '.txt', '.png'})
                     or (path.name.startswith(('judging-round-', 'resume-review-')) and path.suffix == '.md')
@@ -132,6 +137,69 @@ def relative_evidence_path(value):
     return path if len(path.parts) > 1 else Path('docs/verification') / path
 
 
+def validate_current_qr(version, apk_sha256, runtime, root=ROOT):
+    tag = release_tag(version)
+    qr_path = Path(f'docs/verification/completion-qr-{tag}.json')
+    qr = json.loads((root / qr_path).read_text())
+    if qr.get('version') != version or qr.get('release_apk_sha256') != apk_sha256:
+        raise ValueError('Current QR report identifies another release')
+    records = qr.get('screenshots', [])
+    labels = [shot.get('label') for shot in records]
+    if len(labels) != len(set(labels)) or any(label not in ('standard', 'large_font_1_3', 'release_journey') for label in labels):
+        raise ValueError('Current QR capture labels are duplicated or unknown')
+    expected = {'standard': f'docs/verification/android-aosp28-{tag}-qr.png',
+                'large_font_1_3': f'docs/verification/android-aosp28-{tag}-large-qr.png'}
+    captured = {relative_evidence_path(shot['path']).as_posix(): shot['sha256']
+                for shot in runtime.get('screenshots', [])}
+    debug_sha = runtime.get('aosp', {}).get('debug_apk_sha256')
+    if not debug_sha or any(label not in labels for label in expected):
+        raise ValueError('Current standard/large QR capture identities are incomplete')
+    passed = 0
+    release_passed = 0
+    incorrect_count = 0
+    for shot in records:
+        path = relative_evidence_path(shot['path'])
+        if digest((root / path).read_bytes()) != shot['sha256']:
+            raise ValueError('Current QR capture hash differs: ' + str(path))
+        if shot['label'] in expected:
+            if (path.as_posix() != expected[shot['label']] or captured.get(path.as_posix()) != shot['sha256']
+                    or shot.get('build_type') != 'debug' or shot.get('apk_sha256') != debug_sha):
+                raise ValueError('Current QR capture does not match its runtime/debug APK: ' + shot['label'])
+        elif (shot.get('apk_sha256') != apk_sha256 or shot.get('build_type') != 'release'
+              or path.as_posix() != f'docs/verification/android-aosp28-{tag}-release-scenario-qr.png'
+              or captured.get(path.as_posix()) != shot['sha256']):
+            raise ValueError('Release QR capture does not match the current runtime/APK')
+        decoded = shot.get('decoded', {})
+        matches = shot.get('matches_current_payload', {})
+        incorrect = shot.get('incorrect_nonempty', {})
+        for decoder in ('opencv', 'jsqr'):
+            value, match = decoded.get(decoder), matches.get(decoder)
+            if decoder not in decoded or (value is not None and not isinstance(value, str)) or type(match) is not bool:
+                raise ValueError('QR decoder observation is missing: ' + decoder)
+            if (match and not value) or incorrect.get(decoder) is not (bool(value) and not match):
+                raise ValueError('QR decoder observation and classification disagree: ' + decoder)
+            if shot['label'] in expected:
+                passed += int(match)
+            else:
+                release_passed += int(match)
+            incorrect_count += int(incorrect[decoder])
+        agree = bool(decoded['opencv']) and decoded['opencv'] == decoded['jsqr']
+        if shot.get('both_decoders_agree') is not agree:
+            raise ValueError('QR decoder agreement flag differs from recorded strings')
+        if ((all(matches[decoder] for decoder in ('opencv', 'jsqr')) and not agree)
+                or (agree and matches['opencv'] != matches['jsqr'])):
+            raise ValueError('QR payload-match flags contradict the recorded decoder strings')
+    summary = qr.get('summary', {})
+    if summary.get('standard_large_comparisons') != 4 or summary.get('standard_large_pass') != passed:
+        raise ValueError('Current QR summary differs from individual decoder observations')
+    if 'release_journey' in labels:
+        if (summary.get('release_comparisons') != 2 or summary.get('release_pass') != release_passed
+                or summary.get('all_comparisons') != 6 or summary.get('all_pass') != passed + release_passed
+                or summary.get('incorrect_nonempty_decodes') != incorrect_count):
+            raise ValueError('Release/total QR summary differs from individual decoder observations')
+    return qr_path.as_posix(), qr
+
+
 def delivery_plan(version, apk_sha256, root=ROOT):
     """Keep current proof; inventory historical binaries for the outer bundle."""
     tag = release_tag(version)
@@ -139,6 +207,19 @@ def delivery_plan(version, apk_sha256, root=ROOT):
     runtime = json.loads((root / runtime_rel).read_text())
     if runtime.get('version') != version or runtime.get('release_apk_sha256') != apk_sha256:
         raise ValueError('Current runtime evidence does not identify the release')
+    aosp = runtime.get('aosp', {})
+    if (runtime.get('publication_stage') != 'runtime'
+            or aosp.get('status') != 'installed_and_launched'
+            or aosp.get('installed_apk_sha256') != apk_sha256):
+        raise ValueError('The current release has not completed its recorded install/launch checks')
+    for suite in ('standard_ui', 'font_1_3_ui'):
+        check = aosp.get(suite, {})
+        if (check.get('status') != 'passed' or int(check.get('tests', 0)) < 1
+                or int(check.get('failures', 0)) or int(check.get('errors', 0))):
+            raise ValueError('The current UI evidence is not complete: ' + suite)
+        expected = {'standard_ui': 18, 'font_1_3_ui': 6}.get(suite) if tag == 'rc3' else None
+        if expected is not None and int(check['tests']) != expected:
+            raise ValueError('The current UI evidence count differs from the RC3 review scope: ' + suite)
     required_images = set()
     for shot in runtime.get('screenshots', []):
         path = relative_evidence_path(shot['path'])
@@ -162,6 +243,45 @@ def delivery_plan(version, apk_sha256, root=ROOT):
         if digest((root / path).read_bytes()) != shot['sha256']:
             raise ValueError('Native video capture hash differs: ' + str(path))
         required_images.add(path.as_posix())
+    release_scenario = aosp.get('release_scenario')
+    journey_metadata = None
+    if tag == 'rc3' or release_scenario:
+        if not release_scenario or release_scenario.get('status') != 'passed':
+            raise ValueError('The actual release scenario has not completed')
+        metadata_path = relative_evidence_path(release_scenario['metadata'])
+        journey_metadata = metadata_path.as_posix()
+        journey = json.loads((root / metadata_path).read_text())
+        if (journey.get('version') != version or journey.get('release_apk_sha256') != apk_sha256
+                or journey.get('kind') != 'continuous_actual_release_ui'):
+            raise ValueError('The continuous release scenario belongs to another release or scope')
+        for field in ('source_video', 'published_video'):
+            video = journey[field]
+            path = relative_evidence_path(video['path'])
+            data = (root / path).read_bytes()
+            if digest(data) != video['sha256'] or len(data) != video['bytes']:
+                raise ValueError('Release scenario video identity differs: ' + field)
+        if journey['published_video'].get('no_cuts') is not True:
+            raise ValueError('Release scenario does not preserve its continuous timeline')
+        source_duration = float(journey['source_video']['actual_duration_seconds'])
+        published_duration = float(journey['published_video']['duration_seconds'])
+        if source_duration <= 0 or abs(source_duration - published_duration) > 0.5:
+            raise ValueError('Source and published release timelines differ')
+        captured = 0
+        for event in journey.get('events', []):
+            if not event.get('path'):
+                continue
+            path = relative_evidence_path(event['path'])
+            if digest((root / path).read_bytes()) != event['sha256']:
+                raise ValueError('Release scenario capture identity differs: ' + str(path))
+            required_images.add(path.as_posix())
+            captured += 1
+        if captured < 1:
+            raise ValueError('Release scenario has no independently identifiable captured event')
+    qr_record = None
+    if tag == 'rc3':
+        qr_record, qr = validate_current_qr(version, apk_sha256, runtime, root)
+        for shot in qr['screenshots']:
+            required_images.add(relative_evidence_path(shot['path']).as_posix())
     for record in (root / 'docs/verification').glob('*.json'):
         if not record.name.startswith(('web-', 'completion-')):
             continue
@@ -190,6 +310,13 @@ def delivery_plan(version, apk_sha256, root=ROOT):
                          or path.name.startswith(('completion-', 'pleos-')))
         if path.suffix == '.mp4':
             reason = 'recording_delivered_separately'
+        elif path.name.startswith(f'android-aosp28-{tag}-release-frame-') and path.suffix in IMAGE_SUFFIXES:
+            if name in required_images:
+                raise ValueError('A required app capture cannot be separated as a derived frame')
+            reason = 'derived_video_analysis_frame_delivered_separately'
+        elif path.name in {'android-aosp28-rc1-logcat.txt', 'android-aosp28-rc2-logcat.txt',
+                           'pleos-final-04114df-selected-logcat.log'} and tag == 'rc3':
+            reason = 'historical_raw_log_delivered_separately'
         elif path.suffix in IMAGE_SUFFIXES and not current_image:
             reason = 'historical_capture_delivered_separately'
         else:
@@ -208,6 +335,33 @@ def delivery_plan(version, apk_sha256, root=ROOT):
         records.append({'original_path': rel.as_posix(), 'bytes': len(data), 'sha256': digest(data),
                         'reason': 'historical_media_delivered_separately',
                         'outer_zip_path': 'evidence-history/' + rel.as_posix()})
+    # Screenshot handoffs may expose the same current original under a friendly
+    # filename. Preserve one byte-identical copy in the review and rewrite only
+    # document links; historical screenshot collections remain in the outer ZIP.
+    current_by_hash = {digest((root / name).read_bytes()): name for name in sorted(required_images)}
+    screenshot_root = root / 'screenshots'
+    if screenshot_root.is_dir():
+        for path in sorted(screenshot_root.rglob('*')):
+            rel = path.relative_to(root)
+            if not path.is_file() or path.is_symlink() or not allowed(rel):
+                continue
+            if path.suffix not in IMAGE_SUFFIXES | {'.pdf', '.zip'}:
+                continue
+            data = path.read_bytes()
+            item = {'original_path': rel.as_posix(), 'bytes': len(data), 'sha256': digest(data)}
+            if len(rel.parts) > 2 and rel.parts[1] == tag:
+                retained = current_by_hash.get(item['sha256'])
+                if not retained:
+                    if path.name != 'overview.png':
+                        continue
+                    item.update(reason='derived_capture_overview_delivered_separately',
+                                outer_zip_path='evidence-history/' + rel.as_posix())
+                else:
+                    item.update(reason='byte_identical_current_capture', retained_path=retained)
+            else:
+                item.update(reason='historical_screenshot_collection_delivered_separately',
+                            outer_zip_path='evidence-history/' + rel.as_posix())
+            records.append(item)
     # Runtime records retain original recording identities even though the bytes
     # travel in the outer bundle. Do not silently accept a stale video record.
     for record in (root / 'docs/verification').glob('android-runtime-*.json'):
@@ -230,37 +384,59 @@ def delivery_plan(version, apk_sha256, root=ROOT):
                 raise ValueError('Unsafe prior delivery path')
             if item.get('outer_zip_path') and item['original_path'] not in known and not (root / original).exists():
                 records.append(item)
+    omitted_names = {item['original_path'] for item in records}
+    omitted_directories = []
+    if screenshot_root.is_dir():
+        for directory in sorted(screenshot_root.rglob('*')):
+            if not directory.is_dir() or directory.is_symlink():
+                continue
+            children = [path.relative_to(root).as_posix() for path in directory.rglob('*')
+                        if path.is_file() and not path.is_symlink() and allowed(path.relative_to(root))]
+            if children and all(name in omitted_names for name in children):
+                omitted_directories.append(directory.relative_to(root).as_posix())
     return {'version': version, 'tag': tag, 'runtime_record': runtime_rel.as_posix(),
-            'required_images': sorted(required_images), 'omissions': records}
+            'required_images': sorted(required_images), 'omissions': records,
+            'omitted_directories': omitted_directories,
+            'current_qr_record': qr_record,
+            'release_journey_metadata': journey_metadata}
 
 
 def review_layout(text, rel, plan):
     """Adjust delivery-document paths only; app/build source is never rewritten."""
     if is_core(rel) or rel.suffix not in {'.md', '.json', '.html'}:
         return text
+    # Evidence records hash one another (runtime, gallery, scene validation).
+    # Keep their canonical paths and bytes; delivery aliases live in the manifest.
+    if rel.suffix == '.json':
+        return text
     text = text.replace('apk/ArrivalBrief_release.apk', PACKAGED_APK)
     if rel.as_posix() == 'apk/README.md':
         text = text.replace('](ArrivalBrief_release.apk)', '](../' + PACKAGED_APK + ')')
-    external = [item for item in plan['omissions'] if item.get('outer_zip_path')]
-    referenced = [item for item in external if Path(item['original_path']).name in text]
+    referenced = [item for item in plan['omissions']
+                  if Path(item['original_path']).name in text
+                  and item.get('reason') != 'byte_identical_duplicate']
     if rel.suffix == '.md':
         note = os.path.relpath('PACKAGE-CONTENTS.md', rel.parent.as_posix())
-        names = {Path(item['original_path']).name for item in referenced}
+        by_path = {item['original_path']: item for item in plan['omissions']}
         def link(match):
-            target = unquote(urlsplit(match.group(3)).path)
-            if Path(target).name not in names:
+            url = urlsplit(match.group(3))
+            if url.scheme or url.netloc or not url.path:
                 return match.group(0)
+            target = unquote(url.path)
+            target = os.path.normpath(target.lstrip('/') if target.startswith('/')
+                                      else os.path.join(rel.parent.as_posix(), target))
+            item = by_path.get(target)
+            if target in plan.get('omitted_directories', []):
+                return '[' + match.group(2) + ' (별도 보존 자료)](' + note + ')'
+            if not item:
+                return match.group(0)
+            if item.get('retained_path'):
+                retained = os.path.relpath(item['retained_path'], rel.parent.as_posix())
+                if url.fragment:
+                    retained += '#' + url.fragment
+                return match.group(1) + '[' + match.group(2) + '](' + retained + ')'
             return '[' + match.group(2) + ' (별도 보존 자료)](' + note + ')'
         text = re.sub(r'(!?)\[([^\]]*)\]\(([^\s)]+)\)', link, text)
-    if rel.suffix == '.json' and referenced:
-        data = json.loads(text)
-        if isinstance(data, dict):
-            data['review_delivery'] = {'note': 'Original evidence paths below are preserved in the outer bundle and published repository, not as local files in this review ZIP. See PACKAGE-CONTENTS.md.',
-                                       'external_references': referenced}
-        if isinstance(data, dict) and data.get('continuous_ui_video'):
-            data['continuous_ui_video']['included_in_review_zip'] = False
-            data['continuous_ui_video']['delivery'] = 'Preserved separately; see review_delivery and PACKAGE-CONTENTS.md.'
-        text = json.dumps(data, ensure_ascii=False, indent=2) + '\n'
     return text
 
 
@@ -419,10 +595,13 @@ def main():
             target = staging / rel
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(raw)
-        notes = ['# 익명 검토 ZIP 구성', '', f'이 전달본은 {version}의 앱 소스·최종 APK·현재 검증 캡처·검증 결과와 설명 영상 3편을 포함합니다. 앱 소스와 빌드 입력은 원본 바이트 그대로입니다. 이전 버전의 캡처·편집 영상 보존본과 연속 원본 녹화는 용량을 위해 전체 운영 ZIP 및 별도 공개 저장소에서 제공합니다.', '',
+        media_description = '웹 편집 영상 2편과 Android debug 화면 편집 영상 1편'
+        if plan['release_journey_metadata']:
+            media_description += ', 실제 서명 release의 연속 시연 1편'
+        notes = ['# 익명 검토 ZIP 구성', '', f'이 전달본은 {version}의 앱 소스·최종 APK·현재 검증 캡처·검증 결과와 {media_description}을 포함합니다. 앱 소스와 빌드 입력은 원본 바이트 그대로입니다. 이전 버전의 캡처·편집 영상·큰 원문 로그, 연속 원본 녹화, 원본에서 파생한 분석 프레임과 화면 모음 overview는 용량을 위해 전체 운영 ZIP 및 별도 공개 저장소에서 제공합니다. 현재 앱 원본 캡처와 갤러리의 개별 화면은 포함합니다.', '',
                  '- APK는 [dist/downloads/ArrivalBrief_release.apk](dist/downloads/ArrivalBrief_release.apk)에 한 번만 들어 있습니다. 정적 서버 루트는 기존대로 `dist`를 사용합니다.',
                  '- 현재 영상과 런타임 메타데이터가 직접 참조하는 캡처는 모두 포함했습니다. 이전 캡처·원본 녹화의 경로·크기·해시는 아래에 보존했습니다. 전체 운영 ZIP의 `evidence-history/` 아래에서 같은 파일을 찾을 수 있습니다.',
-                 '- 별도 보존 자료를 가리키는 문서 링크는 이 구성 안내로 연결했습니다. JSON에는 원래 경로를 유지하고 `review_delivery`에 별도 제공 위치와 해시를 명시했습니다. 앱 구현·APK·캡처 이미지 내용은 변경하지 않았습니다.', '', '## 중복 정리 및 별도 제공 기록', '']
+                 '- 별도 보존 자료를 가리키는 Markdown 링크는 이 구성 안내로 연결했습니다. 검증 JSON은 서로 원본 해시를 참조하므로 원래 바이트와 경로를 유지합니다. JSON이 가리키는 중복·별도 제공 파일은 아래 기록 및 manifest의 `retained_path`/`outer_zip_path`에서 찾습니다. 앱 구현·APK·캡처 이미지 내용은 변경하지 않았습니다.', '', '## 중복 정리 및 별도 제공 기록', '']
         notes += [f"- `{x['original_path']}` → `{x.get('retained_path', x.get('outer_zip_path'))}` · {x['bytes']} bytes · SHA-256 `{x['sha256']}`" for x in delivery]
         (staging / 'PACKAGE-CONTENTS.md').write_text('\n'.join(notes) + '\n')
         verify_document_links(staging)
@@ -432,7 +611,10 @@ def main():
                     'source_tree_sha256': source_digest, 'source_files': source, 'files': files,
                     'anonymized_documents': transformed,
                     'delivery_adjusted_documents': adjusted, 'delivery_omissions': delivery,
+                    'delivery_omitted_directories': plan.get('omitted_directories', []),
                     'current_runtime_record': plan['runtime_record'], 'required_capture_files': plan['required_images'],
+                    'current_qr_record': plan['current_qr_record'],
+                    'release_journey_metadata': plan['release_journey_metadata'],
                     'evidence_boundary': 'Source digest verifies checkout/package parity; it is not a claim of byte-reproducible APK build or successful Pleos execution.',
                     'operator_checks': ['Signed official application delivered separately', 'Public repository and APK access', 'Organizer instructions for applicant-identifying repository links', 'Attachment names and media content'],
                     'not_completed_by_packaging': ['Email submission', 'Pleos vehicle runtime verification']}
@@ -453,7 +635,49 @@ def main():
         candidate.replace(zip_path)
         zip_hash = digest(zip_path.read_bytes())
     checklist = output / 'ArrivalBrief-operator-checklist.md'
-    checklist.write_text(f'''# Arrival Brief 운영용 제출 목록\n\n이 문서는 운영 전달용이며 익명 심사용 ZIP에 포함하지 않습니다.\n\n- 저장소: {args.repository_url}\n- 저장소 APK 경로: apk/ArrivalBrief_release.apk\n- 익명 ZIP 내부 APK 경로: dist/downloads/ArrivalBrief_release.apk (동일 APK 1개만 포함)\n- 이전 버전 캡처와 연속 원본 녹화는 익명 ZIP에서 분리해 전체 운영 ZIP의 evidence-history/ 및 공개 저장소에 보존합니다. 대상 경로·해시와 문서 링크 조정은 익명 ZIP의 PACKAGE-CONTENTS.md 및 manifest에 기록했습니다.\n- APK 버전: {version}\n- APK SHA-256: {actual_hash}\n- 익명 검토 ZIP: {zip_path.name}\n- ZIP SHA-256: {zip_hash}\n- 앱 소스 목록 SHA-256: {source_digest}\n- 영상: dist/assets/media/arrival-reel.mp4, arrival-confirm-reel.mp4, arrival-native-validation.mp4\n- 앞의 두 영상은 {version} 실제 웹 화면 편집본입니다. 마지막 영상은 같은 {version} main 소스의 일반 Android debug 자동 UI 시험 실제 캡처 편집본입니다. 모두 연속 실차 녹화나 Pleos SDK 실제 응답 영상이 아닙니다.\n\n## 본인 또는 운영 확인이 필요한 항목\n\n- [ ] 별도 공식 접수양식의 동의 여부·본인 서명·서명일자 확인\n- [ ] 공식 파일명 형식과 익명 심사 지침에 맞는 APK 제출명 확인\n- [ ] 공개 저장소의 소스·APK 접근 확인(비공개 전환 시 심사용 계정 접근 확인)\n- [ ] 개인 계정이 표시되는 GitHub 주소의 익명 전달 방식 확인\n- [ ] 신청서 7번 첨부 파일명과 실제 첨부물 일치 확인\n- [ ] 화면·영상에 개인정보가 없는지 육안 확인\n- [ ] 지원 환경에서 실제 Pleos 설치·SDK·UX 제한 재검증\n\nAPK 단독 제출을 대신하는 ZIP이 아닙니다. 공식 안내는 GitHub에 소스와 APK를 함께 제출하도록 하며, 이 ZIP만으로 접근·익명 요건이 해결됐다고 간주하지 않습니다. 서명키 백업·연락처·동의서는 리뷰 ZIP에 넣지 않았습니다. 이메일은 발송하지 않았습니다.\n''')
+    journey_line = ''
+    if plan['release_journey_metadata']:
+        journey_line = '- 실제 서명 release 연속 시연: dist/assets/media/arrival-native-journey.mp4 (영상·APK·원본 캡처 해시를 별도 metadata와 대조)\n'
+    checklist.write_text(f'''# Arrival Brief 운영용 제출 목록
+
+이 문서는 운영 전달용이며 익명 검토 ZIP에 포함하지 않습니다. 이메일은 발송하지 않았습니다.
+
+## 빠른 검토 순서
+
+1. [실제 서명 release 연속 시연]({args.repository_url}/blob/main/dist/assets/media/arrival-native-journey.mp4)
+2. [README에 연결된 검토 순서]({args.repository_url}/blob/main/docs/REVIEW_START.md)
+3. [APK]({args.repository_url}/blob/main/apk/ArrivalBrief_release.apk)
+
+## 파일 대조
+
+- 저장소: {args.repository_url}
+- 저장소 APK 경로: apk/ArrivalBrief_release.apk
+- 익명 ZIP 내부 APK 경로: dist/downloads/ArrivalBrief_release.apk (동일 APK 1개)
+- APK 버전: {version}
+- APK SHA-256: {actual_hash}
+- 익명 검토 ZIP: {zip_path.name}
+- ZIP SHA-256: {zip_hash}
+- 앱 소스 목록 SHA-256: {source_digest}
+- 편집 영상: dist/assets/media/arrival-reel.mp4, arrival-confirm-reel.mp4, arrival-native-validation.mp4
+{journey_line}- 두 웹 영상은 실제 웹 화면 편집본이며 Android 30초 영상은 같은 main 소스의 별도 debug UI 캡처 편집본입니다. 실제 release 연속 시연과 구분합니다. 어느 영상도 실제 Pleos 신호·실차·실물 휴대폰 광학 QR 성공을 뜻하지 않습니다.
+- 현재 화면: screenshots/rc3/README.md (해당 버전에서 제공하는 경우). 바이트가 같은 현재 이미지 사본은 검토 ZIP에서 원본 한 곳으로 연결합니다.
+- 운영자 자료: examples/organizer/README.md. 합성 예시와 준비 양식이며 실제 제휴·채택·매출 성과가 아닙니다.
+- 과거 캡처·영상·큰 원문 로그·스크린샷 PDF/ZIP, 연속 원본 녹화와 파생 분석 프레임·overview는 전체 운영 ZIP의 evidence-history/ 및 공개 저장소에 보존합니다. 현재 갤러리의 개별 원본 화면은 검토 ZIP에도 포함합니다. 원래 경로·별도 보존 경로·SHA는 PACKAGE-CONTENTS.md와 manifest에서 대조합니다.
+
+## 제출 전 파일 대조
+
+- 서명한 공식 접수양식 PDF·동일 내용 DOCX·공식명 APK를 기본 첨부로 사용합니다. PDF와 DOCX 동시 첨부는 공식 필수 조건이 아닌 보기용·편집 원본 구성입니다.
+- 접수양식 7번의 함께 제공 자료, 실제 첨부 이름, 메일의 저장소·영상 링크가 일치해야 합니다.
+- 전체 운영 ZIP과 개별 파일을 모두 중복 첨부하라는 뜻이 아닙니다.
+- 신청서·연락처·동의서·서명키 개인 백업은 공개 저장소와 익명 검토 ZIP에 포함하지 않습니다. 서명키 백업은 제출 자료가 아닙니다.
+- 공개 저장소의 현재 APK·소스·검토 ZIP 접근과 파일 해시는 최종 게시 뒤 다시 확인합니다. 비공개로 바꾸면 심사 접근 조건도 확인해야 합니다.
+
+## 후속 검증 범위
+
+실제 Pleos 설치·권한·NaviHelper 응답·차량 UX 제한 전환, 실물 휴대폰 광학 QR, 실제 사용자·운영자 과업과 성과는 별도입니다. 일반 Android 실행·합성 사례·사업 가정으로 완료 표시하지 않습니다. 이전 버전의 실패와 미검증 범위도 해당 기록에 보존합니다.
+
+1차 접수 준비와 2차 PT·실차 검증 완료는 구분합니다. 본 파일을 생성한 것만으로 접수나 외부 전송이 이루어지지 않습니다.
+''')
     print(json.dumps({'review_zip': str(zip_path), 'operator_checklist': str(checklist), 'version': version, 'files': len(files), 'source_tree_sha256': source_digest, 'apk_sha256': actual_hash, 'zip_sha256': zip_hash, 'zip_bytes': zip_path.stat().st_size, 'runtime_record': plan['runtime_record'], 'separately_delivered_files': sum(bool(x.get('outer_zip_path')) for x in delivery), 'status': 'prepared_not_submitted'}, ensure_ascii=False))
 
 

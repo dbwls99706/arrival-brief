@@ -13,20 +13,20 @@
   ],
   "format": {
     "duration": "30.000000",
-    "size": "284136"
+    "size": "292445"
   },
   "content": {
     "title": "도착 준비: 장소 확인부터 주행 화면까지",
     "method": "실제 웹 화면 캡처 편집. 실시간 화면 녹화나 실차 영상이 아님.",
-    "app_version": "1.0.0-rc2",
+    "app_version": "1.0.0-rc3",
     "vehicle_state": "웹 시뮬레이션",
     "audio": "none",
     "font": "Noto Sans KR (OFL)",
     "screenshot_fit": "원본 비율 유지. 일부 장면은 실제 결과·출처·원문 확인 영역을 확대.",
-    "source_engine_sha256": "3eed7385f221e7098e325a40dda35180d2805cb0a24ff82a0ab74250a693b375",
-    "source_app_sha256": "8fbd7539c3f51ac18eec536d4949b3b6acc31dd00d8ec7cc2830c0298e63fd63",
+    "source_engine_sha256": "8e4860de73d077058e32abce43c84e6229d392de65c215608202da6b010c7633",
+    "source_app_sha256": "976bd08be69f05486cb8afc8dea68c561d77c5b0a1c299b1916ec2910258ab2f",
     "source_html_sha256": "97e49ee3c92312c33f705de042ff879d7ea48b59ed9aeff73a2a09d84a060840",
-    "source_style_sha256": "3f2bae2ac41396391248d39db878a9e92bf208db62f4e0ce05d85b16a4939c01",
+    "source_style_sha256": "dba480b366483c76535b3d7e52dc68443c338e00dd75090cadbd12229ae19124",
     "source_design_sha256": "70d315c5e0270e65fce171c2003d8b9a0138616205a554ab763a7bb65b4a7f39",
     "brand_asset_sha256": "ae99929907849fbc9f6827bee9c223937b3168b082bcf9da4277d9bd5456a381",
     "brand_display_asset_sha256": "32bbc0a75bdb03bc429645ec9c3022e9bd2e9f87c3d35ea1aee7b496fb5a5a0d",
@@ -34,24 +34,24 @@
       {
         "start": 0.0,
         "duration": 7.5,
-        "source": "arrival-rc2-final-web-initial.jpg",
-        "source_sha256": "f8a589d76efd84a723d0ee37e28be8f42b777122c0502b712e6508917251ce81",
+        "source": "arrival-rc3-final-web-initial.jpg",
+        "source_sha256": "28560a5f31faad7a06c427693c0a56e0e4ec65fbae859405b024add81c0831af",
         "crop": null,
         "title": "01  행사장과 차량 전체 높이를 확인해요"
       },
       {
         "start": 7.5,
         "duration": 7.5,
-        "source": "arrival-rc2-final-web-confirmed.jpg",
-        "source_sha256": "4436dcee45518ff56cf420910f12773b8aea7bebf8a39496d2b010d71ef13366",
+        "source": "arrival-rc3-final-web-confirmed.jpg",
+        "source_sha256": "6128636f2592b87e9a539b2a7e0483c26e6af601347ee8fff51ec33570ea4bf2",
         "crop": null,
         "title": "02  현재 행사장·높이·주차 상태를 직접 확인해요"
       },
       {
         "start": 15.0,
         "duration": 7.5,
-        "source": "arrival-rc2-final-web-confirmed.jpg",
-        "source_sha256": "4436dcee45518ff56cf420910f12773b8aea7bebf8a39496d2b010d71ef13366",
+        "source": "arrival-rc3-final-web-confirmed.jpg",
+        "source_sha256": "6128636f2592b87e9a539b2a7e0483c26e6af601347ee8fff51ec33570ea4bf2",
         "crop": [
           635,
           0,
@@ -63,7 +63,7 @@
       {
         "start": 22.5,
         "duration": 7.5,
-        "source": "arrival-rc2-final-web-driving.jpg",
+        "source": "arrival-rc3-final-web-driving.jpg",
         "source_sha256": "1d9ebf861a925d094907108a7ec8dd224fd98db50c768070c255448ad203ec6b",
         "crop": [
           45,
@@ -74,6 +74,6 @@
         "title": "04  주행 체험에서는 입력을 잠가요"
       }
     ],
-    "sha256": "4d1604b01724a5ba848952134821df97860e0fd1206ebf2991c2ab110ee7ba71"
+    "sha256": "7e7f6c4af58313275fe0a15117a19c88e9f2362b7329f8b4cbb071a86dbd2881"
   }
 }
