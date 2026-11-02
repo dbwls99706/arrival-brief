@@ -1,0 +1,908 @@
+{
+  "runtime_attempts": [
+    {
+      "phase": "initial_aosp_update_and_focused_qr",
+      "status": "failed_or_incomplete",
+      "record": "android-aosp28-rc4-initial-runtime-result.json",
+      "record_sha256": "a28bddfcf141128bc755c3a3881bd83b9b4a0258da81921928a588e46cedd3ed",
+      "completed_checks": [
+        "RC3 to RC4 release update install and launch",
+        "4 standard QR tests",
+        "4 large-font QR tests"
+      ],
+      "incomplete_check": "release capture after switching font1.3: helper asserted Launch failed although failure screenshot shows app open; raw command response not retained, exact initial trigger not proven",
+      "failure_device_report": "android-aosp28-rc4-first-incomplete-device-scenario.json",
+      "failure_screenshot": "android-aosp28-rc4-first-incomplete-failure.png"
+    },
+    {
+      "phase": "release_only_repeat",
+      "status": "passed",
+      "record": "android-aosp28-rc4-release-retry-result.json",
+      "record_sha256": "aa52c3f7eddbbfe09df804b49f714c59575c6775b398caeefddcb6713fdf2b3f",
+      "change": "Only external capture harness: add1800ms font-transition and350ms force-stop stabilization waits; save raw launch responses. App code/APK unchanged; strict Status:ok requirement retained.",
+      "same_apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "release_report": "android-aosp28-rc4-release-scenario.json"
+    }
+  ],
+  "version": "1.0.0-rc4",
+  "version_code": 13,
+  "publication_stage": "runtime",
+  "verified_at": "2026-11-02T11:24:32.708584+00:00",
+  "release_apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+  "release_bytes": 6670935,
+  "unit_tests": 77,
+  "web_tests": 60,
+  "shared_decision_cases": 433,
+  "source_input_count": 43,
+  "aosp": {
+    "status": "installed_and_launched",
+    "api": 28,
+    "abi": "x86",
+    "screen": "1280x800 @160dpi",
+    "image_sha1": "ce03c42d80c0fc6dc47f6455dbee7aa275d02780",
+    "target_version": "1.0.0-rc4",
+    "target_apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+    "latest_version_status": "release_and_focused_debug_qr_ui_verified",
+    "debug_apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+    "test_apk_sha256": "533b6e5e12a7684c456c886f67585be2ead8fb832851c27493ed7c2fff5b443b",
+    "standard_ui": {
+      "status": "passed",
+      "tests": 4,
+      "failures": 0,
+      "methods": [
+        "savedMemoQrRoundTripsAndClearsWhenEditedOrDriving",
+        "memoQrDoesNotRestoreAfterRecreationAndDeletionClearsIt",
+        "activeMemoAndQrExpireAtTheStoredDeadline",
+        "memoQrEnlargementPreservesPayloadAndClearsOnClose"
+      ],
+      "scope": "Four focused QR regression methods; the full 19-method suite was not rerun on RC4."
+    },
+    "font_1_3_ui": {
+      "status": "passed",
+      "tests": 4,
+      "failures": 0,
+      "methods": [
+        "savedMemoQrRoundTripsAndClearsWhenEditedOrDriving",
+        "memoQrDoesNotRestoreAfterRecreationAndDeletionClearsIt",
+        "activeMemoAndQrExpireAtTheStoredDeadline",
+        "memoQrEnlargementPreservesPayloadAndClearsOnClose"
+      ],
+      "scope": "Four focused QR regression methods; the full 19-method suite was not rerun on RC4."
+    },
+    "release_scenario": {
+      "status": "passed",
+      "version": "1.0.0-rc4",
+      "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "screenshots": [
+        {
+          "path": "android-aosp28-rc4-release-confirmed.png",
+          "sha256": "756aaff37001cc7d6bc5a6ed2012207c043a48f592c6826af49637fdb593ff5b",
+          "bytes": 53401,
+          "width": 1280,
+          "height": 800,
+          "build_type": "release",
+          "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+          "font_scale": 1.0,
+          "scene": "confirmed"
+        },
+        {
+          "path": "android-aosp28-rc4-release-input-helper.png",
+          "sha256": "edef9cb48fd738d7af5523870670b169b07684b83f8156e6974ca4a3343ef69a",
+          "bytes": 113481,
+          "width": 1280,
+          "height": 800,
+          "build_type": "release",
+          "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+          "font_scale": 1.0,
+          "scene": "input-helper"
+        },
+        {
+          "path": "android-aosp28-rc4-release-large-font-qr-expanded.png",
+          "sha256": "6cad099e4de69934b686579af60404e5d10486e3dda0bb7a3cd03bb441610455",
+          "bytes": 38155,
+          "width": 1280,
+          "height": 800,
+          "build_type": "release",
+          "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+          "font_scale": 1.3,
+          "scene": "large-font-qr-expanded",
+          "timestamp_oracle_file": "android-aosp28-rc4-release-scenario.json",
+          "saved_at_window_ms": {
+            "before": 1793618597522,
+            "after": 1793618598508
+          },
+          "expected_memo": "B3 블루존 E12",
+          "display_mode": "expanded"
+        },
+        {
+          "path": "android-aosp28-rc4-release-large-font-qr-restored.png",
+          "sha256": "e1d10b3b3868003eea6f0b7ea5140edad69ae2b73f96c0550bba531556c8471c",
+          "bytes": 44356,
+          "width": 1280,
+          "height": 800,
+          "build_type": "release",
+          "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+          "font_scale": 1.3,
+          "scene": "large-font-qr-restored",
+          "timestamp_oracle_file": "android-aosp28-rc4-release-scenario.json",
+          "saved_at_window_ms": {
+            "before": 1793618597522,
+            "after": 1793618598508
+          },
+          "expected_memo": "B3 블루존 E12",
+          "display_mode": "restored"
+        },
+        {
+          "path": "android-aosp28-rc4-release-large-font-qr.png",
+          "sha256": "e1d10b3b3868003eea6f0b7ea5140edad69ae2b73f96c0550bba531556c8471c",
+          "bytes": 44356,
+          "width": 1280,
+          "height": 800,
+          "build_type": "release",
+          "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+          "font_scale": 1.3,
+          "scene": "large-font-qr",
+          "timestamp_oracle_file": "android-aosp28-rc4-release-scenario.json",
+          "saved_at_window_ms": {
+            "before": 1793618597522,
+            "after": 1793618598508
+          },
+          "expected_memo": "B3 블루존 E12",
+          "display_mode": "standard"
+        },
+        {
+          "path": "android-aosp28-rc4-release-standard-qr-expanded.png",
+          "sha256": "6c6d3ed65d5c5b2addb81042d0133be2c1da53bbc359d41910aac7579fac5c1d",
+          "bytes": 32447,
+          "width": 1280,
+          "height": 800,
+          "build_type": "release",
+          "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+          "font_scale": 1.0,
+          "scene": "standard-qr-expanded",
+          "timestamp_oracle_file": "android-aosp28-rc4-release-scenario.json",
+          "saved_at_window_ms": {
+            "before": 1793618597522,
+            "after": 1793618598508
+          },
+          "expected_memo": "B3 블루존 E12",
+          "display_mode": "expanded"
+        },
+        {
+          "path": "android-aosp28-rc4-release-standard-qr-restored.png",
+          "sha256": "38abfa8e24469442a2ea63884ac6d17846aa8194ef26e337c2a44526db6bb99a",
+          "bytes": 40122,
+          "width": 1280,
+          "height": 800,
+          "build_type": "release",
+          "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+          "font_scale": 1.0,
+          "scene": "standard-qr-restored",
+          "timestamp_oracle_file": "android-aosp28-rc4-release-scenario.json",
+          "saved_at_window_ms": {
+            "before": 1793618597522,
+            "after": 1793618598508
+          },
+          "expected_memo": "B3 블루존 E12",
+          "display_mode": "restored"
+        },
+        {
+          "path": "android-aosp28-rc4-release-standard-qr.png",
+          "sha256": "38abfa8e24469442a2ea63884ac6d17846aa8194ef26e337c2a44526db6bb99a",
+          "bytes": 40122,
+          "width": 1280,
+          "height": 800,
+          "build_type": "release",
+          "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+          "font_scale": 1.0,
+          "scene": "standard-qr",
+          "timestamp_oracle_file": "android-aosp28-rc4-release-scenario.json",
+          "saved_at_window_ms": {
+            "before": 1793618597522,
+            "after": 1793618598508
+          },
+          "expected_memo": "B3 블루존 E12",
+          "display_mode": "standard"
+        }
+      ],
+      "scope": "Screenshots only; no recording and no performance measurement",
+      "device_report": "android-aosp28-rc4-release-device-scenario.json",
+      "report": "android-aosp28-rc4-release-scenario.json",
+      "separate_from_debug_ui_run": true,
+      "original_notice_preserved": true,
+      "same_saved_memo_across_fonts": true
+    },
+    "observed": [
+      "Same signing certificate preserved; RC3 versionCode12 to RC4 versionCode13 update succeeded.",
+      "Release installed SHA matches exact frozen build artifact.",
+      "Four focused QR UI methods passed at each of font scales 1.0 and 1.3; full RC3 18+6 is historical.",
+      "Public release accessibility capture verified privacy helper, confirmed pass, standard/enlarged/restored QR and stored memo persistence across font change."
+    ],
+    "limitations": [
+      "Ordinary AOSP Android 9 demo; no actual Pleos, physical vehicle, phone-camera or performance validation.",
+      "CPU emulation and software rendering without KVM/GPU; animations disabled and OS dialogs suppressed.",
+      "RC4 focused QR execution does not repeat the full 19-method UI suite.",
+      "Current screenshots are separate from the historical RC3 continuous video."
+    ],
+    "verified_version": "1.0.0-rc4",
+    "verified_apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+    "installed_apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+    "upgrade_from": "1.0.0-rc3 / versionCode 12 / fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+    "install": "Success",
+    "launch": "Status: ok; Activity: studio.ax.arrival/.MainActivity; Complete",
+    "icon_verification": {
+      "version": "1.0.0-rc4",
+      "release_apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "source_artwork_sha256": "ae99929907849fbc9f6827bee9c223937b3168b082bcf9da4277d9bd5456a381",
+      "embedded_bitmap_sha256": "add2a146d544813a4a4758b66c2a6e5d14602958a787010a38f2261098e88bfa",
+      "package_artwork_pixels": "exact_match",
+      "source_artwork_bytes": "exact_match_to_rc3",
+      "scope": "Current APK bitmap equality and unchanged launcher resources; no new launcher-grid or themed-icon runtime claim."
+    },
+    "log_review": {
+      "scope": "Exact captured boot, release launch, focused standard/large-font UI, incomplete first release capture, retry boot and successful release scenario logcat. Signature scan is not a proof that all runtime defects are absent.",
+      "signature_terms": [
+        "FATAL EXCEPTION",
+        "ANR in",
+        "Fatal signal",
+        "am_anr"
+      ],
+      "signature_lines": [
+        {
+          "log": "boot",
+          "line_number": 2557,
+          "line": "11-02 03:04:23.589  1830  1861 E ActivityManager: ANR in com.android.systemui"
+        },
+        {
+          "log": "boot-retry",
+          "line_number": 2525,
+          "line": "11-02 03:20:16.516  1846  1879 E ActivityManager: ANR in com.android.systemui"
+        }
+      ],
+      "app_related_fatal_or_anr_signature_lines": 0,
+      "environment_signature_lines": 2,
+      "logs": [
+        {
+          "label": "boot",
+          "path": "aosp/011-boot-logcat.txt",
+          "sha256": "f9d88fa359472e718ac153672c57519600dcebbb21d176f3f215ee46397eb60b",
+          "bytes": 519061
+        },
+        {
+          "label": "release-launch",
+          "path": "aosp/028-release-launch-logcat.txt",
+          "sha256": "263f72ec1860c3c47cc6c373acbdd64b764899132cac3d82125045cd7d95e1fb",
+          "bytes": 48035
+        },
+        {
+          "label": "standard",
+          "path": "aosp/standard-logcat.txt",
+          "sha256": "6fdebb49f52a67ed7574e9f4e3d85e22acf5b9097c4b089f5b3811ccf4576300",
+          "bytes": 457448
+        },
+        {
+          "label": "large",
+          "path": "aosp/large-logcat.txt",
+          "sha256": "38aeb54c9fabcefa2031daf7621c16eca0eeed55f5f06d1bab4f76e278d89208",
+          "bytes": 421841
+        },
+        {
+          "label": "release-scenario-first-incomplete",
+          "path": "aosp/release-scenario/logcat.txt",
+          "sha256": "f6c9b5f3a584296705066e4ee4ad3b36cce28c1d1795eb3085ed6bb0c57fd301",
+          "bytes": 159735
+        },
+        {
+          "label": "boot-retry",
+          "path": "release-retry/boot-logcat.txt",
+          "sha256": "12ac0e97882cdee79bbcd1e95105f18bf1243518c322a6c16fed7146307ddba9",
+          "bytes": 464952
+        },
+        {
+          "label": "release-scenario",
+          "path": "release-retry/release-scenario/logcat.txt",
+          "sha256": "a685a27041667d70888a5e436bf52cb0a6098bd0fb3d85c9f7f6afb689b4cea6",
+          "bytes": 305444
+        }
+      ],
+      "classification": [
+        {
+          "log": "boot",
+          "line_number": 2557,
+          "component": "com.android.systemui/.SystemUIService",
+          "phase": "OS boot before ArrivalBrief baseline install",
+          "interpretation": "OS SystemUI ANR in CPU-emulated environment; no attribution to ArrivalBrief",
+          "evidence": "ANR line followed by Reason executing service com.android.systemui/.SystemUIService; baseline installation occurs later in immutable command plan."
+        },
+        {
+          "log": "boot-retry",
+          "line_number": 2525,
+          "component": "com.android.systemui/.SystemUIService",
+          "phase": "OS boot before ArrivalBrief baseline install",
+          "interpretation": "OS SystemUI ANR in CPU-emulated environment; no attribution to ArrivalBrief",
+          "evidence": "ANR line followed by Reason executing service com.android.systemui/.SystemUIService; baseline installation occurs later in immutable command plan."
+        }
+      ],
+      "summary_ko": "앱 설치 전 OS 부팅에서 SystemUIService ANR 2건. 이후 release 첫 실행·표준/큰 글씨 QR 시험·release 화면 시나리오 로그에서 앱 관련 치명 오류/ANR 서명 0건 관찰. 성능 또는 무결함 보증 아님."
+    }
+  },
+  "pleos": {
+    "status": "blocked_before_install_boot_not_ready",
+    "runner_status": "boot_not_ready_within_budget",
+    "image": "Pleos Connect 2.1.0 API34 x86_64",
+    "image_sha1": "b4f858d5bcc6c71506d7edfc872bcb9e5a11acaa",
+    "host": "No GPU or KVM; software rendering and CPU emulation",
+    "attempted_app_version": "1.0.0-rc1",
+    "attempted_apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+    "started_utc": "2026-11-01T23:54:37Z",
+    "finished_utc": "2026-11-02T00:14:38Z",
+    "elapsed_seconds": 1201.37,
+    "budget_seconds": 1200,
+    "latest_version_verified": false,
+    "latest_apk_install_launch_verified": false,
+    "release_checks": {
+      "path": "/workspace/arrival-runtime-rc1/ArrivalBrief_branded_release.apk",
+      "bytes": 6658807,
+      "sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+      "installed": false,
+      "launched": false,
+      "device_sha_matches": false,
+      "process_alive": false,
+      "screenshot_is_png": false
+    },
+    "install_attempted": false,
+    "first_adb_device": {
+      "timestamp_utc": "2026-11-01T23:56:37Z",
+      "elapsed_seconds": 120.02
+    },
+    "first_system_server": {
+      "timestamp_utc": "2026-11-01T23:59:07Z",
+      "elapsed_seconds": 270.02
+    },
+    "first_package_service": {
+      "timestamp_utc": "2026-11-02T00:01:37Z",
+      "elapsed_seconds": 420.02
+    },
+    "first_boot_completed": null,
+    "emulator_exit": 0,
+    "emulator_exit_interpretation": "Exit code recorded after the runner terminated the emulator at the end of this bounded attempt; not an independent app failure.",
+    "memory_events_delta": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0
+    },
+    "navihelper_destination_verified": false,
+    "car_ux_restriction_transitions_verified": false,
+    "observed_guest_watchdog": {
+      "detected": true,
+      "episodes": 2,
+      "reported_main_thread_block_seconds": [
+        131,
+        129
+      ],
+      "evidence_lines": [
+        "11-01 16:05:52.247  1425  1654 W Watchdog: *** WATCHDOG KILLING SYSTEM PROCESS: Blocked in handler on  on main thread (main) for 131s",
+        "11-01 16:05:54.935  1425  1654 W Watchdog:     at com.android.server.policy.PermissionPolicyService.grantOrUpgradeDefaultRuntimePermissionsIfNeeded(PermissionPolicyService.java:623)",
+        "11-01 16:06:05.863   437   437 E Zygote  : Exit zygote because system server (pid 1425) has terminated",
+        "11-01 16:14:22.857  4822  4957 W Watchdog: *** WATCHDOG KILLING SYSTEM PROCESS: Blocked in handler on  on main thread (main) for 129s",
+        "11-01 16:14:23.819  4822  4957 W Watchdog:     at com.android.server.policy.PermissionPolicyService.grantOrUpgradeDefaultRuntimePermissionsIfNeeded(PermissionPolicyService.java:623)",
+        "11-01 16:14:25.755  4128  4128 E Zygote  : Exit zygote because system server (pid 4822) has terminated"
+      ],
+      "interpretation": "The guest Watchdog killed both the first and automatically restarted system_server after main-thread blocks of 131 and 129 seconds. Both final stacks waited in PermissionPolicyService via CompletableFuture.get; the logs do not prove that this particular permission callback occupied the full reported blocked intervals or establish the underlying cause. This occurred before application installation."
+    },
+    "scope": "A bounded isolated retry of the unmodified official image. Runtime success is reported only for actions with direct device evidence. No vehicle or destination callback was simulated.",
+    "requirements_url": "https://document.pleos.ai/en/docs/connect/guide/getting-started/application-development/configure-pleos-connect-emulator",
+    "required_followup": "Complete installation, first launch, NaviHelper destination responses and genuine P/Drive UX restriction transitions on supported Pleos hardware or a supported emulator host.",
+    "evidence": {
+      "runtime": "pleos-final-04114df-runtime.json",
+      "observations": "pleos-final-04114df-observations.log",
+      "emulator": "pleos-final-04114df-emulator.log",
+      "selected_logcat": "pleos-final-04114df-selected-logcat.log"
+    },
+    "current_release_scope": {
+      "version": "1.0.0-rc4",
+      "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "installed": false,
+      "launched": false,
+      "device_sha_matches": false,
+      "navihelper_destination_verified": false,
+      "car_ux_restriction_transitions_verified": false,
+      "note": "RC4 has no new Pleos runtime attempt. Prior attempt identities and logs remain historical."
+    }
+  },
+  "continuous_ui_video": {
+    "status": "not_recorded_for_rc4",
+    "historical_version": "1.0.0-rc3",
+    "historical_metadata": "../../dist/assets/media/arrival-native-journey.json",
+    "note": "RC3 footage retains its actual original APK identity; not relabelled as RC4."
+  },
+  "screenshots": [
+    {
+      "path": "android-aosp28-rc4-release-launch.png",
+      "sha256": "91649b52c8af6f32953de31ef498a6f7ed6aa27a2df6ee49cfb18e915344c631",
+      "bytes": 77827,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "font_scale": null,
+      "font_scale_note": "OS default before the explicit focused-run font setting; not independently recorded for this launch capture."
+    },
+    {
+      "path": "android-aosp28-rc4-standard-activeMemoAndQrExpireAtTheStoredDeadline.png",
+      "sha256": "fc3b79e1dbe992d30d10f4dbe34feaf751f9eedafe556f8dc6af0ccb6115747d",
+      "bytes": 81434,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.0
+    },
+    {
+      "path": "android-aosp28-rc4-standard-memo-qr-after-expiry.png",
+      "sha256": "33761228758fb7879412cd94d2eb8537ebec6f40cce644c66bbea93a474a8bd4",
+      "bytes": 81436,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.0
+    },
+    {
+      "path": "android-aosp28-rc4-standard-memo-qr-before-expiry.png",
+      "sha256": "95c78175692ddaac4a3612724e357e161d05ef77e0ebebb941ce0cebb8a6d172",
+      "bytes": 32503,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.0
+    },
+    {
+      "path": "android-aosp28-rc4-standard-memo-qr-cleared-driving.png",
+      "sha256": "a74cbec912cf7fee15c6b6f4c241d064c96ff30b23e8f1163f5473027b27117f",
+      "bytes": 71720,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.0
+    },
+    {
+      "path": "android-aosp28-rc4-standard-memoQrDoesNotRestoreAfterRecreationAndDeletionClearsIt.png",
+      "sha256": "3ea4f7aee9978c240af86f710c50e918aa25b848632b80353774a94e18fd730a",
+      "bytes": 80526,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.0
+    },
+    {
+      "path": "android-aosp28-rc4-standard-memoQrEnlargementPreservesPayloadAndClearsOnClose.png",
+      "sha256": "cb9f31aa49be3b394ac8096b3fa673f82a32935e234a82825a116e99509c04e9",
+      "bytes": 39926,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.0
+    },
+    {
+      "path": "android-aosp28-rc4-standard-qr-expanded.png",
+      "sha256": "1a055a07ccec868b263727afc813f9a8245019e3508368900e52514a018e812a",
+      "bytes": 32254,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.0,
+      "timestamp_oracle_file": "android-aosp28-rc4-standard-qr-oracle.json",
+      "saved_at_window_ms": {
+        "before": 1793617862323,
+        "after": 1793617863791
+      },
+      "saved_at_ms": 1793617862949,
+      "expected_memo": "B3 블루존 E12",
+      "display_mode": "expanded"
+    },
+    {
+      "path": "android-aosp28-rc4-standard-qr.png",
+      "sha256": "8c91b29576aaa4617047195fda53c320faa7afe398e5c02446b55845dcfe32c2",
+      "bytes": 39893,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.0,
+      "timestamp_oracle_file": "android-aosp28-rc4-standard-qr-oracle.json",
+      "saved_at_window_ms": {
+        "before": 1793617862323,
+        "after": 1793617863791
+      },
+      "saved_at_ms": 1793617862949,
+      "expected_memo": "B3 블루존 E12",
+      "display_mode": "standard"
+    },
+    {
+      "path": "android-aosp28-rc4-standard-saved-memo-qr.png",
+      "sha256": "c509303382b8b9019a255fc9cead27492fed99bad6604d8bf7d82438894dd74d",
+      "bytes": 32731,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.0
+    },
+    {
+      "path": "android-aosp28-rc4-standard-savedMemoQrRoundTripsAndClearsWhenEditedOrDriving.png",
+      "sha256": "a74cbec912cf7fee15c6b6f4c241d064c96ff30b23e8f1163f5473027b27117f",
+      "bytes": 71720,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.0
+    },
+    {
+      "path": "android-aosp28-rc4-large-activeMemoAndQrExpireAtTheStoredDeadline.png",
+      "sha256": "f0495d14b96288381d64054970f6be69b828ee7921fa57d84a240bfaeccbb083",
+      "bytes": 98498,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.3
+    },
+    {
+      "path": "android-aosp28-rc4-large-memo-qr-after-expiry.png",
+      "sha256": "0acad0c5a62a7d9de2129635a1c70d5831b1ad62bd267ca9e868e6519ac5e8f4",
+      "bytes": 98426,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.3
+    },
+    {
+      "path": "android-aosp28-rc4-large-memo-qr-before-expiry.png",
+      "sha256": "e4c98911c6c6e6ee68e4db853fb02678473c3e82a7f95ae4ecc7370197d7146e",
+      "bytes": 37706,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.3
+    },
+    {
+      "path": "android-aosp28-rc4-large-memo-qr-cleared-driving.png",
+      "sha256": "cd3a33c7039c9cbe788def96aba7bac54889bcae1dd2494138e45ecfb9a4f3bb",
+      "bytes": 81923,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.3
+    },
+    {
+      "path": "android-aosp28-rc4-large-memoQrDoesNotRestoreAfterRecreationAndDeletionClearsIt.png",
+      "sha256": "0e7e8d18f06159e9134b0741bb99c693f8f9445da37d53e65f3991ba3abbd782",
+      "bytes": 96775,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.3
+    },
+    {
+      "path": "android-aosp28-rc4-large-memoQrEnlargementPreservesPayloadAndClearsOnClose.png",
+      "sha256": "d88006b88bb35379a1108cac6b88bb61c5ad61f1f2a38758fed615dcd7891b5f",
+      "bytes": 44165,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.3
+    },
+    {
+      "path": "android-aosp28-rc4-large-qr-expanded.png",
+      "sha256": "fc7618db0f36f925e7b5d02b5f27afbc147f3ad548e6de56742e37036ce9d633",
+      "bytes": 37954,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.3,
+      "timestamp_oracle_file": "android-aosp28-rc4-large-qr-oracle.json",
+      "saved_at_window_ms": {
+        "before": 1793618062742,
+        "after": 1793618063995
+      },
+      "saved_at_ms": 1793618063308,
+      "expected_memo": "B3 블루존 E12",
+      "display_mode": "expanded"
+    },
+    {
+      "path": "android-aosp28-rc4-large-qr.png",
+      "sha256": "8544b7a7e931949523e38e0c352bcf180016825753c33c15158a049bd8a4ce5d",
+      "bytes": 44134,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.3,
+      "timestamp_oracle_file": "android-aosp28-rc4-large-qr-oracle.json",
+      "saved_at_window_ms": {
+        "before": 1793618062742,
+        "after": 1793618063995
+      },
+      "saved_at_ms": 1793618063308,
+      "expected_memo": "B3 블루존 E12",
+      "display_mode": "standard"
+    },
+    {
+      "path": "android-aosp28-rc4-large-saved-memo-qr.png",
+      "sha256": "a4d82e701c6b7a9eeae2050e02e988648c2045199ebdd051e1222bce9257986b",
+      "bytes": 37965,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.3
+    },
+    {
+      "path": "android-aosp28-rc4-large-savedMemoQrRoundTripsAndClearsWhenEditedOrDriving.png",
+      "sha256": "cd3a33c7039c9cbe788def96aba7bac54889bcae1dd2494138e45ecfb9a4f3bb",
+      "bytes": 81923,
+      "width": 1280,
+      "height": 800,
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.3
+    },
+    {
+      "path": "android-aosp28-rc4-release-confirmed.png",
+      "sha256": "756aaff37001cc7d6bc5a6ed2012207c043a48f592c6826af49637fdb593ff5b",
+      "bytes": 53401,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "font_scale": 1.0,
+      "scene": "confirmed"
+    },
+    {
+      "path": "android-aosp28-rc4-release-input-helper.png",
+      "sha256": "edef9cb48fd738d7af5523870670b169b07684b83f8156e6974ca4a3343ef69a",
+      "bytes": 113481,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "font_scale": 1.0,
+      "scene": "input-helper"
+    },
+    {
+      "path": "android-aosp28-rc4-release-large-font-qr-expanded.png",
+      "sha256": "6cad099e4de69934b686579af60404e5d10486e3dda0bb7a3cd03bb441610455",
+      "bytes": 38155,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "font_scale": 1.3,
+      "scene": "large-font-qr-expanded",
+      "timestamp_oracle_file": "android-aosp28-rc4-release-scenario.json",
+      "saved_at_window_ms": {
+        "before": 1793618597522,
+        "after": 1793618598508
+      },
+      "expected_memo": "B3 블루존 E12",
+      "display_mode": "expanded"
+    },
+    {
+      "path": "android-aosp28-rc4-release-large-font-qr-restored.png",
+      "sha256": "e1d10b3b3868003eea6f0b7ea5140edad69ae2b73f96c0550bba531556c8471c",
+      "bytes": 44356,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "font_scale": 1.3,
+      "scene": "large-font-qr-restored",
+      "timestamp_oracle_file": "android-aosp28-rc4-release-scenario.json",
+      "saved_at_window_ms": {
+        "before": 1793618597522,
+        "after": 1793618598508
+      },
+      "expected_memo": "B3 블루존 E12",
+      "display_mode": "restored"
+    },
+    {
+      "path": "android-aosp28-rc4-release-large-font-qr.png",
+      "sha256": "e1d10b3b3868003eea6f0b7ea5140edad69ae2b73f96c0550bba531556c8471c",
+      "bytes": 44356,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "font_scale": 1.3,
+      "scene": "large-font-qr",
+      "timestamp_oracle_file": "android-aosp28-rc4-release-scenario.json",
+      "saved_at_window_ms": {
+        "before": 1793618597522,
+        "after": 1793618598508
+      },
+      "expected_memo": "B3 블루존 E12",
+      "display_mode": "standard"
+    },
+    {
+      "path": "android-aosp28-rc4-release-standard-qr-expanded.png",
+      "sha256": "6c6d3ed65d5c5b2addb81042d0133be2c1da53bbc359d41910aac7579fac5c1d",
+      "bytes": 32447,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "font_scale": 1.0,
+      "scene": "standard-qr-expanded",
+      "timestamp_oracle_file": "android-aosp28-rc4-release-scenario.json",
+      "saved_at_window_ms": {
+        "before": 1793618597522,
+        "after": 1793618598508
+      },
+      "expected_memo": "B3 블루존 E12",
+      "display_mode": "expanded"
+    },
+    {
+      "path": "android-aosp28-rc4-release-standard-qr-restored.png",
+      "sha256": "38abfa8e24469442a2ea63884ac6d17846aa8194ef26e337c2a44526db6bb99a",
+      "bytes": 40122,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "font_scale": 1.0,
+      "scene": "standard-qr-restored",
+      "timestamp_oracle_file": "android-aosp28-rc4-release-scenario.json",
+      "saved_at_window_ms": {
+        "before": 1793618597522,
+        "after": 1793618598508
+      },
+      "expected_memo": "B3 블루존 E12",
+      "display_mode": "restored"
+    },
+    {
+      "path": "android-aosp28-rc4-release-standard-qr.png",
+      "sha256": "38abfa8e24469442a2ea63884ac6d17846aa8194ef26e337c2a44526db6bb99a",
+      "bytes": 40122,
+      "width": 1280,
+      "height": 800,
+      "build_type": "release",
+      "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "font_scale": 1.0,
+      "scene": "standard-qr",
+      "timestamp_oracle_file": "android-aosp28-rc4-release-scenario.json",
+      "saved_at_window_ms": {
+        "before": 1793618597522,
+        "after": 1793618598508
+      },
+      "expected_memo": "B3 블루존 E12",
+      "display_mode": "standard"
+    }
+  ],
+  "qr_oracles": [
+    {
+      "build_type": "debug",
+      "font_scale": 1.0,
+      "expected_memo": "B3 블루존 E12",
+      "saved_at_window_ms": {
+        "before": 1793617862323,
+        "after": 1793617863791
+      },
+      "saved_at_ms": 1793617862949,
+      "source": {
+        "path": "docs/verification/android-aosp28-rc4-standard-qr-oracle.json",
+        "sha256": "d38cdc10339c3a7ac5eece5bc6d682732c5947c742f36b861a483cbc8d326fb7"
+      }
+    },
+    {
+      "build_type": "debug",
+      "font_scale": 1.3,
+      "expected_memo": "B3 블루존 E12",
+      "saved_at_window_ms": {
+        "before": 1793618062742,
+        "after": 1793618063995
+      },
+      "saved_at_ms": 1793618063308,
+      "source": {
+        "path": "docs/verification/android-aosp28-rc4-large-qr-oracle.json",
+        "sha256": "d42501b4436d3e43d5e8d4f44107de22a3d49c5e98ab483f17aaa8f6fe240611"
+      }
+    },
+    {
+      "build_type": "release",
+      "font_scale": 1.0,
+      "expected_memo": "B3 블루존 E12",
+      "saved_at_window_ms": {
+        "before": 1793618597522,
+        "after": 1793618598508
+      },
+      "source": {
+        "path": "docs/verification/android-aosp28-rc4-release-scenario.json",
+        "sha256": "845eb535fdd89d72c1a98a9a1d24933facd8a4808cd115b34b6ffc7a0618614c"
+      }
+    },
+    {
+      "build_type": "release",
+      "font_scale": 1.3,
+      "expected_memo": "B3 블루존 E12",
+      "saved_at_window_ms": {
+        "before": 1793618597522,
+        "after": 1793618598508
+      },
+      "source": {
+        "path": "docs/verification/android-aosp28-rc4-release-scenario.json",
+        "sha256": "845eb535fdd89d72c1a98a9a1d24933facd8a4808cd115b34b6ffc7a0618614c"
+      }
+    }
+  ],
+  "fatal_or_anr_signature_lines": [
+    {
+      "log": "boot",
+      "line_number": 2557,
+      "line": "11-02 03:04:23.589  1830  1861 E ActivityManager: ANR in com.android.systemui"
+    },
+    {
+      "log": "boot-retry",
+      "line_number": 2525,
+      "line": "11-02 03:20:16.516  1846  1879 E ActivityManager: ANR in com.android.systemui"
+    }
+  ],
+  "raw_log_sources": [
+    {
+      "label": "boot",
+      "sha256": "f9d88fa359472e718ac153672c57519600dcebbb21d176f3f215ee46397eb60b",
+      "bytes": 519061
+    },
+    {
+      "label": "release-launch",
+      "sha256": "263f72ec1860c3c47cc6c373acbdd64b764899132cac3d82125045cd7d95e1fb",
+      "bytes": 48035
+    },
+    {
+      "label": "standard",
+      "sha256": "6fdebb49f52a67ed7574e9f4e3d85e22acf5b9097c4b089f5b3811ccf4576300",
+      "bytes": 457448
+    },
+    {
+      "label": "large",
+      "sha256": "38aeb54c9fabcefa2031daf7621c16eca0eeed55f5f06d1bab4f76e278d89208",
+      "bytes": 421841
+    },
+    {
+      "label": "release-scenario-first-incomplete",
+      "sha256": "f6c9b5f3a584296705066e4ee4ad3b36cce28c1d1795eb3085ed6bb0c57fd301",
+      "bytes": 159735
+    },
+    {
+      "label": "boot-retry",
+      "sha256": "12ac0e97882cdee79bbcd1e95105f18bf1243518c322a6c16fed7146307ddba9",
+      "bytes": 464952
+    },
+    {
+      "label": "release-scenario",
+      "sha256": "a685a27041667d70888a5e436bf52cb0a6098bd0fb3d85c9f7f6afb689b4cea6",
+      "bytes": 305444
+    }
+  ],
+  "scope_notes": [
+    "Ordinary AOSP Android 9 demo; no actual Pleos, physical vehicle, phone-camera or performance validation.",
+    "CPU emulation and software rendering without KVM/GPU; animations disabled and OS dialogs suppressed.",
+    "RC4 focused QR execution does not repeat the full 19-method UI suite.",
+    "Current screenshots are separate from the historical RC3 continuous video."
+  ]
+}

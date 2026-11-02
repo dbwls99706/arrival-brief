@@ -250,6 +250,76 @@ class VisitFlowInstrumentedTest {
         onView(withContentDescription("저장한 주차 위치를 휴대폰으로 가져가는 QR")).check(matches(not(isDisplayed())))
             .check { view, _ -> assertNull((view as ImageView).drawable) }
     }
+    private fun enlargeQrIfAvailable() {
+        var available = false
+        onView(withText("QR 크게 보기")).check { view, _ -> available = view.visibility == View.VISIBLE }
+        if (available) onView(withText("QR 크게 보기")).perform(scrollTo(), click())
+    }
+    private fun displayedQrBitmap(): Bitmap {
+        var result: Bitmap? = null
+        onView(withContentDescription("저장한 주차 위치를 휴대폰으로 가져가는 QR"))
+            .check(matches(isCompletelyDisplayed()))
+            .check { view, _ -> result = ((view as ImageView).drawable as BitmapDrawable).bitmap }
+        return result!!
+    }
+    private fun qrText(bitmap: Bitmap): String {
+        val pixels = IntArray(bitmap.width * bitmap.height)
+        bitmap.getPixels(pixels, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
+        return QRCodeReader().decode(BinaryBitmap(HybridBinarizer(RGBLuminanceSource(bitmap.width, bitmap.height, pixels)))).text
+    }
+    private fun assertQrPixelsWiped(bitmap: Bitmap) {
+        val pixels = IntArray(bitmap.width * bitmap.height)
+        bitmap.getPixels(pixels, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
+        assertTrue("Discarded QR pixels must be erased", pixels.all { it == Color.WHITE })
+    }
+    @Test fun memoQrEnlargementPreservesPayloadAndClearsOnClose() {
+        scenario = ActivityScenario.launch(MainActivity::class.java)
+        enterDemo(); openSafeMemo()
+        val beforeSave = System.currentTimeMillis()
+        saveMemo("B3 블루존 E12")
+        val afterSave = System.currentTimeMillis()
+        val savedRecord = requireNotNull(ParkingMemoStore(context).load())
+        assertTrue(savedRecord.savedAt in beforeSave..afterSave)
+        assertTrue(savedRecord.text == "B3 블루존 E12")
+        File(context.getExternalFilesDir(null), "qr-saved-at-window.json").writeText(
+            org.json.JSONObject().put("before_save_ms", beforeSave).put("after_save_ms", afterSave)
+                .put("saved_at_ms", savedRecord.savedAt).put("memo", savedRecord.text)
+                .put("font_scale", context.resources.configuration.fontScale)
+                .put("oracle", "Saved app record and independent test-clock window; not read from decoded QR")
+                .toString(2)
+        )
+        onView(withText("휴대폰으로 가져가기")).perform(scrollTo(), click())
+        val standard = displayedQrBitmap()
+        val expected = qrText(standard)
+        capture("qr")
+        var canEnlarge = false
+        onView(withText("QR 크게 보기")).check { view, _ -> canEnlarge = view.visibility == View.VISIBLE }
+        if (canEnlarge) {
+            onView(withText("QR 크게 보기")).perform(scrollTo(), click())
+            val enlarged = displayedQrBitmap()
+            assertTrue("The alternate view must increase the rendered QR size", enlarged.width > standard.width)
+            assertTrue("Enlarging must preserve the complete memo and original save time", qrText(enlarged) == expected)
+            assertQrPixelsWiped(standard)
+            onView(withText("기본 크기")).check(matches(isCompletelyDisplayed()))
+            onView(withText("QR 닫기")).check(matches(isCompletelyDisplayed()))
+            capture("qr-expanded")
+            onView(withText("기본 크기")).perform(click())
+            val restored = displayedQrBitmap()
+            assertTrue(restored.width == standard.width)
+            assertTrue(qrText(restored) == expected)
+            assertQrPixelsWiped(enlarged)
+            onView(withText("QR 닫기")).perform(scrollTo(), click())
+            assertQrPixelsWiped(restored)
+        } else {
+            // A constrained screen keeps the full original QR and the close action.
+            onView(withText("QR 크게 보기")).check(matches(not(isDisplayed())))
+            onView(withText("QR 닫기")).perform(scrollTo(), click())
+            assertQrPixelsWiped(standard)
+        }
+        assertQrCleared()
+        onView(withText("휴대폰으로 가져가기")).perform(scrollTo(), click())
+        assertTrue("Reopening must reset to the standard size", displayedQrBitmap().width == standard.width)
+    }
     @Test fun savedMemoQrRoundTripsAndClearsWhenEditedOrDriving() {
         scenario = ActivityScenario.launch(MainActivity::class.java)
         enterDemo(); openSafeMemo()
@@ -257,6 +327,7 @@ class VisitFlowInstrumentedTest {
         onView(withText("휴대폰으로 가져가기")).perform(scrollTo()).check(matches(not(isEnabled())))
         onView(withText("주차 위치 24시간 기억")).perform(scrollTo(), click())
         onView(withText("휴대폰으로 가져가기")).perform(scrollTo(), click())
+        enlargeQrIfAvailable()
         var rendered: Bitmap? = null
         // Opening the result must reveal the full code without a second user scroll.
         onView(withContentDescription("저장한 주차 위치를 휴대폰으로 가져가는 QR")).check(matches(isCompletelyDisplayed()))
@@ -280,6 +351,7 @@ class VisitFlowInstrumentedTest {
         onView(withText("휴대폰으로 가져가기")).perform(scrollTo()).check(matches(not(isEnabled())))
         saveMemo("B2 퍼플존 P7")
         onView(withText("휴대폰으로 가져가기")).perform(scrollTo(), click())
+        enlargeQrIfAvailable()
         onView(withText("데모 상태 변경")).perform(scrollTo(), click())
         onView(withText("주행")).perform(scrollTo(), click())
         assertQrCleared()
@@ -290,6 +362,7 @@ class VisitFlowInstrumentedTest {
         scenario = ActivityScenario.launch(MainActivity::class.java)
         enterDemo(); openSafeMemo(); saveMemo("B3 블루존 E12")
         onView(withText("휴대폰으로 가져가기")).perform(scrollTo(), click())
+        enlargeQrIfAvailable()
         scenario.moveToState(Lifecycle.State.CREATED)
         scenario.moveToState(Lifecycle.State.RESUMED)
         assertQrCleared()
@@ -297,11 +370,13 @@ class VisitFlowInstrumentedTest {
         onView(withText("정차")).perform(scrollTo(), click())
         openSafeMemo()
         onView(withText("휴대폰으로 가져가기")).perform(scrollTo(), click())
+        enlargeQrIfAvailable()
         scenario.recreate()
         assertQrCleared()
         enterDemo(); openSafeMemo()
         assertQrCleared()
         onView(withText("휴대폰으로 가져가기")).perform(scrollTo(), click())
+        enlargeQrIfAvailable()
         onView(withText("주차 위치 삭제")).perform(scrollTo(), click())
         assertQrCleared()
         onView(withText("휴대폰으로 가져가기")).perform(scrollTo()).check(matches(not(isEnabled())))
@@ -406,6 +481,7 @@ class VisitFlowInstrumentedTest {
         scenario = ActivityScenario.launch(MainActivity::class.java)
         enterDemo(); openSafeMemo()
         onView(withText("휴대폰으로 가져가기")).perform(scrollTo(), click())
+        enlargeQrIfAvailable()
         onView(withContentDescription("저장한 주차 위치를 휴대폰으로 가져가는 QR")).perform(scrollTo()).check(matches(isDisplayed()))
         capture("memo-qr-before-expiry")
         onView(withContentDescription("저장한 주차 위치를 휴대폰으로 가져가는 QR")).perform(object : ViewAction {

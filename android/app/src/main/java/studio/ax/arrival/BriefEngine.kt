@@ -168,12 +168,12 @@ object BriefEngine {
    val token=it.groupValues[1].trim()
    if(Regex("""[1-9]\d*""").matches(token)) token.toIntOrNull() ?: Int.MIN_VALUE else Int.MIN_VALUE
   }.toList()
-  if(matches.size==1&&floors.any { it!=matches[0].floor.first().digitToInt() })return Decision("review","안내문에 행사장과 다른 층이 있습니다. 이번에 방문할 행사장과 층이 있는 문장만 남겨주세요. 등록 장소와 다른 일정의 안내는 빼고 다시 확인하세요.")
+  if(matches.size==1&&floors.any { it!=matches[0].floor.first().digitToInt() })return Decision("review","안내문에 행사장과 다른 층이 있습니다. 행사장과 등록 장소의 층을 구분해 확인해주세요. 일정·등록·변경·취소·진입·주차 제한을 생략하지 말고, 구분이 어려우면 최신 주최 안내를 확인하세요.")
   if(selectedId!=null&&destinations.none { it.id==selectedId })return Decision("invalid","선택한 장소를 찾을 수 없습니다. 장소를 다시 선택하세요.")
   val d=if(selectedId!=null)destinations.find { it.id==selectedId } else matches.singleOrNull()
-  if(d==null)return Decision("select",if(matches.size>1&&floors.toSet().size>1)"여러 행사장과 층이 함께 있습니다. 이번에 방문할 행사장과 층이 있는 문장만 남겨주세요. 등록 장소와 다른 일정의 안내는 빼고 다시 확인하세요." else if(matches.size>1)"여러 장소가 있습니다. 방문할 장소를 선택하세요." else "세부 장소를 선택하세요.",matches.ifEmpty { destinations })
+  if(d==null)return Decision("select",if(matches.size>1&&floors.toSet().size>1)"여러 행사장과 층이 함께 있습니다. 행사장과 등록 장소의 층을 구분해 확인해주세요. 일정·등록·변경·취소·진입·주차 제한을 생략하지 말고, 구분이 어려우면 최신 주최 안내를 확인하세요." else if(matches.size>1)"여러 장소가 있습니다. 방문할 장소를 선택하세요." else "세부 장소를 선택하세요.",matches.ifEmpty { destinations })
   if(matches.isNotEmpty()&&d !in matches)return Decision("conflict","선택한 장소가 입력 안내와 다릅니다.")
-  if(floors.any { it!=d.floor.first().digitToInt() })return Decision("review","선택한 행사장과 다른 층이 있습니다. 이번에 방문할 행사장과 층이 있는 문장만 남겨주세요. 등록 장소와 다른 일정의 안내는 빼고 다시 확인하세요.",destination=d)
+  if(floors.any { it!=d.floor.first().digitToInt() })return Decision("review","선택한 행사장과 다른 층이 있습니다. 행사장과 등록 장소의 층을 구분해 확인해주세요. 일정·등록·변경·취소·진입·주차 제한을 생략하지 말고, 구분이 어려우면 최신 주최 안내를 확인하세요.",destination=d)
   if(!parkingNotesAgree(listOf(text),d)||!entryGatesAgree(text,d))return Decision("review","안내문의 주차층·구역·진입문과 공식 추천이 다릅니다. 주최 측과 시설의 최신 안내를 확인하세요.",parkingNotes=parts.parkingNotes)
   val h=if(Regex("[0-9]+(?:\\.[0-9]{1,2})?").matches(heightText.trim()))heightText.trim().toDoubleOrNull() else null
   if(h==null||!h.isFinite()||h<1.0||h>5.0)return Decision("invalid","전체 높이를 1.00~5.00m 범위의 숫자로 입력하세요. 단위 없이 소수점 둘째 자리까지 입력할 수 있습니다.",destination=d)

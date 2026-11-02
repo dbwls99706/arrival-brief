@@ -2,6 +2,8 @@
 
 `1.0.0-rc3` · versionCode 12 · 정리일 2026-11-02 KST
 
+이전 버전의 실행 기록입니다. [현재 RC4 화면](../rc4/README.md)과 구분해 확인하세요.
+
 행사 안내문을 가져와 도착 패스를 확정하고, 주차한 뒤 직접 적은 위치를 QR로 표시하는 실제 Android 앱 흐름입니다. 아래 6장은 모두 동일한 서명 **release APK**에서 얻었습니다.
 
 ![Arrival Brief RC3 실제 release 앱 화면 6장](overview.png)
@@ -28,7 +30,7 @@
 QR의 독립 판독기 검사는 RC3 표준·큰 글씨 debug 캡처에서 4/4, 이 release QR 캡처에서 1/2로 총 5/6입니다. 실물 휴대폰 카메라 검증은 아직 완료하지 않았습니다. 모음 이미지보다 위의 원본 PNG로 확인하세요.
 
 - [원본 경로·파일별 SHA-256](manifest.json)
-- [APK](../../apk/ArrivalBrief_release.apk) · [런타임 기록](../../docs/verification/android-runtime-rc3.json)
+- [RC3 APK 고정본](https://github.com/dbwls99706/arrival-brief/blob/501e9e90a202d0b1ec133e5621450c805388c94a/apk/ArrivalBrief_release.apk) · [런타임 기록](../../docs/verification/android-runtime-rc3.json)
 - [release 실행 영상](../../dist/assets/media/arrival-native-journey.mp4) · [영상 범위·프레임 검증 metadata](../../dist/assets/media/arrival-native-journey.json)
 - [이전 RC2 화면 모음](../README.md#rc2-이전-기록)
 

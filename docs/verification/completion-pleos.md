@@ -57,6 +57,26 @@ adb -s emulator-5554 forward tcp:8088 tcp:8088
 
 기어 P/D를 바꾼 사실만으로 UX 제한 callback의 수신을 입증하지 않는다. 플랫폼이 실제로 제공한 제한 상태와 앱 반응을 함께 확인해야 한다. 실제 차량의 주행 조작을 이 절차로 자동화하지 않는다.
 
+## 개인정보를 제외한 연결 증거 수집
+
+이미 부팅된 지원 기기에서 앱을 직접 실행한 뒤 아래 도구로 각 단계의 상태를 남길 수 있다. 이 도구는 APK 설치·앱 실행·권한 부여·차량 신호 변경·주행 규제 해제를 하지 않는다. 기기 일련번호는 명령 인자로만 사용하고 보고서에는 SHA-256 식별값만 남긴다.
+
+```sh
+python scripts/collect-pleos-evidence.py --serial emulator-5554 --release-apk apk/ArrivalBrief_release.apk --phase baseline --include-ui --output ../arrival-pleos-check/baseline.json
+```
+
+`--phase`는 관찰자가 붙이는 단계 이름이다. 실제 내비·공식 콘솔에서 수동으로 시나리오를 진행한 다음 `nav-match`, `nav-mismatch`, `nav-unavailable`, `ux-restricted`, `ux-restored`로 각각 새 파일을 만든다. 이름을 `nav-match`로 붙이거나 명령이 종료 코드 0으로 끝났다고 일치 callback 검증이 통과하는 것은 아니다. 기존 증거 파일은 덮어쓰지 않는다.
+
+수집 대상은 부팅·Android API·automotive 기능, 설치 APK 해시와 제공한 APK의 일치 여부, 패키지에 보고된 `NAVI_ROUTE` 부여 상태, AOSP 형식으로 확인되는 현재 디스플레이별 UX 제한 값이다. 권한 항목이 없거나 사용자별 결과가 다르면 `null`로 기록한다. 제조사가 서비스 출력 형식을 바꾼 경우 현재 제한 값을 추측하지 않고 `unknown`으로 남긴다. 이전 제한 변경 이력을 현재 상태로 읽지 않는다.
+
+`--include-ui`를 지정하면 UI XML을 메모리에서만 읽어 앱의 고정 상태 문구를 enum으로 바꾸고 정해진 버튼의 활성 여부만 기록한다. 안내문·주소·주차 메모·기기 원본 덤프·전체 XML·logcat·스크린샷은 저장하지 않는다. 이 옵션을 생략하면 UI 조회도 하지 않는다. 이 앱은 DO를 선언하지 않으므로 플랫폼이 주행 중 화면 전체를 가릴 수 있다. 앱이 보이지 않거나 XML을 읽지 못한 결과를 SDK 성공이나 실패로 추정하지 않는다.
+
+보고서의 `snapshot_collected`는 읽기 명령 수집 완료만 뜻한다. `integration_verified`와 `pleos_identity_verified`는 자동으로 참이 되지 않는다. **실제 NaviHelper 응답·주행 규제 전환의 검증에는 단계별 실제 조작 기록과 독립적인 관찰이 여전히 필요하다.** 이 도구 자체는 합성 fake-adb 계약시험으로 검증했으며, 실제 Pleos 기기에서 실행한 기록은 아직 없다.
+
+```sh
+python scripts/test-collect-pleos-evidence.py
+```
+
 ## 공식 자료
 
 - [Pleos 설치·실행](https://document.pleos.ai/en/docs/connect/guide/getting-started/application-development/setup-connect-sdk-emulator)
@@ -67,5 +87,8 @@ adb -s emulator-5554 forward tcp:8088 tcp:8088
 - [NaviHelper 권한](https://document.pleos.ai/en/api-reference/connect-sdk-pleos/NaviHelper/declaring-permissions)
 - [NaviHelper 사용 순서](https://document.pleos.ai/en/api-reference/connect-sdk-pleos/NaviHelper/intro)
 - [CarUxRestrictionsManager](https://developer.android.com/reference/android/car/drivingstate/CarUxRestrictionsManager)
+- [AOSP CarService의 서비스별 dumpsys](https://android.googlesource.com/platform/packages/services/Car/)
+- [AOSP CarUxRestrictions 현재 값 문자열](https://android.googlesource.com/platform/packages/services/Car/+/master/car-lib/src/android/car/drivingstate/CarUxRestrictions.java)
+- [DO 미선언 시 주행 중 앱 사용 정책](https://document.pleos.ai/en/docs/pleos-only/vehicle-app-planning-guide/driving-restiction-policy)
 - [AOSP Watchdog 설정 관찰자](https://android.googlesource.com/platform/frameworks/base/+/edb639d88f39/services/core/java/com/android/server/Watchdog.java)
 - [AOSP 소프트웨어 에뮬레이터 timeout multiplier 목적](https://android.googlesource.com/platform/system/libbase/+/acf2f2ba8147af581b129b5ac904fad868919f98)

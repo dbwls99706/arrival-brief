@@ -105,6 +105,10 @@ class MainActivity : Activity() {
     private lateinit var memoQrExport: Button
     private lateinit var memoQrPanel: LinearLayout
     private lateinit var memoQrImage: ImageView
+    private lateinit var memoQrZoom: Button
+    private var memoQrBaseSize = 0
+    private var memoQrLargeSize = 0
+    private var memoQrEnlarged = false
     private var memoQrBitmap: Bitmap? = null
     private var memoUnlocked = false
     private var memoExpiryTask: Runnable? = null
@@ -279,7 +283,7 @@ class MainActivity : Activity() {
             }
         })
         noticePanel = column().apply { visibility = if (session.notice.isBlank()) View.GONE else View.VISIBLE }
-        noticePanel.addView(textView("이름·전화번호는 지우고 장소 문장만 입력하세요.", 16f, muted))
+        noticePanel.addView(textView("개인정보만 지우고, 장소·일정·등록·변경·취소·진입·주차 제한 안내는 원문대로 남겨주세요.", 16f, muted))
         notice = edit("예: 코엑스 오디토리움 3층", true).apply {
             setText(session.notice); contentDescription = "행사 장소 안내"
         }
@@ -457,16 +461,29 @@ class MainActivity : Activity() {
         // actual screen on phones, while giving long memos more pixels in-car.
         val qrSizeDp = minOf(resources.configuration.screenWidthDp - 88,
             resources.configuration.screenHeightDp - 200, 400).coerceAtLeast(160)
-        val qrSize = dp(qrSizeDp)
+        memoQrBaseSize = dp(qrSizeDp).coerceAtMost(1024)
+        val qrLargeSizeDp = minOf(resources.configuration.screenWidthDp - 88,
+            resources.configuration.screenHeightDp - (200 * resources.configuration.fontScale.coerceAtLeast(1f)).toInt(),
+            480).coerceAtLeast(160)
+        memoQrLargeSize = dp(qrLargeSizeDp).coerceAtMost(1024)
         memoQrImage = ImageView(this).apply {
             contentDescription = "저장한 주차 위치를 휴대폰으로 가져가는 QR"
             setBackgroundColor(Color.WHITE)
             scaleType = ImageView.ScaleType.FIT_CENTER
             isSaveEnabled = false
         }
-        memoQrPanel.addView(memoQrImage, LinearLayout.LayoutParams(qrSize, qrSize).apply { gravity = Gravity.CENTER_HORIZONTAL })
-        memoQrPanel.addView(textView("잘 읽히지 않으면 QR에 가까이 대고 초점을 맞춰주세요.", 15f, muted))
-        memoQrPanel.addView(button("QR 닫기", true) { clearMemoQr() })
+        memoQrPanel.addView(memoQrImage, LinearLayout.LayoutParams(memoQrBaseSize, memoQrBaseSize).apply { gravity = Gravity.CENTER_HORIZONTAL })
+        memoQrPanel.addView(textView("잘 읽히지 않으면 크기나 거리를 바꾸고 초점을 맞춰주세요.", 15f, muted))
+        val qrActions = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL }
+        memoQrZoom = button(getString(R.string.memo_qr_enlarge), true) { showMemoQr(!memoQrEnlarged) }.apply {
+            visibility = if (memoQrLargeSize > memoQrBaseSize) View.VISIBLE else View.GONE
+            layoutParams = LinearLayout.LayoutParams(0, -2, 1f).apply { topMargin = dp(8); rightMargin = dp(8) }
+        }
+        qrActions.addView(memoQrZoom)
+        qrActions.addView(button("QR 닫기", true) { clearMemoQr() }.apply {
+            layoutParams = LinearLayout.LayoutParams(0, -2, 1f).apply { topMargin = dp(8) }
+        })
+        memoQrPanel.addView(qrActions)
         memoPanel.addView(memoQrPanel)
         memoPanel.addView(textView("메모 1건만 기기에 저장하며 서버 전송·백업하지 않습니다. 만료 뒤 다음 확인 시 삭제됩니다.", 14f, muted))
         root.addView(memoPanel)
@@ -886,7 +903,7 @@ class MainActivity : Activity() {
         if (!memoQrExport.isEnabled) clearMemoQr()
     }
 
-    private fun showMemoQr() {
+    private fun showMemoQr(enlarged: Boolean = false) {
         clearMemoQr()
         if (!ParkingMemoPolicy.allowed(gateway, memoSafeCheck.isChecked)) return
         val now = System.currentTimeMillis()
@@ -895,7 +912,15 @@ class MainActivity : Activity() {
             updateMemoQrAvailability(); return
         }
         try {
-            val size = memoQrImage.layoutParams.width.coerceIn(256, 1024)
+            memoQrEnlarged = enlarged && memoQrLargeSize > memoQrBaseSize
+            val displaySize = if (memoQrEnlarged) memoQrLargeSize else memoQrBaseSize
+            memoQrImage.layoutParams = (memoQrImage.layoutParams as LinearLayout.LayoutParams).apply {
+                width = displaySize; height = displaySize
+            }
+            memoQrZoom.setText(if (memoQrEnlarged) R.string.memo_qr_standard_size else R.string.memo_qr_enlarge)
+            // Regenerate at the display size so enlargement retains whole QR modules.
+            // The saved payload, timestamp, error correction and mask selection stay unchanged.
+            val size = displaySize.coerceIn(256, 1024)
             val matrix = ParkingMemoQr.encode(record!!, now, size) ?: return
             val colors = IntArray(matrix.width * matrix.height) { index ->
                 if (matrix[index % matrix.width, index / matrix.width]) Color.BLACK else Color.WHITE
@@ -922,7 +947,14 @@ class MainActivity : Activity() {
 
     private fun clearMemoQr() {
         if (::memoQrPanel.isInitialized) memoQrPanel.visibility = View.GONE
-        if (::memoQrImage.isInitialized) memoQrImage.setImageDrawable(null)
+        if (::memoQrImage.isInitialized) {
+            memoQrImage.setImageDrawable(null)
+            memoQrImage.layoutParams = (memoQrImage.layoutParams as LinearLayout.LayoutParams).apply {
+                width = memoQrBaseSize; height = memoQrBaseSize
+            }
+        }
+        memoQrEnlarged = false
+        if (::memoQrZoom.isInitialized) memoQrZoom.setText(R.string.memo_qr_enlarge)
         // The renderer can still own a display-list reference; leave reclamation to Android.
         memoQrBitmap?.let { if (!it.isRecycled && it.isMutable) it.eraseColor(Color.WHITE) }
         memoQrBitmap = null

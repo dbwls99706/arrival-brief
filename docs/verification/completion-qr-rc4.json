@@ -1,0 +1,279 @@
+{
+  "schema_version": 2,
+  "version": "1.0.0-rc4",
+  "checked_utc": "2026-11-02T11:24:42.372555+00:00",
+  "scope": "Two software readers on original full-screen PNG bytes; no cropping, resizing, padding or physical phone camera",
+  "release_apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+  "runtime_sha256": "f58534f96644dff8bd283f4603e006728166390c58e3982dd34a03c485b4c743",
+  "source_qr_sha256": "59a1b3808f059bdf94cec6c9168fd2b1afebd5e58f88ae2f94b2c1af328e796b",
+  "tool_script_sha256": "8ea9062a8d8f757bbb0f21270a3e6c87091686a67ab16ab34192fcc457c4208c",
+  "jsqr_bundle_sha256": "3325b0888fa4745c4e6940897d8c4f426fbaae76901fcbfe1871a04e90a51655",
+  "tool_versions": {
+    "opencv": "4.12.0",
+    "jsqr": "1.4.0"
+  },
+  "screenshots": [
+    {
+      "label": "debug_1_expanded",
+      "path": "docs/verification/android-aosp28-rc4-standard-qr-expanded.png",
+      "sha256": "1a055a07ccec868b263727afc813f9a8245019e3508368900e52514a018e812a",
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.0,
+      "display_mode": "expanded",
+      "expected_memo": "B3 블루존 E12",
+      "saved_at_window_ms": {
+        "before": 1793617862323,
+        "after": 1793617863791
+      },
+      "oracle_source": {
+        "path": "docs/verification/android-aosp28-rc4-standard-qr-oracle.json",
+        "sha256": "d38cdc10339c3a7ac5eece5bc6d682732c5947c742f36b861a483cbc8d326fb7"
+      },
+      "decoded": {
+        "opencv": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:11:02 KST\n휴대폰 복사본은 자동 삭제되지 않음.",
+        "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:11:02 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+      },
+      "matches_current_payload": {
+        "opencv": true,
+        "jsqr": true
+      },
+      "both_decoders_agree": true,
+      "incorrect_nonempty": {
+        "opencv": false,
+        "jsqr": false
+      }
+    },
+    {
+      "label": "debug_1_standard",
+      "path": "docs/verification/android-aosp28-rc4-standard-qr.png",
+      "sha256": "8c91b29576aaa4617047195fda53c320faa7afe398e5c02446b55845dcfe32c2",
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.0,
+      "display_mode": "standard",
+      "expected_memo": "B3 블루존 E12",
+      "saved_at_window_ms": {
+        "before": 1793617862323,
+        "after": 1793617863791
+      },
+      "oracle_source": {
+        "path": "docs/verification/android-aosp28-rc4-standard-qr-oracle.json",
+        "sha256": "d38cdc10339c3a7ac5eece5bc6d682732c5947c742f36b861a483cbc8d326fb7"
+      },
+      "decoded": {
+        "opencv": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:11:02 KST\n휴대폰 복사본은 자동 삭제되지 않음.",
+        "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:11:02 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+      },
+      "matches_current_payload": {
+        "opencv": true,
+        "jsqr": true
+      },
+      "both_decoders_agree": true,
+      "incorrect_nonempty": {
+        "opencv": false,
+        "jsqr": false
+      }
+    },
+    {
+      "label": "debug_1.3_expanded",
+      "path": "docs/verification/android-aosp28-rc4-large-qr-expanded.png",
+      "sha256": "fc7618db0f36f925e7b5d02b5f27afbc147f3ad548e6de56742e37036ce9d633",
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.3,
+      "display_mode": "expanded",
+      "expected_memo": "B3 블루존 E12",
+      "saved_at_window_ms": {
+        "before": 1793618062742,
+        "after": 1793618063995
+      },
+      "oracle_source": {
+        "path": "docs/verification/android-aosp28-rc4-large-qr-oracle.json",
+        "sha256": "d42501b4436d3e43d5e8d4f44107de22a3d49c5e98ab483f17aaa8f6fe240611"
+      },
+      "decoded": {
+        "opencv": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:14:23 KST\n휴대폰 복사본은 자동 삭제되지 않음.",
+        "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:14:23 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+      },
+      "matches_current_payload": {
+        "opencv": true,
+        "jsqr": true
+      },
+      "both_decoders_agree": true,
+      "incorrect_nonempty": {
+        "opencv": false,
+        "jsqr": false
+      }
+    },
+    {
+      "label": "debug_1.3_standard",
+      "path": "docs/verification/android-aosp28-rc4-large-qr.png",
+      "sha256": "8544b7a7e931949523e38e0c352bcf180016825753c33c15158a049bd8a4ce5d",
+      "build_type": "debug",
+      "apk_sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "font_scale": 1.3,
+      "display_mode": "standard",
+      "expected_memo": "B3 블루존 E12",
+      "saved_at_window_ms": {
+        "before": 1793618062742,
+        "after": 1793618063995
+      },
+      "oracle_source": {
+        "path": "docs/verification/android-aosp28-rc4-large-qr-oracle.json",
+        "sha256": "d42501b4436d3e43d5e8d4f44107de22a3d49c5e98ab483f17aaa8f6fe240611"
+      },
+      "decoded": {
+        "opencv": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:14:23 KST\n휴대폰 복사본은 자동 삭제되지 않음.",
+        "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:14:23 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+      },
+      "matches_current_payload": {
+        "opencv": true,
+        "jsqr": true
+      },
+      "both_decoders_agree": true,
+      "incorrect_nonempty": {
+        "opencv": false,
+        "jsqr": false
+      }
+    },
+    {
+      "label": "release_1.3_expanded",
+      "path": "docs/verification/android-aosp28-rc4-release-large-font-qr-expanded.png",
+      "sha256": "6cad099e4de69934b686579af60404e5d10486e3dda0bb7a3cd03bb441610455",
+      "build_type": "release",
+      "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "font_scale": 1.3,
+      "display_mode": "expanded",
+      "expected_memo": "B3 블루존 E12",
+      "saved_at_window_ms": {
+        "before": 1793618597522,
+        "after": 1793618598508
+      },
+      "oracle_source": {
+        "path": "docs/verification/android-aosp28-rc4-release-scenario.json",
+        "sha256": "845eb535fdd89d72c1a98a9a1d24933facd8a4808cd115b34b6ffc7a0618614c"
+      },
+      "decoded": {
+        "opencv": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:23:17 KST\n휴대폰 복사본은 자동 삭제되지 않음.",
+        "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:23:17 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+      },
+      "matches_current_payload": {
+        "opencv": true,
+        "jsqr": true
+      },
+      "both_decoders_agree": true,
+      "incorrect_nonempty": {
+        "opencv": false,
+        "jsqr": false
+      }
+    },
+    {
+      "label": "release_1.3_standard",
+      "path": "docs/verification/android-aosp28-rc4-release-large-font-qr.png",
+      "sha256": "e1d10b3b3868003eea6f0b7ea5140edad69ae2b73f96c0550bba531556c8471c",
+      "build_type": "release",
+      "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "font_scale": 1.3,
+      "display_mode": "standard",
+      "expected_memo": "B3 블루존 E12",
+      "saved_at_window_ms": {
+        "before": 1793618597522,
+        "after": 1793618598508
+      },
+      "oracle_source": {
+        "path": "docs/verification/android-aosp28-rc4-release-scenario.json",
+        "sha256": "845eb535fdd89d72c1a98a9a1d24933facd8a4808cd115b34b6ffc7a0618614c"
+      },
+      "decoded": {
+        "opencv": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:23:17 KST\n휴대폰 복사본은 자동 삭제되지 않음.",
+        "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:23:17 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+      },
+      "matches_current_payload": {
+        "opencv": true,
+        "jsqr": true
+      },
+      "both_decoders_agree": true,
+      "incorrect_nonempty": {
+        "opencv": false,
+        "jsqr": false
+      }
+    },
+    {
+      "label": "release_1_expanded",
+      "path": "docs/verification/android-aosp28-rc4-release-standard-qr-expanded.png",
+      "sha256": "6c6d3ed65d5c5b2addb81042d0133be2c1da53bbc359d41910aac7579fac5c1d",
+      "build_type": "release",
+      "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "font_scale": 1.0,
+      "display_mode": "expanded",
+      "expected_memo": "B3 블루존 E12",
+      "saved_at_window_ms": {
+        "before": 1793618597522,
+        "after": 1793618598508
+      },
+      "oracle_source": {
+        "path": "docs/verification/android-aosp28-rc4-release-scenario.json",
+        "sha256": "845eb535fdd89d72c1a98a9a1d24933facd8a4808cd115b34b6ffc7a0618614c"
+      },
+      "decoded": {
+        "opencv": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:23:17 KST\n휴대폰 복사본은 자동 삭제되지 않음.",
+        "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:23:17 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+      },
+      "matches_current_payload": {
+        "opencv": true,
+        "jsqr": true
+      },
+      "both_decoders_agree": true,
+      "incorrect_nonempty": {
+        "opencv": false,
+        "jsqr": false
+      }
+    },
+    {
+      "label": "release_1_standard",
+      "path": "docs/verification/android-aosp28-rc4-release-standard-qr.png",
+      "sha256": "38abfa8e24469442a2ea63884ac6d17846aa8194ef26e337c2a44526db6bb99a",
+      "build_type": "release",
+      "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "font_scale": 1.0,
+      "display_mode": "standard",
+      "expected_memo": "B3 블루존 E12",
+      "saved_at_window_ms": {
+        "before": 1793618597522,
+        "after": 1793618598508
+      },
+      "oracle_source": {
+        "path": "docs/verification/android-aosp28-rc4-release-scenario.json",
+        "sha256": "845eb535fdd89d72c1a98a9a1d24933facd8a4808cd115b34b6ffc7a0618614c"
+      },
+      "decoded": {
+        "opencv": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:23:17 KST\n휴대폰 복사본은 자동 삭제되지 않음.",
+        "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 20:23:17 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+      },
+      "matches_current_payload": {
+        "opencv": true,
+        "jsqr": true
+      },
+      "both_decoders_agree": true,
+      "incorrect_nonempty": {
+        "opencv": false,
+        "jsqr": false
+      }
+    }
+  ],
+  "summary": {
+    "standard_large_comparisons": 8,
+    "standard_large_pass": 8,
+    "release_comparisons": 8,
+    "release_pass": 8,
+    "all_comparisons": 16,
+    "all_pass": 16,
+    "incorrect_nonempty_decodes": 0
+  },
+  "limitations": [
+    "A success on these recorded pixels is not physical phone-camera validation.",
+    "Enlargement preserves the payload and offers another size; it is not a universal decoder fix.",
+    "Earlier RC3 5/6 captures and synthetic size probes remain separate historical observations."
+  ]
+}

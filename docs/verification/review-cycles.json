@@ -117,7 +117,7 @@
     }
   ],
   "score_policy": "Never award missing evidence or change the rubric to force100. Unverified optical phone scan, live Pleos SDK and field outcomes remain separate.",
-  "final_apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+  "final_apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
   "incomplete_attempts": [
     {
       "round": 6,
@@ -216,12 +216,39 @@
       "report": "rc3-release-video-review.md",
       "fixes": [],
       "scope": "Seven actual release screenshot states visually inspected and matched in order to a single VFR screenrecord source. Original host elapsed-duration gate failed and exit1 remains preserved; offline state inclusion, encoded timestamps and before/after APK hashes were verified separately. Two SystemUI ANRs are classified separately from app outcomes. No real-time performance or Pleos claim."
+    },
+    {
+      "phase": "rc4_code_and_lifecycle",
+      "agent": "independent_review",
+      "status": "completed",
+      "score": null,
+      "assessment_type": "bounded_code_review",
+      "report": "completion-rc4-code-review.md",
+      "fixes": [
+        "Add bounded manual QR enlargement without changing memo payload or save time",
+        "Preserve restrictive notice clauses in input guidance"
+      ],
+      "scope": "Code review of QR replacement, expiry and input guards; runtime evidence is recorded separately. No Pleos or optical camera claim."
+    },
+    {
+      "phase": "rc4_final_evidence",
+      "agent": "audit_current",
+      "status": "completed",
+      "score": null,
+      "assessment_type": "bounded_source_artifact_runtime_and_gallery_audit",
+      "report": "rc4-final-review.md",
+      "fixes": [
+        "Keep historical RC3 media identity separate from RC4 screenshots",
+        "Handle explicit missing current recording without accepting malformed evidence",
+        "Preserve first-candidate lint evidence and separate derived screenshot handoffs"
+      ],
+      "scope": "Exact APK copies,43 frozen inputs,29 runtime captures,6 gallery originals,16 software decoder comparisons and explicit failed/retried capture records. Package mutations authored by this reviewer are self-reviewed, not an independent audit of those changes. Full final archive verification follows separately."
     }
   ],
   "latest_overall_score": {
     "score": 88,
     "version": "1.0.0-rc1",
     "report": "resume-review-final.md",
-    "note": "Historical holistic assessment of RC1 only; RC2/RC3 bounded verification has no replacement overall score."
+    "note": "Historical holistic assessment of RC1 only; RC2/RC3/RC4 bounded verification has no replacement overall score."
   }
 }

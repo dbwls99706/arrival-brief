@@ -137,14 +137,16 @@ test('changed, cancelled and explicitly contradicted venues cannot be manually o
   }
  }
 });
-test('multiple event floors and registration floors explain a recoverable edit',()=>{
+test('mixed-floor recovery preserves notice details instead of asking users to remove them',()=>{
  const text='코엑스 오전 그랜드볼룸 1층, 오후 오디토리움 3층';
  const initial=buildBrief({text,height:1.65});
- assert.equal(initial.canConfirm,false);assert.match(initial.reason,/이번에 방문할 행사장과 층이 있는 문장만/);
+ assert.equal(initial.canConfirm,false);assert.match(initial.reason,/행사장과 등록 장소의 층을 구분/);
  for(const b of [buildBrief({text,height:1.65,destinationId:'auditorium'}),buildBrief({text:'코엑스 오디토리움 3층. 1층 로비에서 등록해주세요.',height:1.65})]){
-  assert.equal(b.status,'needs_review');assert.match(b.reason,/등록 장소와 다른 일정/);
+  assert.equal(b.status,'needs_review');assert.match(b.reason,/생략하지/);
+  assert.doesNotMatch(b.reason,/문장만 남겨|안내는 빼고/);
  }
- assert.equal(buildBrief({text:'코엑스 오디토리움 3층',height:1.65}).status,'ready');
+ const preserved=buildBrief({text:'코엑스 오디토리움 3층. 참가 등록은 1층 로비에서 진행합니다.',height:1.65});
+ assert.equal(preserved.status,'ready');assert.deepEqual(preserved.extraction.registrationNotes,['참가 등록은 1층 로비에서 진행합니다.']);
 });
 test('stopped, deferred, replaced and online events fail closed',()=>{
  for(const text of [

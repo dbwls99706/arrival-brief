@@ -38,10 +38,12 @@ def main() -> int:
     parser.add_argument("--test-apk", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--large-font-all", action="store_true", help="Repeat all tests at font scale 1.3 instead of the six visual/input cases")
-    parser.add_argument("--expected-ui-tests", type=int, default=13, help="Expected full-suite test count (this release: 13)")
+    parser.add_argument("--expected-ui-tests", type=int, help="Expected full-suite count for the supplied debug/test APKs; required when both are supplied")
     args = parser.parse_args()
     if bool(args.debug_apk) != bool(args.test_apk):
         parser.error("--debug-apk and --test-apk must be supplied together")
+    if args.debug_apk and (args.expected_ui_tests is None or args.expected_ui_tests < 1):
+        parser.error("--expected-ui-tests must be a positive count for the supplied debug/test APKs")
     for path in [args.release_apk, args.baseline_apk, args.debug_apk, args.test_apk]:
         if path and not path.is_file():
             parser.error(f"Missing APK: {path}")

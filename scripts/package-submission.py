@@ -5,6 +5,7 @@ The source digest proves parity between the ZIP and this checkout, not that a bi
 was reproduced from source. Build provenance is recorded separately when available.
 """
 from argparse import ArgumentParser
+from datetime import datetime, timedelta, timezone
 from hashlib import sha256
 from io import BytesIO
 from pathlib import Path
@@ -72,8 +73,8 @@ def allowed(path):
                     or (path.name.startswith(('android-runtime-', 'build-inputs-', 'release-verification-')) and path.suffix == '.json')
                     or (path.name.startswith('web-tests-') and path.suffix == '.log')
                     or (path.name.startswith('web-') and path.suffix == '.json')
-                    or (path.name.startswith(('award-scenarios', 'award-independent-review', 'organizer-examples', 'rc3-')) and path.suffix in {'.md', '.json', '.txt', '.log'})
-                    or (path.name.startswith('android-aosp28-') and path.suffix in {'.png', '.json', '.log', '.txt', '.mp4'})
+                    or (path.name.startswith(('award-scenarios', 'award-independent-review', 'organizer-examples', 'rc3-', 'rc4-', 'qr-display-size-probe-')) and path.suffix in {'.md', '.json', '.txt', '.log'})
+                    or (path.name.startswith('android-aosp28-') and path.suffix in {'.png', '.json', '.log', '.txt', '.mp4', '.xml'})
                     or (path.name.startswith('pleos-') and path.suffix in {'.json', '.log', '.txt', '.png'})
                     or (path.name.startswith(('judging-round-', 'resume-review-')) and path.suffix == '.md')
                     or (path.name.startswith(('arrival-v04-', 'arrival-v05-', 'arrival-rc', 'arrival-resume-')) and path.suffix in {'.jpg', '.png', '.json', '.mp4', '.vtt'}))
@@ -137,7 +138,7 @@ def relative_evidence_path(value):
     return path if len(path.parts) > 1 else Path('docs/verification') / path
 
 
-def validate_current_qr(version, apk_sha256, runtime, root=ROOT):
+def _validate_rc3_qr(version, apk_sha256, runtime, root=ROOT):
     tag = release_tag(version)
     qr_path = Path(f'docs/verification/completion-qr-{tag}.json')
     qr = json.loads((root / qr_path).read_text())
@@ -200,6 +201,200 @@ def validate_current_qr(version, apk_sha256, runtime, root=ROOT):
     return qr_path.as_posix(), qr
 
 
+def validate_current_qr(version, apk_sha256, runtime, root=ROOT):
+    if release_tag(version) == 'rc3':
+        return _validate_rc3_qr(version, apk_sha256, runtime, root)
+    qr_path = Path(f'docs/verification/completion-qr-{release_tag(version)}.json')
+    qr = json.loads((root / qr_path).read_text())
+    if qr.get('version') != version or qr.get('release_apk_sha256') != apk_sha256:
+        raise ValueError('Current QR report identifies another release')
+    records = qr.get('screenshots', [])
+    required = {(build, font, mode) for build in ('debug', 'release')
+                for font in (1.0, 1.3) for mode in ('standard', 'expanded')}
+    combinations = [(shot.get('build_type'), shot.get('font_scale'), shot.get('display_mode')) for shot in records]
+    labels = [shot.get('label') for shot in records]
+    paths = [shot.get('path') for shot in records]
+    if (len(records) != 8 or set(combinations) != required or len(set(labels)) != 8
+            or len(set(paths)) != 8 or any(not isinstance(label, str) or not label for label in labels)
+            or any(type(shot.get('font_scale')) not in (int, float) for shot in records)
+            or any(not isinstance(path, str) or not path for path in paths)):
+        raise ValueError('Current QR captures must cover each build/font/display combination exactly once')
+    captured = {relative_evidence_path(shot['path']).as_posix(): shot for shot in runtime.get('screenshots', [])}
+    identities = {'debug': runtime.get('aosp', {}).get('debug_apk_sha256'), 'release': apk_sha256}
+    counts = {'debug': 0, 'release': 0}
+    incorrect_count = 0
+    for shot in records:
+        path = relative_evidence_path(shot['path'])
+        observation = captured.get(path.as_posix(), {})
+        expected_apk = identities[shot['build_type']]
+        if (not expected_apk or shot.get('apk_sha256') != expected_apk
+                or digest((root / path).read_bytes()) != shot['sha256']
+                or any(observation.get(field) != shot.get(field)
+                       for field in ('sha256', 'build_type', 'apk_sha256', 'font_scale', 'display_mode'))):
+            raise ValueError('Current QR capture differs from its runtime/build identity: ' + str(path))
+        memo = shot.get('expected_memo')
+        window = shot.get('saved_at_window_ms', {})
+        before, after = window.get('before'), window.get('after')
+        if (memo != 'B3 블루존 E12' or type(before) is not int or type(after) is not int
+                or before < 0 or after < before or after - before > 120000
+                or observation.get('saved_at_window_ms') != window):
+            raise ValueError('Current QR capture has no matching bounded device-time save oracle')
+        decoded, matches, incorrect = (shot.get(field, {}) for field in
+                                       ('decoded', 'matches_current_payload', 'incorrect_nonempty'))
+        for decoder in ('opencv', 'jsqr'):
+            value, match = decoded.get(decoder), matches.get(decoder)
+            if decoder not in decoded or (value is not None and not isinstance(value, str)) or type(match) is not bool:
+                raise ValueError('QR decoder observation is missing: ' + decoder)
+            payload_match = False
+            if value:
+                parts = value.split('\n')
+                if (len(parts) == 4 and parts[0] == 'Arrival Brief' and parts[1] == '주차 메모: ' + memo
+                        and parts[3] == '휴대폰 복사본은 자동 삭제되지 않음.'):
+                    try:
+                        saved = datetime.strptime(parts[2], '%Y-%m-%d %H:%M:%S KST').replace(tzinfo=timezone(timedelta(hours=9)))
+                        stamp = int(saved.timestamp()) * 1000
+                        payload_match = (saved.strftime('%Y-%m-%d %H:%M:%S KST') == parts[2]
+                                         and before // 1000 * 1000 <= stamp <= after // 1000 * 1000)
+                    except (ValueError, OverflowError):
+                        pass
+            if match is not payload_match or incorrect.get(decoder) is not (bool(value) and not payload_match):
+                raise ValueError('QR classification differs from the memo and independent device-time oracle')
+            counts[shot['build_type']] += int(match)
+            incorrect_count += int(incorrect[decoder])
+        agree = bool(decoded['opencv']) and decoded['opencv'] == decoded['jsqr']
+        if shot.get('both_decoders_agree') is not agree:
+            raise ValueError('QR decoder agreement flag differs from recorded strings')
+    summary = qr.get('summary', {})
+    expected_summary = {'standard_large_comparisons': 8, 'standard_large_pass': counts['debug'],
+                        'release_comparisons': 8, 'release_pass': counts['release'],
+                        'all_comparisons': 16, 'all_pass': sum(counts.values()),
+                        'incorrect_nonempty_decodes': incorrect_count}
+    if any(type(summary.get(key)) is not int or summary.get(key) != value for key, value in expected_summary.items()):
+        raise ValueError('Current QR summary differs from individual decoder observations')
+    return qr_path.as_posix(), qr
+
+
+def validate_media_evidence(version, apk_sha256, root=ROOT):
+    """Validate each video against its own release, never relabel prior footage."""
+    records, images, json_records, archives = [], set(), set(), {}
+    source_fields = {'source_engine_sha256': 'dist/arrival/engine.mjs',
+                     'source_app_sha256': 'dist/arrival/app.mjs', 'source_html_sha256': 'dist/arrival/index.html',
+                     'source_style_sha256': 'dist/arrival/style.css', 'source_design_sha256': 'dist/design.css',
+                     'brand_asset_sha256': 'dist/assets/arrival-brand-1.0.png',
+                     'brand_display_asset_sha256': 'dist/assets/arrival-brand-1.0.webp'}
+
+    def base(metadata_path, media_version, media_kind):
+        if not isinstance(media_version, str) or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._+-]*', media_version):
+            raise ValueError('Invalid media version')
+        tag = release_tag(media_version)
+        release_path = f'docs/verification/release-verification-{tag}.json'
+        runtime_path = f'docs/verification/android-runtime-{tag}.json'
+        release = json.loads((root / release_path).read_text())
+        runtime = json.loads((root / runtime_path).read_text())
+        if (release.get('version') != media_version or runtime.get('version') != media_version
+                or runtime.get('release_apk_sha256') != release.get('sha256')
+                or runtime.get('aosp', {}).get('installed_apk_sha256') != release.get('sha256')
+                or (media_version == version and release.get('sha256') != apk_sha256)):
+            raise ValueError('Media release/runtime identities disagree: ' + metadata_path)
+        json_records.update((metadata_path, release_path, runtime_path))
+        record = {'scope': 'current_release' if media_version == version else 'historical_release',
+                  'version': media_version, 'kind': media_kind,
+                  'release_apk_sha256': release['sha256'], 'metadata_path': metadata_path,
+                  'metadata_sha256': digest((root / metadata_path).read_bytes()),
+                  'release_record': release_path, 'release_record_sha256': digest((root / release_path).read_bytes()),
+                  'runtime_record': runtime_path, 'runtime_record_sha256': digest((root / runtime_path).read_bytes())}
+        if media_version != version:
+            archive_path = f'submission/ArrivalBrief-review-{media_version}.zip'
+            archive_data = (root / archive_path).read_bytes()
+            with zipfile.ZipFile(BytesIO(archive_data)) as archive:
+                manifest = json.loads(archive.read('SUBMISSION-MANIFEST.json'))
+                if (archive.testzip() is not None or manifest.get('version') != media_version
+                        or manifest.get('apk_sha256') != release['sha256']
+                        or any(digest(archive.read(path)) != release['sha256'] for path in manifest['apk_files'])
+                        or archive.read(metadata_path) != (root / metadata_path).read_bytes()
+                        or archive.read(runtime_path) != (root / runtime_path).read_bytes()):
+                    raise ValueError('Historical media archive identity differs: ' + archive_path)
+            archives[archive_path] = {'original_path': archive_path, 'bytes': len(archive_data),
+                                      'sha256': digest(archive_data), 'reason': 'historical_media_source_archive',
+                                      'outer_zip_path': 'evidence-history/' + archive_path}
+            record['source_archive'] = dict(archives[archive_path])
+        return record, runtime
+
+    def capture(path, sha256, captured=None):
+        path = relative_evidence_path(path).as_posix()
+        if digest((root / path).read_bytes()) != sha256 or (captured is not None and captured.get(path) != sha256):
+            raise ValueError('Media capture differs from recorded evidence: ' + path)
+        images.add(path)
+
+    for prefix in ('arrival', 'arrival-confirm'):
+        metadata_path = f'dist/assets/media/{prefix}-metadata.json'
+        meta = json.loads((root / metadata_path).read_text())['content']
+        record, _ = base(metadata_path, meta.get('app_version'), 'edited_web_stills')
+        if record['scope'] == 'historical_release':
+            with zipfile.ZipFile(root / record['source_archive']['original_path']) as archive:
+                for field, path in source_fields.items():
+                    if digest(archive.read(path)) != meta.get(field):
+                        raise ValueError('Historical web source differs from its preserved archive: ' + path)
+        else:
+            for field, path in source_fields.items():
+                if digest((root / path).read_bytes()) != meta.get(field):
+                    raise ValueError('Current web media source differs: ' + path)
+        video_path = f'dist/assets/media/{prefix}-reel.mp4'
+        if digest((root / video_path).read_bytes()) != meta.get('sha256'):
+            raise ValueError('Web video hash differs: ' + video_path)
+        for scene in meta['scenes']:
+            capture(scene['source'], scene['source_sha256'])
+        record.update(video_path=video_path, video_sha256=meta['sha256'], source_files={path: meta[field] for field, path in source_fields.items()})
+        records.append(record)
+
+    metadata_path = 'dist/assets/media/arrival-native-validation.json'
+    native = json.loads((root / metadata_path).read_text())
+    record, runtime = base(metadata_path, native.get('version'), native.get('kind'))
+    if (native.get('release_apk_sha256') != record['release_apk_sha256']
+            or native.get('tested_debug_apk_sha256') != runtime['aosp'].get('debug_apk_sha256')):
+        raise ValueError('Native edited video identifies another release/debug build')
+    captured = {relative_evidence_path(shot['path']).as_posix(): shot['sha256'] for shot in runtime['screenshots']}
+    for shot in native['screenshots']:
+        capture(shot['packaged_screenshot'], shot['sha256'], captured)
+    video_path = 'dist/assets/media/arrival-native-validation.mp4'
+    if digest((root / video_path).read_bytes()) != native.get('video_sha256'):
+        raise ValueError('Native edited video hash differs')
+    record.update(video_path=video_path, video_sha256=native['video_sha256'])
+    records.append(record)
+
+    metadata_path = 'dist/assets/media/arrival-native-journey.json'
+    journey = json.loads((root / metadata_path).read_text())
+    record, runtime = base(metadata_path, journey.get('version'), journey.get('kind'))
+    scenario = runtime['aosp'].get('release_scenario', {})
+    if (journey.get('kind') != 'continuous_actual_release_ui' or scenario.get('status') != 'passed'
+            or relative_evidence_path(scenario.get('metadata', '')).as_posix() != metadata_path
+            or any(value != record['release_apk_sha256'] for value in
+                   (journey.get('release_apk_sha256'), journey.get('installed_apk_sha256'),
+                    scenario.get('release_apk_sha256'), scenario.get('installed_apk_sha256')))):
+        raise ValueError('Continuous journey release/runtime identity differs')
+    for field in ('source_video', 'published_video', 'poster', 'captions', 'frame_validation'):
+        item = journey[field]
+        data = (root / relative_evidence_path(item['path'])).read_bytes()
+        if digest(data) != item['sha256'] or ('bytes' in item and len(data) != item['bytes']):
+            raise ValueError('Continuous journey artifact identity differs: ' + field)
+    json_records.add(journey['frame_validation']['path'])
+    if (journey['published_video'].get('no_cuts') is not True
+            or float(journey['source_video']['actual_duration_seconds']) <= 0
+            or abs(float(journey['source_video']['actual_duration_seconds']) - float(journey['published_video']['duration_seconds'])) > 0.5):
+        raise ValueError('Source and published journey timelines differ')
+    captured = {relative_evidence_path(shot['path']).as_posix(): shot['sha256'] for shot in runtime['screenshots']}
+    events = [event for event in journey.get('events', []) if event.get('path')]
+    if not events:
+        raise ValueError('Continuous journey has no identifiable captured event')
+    for event in events:
+        capture(event['path'], event['sha256'], captured)
+    record.update(video_path=journey['published_video']['path'], video_sha256=journey['published_video']['sha256'],
+                  source_video=journey['source_video'], frame_validation=journey['frame_validation'])
+    records.append(record)
+    return {'records': records, 'required_images': images, 'json_records': json_records,
+            'source_archives': list(archives.values()), 'journey_metadata': metadata_path}
+
+
 def delivery_plan(version, apk_sha256, root=ROOT):
     """Keep current proof; inventory historical binaries for the outer bundle."""
     tag = release_tag(version)
@@ -217,71 +412,40 @@ def delivery_plan(version, apk_sha256, root=ROOT):
         if (check.get('status') != 'passed' or int(check.get('tests', 0)) < 1
                 or int(check.get('failures', 0)) or int(check.get('errors', 0))):
             raise ValueError('The current UI evidence is not complete: ' + suite)
-        expected = {'standard_ui': 18, 'font_1_3_ui': 6}.get(suite) if tag == 'rc3' else None
+        expected = {'rc3': {'standard_ui': 18, 'font_1_3_ui': 6},
+                    'rc4': {'standard_ui': 4, 'font_1_3_ui': 4}}.get(tag, {}).get(suite)
         if expected is not None and int(check['tests']) != expected:
-            raise ValueError('The current UI evidence count differs from the RC3 review scope: ' + suite)
+            raise ValueError('The current UI evidence count differs from the declared release scope: ' + suite)
     required_images = set()
     for shot in runtime.get('screenshots', []):
         path = relative_evidence_path(shot['path'])
         if digest((root / path).read_bytes()) != shot['sha256']:
             raise ValueError('Current runtime capture hash differs: ' + str(path))
         required_images.add(path.as_posix())
-    for prefix in ('arrival', 'arrival-confirm'):
-        meta = json.loads((root / f'dist/assets/media/{prefix}-metadata.json').read_text())['content']
-        if meta.get('app_version') != version:
-            raise ValueError('Web media belongs to another version: ' + prefix)
-        for scene in meta['scenes']:
-            path = relative_evidence_path(scene['source'])
-            if digest((root / path).read_bytes()) != scene['source_sha256']:
-                raise ValueError('Web video capture hash differs: ' + str(path))
-            required_images.add(path.as_posix())
-    native = json.loads((root / 'dist/assets/media/arrival-native-validation.json').read_text())
-    if native.get('version') != version or native.get('release_apk_sha256') != apk_sha256:
-        raise ValueError('Native media belongs to another release')
-    for shot in native['screenshots']:
-        path = relative_evidence_path(shot['packaged_screenshot'])
-        if digest((root / path).read_bytes()) != shot['sha256']:
-            raise ValueError('Native video capture hash differs: ' + str(path))
-        required_images.add(path.as_posix())
-    release_scenario = aosp.get('release_scenario')
-    journey_metadata = None
-    if tag == 'rc3' or release_scenario:
-        if not release_scenario or release_scenario.get('status') != 'passed':
-            raise ValueError('The actual release scenario has not completed')
-        metadata_path = relative_evidence_path(release_scenario['metadata'])
-        journey_metadata = metadata_path.as_posix()
-        journey = json.loads((root / metadata_path).read_text())
-        if (journey.get('version') != version or journey.get('release_apk_sha256') != apk_sha256
-                or journey.get('kind') != 'continuous_actual_release_ui'):
-            raise ValueError('The continuous release scenario belongs to another release or scope')
-        for field in ('source_video', 'published_video'):
-            video = journey[field]
-            path = relative_evidence_path(video['path'])
-            data = (root / path).read_bytes()
-            if digest(data) != video['sha256'] or len(data) != video['bytes']:
-                raise ValueError('Release scenario video identity differs: ' + field)
-        if journey['published_video'].get('no_cuts') is not True:
-            raise ValueError('Release scenario does not preserve its continuous timeline')
-        source_duration = float(journey['source_video']['actual_duration_seconds'])
-        published_duration = float(journey['published_video']['duration_seconds'])
-        if source_duration <= 0 or abs(source_duration - published_duration) > 0.5:
-            raise ValueError('Source and published release timelines differ')
-        captured = 0
-        for event in journey.get('events', []):
-            if not event.get('path'):
-                continue
-            path = relative_evidence_path(event['path'])
-            if digest((root / path).read_bytes()) != event['sha256']:
-                raise ValueError('Release scenario capture identity differs: ' + str(path))
-            required_images.add(path.as_posix())
-            captured += 1
-        if captured < 1:
-            raise ValueError('Release scenario has no independently identifiable captured event')
-    qr_record = None
-    if tag == 'rc3':
-        qr_record, qr = validate_current_qr(version, apk_sha256, runtime, root)
-        for shot in qr['screenshots']:
-            required_images.add(relative_evidence_path(shot['path']).as_posix())
+    media = validate_media_evidence(version, apk_sha256, root)
+    required_images.update(media['required_images'])
+    journey_metadata = media['journey_metadata']
+    qr_record, qr = validate_current_qr(version, apk_sha256, runtime, root)
+    for shot in qr['screenshots']:
+        required_images.add(relative_evidence_path(shot['path']).as_posix())
+    gallery_record = f'screenshots/{tag}/manifest.json'
+    gallery = json.loads((root / gallery_record).read_text())
+    if (gallery.get('version') != version or gallery.get('release_apk_sha256') != apk_sha256
+            or gallery.get('runtime_evidence_path') != runtime_rel.as_posix()
+            or gallery.get('runtime_evidence_sha256') != digest((root / runtime_rel).read_bytes())):
+        raise ValueError('Current gallery release/runtime identity differs')
+    current_captured = {relative_evidence_path(shot['path']).as_posix(): shot['sha256']
+                        for shot in runtime.get('screenshots', [])}
+    for shot in gallery.get('screens', []):
+        source = relative_evidence_path(shot['source']).as_posix()
+        original = root / 'screenshots' / tag / shot['file']
+        if (current_captured.get(source) != shot.get('source_sha256')
+                or digest(original.read_bytes()) != shot.get('source_sha256')):
+            raise ValueError('Current gallery capture differs from its runtime: ' + source)
+        required_images.add(source)
+    if not gallery.get('screens'):
+        raise ValueError('Current gallery contains no original app captures')
+    hash_records = media['json_records'] | {runtime_rel.as_posix(), qr_record, gallery_record}
     for record in (root / 'docs/verification').glob('*.json'):
         if not record.name.startswith(('web-', 'completion-')):
             continue
@@ -294,7 +458,7 @@ def delivery_plan(version, apk_sha256, root=ROOT):
     for name in required_images:
         if not (root / name).is_file() or not allowed(Path(name)):
             raise ValueError('Current proof capture is missing or excluded: ' + name)
-    records = []
+    records = list(media['source_archives'])
     apk_data = (root / PACKAGED_APK).read_bytes()
     canonical = root / 'apk/ArrivalBrief_release.apk'
     if canonical.is_file() and canonical.read_bytes() != apk_data:
@@ -315,7 +479,7 @@ def delivery_plan(version, apk_sha256, root=ROOT):
                 raise ValueError('A required app capture cannot be separated as a derived frame')
             reason = 'derived_video_analysis_frame_delivered_separately'
         elif path.name in {'android-aosp28-rc1-logcat.txt', 'android-aosp28-rc2-logcat.txt',
-                           'pleos-final-04114df-selected-logcat.log'} and tag == 'rc3':
+                           'pleos-final-04114df-selected-logcat.log'} and tag in ('rc3', 'rc4'):
             reason = 'historical_raw_log_delivered_separately'
         elif path.suffix in IMAGE_SUFFIXES and not current_image:
             reason = 'historical_capture_delivered_separately'
@@ -349,15 +513,18 @@ def delivery_plan(version, apk_sha256, root=ROOT):
                 continue
             data = path.read_bytes()
             item = {'original_path': rel.as_posix(), 'bytes': len(data), 'sha256': digest(data)}
-            if len(rel.parts) > 2 and rel.parts[1] == tag:
-                retained = current_by_hash.get(item['sha256'])
-                if not retained:
-                    if path.name != 'overview.png':
-                        continue
-                    item.update(reason='derived_capture_overview_delivered_separately',
-                                outer_zip_path='evidence-history/' + rel.as_posix())
+            retained = current_by_hash.get(item['sha256'])
+            if retained:
+                item.update(reason='byte_identical_retained_capture', retained_path=retained)
+            elif len(rel.parts) > 2 and rel.parts[1] == tag:
+                if path.name == 'overview.png':
+                    reason = 'derived_capture_overview_delivered_separately'
+                elif (len(rel.parts) == 3 and path.name in {
+                        'ArrivalBrief-app-screenshots.pdf', 'ArrivalBrief-app-screenshots.zip'}):
+                    reason = 'derived_screenshot_handoff_delivered_separately'
                 else:
-                    item.update(reason='byte_identical_current_capture', retained_path=retained)
+                    continue
+                item.update(reason=reason, outer_zip_path='evidence-history/' + rel.as_posix())
             else:
                 item.update(reason='historical_screenshot_collection_delivered_separately',
                             outer_zip_path='evidence-history/' + rel.as_posix())
@@ -367,6 +534,19 @@ def delivery_plan(version, apk_sha256, root=ROOT):
     for record in (root / 'docs/verification').glob('android-runtime-*.json'):
         video = json.loads(record.read_text()).get('continuous_ui_video')
         if not video:
+            continue
+        if not video.get('path'):
+            historical_journey = next((item for item in media['records']
+                                       if item['kind'] == 'continuous_actual_release_ui'
+                                       and item['scope'] == 'historical_release'), None)
+            if (tag != 'rc4' or record != root / runtime_rel
+                    or video.get('status') != 'not_recorded_for_rc4'
+                    or historical_journey is None
+                    or video.get('historical_version') != historical_journey['version']
+                    or video.get('historical_metadata') != '../../' + historical_journey['metadata_path']):
+                raise ValueError('Continuous recording has no path or a valid explicit historical reference: ' + str(record))
+            # This current release explicitly has no recording. Its historical
+            # journey was already checked against its own APK and source archive.
             continue
         path = relative_evidence_path(video['path'])
         if (root / path).is_file():
@@ -397,7 +577,8 @@ def delivery_plan(version, apk_sha256, root=ROOT):
     return {'version': version, 'tag': tag, 'runtime_record': runtime_rel.as_posix(),
             'required_images': sorted(required_images), 'omissions': records,
             'omitted_directories': omitted_directories,
-            'current_qr_record': qr_record,
+            'current_qr_record': qr_record, 'current_gallery_record': gallery_record,
+            'hash_linked_evidence_records': sorted(hash_records), 'media_evidence': media['records'],
             'release_journey_metadata': journey_metadata}
 
 
@@ -488,6 +669,32 @@ def verify_archive(path, compare_root=None):
             if item['path'] not in expected or digest(z.read(item['path'])) != item['sha256']:
                 raise ValueError('Packaged build input mismatch: ' + item['path'])
         reviews = json.loads(z.read('docs/verification/review-cycles.json'))
+        if manifest.get('schema_version') == 4:
+            media_records = manifest.get('media_evidence', [])
+            if len(media_records) != 4 or len({record.get('video_path') for record in media_records}) != 4:
+                raise ValueError('The current/historical media inventory is incomplete')
+            for record in media_records:
+                scope = 'current_release' if record['version'] == manifest['version'] else 'historical_release'
+                if record.get('scope') != scope:
+                    raise ValueError('A video was assigned to the wrong release scope')
+                for path_key, hash_key in (('metadata_path', 'metadata_sha256'), ('video_path', 'video_sha256'),
+                                           ('release_record', 'release_record_sha256'), ('runtime_record', 'runtime_record_sha256')):
+                    if digest(z.read(record[path_key])) != record[hash_key]:
+                        raise ValueError('Packaged media proof differs: ' + record[path_key])
+                own_release = json.loads(z.read(record['release_record']))
+                own_runtime = json.loads(z.read(record['runtime_record']))
+                if (own_release['version'] != record['version'] or own_release['sha256'] != record['release_apk_sha256']
+                        or own_runtime['version'] != record['version'] or own_runtime['release_apk_sha256'] != record['release_apk_sha256']):
+                    raise ValueError('Packaged video release/runtime identities disagree')
+                if scope == 'current_release' and record['release_apk_sha256'] != manifest['apk_sha256']:
+                    raise ValueError('Current media does not identify the current APK')
+                if scope == 'historical_release' and record.get('source_archive') not in manifest['delivery_omissions']:
+                    raise ValueError('Historical media source archive has no preserved delivery identity')
+            for name in manifest.get('hash_linked_evidence_records', []):
+                if name not in expected:
+                    raise ValueError('Hash-linked evidence is missing: ' + name)
+                if compare_root and z.read(name) != (compare_root / name).read_bytes():
+                    raise ValueError('Hash-linked evidence JSON bytes differ: ' + name)
         for review in reviews.get('rounds', []) + reviews.get('completion_reviews', []):
             references = [review['report']]
             evidence = review.get('evidence', [])
@@ -595,25 +802,29 @@ def main():
             target = staging / rel
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(raw)
-        media_description = '웹 편집 영상 2편과 Android debug 화면 편집 영상 1편'
-        if plan['release_journey_metadata']:
-            media_description += ', 실제 서명 release의 연속 시연 1편'
+        media_description = '각 영상의 촬영 버전이 표시된 웹 편집 영상 2편, Android debug 화면 편집 영상 1편, 서명 release 연속 시연 1편'
         notes = ['# 익명 검토 ZIP 구성', '', f'이 전달본은 {version}의 앱 소스·최종 APK·현재 검증 캡처·검증 결과와 {media_description}을 포함합니다. 앱 소스와 빌드 입력은 원본 바이트 그대로입니다. 이전 버전의 캡처·편집 영상·큰 원문 로그, 연속 원본 녹화, 원본에서 파생한 분석 프레임과 화면 모음 overview는 용량을 위해 전체 운영 ZIP 및 별도 공개 저장소에서 제공합니다. 현재 앱 원본 캡처와 갤러리의 개별 화면은 포함합니다.', '',
                  '- APK는 [dist/downloads/ArrivalBrief_release.apk](dist/downloads/ArrivalBrief_release.apk)에 한 번만 들어 있습니다. 정적 서버 루트는 기존대로 `dist`를 사용합니다.',
-                 '- 현재 영상과 런타임 메타데이터가 직접 참조하는 캡처는 모두 포함했습니다. 이전 캡처·원본 녹화의 경로·크기·해시는 아래에 보존했습니다. 전체 운영 ZIP의 `evidence-history/` 아래에서 같은 파일을 찾을 수 있습니다.',
-                 '- 별도 보존 자료를 가리키는 Markdown 링크는 이 구성 안내로 연결했습니다. 검증 JSON은 서로 원본 해시를 참조하므로 원래 바이트와 경로를 유지합니다. JSON이 가리키는 중복·별도 제공 파일은 아래 기록 및 manifest의 `retained_path`/`outer_zip_path`에서 찾습니다. 앱 구현·APK·캡처 이미지 내용은 변경하지 않았습니다.', '', '## 중복 정리 및 별도 제공 기록', '']
+                 '- 포함한 영상과 현재 런타임 메타데이터가 직접 참조하는 캡처는 모두 포함했습니다. 과거 영상은 당시 버전의 증거이며 현재 APK의 실행 결과로 합산하지 않습니다. 과거 영상의 소스는 당시 검토 ZIP의 원본 바이트와 대조했고 해당 ZIP도 전체 운영 ZIP에 보존했습니다.',
+                 '- 별도 보존 자료를 가리키는 Markdown 링크는 이 구성 안내로 연결했습니다. 검증 JSON은 서로 원본 해시를 참조하므로 원래 바이트와 경로를 유지합니다. JSON이 가리키는 중복·별도 제공 파일은 아래 기록 및 manifest의 `retained_path`/`outer_zip_path`에서 찾습니다. 앱 구현·APK·캡처 이미지 내용은 변경하지 않았습니다.', '', '## 영상별 촬영 버전', '',
+                 '| 영상 | 촬영 버전 | 현재 전달본과의 관계 |', '| --- | --- | --- |']
+        notes += [f"| `{record['video_path']}` | {record['version']} | {'현재 버전 실행' if record['scope'] == 'current_release' else '이전 버전 실행 기록'} |" for record in plan['media_evidence']]
+        notes += ['', '## 중복 정리 및 별도 제공 기록', '']
         notes += [f"- `{x['original_path']}` → `{x.get('retained_path', x.get('outer_zip_path'))}` · {x['bytes']} bytes · SHA-256 `{x['sha256']}`" for x in delivery]
         (staging / 'PACKAGE-CONTENTS.md').write_text('\n'.join(notes) + '\n')
         verify_document_links(staging)
         source_digest = digest(json.dumps(source, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode())
         files = [{'path': f.relative_to(staging).as_posix(), 'bytes': f.stat().st_size, 'sha256': digest(f.read_bytes())} for f in sorted(staging.rglob('*')) if f.is_file()]
-        manifest = {'schema_version': 3, 'app': 'Arrival Brief', 'version': version, 'apk_sha256': actual_hash, 'apk_files': [PACKAGED_APK],
+        manifest = {'schema_version': 4, 'app': 'Arrival Brief', 'version': version, 'apk_sha256': actual_hash, 'apk_files': [PACKAGED_APK],
                     'source_tree_sha256': source_digest, 'source_files': source, 'files': files,
                     'anonymized_documents': transformed,
                     'delivery_adjusted_documents': adjusted, 'delivery_omissions': delivery,
                     'delivery_omitted_directories': plan.get('omitted_directories', []),
                     'current_runtime_record': plan['runtime_record'], 'required_capture_files': plan['required_images'],
                     'current_qr_record': plan['current_qr_record'],
+                    'current_gallery_record': plan['current_gallery_record'],
+                    'hash_linked_evidence_records': plan['hash_linked_evidence_records'],
+                    'media_evidence': plan['media_evidence'],
                     'release_journey_metadata': plan['release_journey_metadata'],
                     'evidence_boundary': 'Source digest verifies checkout/package parity; it is not a claim of byte-reproducible APK build or successful Pleos execution.',
                     'operator_checks': ['Signed official application delivered separately', 'Public repository and APK access', 'Organizer instructions for applicant-identifying repository links', 'Attachment names and media content'],
@@ -637,15 +848,18 @@ def main():
     checklist = output / 'ArrivalBrief-operator-checklist.md'
     journey_line = ''
     if plan['release_journey_metadata']:
-        journey_line = '- 실제 서명 release 연속 시연: dist/assets/media/arrival-native-journey.mp4 (영상·APK·원본 캡처 해시를 별도 metadata와 대조)\n'
+        journey = next(record for record in plan['media_evidence'] if record['kind'] == 'continuous_actual_release_ui')
+        journey_scope = '현재 버전' if journey['scope'] == 'current_release' else '이전 버전 기록'
+        journey_line = f"- 실제 서명 release 연속 시연: dist/assets/media/arrival-native-journey.mp4 · {journey['version']} · {journey_scope} (당시 영상·APK·원본 캡처 해시 대조)\n"
+    media_versions = ', '.join(sorted({record['version'] for record in plan['media_evidence']}))
     checklist.write_text(f'''# Arrival Brief 운영용 제출 목록
 
 이 문서는 운영 전달용이며 익명 검토 ZIP에 포함하지 않습니다. 이메일은 발송하지 않았습니다.
 
 ## 빠른 검토 순서
 
-1. [실제 서명 release 연속 시연]({args.repository_url}/blob/main/dist/assets/media/arrival-native-journey.mp4)
-2. [README에 연결된 검토 순서]({args.repository_url}/blob/main/docs/REVIEW_START.md)
+1. [README에 연결된 검토 순서]({args.repository_url}/blob/main/docs/REVIEW_START.md)
+2. [현재 앱 스크린샷]({args.repository_url}/blob/main/screenshots/{plan['tag']}/README.md)
 3. [APK]({args.repository_url}/blob/main/apk/ArrivalBrief_release.apk)
 
 ## 파일 대조
@@ -659,8 +873,8 @@ def main():
 - ZIP SHA-256: {zip_hash}
 - 앱 소스 목록 SHA-256: {source_digest}
 - 편집 영상: dist/assets/media/arrival-reel.mp4, arrival-confirm-reel.mp4, arrival-native-validation.mp4
-{journey_line}- 두 웹 영상은 실제 웹 화면 편집본이며 Android 30초 영상은 같은 main 소스의 별도 debug UI 캡처 편집본입니다. 실제 release 연속 시연과 구분합니다. 어느 영상도 실제 Pleos 신호·실차·실물 휴대폰 광학 QR 성공을 뜻하지 않습니다.
-- 현재 화면: screenshots/rc3/README.md (해당 버전에서 제공하는 경우). 바이트가 같은 현재 이미지 사본은 검토 ZIP에서 원본 한 곳으로 연결합니다.
+{journey_line}- 포함 영상의 촬영 버전: {media_versions}. 각 metadata와 manifest의 media_evidence에 현재 버전·이전 버전 관계를 명시했습니다. 이전 영상은 현재 APK의 실행 검증이 아닙니다. 두 웹 영상과 Android debug 캡처 편집본, 실제 release 연속 시연을 구분합니다. 어느 영상도 실제 Pleos 신호·실차·실물 휴대폰 광학 QR 성공을 뜻하지 않습니다.
+- 현재 화면: screenshots/{plan['tag']}/README.md. 바이트가 같은 이미지 사본은 검토 ZIP에서 원본 한 곳으로 연결합니다.
 - 운영자 자료: examples/organizer/README.md. 합성 예시와 준비 양식이며 실제 제휴·채택·매출 성과가 아닙니다.
 - 과거 캡처·영상·큰 원문 로그·스크린샷 PDF/ZIP, 연속 원본 녹화와 파생 분석 프레임·overview는 전체 운영 ZIP의 evidence-history/ 및 공개 저장소에 보존합니다. 현재 갤러리의 개별 원본 화면은 검토 ZIP에도 포함합니다. 원래 경로·별도 보존 경로·SHA는 PACKAGE-CONTENTS.md와 manifest에서 대조합니다.
 

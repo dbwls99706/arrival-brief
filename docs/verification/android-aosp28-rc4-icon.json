@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0-rc4",
+  "release_apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+  "source_artwork_sha256": "ae99929907849fbc9f6827bee9c223937b3168b082bcf9da4277d9bd5456a381",
+  "embedded_bitmap_sha256": "add2a146d544813a4a4758b66c2a6e5d14602958a787010a38f2261098e88bfa",
+  "package_artwork_pixels": "exact_match",
+  "source_artwork_bytes": "exact_match_to_rc3",
+  "scope": "Current APK bitmap equality and unchanged launcher resources; no new launcher-grid or themed-icon runtime claim."
+}

@@ -1,0 +1,60 @@
+{
+  "run_id": "8fe7ad63d73f401693f057bbc727b447",
+  "version": "1.0.0-rc4",
+  "build_type": "release",
+  "automation": "Public accessibility UI actions from a separate self-targeted test harness; no app-private API or app instrumentation.",
+  "scope": "Screenshots only; no recording and no performance measurement",
+  "notice": "학술대회 안내\n장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다.",
+  "memo": "B3 블루존 E12",
+  "demo_entry_public_touch_fallback": false,
+  "input_helper": "개인정보만 지우고, 장소·일정·등록·변경·취소·진입·주차 제한 안내는 원문대로 남겨주세요.",
+  "save_before_device_ms": 1793618156287,
+  "save_after_device_ms": 1793618157173,
+  "standard-qr_bounds": {
+    "left": 440,
+    "top": 102,
+    "right": 840,
+    "bottom": 502
+  },
+  "standard-qr-expanded_bounds": {
+    "left": 400,
+    "top": 62,
+    "right": 880,
+    "bottom": 542
+  },
+  "standard-qr-restored_bounds": {
+    "left": 440,
+    "top": 102,
+    "right": 840,
+    "bottom": 502
+  },
+  "status": "failed_or_incomplete",
+  "error": "java.lang.AssertionError: Launch failed",
+  "failure_visible_text": "Arrival Brief\n차량 상태 미확인 · 입력 잠금\n차량 밖에서 데모 시작\n도착을 준비하고, 주차 위치를 기억해요\n코엑스 삼성동 · 출발 전 진입문·추천 주차 확인 → 주차 후 위치 기록·QR로 가져가기\n차량 상태를 확인하기 전에는 입력할 수 없습니다. 차량 밖에서는 데모로 화면을 살펴볼 수 있습니다.\n공유한 행사 안내 1건 대기 중 · 안전한 주차와 입력 허용 후 가져올 수 있습니다.\n03  도착 브리핑\n아직 확정 전\n준비 흐름도 · 실제 지도나 주행 경로가 아닙니다.\n장소를 고르면,\n도착 준비가 시작돼요.\n",
+  "events": [
+    {
+      "label": "input-helper",
+      "seconds_from_scenario_start": 16.652
+    },
+    {
+      "label": "confirmed",
+      "seconds_from_scenario_start": 24.091
+    },
+    {
+      "label": "standard-qr",
+      "seconds_from_scenario_start": 32.259
+    },
+    {
+      "label": "standard-qr-expanded",
+      "seconds_from_scenario_start": 34.546
+    },
+    {
+      "label": "standard-qr-restored",
+      "seconds_from_scenario_start": 36.373
+    },
+    {
+      "label": "failure",
+      "seconds_from_scenario_start": 54.801
+    }
+  ]
+}

@@ -1,6 +1,31 @@
 # Android 런타임 실행 기록
 
-## 현재 1.0.0-rc3 검증 — 2026-11-02 UTC
+## 현재 1.0.0-rc4 검증 — 2026-11-02
+
+이번 검증은 QR 기본/확대 전환과 저장 내용 보존, 편집·주행·화면 이탈·삭제·만료 시 해제에 집중했다. 실제 서명 release와 별도 debug instrumentation의 APK 해시·실행 범위를 구분한다.
+
+| 항목 | 관찰 결과 |
+| --- | --- |
+| 버전·파일 크기 | `1.0.0-rc4`, versionCode 13, 6,670,935바이트 |
+| release APK SHA-256 | `865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9` |
+| 빌드 입력 | Android·공통 fixture 43개를 성공한 격리 빌드와 작업 소스에서 대조 |
+| 빌드·정적 검증 | Android 단위 77개·웹 60개·공통 판단 433건, Lint 오류·경고 0개 |
+| 별도 debug 표준 UI | QR 중심 시나리오 4개 통과 |
+| 큰 글씨 UI | 글자 배율 1.3에서 같은 4개 반복 통과 |
+| 실제 서명 release | 동일한 서명 release에서 입력 도움말·확정 패스·기본/확대 QR과 큰 글씨 전환을 원본 캡처로 확인했습니다. |
+| 원본 QR 소프트웨어 판독 | debug/release × 표준/큰 글씨 × 기본/확대 8장·두 판독기 16/16 |
+
+RC3에서 RC4로 업데이트 설치·첫 실행·기기 내 APK 해시 일치를 확인했습니다. UI 4+4는 같은 네 시나리오의 두 글자 크기 실행이며 전체 19개 instrumentation을 새로 실행한 결과가 아니다. RC3의 18+6 UI·76개 경계·10개 개발 사례와 영상 4개를 RC4의 실행 수나 성공 증거로 합산하지 않는다.
+
+원본 8장에 대한 두 판독기의 16회 비교가 모두 저장 원문·시각과 일치했습니다. debug 확대 테스트는 저장 전후 시각과 저장소의 `savedAt`를 독립 기록하고 기본/확대의 같은 메모·저장 시각을 검사했다. 실제 release의 캡처와 ground truth는 해당 실행 JSON을 따른다. [RC4 판독 기록](completion-qr-rc4.json)과 [크기별 생성 이미지 진단](qr-display-size-probe-rc4.json)을 구분하며 후자는 앱 캡처나 실물 카메라 결과가 아니다. 400px와 480px 모두 98/100이고 실패 조합이 달랐으므로 확대가 모든 판독 실패를 해결한다고 주장하지 않는다.
+
+앱 설치 전 두 차례 OS 부팅에서 SystemUI ANR 2건을 관찰했습니다. 이후 앱 관련 치명 오류·ANR 서명은 0건입니다. 첫 release 캡처는 큰 글씨 전환 후 실행 응답 판정에서 멈췄으며 정확한 원인은 미확정입니다. 전환 대기와 응답 원문 기록을 보완한 외부 촬영 도구로 같은 APK의 재촬영을 완료했습니다. 최초 실패와 재촬영 기록을 모두 보존하며 성능·장시간 안정성의 보증으로 해석하지 않습니다.
+
+근거: [RC4 release 검증](release-verification-rc4.json), [RC4 런타임 JSON](android-runtime-rc4.json), [RC4 빌드 입력](build-inputs-rc4.json), [현재 화면 모음](../../screenshots/rc4/README.md). 첫 빌드에서 발견된 Lint 문자열 경고와 수정 후 결과는 원본 로그를 구분해 보존한다. 현재 표의 오류·경고 0은 수정 후 최종 빌드의 결과다.
+
+읽기 전용 `collect-pleos-evidence.py`와 합성 검사 8개를 준비했지만 실제 Pleos 부팅·설치·NaviHelper 응답·CarUxRestrictions 전환 성공을 새로 확보한 것은 아니다. 일반 AOSP 실행은 실제 차량·광학 QR 판독·성능·장시간 안정성을 입증하지 않는다.
+
+## 보존된 1.0.0-rc3 검증 — 2026-11-02 UTC
 
 서명 release APK는 AOSP Android 9(API 28, x86, 1280×800)에서 업데이트 설치·첫 실행과 기기 내 APK 해시 일치를 확인했다. 실제 배포 APK와 같은 main 소스의 별도 debug instrumentation을 구분해 기록한다.
 
@@ -15,7 +40,7 @@
 | 실제 서명 release | 안내 가져오기·확정·원문 보기·메모·QR 등 7개 상태와 실행 전후 동일 APK 해시 확인 |
 | 원본 QR 소프트웨어 판독 | debug 표준·큰 글씨4/4, 실제 release 추가1/2(전체5/6); OpenCV 미판독1건 보존, 실물 폰 광학 시험 아님 |
 
-[현재 release 검증](release-verification-rc3.json), [RC3 런타임 JSON](android-runtime-rc3.json), [빌드 입력](build-inputs-rc3.json), [QR 판독](completion-qr-rc3.json), [현재 화면 모음](../../screenshots/rc3/README.md)이 해당 결과의 근거다. 큰 글씨 반복과 공통 fixture를 새로운 기능 또는 실차 시험 횟수로 합산하지 않는다.
+[RC3 release 검증](release-verification-rc3.json), [RC3 런타임 JSON](android-runtime-rc3.json), [빌드 입력](build-inputs-rc3.json), [QR 판독](completion-qr-rc3.json), [현재 화면 모음](../../screenshots/rc3/README.md)이 해당 결과의 근거다. 큰 글씨 반복과 공통 fixture를 새로운 기능 또는 실차 시험 횟수로 합산하지 않는다.
 
 실제 서명 release의 [연속 시연](../../dist/assets/media/arrival-native-journey.mp4)은 단일 `screenrecord`의 가변 프레임(VFR) 원본을 시간·장면을 자르지 않고 압축한 공개본이다. 원본은 94프레임·98.1939초, 공개본은 98.25초다. 자동 조작 helper의 벽시계 110.511초와 영상 인코딩 길이는 다르므로 동작 속도 측정이 아니다. 촬영 host 명령은 이 길이 차이를 검사하던 조건에서 종료 코드 1을 반환했고, 그 원본 결과를 보존했다. 후속 검토에서 7개 상태와 원본 프레임의 순서, 실행 전후 APK 해시, 원본·공개본 타임라인을 각각 대조했다. [영상 metadata](../../dist/assets/media/arrival-native-journey.json)에 원본·공개본·캡처의 해시와 검증 범위를 기록한다. 촬영의 모든 벽시계 순간이 영상에 동일 시간 간격으로 담겼다는 주장은 하지 않는다.
 

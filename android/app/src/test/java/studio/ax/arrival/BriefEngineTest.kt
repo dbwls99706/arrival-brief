@@ -209,16 +209,19 @@ class BriefEngineTest {
             }
         }
     }
-    @Test fun mixedScheduleAndRegistrationFloorsExplainHowToRecover() {
+    @Test fun mixedFloorRecoveryPreservesNoticeDetails() {
         val text="코엑스 오전 그랜드볼룸 1층, 오후 오디토리움 3층"
         val initial=BriefEngine.resolve(text,"1.65")
         assertEquals("select",initial.status)
-        assertTrue(initial.message.contains("이번에 방문할 행사장과 층이 있는 문장만"))
+        assertTrue(initial.message.contains("행사장과 등록 장소의 층을 구분"))
         for(d in listOf(BriefEngine.resolve(text,"1.65","auditorium"),BriefEngine.resolve("코엑스 오디토리움 3층. 1층 로비에서 등록해주세요.","1.65"))) {
             assertEquals("review",d.status)
-            assertTrue(d.message.contains("등록 장소와 다른 일정"))
+            assertTrue(d.message.contains("생략하지"))
+            assertFalse(d.message.contains("문장만 남겨") || d.message.contains("안내는 빼고"))
         }
-        assertEquals("ready",BriefEngine.resolve("코엑스 오디토리움 3층","1.65").status)
+        val preserved=BriefEngine.resolve("코엑스 오디토리움 3층. 참가 등록은 1층 로비에서 진행합니다.","1.65")
+        assertEquals("ready",preserved.status)
+        assertEquals(listOf("참가 등록은 1층 로비에서 진행합니다."),preserved.registrationNotes)
     }
     @Test fun sharedWebAndAndroidDecisionCorpus() {
         val path = System.getProperty("arrival.decisionCases") ?: error("Shared decision corpus path is required")

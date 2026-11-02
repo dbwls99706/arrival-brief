@@ -1,8 +1,25 @@
 # Arrival Brief 검증 기록과 남은 범위
 
-현재 소스는 `1.0.0-rc3`이며 정식 출시나 실차 적합성 인증을 뜻하지 않는 검증 후보입니다. 최신 배포 APK의 버전·해시·실행 결과는 [release-verification.json](verification/release-verification.json)과 [런타임 기록](verification/android-runtime.md)에서 함께 확인합니다. 단위시험, 일반 Android 데모, 실제 Pleos 서비스를 각각 구분합니다.
+현재 소스는 `1.0.0-rc4`이며 정식 출시나 실차 적합성 인증을 뜻하지 않는 검증 후보입니다. 최신 배포 APK의 버전·해시·실행 결과는 [release-verification.json](verification/release-verification.json)과 [런타임 기록](verification/android-runtime.md)에서 함께 확인합니다. 단위시험, 일반 Android 데모, 실제 Pleos 서비스를 각각 구분합니다.
 
-## RC3 빌드와 실행 결과
+## RC4 빌드와 실행 결과
+
+- release: `1.0.0-rc4`, versionCode 13, 6,670,935바이트
+- Android JUnit 77개·웹 60개 통과, 공통 입력 433건
+- Android Lint 오류 0개·경고 0개
+- SHA-256: `865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9`
+- 일반 Android 9: RC3에서 RC4로 업데이트 설치·첫 실행·기기 내 APK 해시 일치를 확인했습니다.
+- 별도 debug QR 중심 UI 4개·글자 크기 1.3배 같은 4개 반복 통과. 전체 19개 재실행 아님
+- 실제 서명 release: 동일한 서명 release에서 입력 도움말·확정 패스·기본/확대 QR과 큰 글씨 전환을 원본 캡처로 확인했습니다.
+- 원본 QR 캡처 8장×두 판독기 16/16. 원본 8장에 대한 두 판독기의 16회 비교가 모두 저장 원문·시각과 일치했습니다. [RC4 판독 기록](verification/completion-qr-rc4.json)
+
+RC4는 기본 QR 표시를 유지한 채 화면 여유가 있을 때 최대 480dp로 바꾸는 수동 대안을 추가했습니다. 메모·저장 시각·mask 선택·오류 정정 정책은 바꾸지 않으며 확대마다 저장·주차·만료 조건을 다시 검사합니다. 입력 도움말에는 장소·일정·등록·변경·취소·진입·주차 제한 원문을 보존하도록 명시했습니다. 읽기 전용 Pleos 수집기의 합성 검사 8개 통과는 실기 연동 성공이 아닙니다.
+
+앱 설치 전 두 차례 OS 부팅에서 SystemUI ANR 2건을 관찰했습니다. 이후 앱 관련 치명 오류·ANR 서명은 0건입니다. 첫 release 캡처는 큰 글씨 전환 후 실행 응답 판정에서 멈췄으며 정확한 원인은 미확정입니다. 전환 대기와 응답 원문 기록을 보완한 외부 촬영 도구로 같은 APK의 재촬영을 완료했습니다. 최초 실패와 재촬영 기록을 모두 보존하며 성능·장시간 안정성의 보증으로 해석하지 않습니다.
+
+현재 결과는 [RC4 release 검증](verification/release-verification-rc4.json)과 [RC4 런타임 JSON](verification/android-runtime-rc4.json)의 APK 해시를 대조합니다. 다음 RC3·RC2 기록과 영상 4개는 당시 증거이며 RC4에서 다시 실행한 것으로 합산하지 않습니다.
+
+## 보존된 RC3 빌드와 실행 결과
 
 - release: `1.0.0-rc3`, versionCode 12, 6,668,191바이트
 - Android JUnit 77개·웹 60개 통과, 공통 입력 433건
@@ -11,7 +28,7 @@
 - 일반 Android 9: RC3 설치·업데이트·첫 실행, 기기 내 APK 해시 일치 확인
 - 실제 서명 release: 안내 가져오기부터 메모 QR까지 7개 UI 상태를 단일 VFR 녹화와 대조
 - 별도 debug UI 시험: RC3 표준 18개 통과(608.923초), 글자 크기 1.3배 반복 6개 통과(183.3초)
-- 현재 원본 QR: 별도 debug 표준·큰 글자 2장×2디코더는4/4, 실제 release 추가1장×2디코더는1/2 원문 일치(전체5/6). release 원본을 OpenCV가 읽지 못한 결과를 보존하며 실물 폰 카메라 시험이 아닙니다. [RC3 판독 기록](verification/completion-qr-rc3.json)
+- RC3 원본 QR: 별도 debug 표준·큰 글자 2장×2디코더는4/4, 실제 release 추가1장×2디코더는1/2 원문 일치(전체5/6). release 원본을 OpenCV가 읽지 못한 결과를 보존하며 실물 폰 카메라 시험이 아닙니다. [RC3 판독 기록](verification/completion-qr-rc3.json)
 
 위 빌드 수치와 실행 관찰은 서로 다른 근거입니다. 게시된 검증 JSON의 버전·해시가 위 RC3와 같은지 대조해야 합니다. 글자 크기 1.3배 시험은 동일 과업의 반복 검증이고 새로운 기능 수로 합산하지 않습니다. 실제 서명 release의 조작·녹화와 별도 debug instrumentation도 구분합니다.
 
@@ -54,13 +71,13 @@ NaviHelper는 사용자 요청과 플랫폼 입력 허용 상태에서 목적지
 
 개방된 입력 영역과 짙은 도착 패스로 준비·확정 정보를 구분합니다. 자동차와 루프박스 높이 그림, 진입문·주차·행사장 관계도, 블루·그린·앰버 상태와 문구를 함께 사용합니다. 관계도는 실제 지도나 길찾기가 아닙니다. 주행 화면에서는 보조 그림·메모·입력을 숨기고 확정한 핵심 정보만 남깁니다. 운영체제가 화면 전체를 제한할 가능성은 별도입니다.
 
-현재 캡처는 [RC3 화면 모음](../screenshots/rc3/README.md)과 파일에 연결된 소스·APK 해시, 런타임 버전으로 확인합니다. [RC2 Android 확정 화면](verification/android-aosp28-rc2-confirmed.png), [RC2 Android 메모 QR](verification/android-aosp28-rc2-qr.png), [RC2 영문 회의실 충돌 보류](verification/arrival-rc2-web-room-held.jpg)는 과거 화면입니다. Android 캡처는 일반 Android의 debug 시험인지 서명 release의 직접 조작인지 구분합니다. `arrival-v05-*.jpg`와 [디자인 검토 기록](design-review.md)의 0.4·0.5·RC1 결과도 과거 버전의 증거입니다. 실제 사용자 조사·공식 심사·차량 시인성 인증으로 표현하지 않습니다.
+현재 캡처는 [RC4 화면 모음](../screenshots/rc4/README.md)과 파일에 연결된 소스·APK 해시, 런타임 버전으로 확인합니다. [RC2 Android 확정 화면](verification/android-aosp28-rc2-confirmed.png), [RC2 Android 메모 QR](verification/android-aosp28-rc2-qr.png), [RC2 영문 회의실 충돌 보류](verification/arrival-rc2-web-room-held.jpg)는 과거 화면입니다. Android 캡처는 일반 Android의 debug 시험인지 서명 release의 직접 조작인지 구분합니다. `arrival-v05-*.jpg`와 [디자인 검토 기록](design-review.md)의 0.4·0.5·RC1 결과도 과거 버전의 증거입니다. 실제 사용자 조사·공식 심사·차량 시인성 인증으로 표현하지 않습니다.
 
 ## 독립 검토와 개발 사례 검증
 
 RC3의 [독립 코드·경계 검토](verification/award-independent-review.md)는 개발용 10개와 별도로 만든 후속 원문·조건 76조합을 웹과 실제 Kotlin 소스에서 각각 76/76 통과했다고 기록합니다. 구현을 읽은 뒤 구성한 challenge이며 맹검·대표 사용자 표본이 아닙니다. 확인·내보내기 상태 조합 assertion은 고유 기능 수로 합산하지 않습니다. 실제 APK 화면·연속 시연의 결과는 런타임 근거에서 따로 확인합니다.
 
-검토자는 회차마다 새로 구성했으며, 소스 확인·독립 입력 시험·실제 화면 확인의 범위를 각 보고서에 기록했습니다. 점수는 공식 심사 결과가 아닌 내부 준비도입니다. [회차 기록](verification/review-cycles.json), [RC1 검토](verification/resume-review-final.md), [RC2 추가 독립 검토](verification/completion-independent-review.md)와 [RC2 최종 인수 검토](verification/completion-final-acceptance.md)에서 대상 소스·APK와 완료 상태를 함께 확인합니다. 기존 88점은 RC1의 당시 검토 점수입니다. RC2·RC3의 새 점수나 공식 심사 점수로 자동 승격하지 않습니다.
+검토자는 회차마다 새로 구성했으며, 소스 확인·독립 입력 시험·실제 화면 확인의 범위를 각 보고서에 기록했습니다. 점수는 공식 심사 결과가 아닌 내부 준비도입니다. [회차 기록](verification/review-cycles.json), [RC1 검토](verification/resume-review-final.md), [RC2 추가 독립 검토](verification/completion-independent-review.md)와 [RC2 최종 인수 검토](verification/completion-final-acceptance.md)에서 대상 소스·APK와 완료 상태를 함께 확인합니다. 기존 88점은 RC1의 당시 검토 점수입니다. RC2·RC3·RC4의 새 점수나 공식 심사 점수로 자동 승격하지 않습니다.
 
 - 행사 미개최·종료 문장을 보류하고, 문장이 나뉘거나 주어가 생략된 경우를 양쪽 엔진의 공통 회귀에 추가했습니다.
 - 보류한 원문 문장을 화면에 표시하고 접근성 설명에서도 실제 내용을 읽을 수 있게 했습니다.
@@ -68,7 +85,7 @@ RC3의 [독립 코드·경계 검토](verification/award-independent-review.md)�
 - Android에서 주차 메모 QR을 열면 표시 영역으로 이동하고, 만료·삭제·잠금 상태에서는 QR을 제거합니다.
 - RC2에서는 `Room 300`, `Room #301` 등 영문 회의실 번호가 원문에 있는데 다른 장소를 선택해 확정하던 경로를 차단했습니다. 음수·0·소수·앞자리 0을 가진 층 표기와 `B0`·`B03`도 정상 층의 일부로 읽지 않고 보류합니다.
 - RC2 보고서에는 웹·Kotlin의 층·회의실 입력 330조합과 기존 87조합, 별도 상태 조합 12,424 assertion 및 메모 길이 경계 결과가 기록돼 있습니다. 검사한 소스·실행 범위는 각각의 원본 보고서를 따르며 RC3에서 같은 수를 다시 실행한 것으로 표시하지 않습니다. 서로 다른 검토자의 결과를 중복 합산하거나 고유 기능 수·실제 차량 시험 수로 표현하지 않습니다.
-- 웹과 Android의 메모 상한을 UTF-16 64단위로 맞췄습니다. QR은 메모 원문·저장 시각·복사본 수명 안내를 유지한 채 문구를 줄이고, 화면 여유에 따라 최대 400dp로 표시합니다. 물리적 휴대폰 판독 성공 여부와 구분합니다.
+- 웹과 Android의 메모 상한을 UTF-16 64단위로 맞췄습니다. QR은 메모 원문·저장 시각·복사본 수명 안내를 유지합니다. RC3까지는 화면 여유에 따라 최대 400dp로 표시했고, RC4는 기본 크기를 유지한 채 사용자가 최대 480dp 확대와 기본 크기를 전환할 수 있게 했습니다. 물리적 휴대폰 판독 성공 여부와 구분합니다.
 
 [RC2 독립 QR 검증](verification/completion-qr.md)은 원본 화면 2장×2디코더에서 3/4 판독, 엄격 검사 종료 코드 1을 보존합니다. 추가 여백을 붙인 진단 결과를 원본 앱 화면 성공으로 합산하지 않았습니다. RC2 release 실행 로그의 별도 OS `cmd` 프로세스 SIGSEGV 1건과 앱 관련 관찰 0건도 [RC2 로그 분류](verification/android-aosp28-rc2-log-review.json)에 보존합니다. 이러한 과거 결과를 RC3의 성공·실패로 자동 옮기거나 환경 전체 무오류로 표현하지 않습니다.
 
@@ -87,9 +104,9 @@ RC3의 [고정 안내문 사례 검증](verification/award-scenarios.md)은 **�
 
 ## 영상과 제출 자료
 
-웹 영상은 실제 웹 화면의 편집본이며 차량 상태는 시뮬레이션입니다. [도착 안내 metadata](../dist/assets/media/arrival-metadata.json)와 [자료 상충 metadata](../dist/assets/media/arrival-confirm-metadata.json)의 정확한 버전·캡처·소스 해시를 대조합니다. RC2 보존 영상은 RC3 실행의 증거가 아닙니다.
+보존된 RC3 웹 영상은 실제 웹 화면의 편집본이며 차량 상태는 시뮬레이션입니다. 현재 QR 확대 기능의 검증 자료가 아닙니다. [도착 안내 metadata](../dist/assets/media/arrival-metadata.json)와 [자료 상충 metadata](../dist/assets/media/arrival-confirm-metadata.json)의 정확한 버전·캡처·소스 해시를 대조합니다. RC2 보존 영상은 RC3 실행의 증거가 아닙니다.
 
-Android 편집 영상, debug instrumentation 원본 녹화, [실제 서명 release의 연속 시연](../dist/assets/media/arrival-native-journey.mp4)은 파일별로 구분합니다. release 영상은 단일 VFR screenrecord의 7개 UI 상태 순서를 대조한 무편집 공개본입니다. 원본98.1939초·공개본98.25초인 인코딩 타임라인과 helper 벽시계 110.511초는 다르며 속도 측정으로 쓰지 않습니다. 촬영 host 명령의 종료 코드 1과 사후 장면 대조 범위도 [metadata](../dist/assets/media/arrival-native-journey.json)에 보존합니다. 같은 앱 이름이라도 APK 해시와 빌드 종류가 일치해야 해당 실행의 근거로 사용합니다. 일반 Android 실행은 Pleos 응답·실차 촬영·휴대폰 광학 판독의 성공이 아닙니다.
+Android 편집 영상, debug instrumentation 원본 녹화, [실제 서명 release의 연속 시연](../dist/assets/media/arrival-native-journey.mp4)은 파일별로 구분합니다. 이 RC3 release 영상은 단일 VFR screenrecord의 7개 UI 상태 순서를 대조한 무편집 공개본입니다. 원본98.1939초·공개본98.25초인 인코딩 타임라인과 helper 벽시계 110.511초는 다르며 속도 측정으로 쓰지 않습니다. 촬영 host 명령의 종료 코드 1과 사후 장면 대조 범위도 [metadata](../dist/assets/media/arrival-native-journey.json)에 보존합니다. 같은 앱 이름이라도 APK 해시와 빌드 종류가 일치해야 해당 실행의 근거로 사용합니다. 일반 Android 실행은 Pleos 응답·실차 촬영·휴대폰 광학 판독의 성공이 아닙니다.
 
 패키징은 소스·APK·영상·검증 기록과 운영 전달 정보를 분리하고, 파일별 해시·개인정보 제외·정적 APK 경로를 검사합니다. `build-inputs.json`에 기록한 성공 빌드의 APK·입력 해시를 현재 소스와 ZIP 원본에 대조하고 불일치하면 포장을 중단합니다. 이는 빌드 입력과 제출 소스의 일치 검사이며 바이트 재현 빌드 검증은 아닙니다. 최종 접수양식의 기존 동의·서명·날짜는 임의로 변경하지 않습니다. 패키징과 이메일 접수는 별개이며 도구가 제출을 대신하지 않습니다.
 

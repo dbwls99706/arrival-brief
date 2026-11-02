@@ -1,0 +1,83 @@
+{
+  "version": "1.0.0-rc4",
+  "started_utc": "2026-11-02T11:18:18Z",
+  "scope": "Release-only repeat after an incomplete font-transition capture. Prior4+4 UI and update installation remain separate completed evidence; app APK unchanged.",
+  "commands": [
+    {
+      "name": "wait",
+      "exit": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_seconds": 14.01
+    },
+    {
+      "name": "hide-os-dialogs",
+      "exit": 0,
+      "sha256": "833efcb2558946c9e18fd07a194408250e745f8aff5efef2d28ba8d2baf9c135",
+      "elapsed_seconds": 56.03
+    },
+    {
+      "name": "boot",
+      "exit": 0,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "elapsed_seconds": 54.03
+    },
+    {
+      "name": "window_animation_scale",
+      "exit": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_seconds": 3.0
+    },
+    {
+      "name": "transition_animation_scale",
+      "exit": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_seconds": 3.0
+    },
+    {
+      "name": "animator_duration_scale",
+      "exit": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_seconds": 4.01
+    },
+    {
+      "name": "boot-logcat",
+      "exit": 0,
+      "sha256": "12ac0e97882cdee79bbcd1e95105f18bf1243518c322a6c16fed7146307ddba9",
+      "elapsed_seconds": 17.01
+    },
+    {
+      "name": "install",
+      "exit": 0,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "elapsed_seconds": 90.06
+    },
+    {
+      "name": "device-sha",
+      "exit": 0,
+      "sha256": "01836dc353fd99c466bed86570289a3f779e06f071efdf13e32f9d45dc41182a",
+      "elapsed_seconds": 6.01
+    },
+    {
+      "name": "clear-logcat",
+      "exit": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_seconds": 1.0
+    },
+    {
+      "name": "release-scenario",
+      "exit": 0,
+      "sha256": "7a919fa4a1e05df74d99a117ba3f49b35552c506e9d0f47f88c8abf84f18265c",
+      "elapsed_seconds": 115.07
+    },
+    {
+      "name": "final-device-sha",
+      "exit": 0,
+      "sha256": "01836dc353fd99c466bed86570289a3f779e06f071efdf13e32f9d45dc41182a",
+      "elapsed_seconds": 6.0
+    }
+  ],
+  "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+  "status": "passed",
+  "completed_utc": "2026-11-02T11:24:27Z",
+  "emulator_exit": -10
+}

@@ -1,19 +1,19 @@
 {
-  "version": "1.0.0-rc3",
-  "version_code": 12,
-  "apk_sha256": "fbdfc4dda2ee7618876d2fc360ce7880d88ad1e95dc6e092fd245b05b411ed50",
+  "version": "1.0.0-rc4",
+  "version_code": 13,
+  "apk_sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
   "source_snapshot_match": true,
   "source_input_count": 43,
-  "evidence": "All 43 inputs in the successful isolated checkout match the working tree byte-for-byte. This does not claim byte-reproducible APK builds.",
+  "evidence": "All 43 inputs in the successful isolated checkout match the live working tree byte-for-byte; not a byte-reproducible APK claim.",
   "scope": "Android source, resources, Gradle configuration/wrapper and shared decision fixture. Excludes build caches, README documentation and web JavaScript/test source.",
   "files": [
     {
       "path": "android/app/build.gradle.kts",
-      "sha256": "f910bc84d30f1c1e398cbe4f97e093f99565699e2420fb537311c729fcc8eb3b"
+      "sha256": "0a44f2315179635f4cd03afba33500e0afc1ba8b38bc0b4bab272e915ffdc95e"
     },
     {
       "path": "android/app/src/androidTest/java/studio/ax/arrival/VisitFlowInstrumentedTest.kt",
-      "sha256": "bc9578cee63a2997e36c49f291eb1764a13927c497f4ad8f8a38d1c6447089ea"
+      "sha256": "b0914ad5c1f6ffe33e1a3388d63e6758f20e7ba05ea05387d6a36ed3b18d4921"
     },
     {
       "path": "android/app/src/main/AndroidManifest.xml",
@@ -33,7 +33,7 @@
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/BriefEngine.kt",
-      "sha256": "7c717b1be0531a002cea7d40931033be7c653a1221aa1cc19d5d01eda1ec22b6"
+      "sha256": "10fee6506bdd76c19c9892324add33cd4a6ef9cca192a88eac3369bf9492304a"
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/BriefSession.kt",
@@ -41,7 +41,7 @@
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/MainActivity.kt",
-      "sha256": "db6b57b243363a4b7b2c94142c164cec0cf26bcbbfb95729f082d724d105bb23"
+      "sha256": "782092123ed7c236dc3cc0b53825af2ab0605a698b1413e539ab4f4e1b5b6019"
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/NavigationCheck.kt",
@@ -109,7 +109,7 @@
     },
     {
       "path": "android/app/src/main/res/values/strings.xml",
-      "sha256": "306fbef4be6f840287f8f5577da0c73ef9a22ffd96c3d3930d1b2ab587d2b8e9"
+      "sha256": "a3f365eaeb4fe454126ef0e69aff1418d9e872c4409a6e9c167166c9adbd3be2"
     },
     {
       "path": "android/app/src/main/res/values/styles.xml",
@@ -125,7 +125,7 @@
     },
     {
       "path": "android/app/src/test/java/studio/ax/arrival/BriefEngineTest.kt",
-      "sha256": "82bbe2ac10fbbaf85f5b36d8b8ec7dc420474961beaeeea3928eeed2a63b4307"
+      "sha256": "1dda94f62be839be34556d57a7a8cdf385865dde0427c74b6f6002c89063f832"
     },
     {
       "path": "android/app/src/test/java/studio/ax/arrival/BriefSessionTest.kt",

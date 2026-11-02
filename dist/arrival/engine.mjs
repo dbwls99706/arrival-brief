@@ -170,9 +170,9 @@ export function extractDestinations(text) {
  if(roomTokens.some(token=>!/^[1-9]\d*$/.test(token)||!(Number(token)>=300&&Number(token)<=328||Number(token)>=400&&Number(token)<=403)))return {status:'needs_review',matches:[],message:'지원하지 않거나 불명확한 회의실 번호가 있습니다. 다른 장소를 대신 선택하지 말고 행사장의 공식 명칭을 확인해주세요.'};
  const matches=DESTINATIONS.filter(d=>d.patterns.some(p=>p.test(venueText)));
  const floors=extractFloors(venueText);
- if(matches.length===1&&floors.length&&floors.some(f=>f!==parseInt(matches[0].floor)))return {status:'needs_review',matches:[],message:'안내문에 행사장과 다른 층이 있습니다. 이번에 방문할 행사장과 층이 있는 문장만 남겨주세요. 등록 장소와 다른 일정의 안내는 빼고 다시 확인해주세요.'};
+ if(matches.length===1&&floors.length&&floors.some(f=>f!==parseInt(matches[0].floor)))return {status:'needs_review',matches:[],message:'안내문에 행사장과 다른 층이 있습니다. 행사장과 등록 장소의 층을 구분해 확인해주세요. 일정·등록·변경·취소·진입·주차 제한을 생략하지 말고, 구분이 어려우면 최신 주최 안내를 확인해주세요.'};
  if(matches.length===1&&(!parkingNotesAgree([text],matches[0])||!entryGatesAgree(text,matches[0])))return {status:'needs_review',matches:[],...parts,message:'안내문의 주차층·구역·진입문과 공식 추천이 다릅니다. 주최 측과 시설의 최신 안내를 확인해주세요.'};
- return {...parts,status:matches.length===1?'matched':matches.length>1?'ambiguous':'unmatched',matches,message:matches.length>1?(new Set(floors).size>1?'여러 행사장과 층이 함께 있습니다. 이번에 방문할 행사장과 층이 있는 문장만 남겨주세요. 등록 장소와 다른 일정의 안내는 빼고 다시 확인해주세요.':'안내에 여러 장소가 있습니다. 실제 방문할 장소를 선택해주세요.'):matches.length?'지원 목록의 장소명 후보를 찾았습니다. 현재 행사장이 맞는지 안내문 원본을 직접 확인해주세요.':'코엑스 내 세부 장소를 찾지 못했습니다. 지원 장소를 직접 선택해주세요.'};
+ return {...parts,status:matches.length===1?'matched':matches.length>1?'ambiguous':'unmatched',matches,message:matches.length>1?(new Set(floors).size>1?'여러 행사장과 층이 함께 있습니다. 행사장과 등록 장소의 층을 구분해 확인해주세요. 일정·등록·변경·취소·진입·주차 제한을 생략하지 말고, 구분이 어려우면 최신 주최 안내를 확인해주세요.':'안내에 여러 장소가 있습니다. 실제 방문할 장소를 선택해주세요.'):matches.length?'지원 목록의 장소명 후보를 찾았습니다. 현재 행사장이 맞는지 안내문 원본을 직접 확인해주세요.':'코엑스 내 세부 장소를 찾지 못했습니다. 지원 장소를 직접 선택해주세요.'};
 }
 function extractFloors(text){
  // Capture signs/decimals/leading zeroes as part of the token, rather than
@@ -190,7 +190,7 @@ export function buildBrief({text='',destinationId='',height='',mode='parked',con
  const destination=selected|| (extraction.matches.length===1?extraction.matches[0]:null);
  if(!destination)return {status:extraction.status,reason:extraction.message,extraction,canConfirm:false};
  if(extraction.matches.length&&destinationId&&!extraction.matches.some(d=>d.id===destinationId))return {status:'conflict',reason:'선택 장소와 입력한 행사 안내가 다릅니다. 행사 안내를 수정해주세요.',extraction,canConfirm:false};
- if(extractFloors(extraction.venueText??text).some(f=>f!==parseInt(destination.floor)))return {status:'needs_review',reason:'선택한 행사장과 다른 층이 있습니다. 이번에 방문할 행사장과 층이 있는 문장만 남겨주세요. 등록 장소와 다른 일정의 안내는 빼고 다시 확인해주세요.',extraction,canConfirm:false};
+ if(extractFloors(extraction.venueText??text).some(f=>f!==parseInt(destination.floor)))return {status:'needs_review',reason:'선택한 행사장과 다른 층이 있습니다. 행사장과 등록 장소의 층을 구분해 확인해주세요. 일정·등록·변경·취소·진입·주차 제한을 생략하지 말고, 구분이 어려우면 최신 주최 안내를 확인해주세요.',extraction,canConfirm:false};
  if(!parkingNotesAgree([text],destination)||!entryGatesAgree(text,destination))return {status:'needs_review',reason:'안내문의 주차층·구역·진입문과 공식 추천이 다릅니다. 주최 측과 시설의 최신 안내를 확인해주세요.',extraction,canConfirm:false};
  const heightText=height==null?'':String(height).trim();
  const heightValue=heightText===''?null:/^[0-9]+(?:\.[0-9]{1,2})?$/.test(heightText)?Number(heightText):NaN;

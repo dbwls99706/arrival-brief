@@ -1,0 +1,86 @@
+{
+  "run_id": "aa4c7b22a65c42d6a925364d2631b663",
+  "version": "1.0.0-rc4",
+  "build_type": "release",
+  "automation": "Public accessibility UI actions from a separate self-targeted test harness; no app-private API or app instrumentation.",
+  "scope": "Screenshots only; no recording and no performance measurement",
+  "notice": "학술대회 안내\n장소: 코엑스 아셈볼룸 2층\n행사는 10:00에 시작하여 18:00에 종료됩니다.\n참가 등록은 1층 로비에서 진행합니다.",
+  "memo": "B3 블루존 E12",
+  "launch_response_font_1.0": "Starting: Intent { act=android.intent.action.SEND typ=text\/plain cmp=studio.ax.arrival\/.MainActivity (has extras) }\nStatus: ok\nActivity: studio.ax.arrival\/.MainActivity\nThisTime: 7239\nTotalTime: 7239\nWaitTime: 8163\nComplete\n",
+  "demo_entry_public_touch_fallback": false,
+  "input_helper": "개인정보만 지우고, 장소·일정·등록·변경·취소·진입·주차 제한 안내는 원문대로 남겨주세요.",
+  "save_before_device_ms": 1793618597522,
+  "save_after_device_ms": 1793618598508,
+  "standard-qr_bounds": {
+    "left": 440,
+    "top": 102,
+    "right": 840,
+    "bottom": 502
+  },
+  "standard-qr-expanded_bounds": {
+    "left": 400,
+    "top": 62,
+    "right": 880,
+    "bottom": 542
+  },
+  "standard-qr-restored_bounds": {
+    "left": 440,
+    "top": 102,
+    "right": 840,
+    "bottom": 502
+  },
+  "launch_response_font_1.3": "Starting: Intent { act=android.intent.action.SEND typ=text\/plain cmp=studio.ax.arrival\/.MainActivity (has extras) }\nStatus: ok\nActivity: studio.ax.arrival\/.MainActivity\nThisTime: 7754\nTotalTime: 10332\nWaitTime: 8992\nComplete\n",
+  "large-font-qr_bounds": {
+    "left": 440,
+    "top": 90,
+    "right": 840,
+    "bottom": 490
+  },
+  "large-font-qr-expanded_bounds": {
+    "left": 406,
+    "top": 70,
+    "right": 874,
+    "bottom": 538
+  },
+  "large-font-qr-restored_bounds": {
+    "left": 440,
+    "top": 90,
+    "right": 840,
+    "bottom": 490
+  },
+  "status": "passed",
+  "events": [
+    {
+      "label": "input-helper",
+      "seconds_from_scenario_start": 27.199
+    },
+    {
+      "label": "confirmed",
+      "seconds_from_scenario_start": 35.921
+    },
+    {
+      "label": "standard-qr",
+      "seconds_from_scenario_start": 46.47
+    },
+    {
+      "label": "standard-qr-expanded",
+      "seconds_from_scenario_start": 48.29
+    },
+    {
+      "label": "standard-qr-restored",
+      "seconds_from_scenario_start": 50.09
+    },
+    {
+      "label": "large-font-qr",
+      "seconds_from_scenario_start": 85.912
+    },
+    {
+      "label": "large-font-qr-expanded",
+      "seconds_from_scenario_start": 87.736
+    },
+    {
+      "label": "large-font-qr-restored",
+      "seconds_from_scenario_start": 89.495
+    }
+  ]
+}

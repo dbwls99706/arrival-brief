@@ -1,0 +1,299 @@
+{
+  "version": "1.0.0-rc4",
+  "started_utc": "2026-11-02T11:02:25Z",
+  "commands": [
+    {
+      "name": "001-wait",
+      "exit": 0,
+      "elapsed_seconds": 13.01,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "002-hide-os-dialogs",
+      "exit": 0,
+      "elapsed_seconds": 55.03,
+      "output_sha256": "c641473b7be0f3824c14aacb5bbc72a3db6c91c11c97242e7ec332dbe498da78"
+    },
+    {
+      "name": "003-boot",
+      "exit": 0,
+      "elapsed_seconds": 53.03,
+      "output_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "name": "004-window_animation_scale",
+      "exit": 0,
+      "elapsed_seconds": 3.0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "005-transition_animation_scale",
+      "exit": 0,
+      "elapsed_seconds": 4.0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "006-animator_duration_scale",
+      "exit": 0,
+      "elapsed_seconds": 6.01,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "010-emulator-check",
+      "exit": 0,
+      "elapsed_seconds": 3.0,
+      "output_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "name": "011-boot-logcat",
+      "exit": 0,
+      "elapsed_seconds": 18.01,
+      "output_sha256": "f9d88fa359472e718ac153672c57519600dcebbb21d176f3f215ee46397eb60b"
+    },
+    {
+      "name": "012-clear-app",
+      "exit": 255,
+      "elapsed_seconds": 3.0,
+      "output_sha256": "379aded664e7c1e38ef69a51376e1e4c125c678e119085955f287dc6dced6227"
+    },
+    {
+      "name": "020-install-baseline",
+      "exit": 0,
+      "elapsed_seconds": 113.07,
+      "output_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "name": "021-baseline-package",
+      "exit": 0,
+      "elapsed_seconds": 4.0,
+      "output_sha256": "a28b427d29bbd6af02f80954475f23f7c8a2e82b2e966b7b23c668fbfbb95d17"
+    },
+    {
+      "name": "022-update-rc4",
+      "exit": 0,
+      "elapsed_seconds": 33.02,
+      "output_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "name": "023-release-package",
+      "exit": 0,
+      "elapsed_seconds": 1.0,
+      "output_sha256": "8bd700d9cdc0b247ef78d4be17ae35b57865b8c7077ce4dc84c30b0bf1de5c68"
+    },
+    {
+      "name": "024-release-device-sha",
+      "exit": 0,
+      "elapsed_seconds": 3.0,
+      "output_sha256": "d9082ffd13d009d6b5b16b78b730b76aeadb86d8bf14267478e0929eb521a071"
+    },
+    {
+      "name": "025-release-logcat-clear",
+      "exit": 0,
+      "elapsed_seconds": 1.0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "026-release-launch",
+      "exit": 0,
+      "elapsed_seconds": 8.0,
+      "output_sha256": "bf637134841a55716efe4afd86c57fadf239b9123c971d6a66a3fd158000baba"
+    },
+    {
+      "name": "027-release-launch-screen",
+      "exit": 0,
+      "elapsed_seconds": 3.0,
+      "output_sha256": "91649b52c8af6f32953de31ef498a6f7ed6aa27a2df6ee49cfb18e915344c631"
+    },
+    {
+      "name": "028-release-launch-logcat",
+      "exit": 0,
+      "elapsed_seconds": 1.0,
+      "output_sha256": "263f72ec1860c3c47cc6c373acbdd64b764899132cac3d82125045cd7d95e1fb"
+    },
+    {
+      "name": "030-release-remove",
+      "exit": 0,
+      "elapsed_seconds": 5.0,
+      "output_sha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0"
+    },
+    {
+      "name": "031-debug-install",
+      "exit": 0,
+      "elapsed_seconds": 8.0,
+      "output_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "name": "032-test-install",
+      "exit": 0,
+      "elapsed_seconds": 3.0,
+      "output_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "name": "033-debug-device-sha",
+      "exit": 0,
+      "elapsed_seconds": 1.0,
+      "output_sha256": "d776ef4acd25ca0e33c42a26a02aac890ffb7cd6aec8ef6a4ad40a42d7598db1"
+    },
+    {
+      "name": "034-test-device-sha",
+      "exit": 0,
+      "elapsed_seconds": 1.0,
+      "output_sha256": "40065972a0952d55e0aadbcbdc926be626c8e77d33d9dba9455cc772af493bce"
+    },
+    {
+      "name": "035-ime",
+      "exit": 0,
+      "elapsed_seconds": 1.0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "standard-set-font",
+      "exit": 0,
+      "elapsed_seconds": 1.0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "standard-font-setting",
+      "exit": 0,
+      "elapsed_seconds": 1.0,
+      "output_sha256": "5717e7c840171019a4eeab5b79a7f894a4986eaff93d04ec5b12c9a189f594bf"
+    },
+    {
+      "name": "standard-clear-old-screens",
+      "exit": 0,
+      "elapsed_seconds": 1.0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "standard-clear-logcat",
+      "exit": 0,
+      "elapsed_seconds": 1.0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "standard-instrumentation",
+      "exit": 0,
+      "elapsed_seconds": 186.18,
+      "output_sha256": "4956a3a782d66cca63c842c8146908c2458d47c09da6dc93ac4fe6528f7f83f9"
+    },
+    {
+      "name": "standard-logcat",
+      "exit": 0,
+      "elapsed_seconds": 2.0,
+      "output_sha256": "6fdebb49f52a67ed7574e9f4e3d85e22acf5b9097c4b089f5b3811ccf4576300"
+    },
+    {
+      "name": "standard-screens",
+      "exit": 0,
+      "elapsed_seconds": 1.0,
+      "output_sha256": "4c3b31c207a3824fc56b36b2feec5e3f06ed3f2a8675ce6f2e8278c4d9b69e29"
+    },
+    {
+      "name": "large-set-font",
+      "exit": 0,
+      "elapsed_seconds": 1.0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "large-font-setting",
+      "exit": 0,
+      "elapsed_seconds": 4.0,
+      "output_sha256": "b6403da9b22abe355ad17208a336e658322c5d1d7ff646ca7b9229237ba4aef4"
+    },
+    {
+      "name": "large-clear-old-screens",
+      "exit": 0,
+      "elapsed_seconds": 2.0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "large-clear-logcat",
+      "exit": 0,
+      "elapsed_seconds": 2.0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "large-instrumentation",
+      "exit": 0,
+      "elapsed_seconds": 188.14,
+      "output_sha256": "a764eebdfed0c7b46f8458bb52b9b57142e2e6285cfabd4b7a8ea438dbd54802"
+    },
+    {
+      "name": "large-logcat",
+      "exit": 0,
+      "elapsed_seconds": 2.0,
+      "output_sha256": "38aeb54c9fabcefa2031daf7621c16eca0eeed55f5f06d1bab4f76e278d89208"
+    },
+    {
+      "name": "large-screens",
+      "exit": 0,
+      "elapsed_seconds": 1.0,
+      "output_sha256": "c4427ba336c03da30775c6486c7aea1ba200c5f529b843c74330354eface063a"
+    },
+    {
+      "name": "070-restore-font",
+      "exit": 0,
+      "elapsed_seconds": 1.0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "071-debug-remove",
+      "exit": 0,
+      "elapsed_seconds": 9.01,
+      "output_sha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0"
+    },
+    {
+      "name": "072-test-remove",
+      "exit": 0,
+      "elapsed_seconds": 9.01,
+      "output_sha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0"
+    },
+    {
+      "name": "073-release-reinstall",
+      "exit": 0,
+      "elapsed_seconds": 20.01,
+      "output_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "name": "074-release-clear-logcat",
+      "exit": 0,
+      "elapsed_seconds": 1.0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "075-release-scenario",
+      "exit": 1,
+      "elapsed_seconds": 71.04,
+      "output_sha256": "6de9fecccdedd7196007ab6c2be29015eef2c69a26a69e662a3f26e7e26966d6"
+    }
+  ],
+  "scope": "One AOSP Android 9 emulator. Four selected app-owned QR UI regressions per font scale plus public release UI captures; no real vehicle, Pleos service or physical camera test.",
+  "artifacts": {
+    "release": {
+      "path": "/workspace/arrival-runtime-rc4/ArrivalBrief_release.apk",
+      "sha256": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9",
+      "bytes": 6670935
+    },
+    "debug": {
+      "path": "/workspace/arrival-runtime-rc4/ArrivalBrief_debug.apk",
+      "sha256": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf",
+      "bytes": 8079967
+    },
+    "test": {
+      "path": "/workspace/arrival-runtime-rc4/ArrivalBrief_test.apk",
+      "sha256": "533b6e5e12a7684c456c886f67585be2ead8fb832851c27493ed7c2fff5b443b",
+      "bytes": 1351160
+    }
+  },
+  "focused_methods": [
+    "savedMemoQrRoundTripsAndClearsWhenEditedOrDriving",
+    "memoQrDoesNotRestoreAfterRecreationAndDeletionClearsIt",
+    "activeMemoAndQrExpireAtTheStoredDeadline",
+    "memoQrEnlargementPreservesPayloadAndClearsOnClose"
+  ],
+  "plan_sha256": "fe0268a5700af17a9b8ce55236b16bb56eca56cbd2864ce7bcf4c46a67e23444",
+  "script_sha256": "ebbaa486238f0dcb97a911c78de89d51799792b0bd71bfcbfff4e762d9d3075e",
+  "status": "failed_or_incomplete",
+  "error": "075-release-scenario command failed",
+  "emulator_exit": -10
+}

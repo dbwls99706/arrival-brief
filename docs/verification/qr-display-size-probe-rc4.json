@@ -1,0 +1,2939 @@
+{
+  "schema_version": 1,
+  "scope": "Production Kotlin encoder, unchanged payload and automatic mask, deterministic no-stress image probes at five save times. These are generated QR images, not app captures or physical phone-camera tests.",
+  "decision": "Keep the standard size and add a user-controlled larger view. A larger image helped the recorded release payload but did not monotonically improve all cases; it is a fallback, not a claim of universally solved scanning.",
+  "production_sources": [
+    {
+      "path": "android/app/src/main/java/studio/ax/arrival/ParkingMemoQr.kt",
+      "sha256": "59a1b3808f059bdf94cec6c9168fd2b1afebd5e58f88ae2f94b2c1af328e796b"
+    },
+    {
+      "path": "android/app/src/main/java/studio/ax/arrival/VisitCompanion.kt",
+      "sha256": "95d3d82e64ad710aab1fe15669403acf4b1a2ba23559376d6c5ef19e4539234e"
+    },
+    {
+      "path": "android/app/src/main/java/studio/ax/arrival/VehicleGateway.kt",
+      "sha256": "2fd579fe4de9aeb5c2bb7e688302f6d959852751a6eafd4c28d839eb4eec2934"
+    }
+  ],
+  "tool_versions": {
+    "opencv": "4.12.0",
+    "numpy": "2.2.6",
+    "pillow": "11.3.0",
+    "jsqr": "1.4.0"
+  },
+  "decoder_bundle": {
+    "sha256": "3325b0888fa4745c4e6940897d8c4f426fbaae76901fcbfe1871a04e90a51655",
+    "source": "https://github.com/cozmo/jsQR/blob/8e6a036beafa7053dd44b1b76ac578d22b1b3311/dist/jsQR.js",
+    "license": "Apache-2.0",
+    "included_in_app": false
+  },
+  "encoder_dependency": {
+    "sha256": "71de5d89341b5fcf5dd89da7f44e84d825d0e084cdf3ec77c9abe26b0f0ceb13",
+    "name": "ZXing core 3.5.4"
+  },
+  "aggregate_by_size": {
+    "400": {
+      "images": 50,
+      "decoder_comparisons": 100,
+      "matching_payloads": 98,
+      "incorrect_nonempty": 0
+    },
+    "480": {
+      "images": 50,
+      "decoder_comparisons": 100,
+      "matching_payloads": 98,
+      "incorrect_nonempty": 0
+    },
+    "512": {
+      "images": 10,
+      "decoder_comparisons": 20,
+      "matching_payloads": 19,
+      "incorrect_nonempty": 0
+    }
+  },
+  "runs": [
+    {
+      "label": "release-time-regression",
+      "record_saved_at_ms": 1793603236000,
+      "sizes": [
+        400,
+        480,
+        512
+      ],
+      "raw_report_sha256": "259676c306e6c49e046793f8a387220ebfa585a774b128f2684aede6ec0a1192",
+      "results": [
+        {
+          "fixture": "typical_ko-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": false,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "typical_ko-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "typical_ko-512",
+          "transform": "original",
+          "pixels": [
+            512,
+            512
+          ],
+          "matches": {
+            "opencv": false,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "korean_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "korean_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "korean_64-512",
+          "transform": "original",
+          "pixels": [
+            512,
+            512
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "ascii_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "ascii_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "ascii_64-512",
+          "transform": "original",
+          "pixels": [
+            512,
+            512
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "emoji_32_utf16_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "emoji_32_utf16_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "emoji_32_utf16_64-512",
+          "transform": "original",
+          "pixels": [
+            512,
+            512
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "mixed_symbols-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "mixed_symbols-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "mixed_symbols-512",
+          "transform": "original",
+          "pixels": [
+            512,
+            512
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_marks-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_marks-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_marks-512",
+          "transform": "original",
+          "pixels": [
+            512,
+            512
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_korean_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_korean_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_korean_64-512",
+          "transform": "original",
+          "pixels": [
+            512,
+            512
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "long_location_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "long_location_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "long_location_64-512",
+          "transform": "original",
+          "pixels": [
+            512,
+            512
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_emoji_32_utf16_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_emoji_32_utf16_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_emoji_32_utf16_64-512",
+          "transform": "original",
+          "pixels": [
+            512,
+            512
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_64_utf16-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_64_utf16-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_64_utf16-512",
+          "transform": "original",
+          "pixels": [
+            512,
+            512
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        }
+      ],
+      "quiet_zones": [
+        {
+          "id": "typical_ko-400",
+          "module_pixels": 7.0,
+          "symbol_modules": 45.0,
+          "quiet_zone_modules_ltrb": [
+            6.0,
+            6.0,
+            6.142857142857143,
+            6.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "typical_ko-480",
+          "module_pixels": 9.0,
+          "symbol_modules": 45.0,
+          "quiet_zone_modules_ltrb": [
+            4.111111111111111,
+            4.111111111111111,
+            4.222222222222222,
+            4.222222222222222
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "typical_ko-512",
+          "module_pixels": 9.0,
+          "symbol_modules": 45.0,
+          "quiet_zone_modules_ltrb": [
+            5.888888888888889,
+            5.888888888888889,
+            6.0,
+            6.0
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "korean_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.4,
+            5.4,
+            5.6,
+            5.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "korean_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "korean_64-512",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            8.166666666666666,
+            8.166666666666666,
+            8.166666666666666,
+            8.166666666666666
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "ascii_64-400",
+          "module_pixels": 6.0,
+          "symbol_modules": 53.0,
+          "quiet_zone_modules_ltrb": [
+            6.833333333333333,
+            6.833333333333333,
+            6.833333333333333,
+            6.833333333333333
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "ascii_64-480",
+          "module_pixels": 7.0,
+          "symbol_modules": 53.0,
+          "quiet_zone_modules_ltrb": [
+            7.714285714285714,
+            7.714285714285714,
+            7.857142857142857,
+            7.857142857142857
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "ascii_64-512",
+          "module_pixels": 8.0,
+          "symbol_modules": 53.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "emoji_32_utf16_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.4,
+            9.4,
+            9.6,
+            9.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "emoji_32_utf16_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.5,
+            9.5,
+            9.5,
+            9.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "emoji_32_utf16_64-512",
+          "module_pixels": 7.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            6.0,
+            6.0,
+            6.142857142857143,
+            6.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "mixed_symbols-400",
+          "module_pixels": 7.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            4.0,
+            4.0,
+            4.142857142857143,
+            4.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "mixed_symbols-480",
+          "module_pixels": 8.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "mixed_symbols-512",
+          "module_pixels": 8.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            7.5,
+            7.5,
+            7.5,
+            7.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_marks-400",
+          "module_pixels": 7.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            4.0,
+            4.0,
+            4.142857142857143,
+            4.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_marks-480",
+          "module_pixels": 8.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_marks-512",
+          "module_pixels": 8.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            7.5,
+            7.5,
+            7.5,
+            7.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_korean_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.4,
+            5.4,
+            5.6,
+            5.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_korean_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_korean_64-512",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            8.166666666666666,
+            8.166666666666666,
+            8.166666666666666,
+            8.166666666666666
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "long_location_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.4,
+            5.4,
+            5.6,
+            5.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "long_location_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "long_location_64-512",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            8.166666666666666,
+            8.166666666666666,
+            8.166666666666666,
+            8.166666666666666
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_emoji_32_utf16_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.4,
+            9.4,
+            9.6,
+            9.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_emoji_32_utf16_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.5,
+            9.5,
+            9.5,
+            9.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_emoji_32_utf16_64-512",
+          "module_pixels": 7.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            6.0,
+            6.0,
+            6.142857142857143,
+            6.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_64_utf16-400",
+          "module_pixels": 6.0,
+          "symbol_modules": 57.0,
+          "quiet_zone_modules_ltrb": [
+            4.833333333333333,
+            4.833333333333333,
+            4.833333333333333,
+            4.833333333333333
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_64_utf16-480",
+          "module_pixels": 7.0,
+          "symbol_modules": 57.0,
+          "quiet_zone_modules_ltrb": [
+            5.714285714285714,
+            5.714285714285714,
+            5.857142857142857,
+            5.857142857142857
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_64_utf16-512",
+          "module_pixels": 7.0,
+          "symbol_modules": 57.0,
+          "quiet_zone_modules_ltrb": [
+            8.0,
+            8.0,
+            8.142857142857142,
+            8.142857142857142
+          ],
+          "at_least_four_modules": true
+        }
+      ],
+      "summary": {
+        "production_fixtures": 30,
+        "baseline_comparisons": 60,
+        "baseline_pass": 58,
+        "stress_comparisons": 0,
+        "stress_pass": 0,
+        "stress_failed_cases": 0,
+        "incorrect_nonempty_decodes": 0,
+        "screenshot_comparisons": 0,
+        "all_quiet_zones_at_least_four_modules": true
+      }
+    },
+    {
+      "label": "rc3_standard_time",
+      "record_saved_at_ms": 1793601312000,
+      "sizes": [
+        400,
+        480
+      ],
+      "raw_report_sha256": "2f3ef154695a688189957ff5447c8d0d5025d3fd7ceb26db94d85bf61a91dc5f",
+      "results": [
+        {
+          "fixture": "typical_ko-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "typical_ko-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "korean_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "korean_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "ascii_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "ascii_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "emoji_32_utf16_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "emoji_32_utf16_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "mixed_symbols-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "mixed_symbols-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_marks-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_marks-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_korean_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_korean_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "long_location_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "long_location_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_emoji_32_utf16_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_emoji_32_utf16_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_64_utf16-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_64_utf16-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": false,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        }
+      ],
+      "quiet_zones": [
+        {
+          "id": "typical_ko-400",
+          "module_pixels": 7.0,
+          "symbol_modules": 45.0,
+          "quiet_zone_modules_ltrb": [
+            6.0,
+            6.0,
+            6.142857142857143,
+            6.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "typical_ko-480",
+          "module_pixels": 9.0,
+          "symbol_modules": 45.0,
+          "quiet_zone_modules_ltrb": [
+            4.111111111111111,
+            4.111111111111111,
+            4.222222222222222,
+            4.222222222222222
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "korean_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.4,
+            5.4,
+            5.6,
+            5.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "korean_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "ascii_64-400",
+          "module_pixels": 6.0,
+          "symbol_modules": 53.0,
+          "quiet_zone_modules_ltrb": [
+            6.833333333333333,
+            6.833333333333333,
+            6.833333333333333,
+            6.833333333333333
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "ascii_64-480",
+          "module_pixels": 7.0,
+          "symbol_modules": 53.0,
+          "quiet_zone_modules_ltrb": [
+            7.714285714285714,
+            7.714285714285714,
+            7.857142857142857,
+            7.857142857142857
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "emoji_32_utf16_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.4,
+            9.4,
+            9.6,
+            9.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "emoji_32_utf16_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.5,
+            9.5,
+            9.5,
+            9.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "mixed_symbols-400",
+          "module_pixels": 7.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            4.0,
+            4.0,
+            4.142857142857143,
+            4.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "mixed_symbols-480",
+          "module_pixels": 8.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_marks-400",
+          "module_pixels": 7.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            4.0,
+            4.0,
+            4.142857142857143,
+            4.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_marks-480",
+          "module_pixels": 8.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_korean_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.4,
+            5.4,
+            5.6,
+            5.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_korean_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "long_location_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.4,
+            5.4,
+            5.6,
+            5.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "long_location_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_emoji_32_utf16_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.4,
+            9.4,
+            9.6,
+            9.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_emoji_32_utf16_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.5,
+            9.5,
+            9.5,
+            9.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_64_utf16-400",
+          "module_pixels": 6.0,
+          "symbol_modules": 57.0,
+          "quiet_zone_modules_ltrb": [
+            4.833333333333333,
+            4.833333333333333,
+            4.833333333333333,
+            4.833333333333333
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_64_utf16-480",
+          "module_pixels": 7.0,
+          "symbol_modules": 57.0,
+          "quiet_zone_modules_ltrb": [
+            5.714285714285714,
+            5.714285714285714,
+            5.857142857142857,
+            5.857142857142857
+          ],
+          "at_least_four_modules": true
+        }
+      ],
+      "summary": {
+        "production_fixtures": 20,
+        "baseline_comparisons": 40,
+        "baseline_pass": 39,
+        "stress_comparisons": 0,
+        "stress_pass": 0,
+        "stress_failed_cases": 0,
+        "incorrect_nonempty_decodes": 0,
+        "screenshot_comparisons": 0,
+        "all_quiet_zones_at_least_four_modules": true
+      }
+    },
+    {
+      "label": "rc3_large_time",
+      "record_saved_at_ms": 1793601710000,
+      "sizes": [
+        400,
+        480
+      ],
+      "raw_report_sha256": "2ab3e9156df437feced7243e1513053e9a6694e5828509f70e12a4e6fd08efe2",
+      "results": [
+        {
+          "fixture": "typical_ko-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "typical_ko-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "korean_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "korean_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "ascii_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "ascii_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "emoji_32_utf16_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "emoji_32_utf16_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "mixed_symbols-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "mixed_symbols-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_marks-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_marks-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_korean_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_korean_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "long_location_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "long_location_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_emoji_32_utf16_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_emoji_32_utf16_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_64_utf16-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_64_utf16-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        }
+      ],
+      "quiet_zones": [
+        {
+          "id": "typical_ko-400",
+          "module_pixels": 7.0,
+          "symbol_modules": 45.0,
+          "quiet_zone_modules_ltrb": [
+            6.0,
+            6.0,
+            6.142857142857143,
+            6.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "typical_ko-480",
+          "module_pixels": 9.0,
+          "symbol_modules": 45.0,
+          "quiet_zone_modules_ltrb": [
+            4.111111111111111,
+            4.111111111111111,
+            4.222222222222222,
+            4.222222222222222
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "korean_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.4,
+            5.4,
+            5.6,
+            5.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "korean_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "ascii_64-400",
+          "module_pixels": 6.0,
+          "symbol_modules": 53.0,
+          "quiet_zone_modules_ltrb": [
+            6.833333333333333,
+            6.833333333333333,
+            6.833333333333333,
+            6.833333333333333
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "ascii_64-480",
+          "module_pixels": 7.0,
+          "symbol_modules": 53.0,
+          "quiet_zone_modules_ltrb": [
+            7.714285714285714,
+            7.714285714285714,
+            7.857142857142857,
+            7.857142857142857
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "emoji_32_utf16_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.4,
+            9.4,
+            9.6,
+            9.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "emoji_32_utf16_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.5,
+            9.5,
+            9.5,
+            9.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "mixed_symbols-400",
+          "module_pixels": 7.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            4.0,
+            4.0,
+            4.142857142857143,
+            4.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "mixed_symbols-480",
+          "module_pixels": 8.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_marks-400",
+          "module_pixels": 7.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            4.0,
+            4.0,
+            4.142857142857143,
+            4.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_marks-480",
+          "module_pixels": 8.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_korean_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.4,
+            5.4,
+            5.6,
+            5.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_korean_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "long_location_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.4,
+            5.4,
+            5.6,
+            5.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "long_location_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_emoji_32_utf16_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.4,
+            9.4,
+            9.6,
+            9.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_emoji_32_utf16_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.5,
+            9.5,
+            9.5,
+            9.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_64_utf16-400",
+          "module_pixels": 6.0,
+          "symbol_modules": 57.0,
+          "quiet_zone_modules_ltrb": [
+            4.833333333333333,
+            4.833333333333333,
+            4.833333333333333,
+            4.833333333333333
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_64_utf16-480",
+          "module_pixels": 7.0,
+          "symbol_modules": 57.0,
+          "quiet_zone_modules_ltrb": [
+            5.714285714285714,
+            5.714285714285714,
+            5.857142857142857,
+            5.857142857142857
+          ],
+          "at_least_four_modules": true
+        }
+      ],
+      "summary": {
+        "production_fixtures": 20,
+        "baseline_comparisons": 40,
+        "baseline_pass": 40,
+        "stress_comparisons": 0,
+        "stress_pass": 0,
+        "stress_failed_cases": 0,
+        "incorrect_nonempty_decodes": 0,
+        "screenshot_comparisons": 0,
+        "all_quiet_zones_at_least_four_modules": true
+      }
+    },
+    {
+      "label": "prior_repeated_korean_failure",
+      "record_saved_at_ms": 1793574000000,
+      "sizes": [
+        400,
+        480
+      ],
+      "raw_report_sha256": "7b035ffc5dd1124b4b9f54d2f2b4a8bce715d7b0c17be638760d9586eab36821",
+      "results": [
+        {
+          "fixture": "typical_ko-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "typical_ko-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "korean_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": false,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "korean_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": false,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "ascii_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "ascii_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "emoji_32_utf16_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "emoji_32_utf16_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "mixed_symbols-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "mixed_symbols-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_marks-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_marks-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_korean_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_korean_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "long_location_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "long_location_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_emoji_32_utf16_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_emoji_32_utf16_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_64_utf16-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_64_utf16-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        }
+      ],
+      "quiet_zones": [
+        {
+          "id": "typical_ko-400",
+          "module_pixels": 7.0,
+          "symbol_modules": 45.0,
+          "quiet_zone_modules_ltrb": [
+            6.0,
+            6.0,
+            6.142857142857143,
+            6.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "typical_ko-480",
+          "module_pixels": 9.0,
+          "symbol_modules": 45.0,
+          "quiet_zone_modules_ltrb": [
+            4.111111111111111,
+            4.111111111111111,
+            4.222222222222222,
+            4.222222222222222
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "korean_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.4,
+            5.4,
+            5.6,
+            5.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "korean_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "ascii_64-400",
+          "module_pixels": 6.0,
+          "symbol_modules": 53.0,
+          "quiet_zone_modules_ltrb": [
+            6.833333333333333,
+            6.833333333333333,
+            6.833333333333333,
+            6.833333333333333
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "ascii_64-480",
+          "module_pixels": 7.0,
+          "symbol_modules": 53.0,
+          "quiet_zone_modules_ltrb": [
+            7.714285714285714,
+            7.714285714285714,
+            7.857142857142857,
+            7.857142857142857
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "emoji_32_utf16_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.4,
+            9.4,
+            9.6,
+            9.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "emoji_32_utf16_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.5,
+            9.5,
+            9.5,
+            9.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "mixed_symbols-400",
+          "module_pixels": 7.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            4.0,
+            4.0,
+            4.142857142857143,
+            4.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "mixed_symbols-480",
+          "module_pixels": 8.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_marks-400",
+          "module_pixels": 7.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            4.0,
+            4.0,
+            4.142857142857143,
+            4.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_marks-480",
+          "module_pixels": 8.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_korean_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.4,
+            5.4,
+            5.6,
+            5.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_korean_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "long_location_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.4,
+            5.4,
+            5.6,
+            5.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "long_location_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_emoji_32_utf16_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.4,
+            9.4,
+            9.6,
+            9.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_emoji_32_utf16_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.5,
+            9.5,
+            9.5,
+            9.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_64_utf16-400",
+          "module_pixels": 6.0,
+          "symbol_modules": 57.0,
+          "quiet_zone_modules_ltrb": [
+            4.833333333333333,
+            4.833333333333333,
+            4.833333333333333,
+            4.833333333333333
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_64_utf16-480",
+          "module_pixels": 7.0,
+          "symbol_modules": 57.0,
+          "quiet_zone_modules_ltrb": [
+            5.714285714285714,
+            5.714285714285714,
+            5.857142857142857,
+            5.857142857142857
+          ],
+          "at_least_four_modules": true
+        }
+      ],
+      "summary": {
+        "production_fixtures": 20,
+        "baseline_comparisons": 40,
+        "baseline_pass": 38,
+        "stress_comparisons": 0,
+        "stress_pass": 0,
+        "stress_failed_cases": 0,
+        "incorrect_nonempty_decodes": 0,
+        "screenshot_comparisons": 0,
+        "all_quiet_zones_at_least_four_modules": true
+      }
+    },
+    {
+      "label": "baseline_fixed_time",
+      "record_saved_at_ms": 1800000000000,
+      "sizes": [
+        400,
+        480
+      ],
+      "raw_report_sha256": "1d025f691dd9229ef383990cd99b4c03cacf0dc2d31ba03781a1b253a894d679",
+      "results": [
+        {
+          "fixture": "typical_ko-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "typical_ko-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "korean_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "korean_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "ascii_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "ascii_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "emoji_32_utf16_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "emoji_32_utf16_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "mixed_symbols-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "mixed_symbols-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_marks-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_marks-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_korean_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_korean_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "long_location_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "long_location_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_emoji_32_utf16_64-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "varied_emoji_32_utf16_64-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_64_utf16-400",
+          "transform": "original",
+          "pixels": [
+            400,
+            400
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        },
+        {
+          "fixture": "combining_64_utf16-480",
+          "transform": "original",
+          "pixels": [
+            480,
+            480
+          ],
+          "matches": {
+            "opencv": true,
+            "jsqr": true
+          },
+          "incorrect_nonempty": []
+        }
+      ],
+      "quiet_zones": [
+        {
+          "id": "typical_ko-400",
+          "module_pixels": 7.0,
+          "symbol_modules": 45.0,
+          "quiet_zone_modules_ltrb": [
+            6.0,
+            6.0,
+            6.142857142857143,
+            6.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "typical_ko-480",
+          "module_pixels": 9.0,
+          "symbol_modules": 45.0,
+          "quiet_zone_modules_ltrb": [
+            4.111111111111111,
+            4.111111111111111,
+            4.222222222222222,
+            4.222222222222222
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "korean_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.4,
+            5.4,
+            5.6,
+            5.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "korean_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "ascii_64-400",
+          "module_pixels": 6.0,
+          "symbol_modules": 53.0,
+          "quiet_zone_modules_ltrb": [
+            6.833333333333333,
+            6.833333333333333,
+            6.833333333333333,
+            6.833333333333333
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "ascii_64-480",
+          "module_pixels": 7.0,
+          "symbol_modules": 53.0,
+          "quiet_zone_modules_ltrb": [
+            7.714285714285714,
+            7.714285714285714,
+            7.857142857142857,
+            7.857142857142857
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "emoji_32_utf16_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.4,
+            9.4,
+            9.6,
+            9.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "emoji_32_utf16_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.5,
+            9.5,
+            9.5,
+            9.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "mixed_symbols-400",
+          "module_pixels": 7.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            4.0,
+            4.0,
+            4.142857142857143,
+            4.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "mixed_symbols-480",
+          "module_pixels": 8.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_marks-400",
+          "module_pixels": 7.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            4.0,
+            4.0,
+            4.142857142857143,
+            4.142857142857143
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_marks-480",
+          "module_pixels": 8.0,
+          "symbol_modules": 49.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_korean_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.4,
+            5.4,
+            5.6,
+            5.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_korean_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "long_location_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.4,
+            5.4,
+            5.6,
+            5.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "long_location_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 69.0,
+          "quiet_zone_modules_ltrb": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_emoji_32_utf16_64-400",
+          "module_pixels": 5.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.4,
+            9.4,
+            9.6,
+            9.6
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "varied_emoji_32_utf16_64-480",
+          "module_pixels": 6.0,
+          "symbol_modules": 61.0,
+          "quiet_zone_modules_ltrb": [
+            9.5,
+            9.5,
+            9.5,
+            9.5
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_64_utf16-400",
+          "module_pixels": 6.0,
+          "symbol_modules": 57.0,
+          "quiet_zone_modules_ltrb": [
+            4.833333333333333,
+            4.833333333333333,
+            4.833333333333333,
+            4.833333333333333
+          ],
+          "at_least_four_modules": true
+        },
+        {
+          "id": "combining_64_utf16-480",
+          "module_pixels": 7.0,
+          "symbol_modules": 57.0,
+          "quiet_zone_modules_ltrb": [
+            5.714285714285714,
+            5.714285714285714,
+            5.857142857142857,
+            5.857142857142857
+          ],
+          "at_least_four_modules": true
+        }
+      ],
+      "summary": {
+        "production_fixtures": 20,
+        "baseline_comparisons": 40,
+        "baseline_pass": 40,
+        "stress_comparisons": 0,
+        "stress_pass": 0,
+        "stress_failed_cases": 0,
+        "incorrect_nonempty_decodes": 0,
+        "screenshot_comparisons": 0,
+        "all_quiet_zones_at_least_four_modules": true
+      }
+    }
+  ],
+  "findings": [
+    "The 400px QR recreated from the three RC3 observed payloads exactly matched each actual screenshot QR region pixel-for-pixel.",
+    "For the RC3 release payload, OpenCV found no QR candidate at 400px and decoded it at 480px; jsQR matched both.",
+    "A combining-mark memo at the standard RC3 timestamp was readable by OpenCV at 400px but not 480px. The prior repeated-Korean case failed OpenCV at both sizes.",
+    "All nonempty outputs matched the original payload. Larger-view controls require separate current APK, font-size, lifecycle and state-gate checks."
+  ],
+  "limitations": [
+    "No transformations, glare, motion, physical vehicle display or phone-camera scanning were tested in this probe.",
+    "No mask overrides or payload changes were selected for production.",
+    "512px was probed only at the failing release timestamp and is reported separately rather than pooled with the two display choices."
+  ]
+}

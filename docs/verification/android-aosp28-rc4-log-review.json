@@ -1,0 +1,86 @@
+{
+  "scope": "Exact captured boot, release launch, focused standard/large-font UI, incomplete first release capture, retry boot and successful release scenario logcat. Signature scan is not a proof that all runtime defects are absent.",
+  "signature_terms": [
+    "FATAL EXCEPTION",
+    "ANR in",
+    "Fatal signal",
+    "am_anr"
+  ],
+  "signature_lines": [
+    {
+      "log": "boot",
+      "line_number": 2557,
+      "line": "11-02 03:04:23.589  1830  1861 E ActivityManager: ANR in com.android.systemui"
+    },
+    {
+      "log": "boot-retry",
+      "line_number": 2525,
+      "line": "11-02 03:20:16.516  1846  1879 E ActivityManager: ANR in com.android.systemui"
+    }
+  ],
+  "app_related_fatal_or_anr_signature_lines": 0,
+  "environment_signature_lines": 2,
+  "logs": [
+    {
+      "label": "boot",
+      "path": "aosp/011-boot-logcat.txt",
+      "sha256": "f9d88fa359472e718ac153672c57519600dcebbb21d176f3f215ee46397eb60b",
+      "bytes": 519061
+    },
+    {
+      "label": "release-launch",
+      "path": "aosp/028-release-launch-logcat.txt",
+      "sha256": "263f72ec1860c3c47cc6c373acbdd64b764899132cac3d82125045cd7d95e1fb",
+      "bytes": 48035
+    },
+    {
+      "label": "standard",
+      "path": "aosp/standard-logcat.txt",
+      "sha256": "6fdebb49f52a67ed7574e9f4e3d85e22acf5b9097c4b089f5b3811ccf4576300",
+      "bytes": 457448
+    },
+    {
+      "label": "large",
+      "path": "aosp/large-logcat.txt",
+      "sha256": "38aeb54c9fabcefa2031daf7621c16eca0eeed55f5f06d1bab4f76e278d89208",
+      "bytes": 421841
+    },
+    {
+      "label": "release-scenario-first-incomplete",
+      "path": "aosp/release-scenario/logcat.txt",
+      "sha256": "f6c9b5f3a584296705066e4ee4ad3b36cce28c1d1795eb3085ed6bb0c57fd301",
+      "bytes": 159735
+    },
+    {
+      "label": "boot-retry",
+      "path": "release-retry/boot-logcat.txt",
+      "sha256": "12ac0e97882cdee79bbcd1e95105f18bf1243518c322a6c16fed7146307ddba9",
+      "bytes": 464952
+    },
+    {
+      "label": "release-scenario",
+      "path": "release-retry/release-scenario/logcat.txt",
+      "sha256": "a685a27041667d70888a5e436bf52cb0a6098bd0fb3d85c9f7f6afb689b4cea6",
+      "bytes": 305444
+    }
+  ],
+  "classification": [
+    {
+      "log": "boot",
+      "line_number": 2557,
+      "component": "com.android.systemui/.SystemUIService",
+      "phase": "OS boot before ArrivalBrief baseline install",
+      "interpretation": "OS SystemUI ANR in CPU-emulated environment; no attribution to ArrivalBrief",
+      "evidence": "ANR line followed by Reason executing service com.android.systemui/.SystemUIService; baseline installation occurs later in immutable command plan."
+    },
+    {
+      "log": "boot-retry",
+      "line_number": 2525,
+      "component": "com.android.systemui/.SystemUIService",
+      "phase": "OS boot before ArrivalBrief baseline install",
+      "interpretation": "OS SystemUI ANR in CPU-emulated environment; no attribution to ArrivalBrief",
+      "evidence": "ANR line followed by Reason executing service com.android.systemui/.SystemUIService; baseline installation occurs later in immutable command plan."
+    }
+  ],
+  "summary_ko": "앱 설치 전 OS 부팅에서 SystemUIService ANR 2건. 이후 release 첫 실행·표준/큰 글씨 QR 시험·release 화면 시나리오 로그에서 앱 관련 치명 오류/ANR 서명 0건 관찰. 성능 또는 무결함 보증 아님."
+}

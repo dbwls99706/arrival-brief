@@ -1,0 +1,431 @@
+[
+  {
+    "name": "001-wait",
+    "args": [
+      "wait-for-device"
+    ],
+    "timeout": 300
+  },
+  {
+    "name": "002-hide-os-dialogs",
+    "args": [
+      "shell",
+      "until settings put global hide_error_dialogs 1; do sleep 1; done"
+    ],
+    "timeout": 300
+  },
+  {
+    "name": "003-boot",
+    "args": [
+      "shell",
+      "while [ \"$(getprop sys.boot_completed)\" != \"1\" ]; do sleep 1; done; getprop sys.boot_completed"
+    ],
+    "timeout": 300
+  },
+  {
+    "name": "004-window_animation_scale",
+    "args": [
+      "shell",
+      "for attempt in 1 2 3; do settings put global window_animation_scale 0 && exit 0; sleep 2; done; exit 1"
+    ],
+    "timeout": 300
+  },
+  {
+    "name": "005-transition_animation_scale",
+    "args": [
+      "shell",
+      "for attempt in 1 2 3; do settings put global transition_animation_scale 0 && exit 0; sleep 2; done; exit 1"
+    ],
+    "timeout": 300
+  },
+  {
+    "name": "006-animator_duration_scale",
+    "args": [
+      "shell",
+      "for attempt in 1 2 3; do settings put global animator_duration_scale 0 && exit 0; sleep 2; done; exit 1"
+    ],
+    "timeout": 300
+  },
+  {
+    "name": "010-emulator-check",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.kernel.qemu"
+    ],
+    "timeout": 180,
+    "exact": "1"
+  },
+  {
+    "name": "011-boot-logcat",
+    "args": [
+      "logcat",
+      "-d"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "012-clear-app",
+    "args": [
+      "uninstall",
+      "studio.ax.arrival"
+    ],
+    "timeout": 180,
+    "allowed_failure": true
+  },
+  {
+    "name": "020-install-baseline",
+    "args": [
+      "install",
+      "-r",
+      "/workspace/arrival-runtime-rc4/ArrivalBrief_baseline_rc3.apk"
+    ],
+    "timeout": 240,
+    "contains": "Success"
+  },
+  {
+    "name": "021-baseline-package",
+    "args": [
+      "shell",
+      "dumpsys",
+      "package",
+      "studio.ax.arrival"
+    ],
+    "timeout": 180,
+    "contains": "versionName=1.0.0-rc3"
+  },
+  {
+    "name": "022-update-rc4",
+    "args": [
+      "install",
+      "-r",
+      "/workspace/arrival-runtime-rc4/ArrivalBrief_release.apk"
+    ],
+    "timeout": 240,
+    "contains": "Success"
+  },
+  {
+    "name": "023-release-package",
+    "args": [
+      "shell",
+      "dumpsys",
+      "package",
+      "studio.ax.arrival"
+    ],
+    "timeout": 180,
+    "contains": "versionName=1.0.0-rc4"
+  },
+  {
+    "name": "024-release-device-sha",
+    "args": [
+      "shell",
+      "sha256sum $(pm path studio.ax.arrival | cut -d: -f2)"
+    ],
+    "timeout": 180,
+    "contains": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9"
+  },
+  {
+    "name": "025-release-logcat-clear",
+    "args": [
+      "logcat",
+      "-c"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "026-release-launch",
+    "args": [
+      "shell",
+      "am",
+      "start",
+      "-W",
+      "-n",
+      "studio.ax.arrival/.MainActivity"
+    ],
+    "timeout": 180,
+    "contains": "Status: ok"
+  },
+  {
+    "name": "027-release-launch-screen",
+    "args": [
+      "exec-out",
+      "screencap",
+      "-p"
+    ],
+    "timeout": 180,
+    "binary": true
+  },
+  {
+    "name": "028-release-launch-logcat",
+    "args": [
+      "logcat",
+      "-d"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "030-release-remove",
+    "args": [
+      "uninstall",
+      "studio.ax.arrival"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "031-debug-install",
+    "args": [
+      "install",
+      "-r",
+      "/workspace/arrival-runtime-rc4/ArrivalBrief_debug.apk"
+    ],
+    "timeout": 240,
+    "contains": "Success"
+  },
+  {
+    "name": "032-test-install",
+    "args": [
+      "install",
+      "-r",
+      "/workspace/arrival-runtime-rc4/ArrivalBrief_test.apk"
+    ],
+    "timeout": 240,
+    "contains": "Success"
+  },
+  {
+    "name": "033-debug-device-sha",
+    "args": [
+      "shell",
+      "sha256sum $(pm path studio.ax.arrival | cut -d: -f2)"
+    ],
+    "timeout": 180,
+    "contains": "fc360f26130e636b591bf9374b2e90753cbc5900284514a9fb4dc8fdc65b77bf"
+  },
+  {
+    "name": "034-test-device-sha",
+    "args": [
+      "shell",
+      "sha256sum $(pm path studio.ax.arrival.test | cut -d: -f2)"
+    ],
+    "timeout": 180,
+    "contains": "533b6e5e12a7684c456c886f67585be2ead8fb832851c27493ed7c2fff5b443b"
+  },
+  {
+    "name": "035-ime",
+    "args": [
+      "shell",
+      "settings",
+      "put",
+      "secure",
+      "show_ime_with_hard_keyboard",
+      "1"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "standard-set-font",
+    "args": [
+      "shell",
+      "settings",
+      "put",
+      "system",
+      "font_scale",
+      "1.0"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "standard-font-setting",
+    "args": [
+      "shell",
+      "settings",
+      "get",
+      "system",
+      "font_scale"
+    ],
+    "timeout": 180,
+    "exact": "1.0"
+  },
+  {
+    "name": "standard-clear-old-screens",
+    "args": [
+      "shell",
+      "rm -f /sdcard/Android/data/studio.ax.arrival/files/arrival-*.png"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "standard-clear-logcat",
+    "args": [
+      "logcat",
+      "-c"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "standard-instrumentation",
+    "args": [
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "-e",
+      "class",
+      "studio.ax.arrival.VisitFlowInstrumentedTest#savedMemoQrRoundTripsAndClearsWhenEditedOrDriving,studio.ax.arrival.VisitFlowInstrumentedTest#memoQrDoesNotRestoreAfterRecreationAndDeletionClearsIt,studio.ax.arrival.VisitFlowInstrumentedTest#activeMemoAndQrExpireAtTheStoredDeadline,studio.ax.arrival.VisitFlowInstrumentedTest#memoQrEnlargementPreservesPayloadAndClearsOnClose",
+      "studio.ax.arrival.test/androidx.test.runner.AndroidJUnitRunner"
+    ],
+    "timeout": 600,
+    "expected_tests": 4
+  },
+  {
+    "name": "standard-logcat",
+    "args": [
+      "logcat",
+      "-d"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "standard-screens",
+    "args": [
+      "pull",
+      "/sdcard/Android/data/studio.ax.arrival/files",
+      "/workspace/arrival-runtime-rc4/aosp/standard-screens"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "large-set-font",
+    "args": [
+      "shell",
+      "settings",
+      "put",
+      "system",
+      "font_scale",
+      "1.3"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "large-font-setting",
+    "args": [
+      "shell",
+      "settings",
+      "get",
+      "system",
+      "font_scale"
+    ],
+    "timeout": 180,
+    "exact": "1.3"
+  },
+  {
+    "name": "large-clear-old-screens",
+    "args": [
+      "shell",
+      "rm -f /sdcard/Android/data/studio.ax.arrival/files/arrival-*.png"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "large-clear-logcat",
+    "args": [
+      "logcat",
+      "-c"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "large-instrumentation",
+    "args": [
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "-e",
+      "class",
+      "studio.ax.arrival.VisitFlowInstrumentedTest#savedMemoQrRoundTripsAndClearsWhenEditedOrDriving,studio.ax.arrival.VisitFlowInstrumentedTest#memoQrDoesNotRestoreAfterRecreationAndDeletionClearsIt,studio.ax.arrival.VisitFlowInstrumentedTest#activeMemoAndQrExpireAtTheStoredDeadline,studio.ax.arrival.VisitFlowInstrumentedTest#memoQrEnlargementPreservesPayloadAndClearsOnClose",
+      "studio.ax.arrival.test/androidx.test.runner.AndroidJUnitRunner"
+    ],
+    "timeout": 600,
+    "expected_tests": 4
+  },
+  {
+    "name": "large-logcat",
+    "args": [
+      "logcat",
+      "-d"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "large-screens",
+    "args": [
+      "pull",
+      "/sdcard/Android/data/studio.ax.arrival/files",
+      "/workspace/arrival-runtime-rc4/aosp/large-screens"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "070-restore-font",
+    "args": [
+      "shell",
+      "settings",
+      "put",
+      "system",
+      "font_scale",
+      "1.0"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "071-debug-remove",
+    "args": [
+      "uninstall",
+      "studio.ax.arrival"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "072-test-remove",
+    "args": [
+      "uninstall",
+      "studio.ax.arrival.test"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "073-release-reinstall",
+    "args": [
+      "install",
+      "-r",
+      "/workspace/arrival-runtime-rc4/ArrivalBrief_release.apk"
+    ],
+    "timeout": 240,
+    "contains": "Success"
+  },
+  {
+    "name": "074-release-clear-logcat",
+    "args": [
+      "logcat",
+      "-c"
+    ],
+    "timeout": 180
+  },
+  {
+    "name": "075-release-scenario",
+    "args": [],
+    "timeout": 480,
+    "script": "/workspace/arrival-runtime-rc4/release-scenario.py"
+  },
+  {
+    "name": "076-release-final-sha",
+    "args": [
+      "shell",
+      "sha256sum $(pm path studio.ax.arrival | cut -d: -f2)"
+    ],
+    "timeout": 180,
+    "contains": "865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9"
+  }
+]
