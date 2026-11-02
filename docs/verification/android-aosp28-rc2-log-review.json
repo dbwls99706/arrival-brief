@@ -1,0 +1,23 @@
+{
+  "total_fatal_or_anr_signature_lines": 1,
+  "app_related_fatal_or_anr_signature_lines": 0,
+  "os_command_process_fatal_signature_lines": 1,
+  "process": "cmd",
+  "pid": 3164,
+  "thread": "Binder:3164_1",
+  "app_process": "studio.ax.arrival",
+  "app_pid": 3166,
+  "guest_log_timestamp": "11-01 18:14:01.639",
+  "host_launch_result_utc": "2026-11-02T02:14:02Z",
+  "signal": "SIGSEGV / SEGV_MAPERR / null fault address",
+  "evidence_log": "android-aosp28-rc2-logcat.txt",
+  "raw_source": "295-final-logcat.txt",
+  "raw_source_line": 271,
+  "signature": "11-01 18:14:01.639  3164  3165 F libc    : Fatal signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0x0 in tid 3165 (Binder:3164_1), pid 3164 (cmd)",
+  "review": "The fatal line identifies OS command process cmd (3164), distinct from the app process (3166). am start -W returned exit0/Status:ok/Complete, then app PID, actual app screenshot and installed APK SHA were captured. Standard16 and font1.3 six UI tests passed; neither UI log has a fatal/ANR signature. The underlying command-process fault cause is unresolved. This does not claim the whole environment is crash-free.",
+  "cleanup": {
+    "timestampUtc": "2026-11-02T02:27:11Z",
+    "emulator_exit": -10
+  },
+  "cleanup_note": "The runner requested emulator termination after both suites; launcher exit -10 is recorded as observed, not exit0 or a tested app crash."
+}

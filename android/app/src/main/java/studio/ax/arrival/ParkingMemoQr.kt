@@ -21,7 +21,9 @@ object ParkingMemoQr {
 
     fun payload(record: ParkingMemo, now: Long): String? {
         if (!ParkingMemoPolicy.valid(record, now)) return null
-        return "Arrival Brief\n주차 위치: ${record.text}\n저장 시각: ${timestamp.format(Instant.ofEpochMilli(record.savedAt))}\n직접 기록한 메모입니다. 휴대폰 복사본은 자동 삭제되지 않습니다."
+        // Keep the handoff readable at the maximum memo length without dropping
+        // the original memo, save time, or the independent lifetime of a phone copy.
+        return "Arrival Brief\n주차 메모: ${record.text}\n${timestamp.format(Instant.ofEpochMilli(record.savedAt))}\n휴대폰 복사본은 자동 삭제되지 않음."
     }
 
     fun encode(record: ParkingMemo, now: Long, pixels: Int): BitMatrix? {

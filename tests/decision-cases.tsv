@@ -286,3 +286,103 @@ completion_subject_omitted_8_auto	코엑스 오디토리움 3층\nNow finished.	
 completion_subject_omitted_8_manual	코엑스 오디토리움 3층\nNow finished.	1.65	auditorium	false
 completion_subject_omitted_9_auto	코엑스 오디토리움 3층\nConcluded yesterday.	1.65		false
 completion_subject_omitted_9_manual	코엑스 오디토리움 3층\nConcluded yesterday.	1.65	auditorium	false
+completion_room_1	COEX Room 300 3F	1.65		false
+completion_room_2	COEX Room 300 3F	1.65	auditorium	false
+completion_room_3	COEX Room 328 3F	1.65	rooms300	false
+completion_room_4	COEX Room 400 4F	1.65		false
+completion_room_5	COEX Room 403 4F	1.65	studio159	false
+completion_room_6	COEX Room No. 301 3F	1.65	auditorium	false
+completion_room_7	COEX room number 400 4F	1.65	studio159	false
+completion_room_8	COEX Rooms 301-302 3F	1.65	auditorium	false
+completion_room_9	COEX room 300A 3F	1.65	auditorium	false
+completion_room_10	코엑스 회의실 300A 3층	1.65	auditorium	false
+completion_room_11	코엑스 300A호 3층	1.65	auditorium	false
+completion_room_12	COEX Room No. 329 3F	1.65	auditorium	false
+completion_room_13	COEX Rooms 404 4F	1.65	studio159	false
+completion_room_14	COEX room number 99999 3F	1.65	auditorium	false
+completion_room_15	COEX room 0300 3F	1.65	auditorium	false
+completion_room_16	COEX Room 300_A 3F	1.65	auditorium	false
+completion_floor_1_auto	코엑스 오디토리움 -3층	1.65		false
+completion_floor_1_manual	코엑스 오디토리움 -3층	1.65	auditorium	false
+completion_floor_2_auto	코엑스 오디토리움 −3층	1.65		false
+completion_floor_2_manual	코엑스 오디토리움 −3층	1.65	auditorium	false
+completion_floor_3_auto	코엑스 오디토리움 －3층	1.65		false
+completion_floor_3_manual	코엑스 오디토리움 －3층	1.65	auditorium	false
+completion_floor_4_auto	코엑스 오디토리움 - 3층	1.65		false
+completion_floor_4_manual	코엑스 오디토리움 - 3층	1.65	auditorium	false
+completion_floor_5_auto	코엑스 오디토리움 0층	1.65		false
+completion_floor_5_manual	코엑스 오디토리움 0층	1.65	auditorium	false
+completion_floor_6_auto	코엑스 오디토리움 0F	1.65		false
+completion_floor_6_manual	코엑스 오디토리움 0F	1.65	auditorium	false
+completion_floor_7_auto	코엑스 오디토리움 01층	1.65		false
+completion_floor_7_manual	코엑스 오디토리움 01층	1.65	auditorium	false
+completion_floor_8_auto	코엑스 오디토리움 03F	1.65		false
+completion_floor_8_manual	코엑스 오디토리움 03F	1.65	auditorium	false
+completion_floor_9_auto	코엑스 오디토리움 0.3층	1.65		false
+completion_floor_9_manual	코엑스 오디토리움 0.3층	1.65	auditorium	false
+completion_floor_10_auto	코엑스 오디토리움 1.3F	1.65		false
+completion_floor_10_manual	코엑스 오디토리움 1.3F	1.65	auditorium	false
+completion_floor_11_auto	코엑스 오디토리움 3.0층	1.65		false
+completion_floor_11_manual	코엑스 오디토리움 3.0층	1.65	auditorium	false
+completion_floor_12_auto	코엑스 오디토리움 +3F	1.65		false
+completion_floor_12_manual	코엑스 오디토리움 +3F	1.65	auditorium	false
+completion_room_marker_1	COEX Room # 301 3F	1.65	auditorium	false
+completion_room_marker_2	COEX Room: 301 3F	1.65	auditorium	false
+completion_room_marker_3	COEX Room No: 301 3F	1.65	auditorium	false
+completion_room_marker_4	COEX Room № 301 3F	1.65	auditorium	false
+completion_floor_token_1_ko	코엑스 오디토리움 B03층	1.65	auditorium	false
+completion_floor_token_1_en	코엑스 오디토리움 B03F	1.65	auditorium	false
+completion_floor_token_2_ko	코엑스 오디토리움 B0층	1.65	auditorium	false
+completion_floor_token_2_en	코엑스 오디토리움 B0F	1.65	auditorium	false
+completion_floor_token_3_ko	코엑스 오디토리움 B-3층	1.65	auditorium	false
+completion_floor_token_3_en	코엑스 오디토리움 B-3F	1.65	auditorium	false
+completion_floor_token_4_ko	코엑스 오디토리움 B−3층	1.65	auditorium	false
+completion_floor_token_4_en	코엑스 오디토리움 B−3F	1.65	auditorium	false
+completion_floor_token_5_ko	코엑스 오디토리움 B－3층	1.65	auditorium	false
+completion_floor_token_5_en	코엑스 오디토리움 B－3F	1.65	auditorium	false
+completion_floor_token_6_ko	코엑스 오디토리움 B+3층	1.65	auditorium	false
+completion_floor_token_6_en	코엑스 오디토리움 B+3F	1.65	auditorium	false
+completion_floor_token_7_ko	코엑스 오디토리움 B＋3층	1.65	auditorium	false
+completion_floor_token_7_en	코엑스 오디토리움 B＋3F	1.65	auditorium	false
+completion_floor_token_8_ko	코엑스 오디토리움 B 3층	1.65	auditorium	false
+completion_floor_token_8_en	코엑스 오디토리움 B 3F	1.65	auditorium	false
+completion_floor_token_9_ko	코엑스 오디토리움 B.3층	1.65	auditorium	false
+completion_floor_token_9_en	코엑스 오디토리움 B.3F	1.65	auditorium	false
+completion_floor_token_10_ko	코엑스 오디토리움 B .3층	1.65	auditorium	false
+completion_floor_token_10_en	코엑스 오디토리움 B .3F	1.65	auditorium	false
+completion_floor_token_11_ko	코엑스 오디토리움 B-.3층	1.65	auditorium	false
+completion_floor_token_11_en	코엑스 오디토리움 B-.3F	1.65	auditorium	false
+completion_floor_token_12_ko	코엑스 오디토리움 B0.3층	1.65	auditorium	false
+completion_floor_token_12_en	코엑스 오디토리움 B0.3F	1.65	auditorium	false
+completion_floor_token_13_ko	코엑스 오디토리움 .3층	1.65	auditorium	false
+completion_floor_token_13_en	코엑스 오디토리움 .3F	1.65	auditorium	false
+completion_floor_token_14_ko	코엑스 오디토리움 -.3층	1.65	auditorium	false
+completion_floor_token_14_en	코엑스 오디토리움 -.3F	1.65	auditorium	false
+completion_floor_token_15_ko	코엑스 오디토리움 +.3층	1.65	auditorium	false
+completion_floor_token_15_en	코엑스 오디토리움 +.3F	1.65	auditorium	false
+completion_floor_token_16_ko	코엑스 오디토리움 −.3층	1.65	auditorium	false
+completion_floor_token_16_en	코엑스 오디토리움 −.3F	1.65	auditorium	false
+completion_floor_token_17_ko	코엑스 오디토리움 －.3층	1.65	auditorium	false
+completion_floor_token_17_en	코엑스 오디토리움 －.3F	1.65	auditorium	false
+completion_floor_token_18_ko	코엑스 오디토리움 ＋.3층	1.65	auditorium	false
+completion_floor_token_18_en	코엑스 오디토리움 ＋.3F	1.65	auditorium	false
+completion_floor_token_19_ko	코엑스 오디토리움 3.층	1.65	auditorium	false
+completion_floor_token_19_en	코엑스 오디토리움 3.F	1.65	auditorium	false
+completion_floor_token_20_ko	코엑스 오디토리움 ＋3층	1.65	auditorium	false
+completion_floor_token_20_en	코엑스 오디토리움 ＋3F	1.65	auditorium	false
+completion_floor_token_21_ko	코엑스 오디토리움 ＋ 3층	1.65	auditorium	false
+completion_floor_token_21_en	코엑스 오디토리움 ＋ 3F	1.65	auditorium	false
+completion_floor_token_22_ko	코엑스 오디토리움 3,3층	1.65	auditorium	false
+completion_floor_token_22_en	코엑스 오디토리움 3,3F	1.65	auditorium	false
+completion_floor_token_23_ko	코엑스 오디토리움 0,3층	1.65	auditorium	false
+completion_floor_token_23_en	코엑스 오디토리움 0,3F	1.65	auditorium	false
+completion_floor_token_24_ko	코엑스 오디토리움 3/3층	1.65	auditorium	false
+completion_floor_token_24_en	코엑스 오디토리움 3/3F	1.65	auditorium	false
+completion_floor_token_25_ko	코엑스 오디토리움 3e0층	1.65	auditorium	false
+completion_floor_token_25_en	코엑스 오디토리움 3e0F	1.65	auditorium	false
+completion_floor_token_26_ko	코엑스 오디토리움 3E0층	1.65	auditorium	false
+completion_floor_token_26_en	코엑스 오디토리움 3E0F	1.65	auditorium	false
+completion_floor_token_27_ko	코엑스 오디토리움 3 / 3층	1.65	auditorium	false
+completion_floor_token_27_en	코엑스 오디토리움 3 / 3F	1.65	auditorium	false
+completion_floor_token_28_ko	코엑스 오디토리움 3, 3층	1.65	auditorium	false
+completion_floor_token_28_en	코엑스 오디토리움 3, 3F	1.65	auditorium	false

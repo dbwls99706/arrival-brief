@@ -16,8 +16,8 @@ export const DESTINATIONS = [
  {id:'studio159',name:'스튜디오 159',floor:'2F',gate:'동문',gateContext:'영동대로 방면',level:'B2',zone:'퍼플존',color:'purple',patterns:[/스튜디오\s*159/i,/studio\s*159/i]},
  {id:'conferenceE',name:'컨퍼런스룸 E',floor:'3F',gate:'동문',gateContext:'영동대로 방면',level:'B2',zone:'퍼플존',color:'purple',patterns:[/컨퍼런스\s*룸\s*e\b/i,/conference\s*room\s*e\b/i]},
  {id:'platz',name:'THE PLATZ',floor:'2F',gate:'동문',gateContext:'영동대로 방면',level:'B2',zone:'지하 2층',color:'neutral',patterns:[/\bthe\s*platz\b/i,/더\s*플라츠/i]},
- {id:'rooms300',name:'회의실 300~328호',floor:'3F',gate:'동문',gateContext:'영동대로 방면',level:'B2',zone:'그린존',color:'green',patterns:[/(?:회의실|룸)\s*3(?:0\d|1\d|2[0-8])(?:호|\b)/i,/(?<!\d)3(?:0\d|1\d|2[0-8])호/]},
- {id:'rooms400',name:'회의실 400~403호',floor:'4F',gate:'동문',gateContext:'영동대로 방면',level:'B2',zone:'그린존',color:'green',patterns:[/(?:회의실|룸)\s*40[0-3](?:호|\b)/i,/(?<!\d)40[0-3]호/]}
+ {id:'rooms300',name:'회의실 300~328호',floor:'3F',gate:'동문',gateContext:'영동대로 방면',level:'B2',zone:'그린존',color:'green',patterns:[/(?:회의실|룸|\brooms?)\s*(?:(?:no\.?|number)\s*)?[:：#№]*\s*3(?:0\d|1\d|2[0-8])(?:호|\b)/i,/(?<!\d)3(?:0\d|1\d|2[0-8])호/]},
+ {id:'rooms400',name:'회의실 400~403호',floor:'4F',gate:'동문',gateContext:'영동대로 방면',level:'B2',zone:'그린존',color:'green',patterns:[/(?:회의실|룸|\brooms?)\s*(?:(?:no\.?|number)\s*)?[:：#№]*\s*40[0-3](?:호|\b)/i,/(?<!\d)40[0-3]호/]}
 ];
 // Changes/cancellations apply to the untouched notice. Explicit venue claims
 // must identify a supported destination, and contradictory claims cannot be
@@ -147,17 +147,26 @@ export function extractDestinations(text) {
  // completely interpreted parking clause may leave the venue text; every
  // remaining gate/zone mention requires review regardless of source agreement.
  if(OPERATIONAL_RESTRICTION.test(text)||[...venueText.matchAll(PARKING_ZONE)].length||[...venueText.matchAll(ENTRY_GATE)].length)return {status:'needs_review',matches:[],...parts,message:'주차 구역·진입문에 관한 해석되지 않은 안내 또는 운영 제한 표현이 있습니다. 같은 구역명이어도 이용 가능하다고 판단하지 않습니다. 원문을 생략하지 말고 시설의 최신 운영 안내를 확인해주세요.'};
- if(/지하\s*[1-9]\d*\s*(?:층|F\b)|(?<![A-Za-z0-9])B[1-9]\d*\s*(?:층|F(?![A-Za-z0-9])|(?![A-Za-z0-9]))|\bbasement\b/i.test(venueText))return {status:'needs_review',matches:[],message:'행사장 지하층 또는 해석하지 못한 주차 표현이 있습니다. 원문의 행사장과 주차층·구역을 직접 확인하고, 정보를 바꾸거나 생략하지 않은 별도 주차 안내를 입력해주세요.'};
+ if(/지하\s*[1-9]\d*\s*(?:층|F\b)|(?<![A-Za-z0-9])B\s*[+\-−－＋]?\s*(?:\d+(?:\s*[.,/]\s*\d*)*|\.\d+)(?:[eE][+\-−－＋]?\d+)?\s*(?:층|F(?![A-Za-z0-9])|(?![A-Za-z0-9]))|\bbasement\b/i.test(venueText))return {status:'needs_review',matches:[],message:'행사장 지하층 또는 해석하지 못한 주차 표현이 있습니다. 원문의 행사장과 주차층·구역을 직접 확인하고, 정보를 바꾸거나 생략하지 않은 별도 주차 안내를 입력해주세요.'};
  if(/(?:[A-Z]\s*홀|\bhall\s*[A-Z]\b|전시(?:홀|관|장))/i.test(venueText))return {status:'needs_review',matches:[],message:'지원하지 않는 전시홀 또는 전시장 표현이 있습니다. 다른 회의실로 대신 선택하지 말고 행사장의 공식 명칭을 확인해주세요.'};
- const roomNumbers=[...venueText.matchAll(/(?:회의실|(?<!볼)룸|\broom)\s*(\d{1,4})(?:호|\b(?!\s*(?:층|F\b)))|(?<!\d)(\d{3,4})호/gi)].map(m=>Number(m[1]||m[2]));
- if(roomNumbers.some(n=>!(n>=300&&n<=328||n>=400&&n<=403)))return {status:'needs_review',matches:[],message:'지원하지 않는 회의실 번호가 있습니다. 다른 장소를 대신 선택하지 말고 행사장의 공식 명칭을 확인해주세요.'};
+ // Inspect the whole room identifier, including unknown suffixes. A recognised
+ // number must never disappear into the manual destination fallback.
+ const roomTokens=[...venueText.matchAll(/(?:회의실|(?<!볼)룸|\brooms?)\s*(?:(?:no\.?|number)\s*)?[:：#№]*\s*(\d+[A-Za-z_]*)(?![\dA-Za-z_])|(?<![\dA-Za-z_])(\d{3,}[A-Za-z_]*)호/gi)]
+  .filter(m=>!(/^\d+$/u.test(m[1]??'')&&/^\s*(?:층|F\b)/i.test(venueText.slice(m.index+m[0].length)))&&!/^\d+F$/i.test(m[1]??''))
+  .map(m=>m[1]||m[2]);
+ if(roomTokens.some(token=>!/^[1-9]\d*$/.test(token)||!(Number(token)>=300&&Number(token)<=328||Number(token)>=400&&Number(token)<=403)))return {status:'needs_review',matches:[],message:'지원하지 않거나 불명확한 회의실 번호가 있습니다. 다른 장소를 대신 선택하지 말고 행사장의 공식 명칭을 확인해주세요.'};
  const matches=DESTINATIONS.filter(d=>d.patterns.some(p=>p.test(venueText)));
  const floors=extractFloors(venueText);
  if(matches.length===1&&floors.length&&floors.some(f=>f!==parseInt(matches[0].floor)))return {status:'needs_review',matches:[],message:'안내문에 행사장과 다른 층이 있습니다. 이번에 방문할 행사장과 층이 있는 문장만 남겨주세요. 등록 장소와 다른 일정의 안내는 빼고 다시 확인해주세요.'};
  if(matches.length===1&&(!parkingNotesAgree([text],matches[0])||!entryGatesAgree(text,matches[0])))return {status:'needs_review',matches:[],...parts,message:'안내문의 주차층·구역·진입문과 공식 추천이 다릅니다. 주최 측과 시설의 최신 안내를 확인해주세요.'};
  return {...parts,status:matches.length===1?'matched':matches.length>1?'ambiguous':'unmatched',matches,message:matches.length>1?(new Set(floors).size>1?'여러 행사장과 층이 함께 있습니다. 이번에 방문할 행사장과 층이 있는 문장만 남겨주세요. 등록 장소와 다른 일정의 안내는 빼고 다시 확인해주세요.':'안내에 여러 장소가 있습니다. 실제 방문할 장소를 선택해주세요.'):matches.length?'지원 목록의 장소명 후보를 찾았습니다. 현재 행사장이 맞는지 안내문 원본을 직접 확인해주세요.':'코엑스 내 세부 장소를 찾지 못했습니다. 지원 장소를 직접 선택해주세요.'};
 }
-function extractFloors(text){return [...text.matchAll(/(?<![\dB])([1-9]\d*)\s*(?:층|F\b)/gi)].map(m=>Number(m[1]));}
+function extractFloors(text){
+ // Capture signs/decimals/leading zeroes as part of the token, rather than
+ // accidentally accepting the positive integer at its end (e.g. -3 or 0.3).
+ return [...text.matchAll(/(?<![A-Za-z0-9_.])([+\-−－＋]?\s*(?:\d+(?:\s*[.,/]\s*\d*)*|\.\d+)(?:[eE][+\-−－＋]?\d+)?)\s*(?:층|F\b)/gi)]
+  .map(m=>/^[1-9]\d*$/.test(m[1].trim())&&Number.isSafeInteger(Number(m[1]))?Number(m[1]):NaN);
+}
 export function buildBrief({text='',destinationId='',height='',mode='parked',confirmed=false}={}){
  const extraction=extractDestinations(text);
  const allowedModes=['parked','driving','unknown'];

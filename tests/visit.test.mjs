@@ -10,6 +10,17 @@ test('parking reminder rejects stale, future, malformed or extended records',()=
  assert.equal(inspectParkingMemo(r,1000+PARKING_TTL_MS-1).status,'available');assert.equal(inspectParkingMemo(r,1000+PARKING_TTL_MS).status,'expired');
  for(const x of [{...r,savedAt:2000},{...r,schema:2},{...r,location:'extra'},{...r,memo:4},[], '{bad'])assert.equal(inspectParkingMemo(x,1001).status,'invalid');
 });
+test('parking memo uses the same UTF-16 limit as browser and Android inputs',()=>{
+ for(const memo of ['🚗'.repeat(32),'가'.repeat(62)+'🚗']){
+  assert.equal(memo.length,64);
+  const record=createParkingMemo(memo,1000);
+  assert.equal(record.memo,memo);
+  assert.equal(inspectParkingMemo(record,1001).status,'available');
+ }
+ const tooLong='🚗'.repeat(33);
+ assert.throws(()=>createParkingMemo(tooLong,1000));
+ assert.equal(inspectParkingMemo({schema:1,memo:tooLong,savedAt:1000},1001).status,'invalid');
+});
 test('parking memo access requires an affirmative parked review',()=>{
  for(const mode of ['driving','unknown',null,'parked'])for(const checked of [false,null,'true',1])assert.equal(canUseParkingMemo(mode,checked),false);
  assert.equal(canUseParkingMemo('driving',true),false);assert.equal(canUseParkingMemo('parked',true),true);

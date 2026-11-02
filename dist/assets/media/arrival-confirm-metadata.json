@@ -13,17 +13,17 @@
   ],
   "format": {
     "duration": "30.000000",
-    "size": "352812"
+    "size": "323124"
   },
   "content": {
     "title": "자료 상충과 운영 제한: 확정 보류",
     "method": "실제 웹 화면 캡처 편집. 실시간 화면 녹화나 실차 영상이 아님.",
-    "app_version": "1.0.0-rc1",
+    "app_version": "1.0.0-rc2",
     "vehicle_state": "웹 시뮬레이션",
     "audio": "none",
     "font": "Noto Sans KR (OFL)",
     "screenshot_fit": "원본 비율 유지. 일부 장면은 실제 결과·출처·원문 확인 영역을 확대.",
-    "source_engine_sha256": "8b8865c25646c83be85590e674125088cbc08e8987c54ed200fa792a613c6a4b",
+    "source_engine_sha256": "3eed7385f221e7098e325a40dda35180d2805cb0a24ff82a0ab74250a693b375",
     "source_app_sha256": "8fbd7539c3f51ac18eec536d4949b3b6acc31dd00d8ec7cc2830c0298e63fd63",
     "source_html_sha256": "97e49ee3c92312c33f705de042ff879d7ea48b59ed9aeff73a2a09d84a060840",
     "source_style_sha256": "3f2bae2ac41396391248d39db878a9e92bf208db62f4e0ce05d85b16a4939c01",
@@ -34,16 +34,16 @@
       {
         "start": 0.0,
         "duration": 7.5,
-        "source": "arrival-rc1-final-web-conflict.jpg",
-        "source_sha256": "608b533af30081bb85867e27994f781f6db5eeb535041e03520049ff748e65a8",
+        "source": "arrival-rc2-final-web-conflict.jpg",
+        "source_sha256": "9d607a2a6fd411151bd7711d0366da02144f5791cd9d36ec9748632ffea17dcf",
         "crop": null,
         "title": "01  공식 주차 자료가 서로 다르면 보류해요"
       },
       {
         "start": 7.5,
         "duration": 7.5,
-        "source": "arrival-rc1-final-web-conflict.jpg",
-        "source_sha256": "608b533af30081bb85867e27994f781f6db5eeb535041e03520049ff748e65a8",
+        "source": "arrival-rc2-final-web-conflict.jpg",
+        "source_sha256": "9d607a2a6fd411151bd7711d0366da02144f5791cd9d36ec9748632ffea17dcf",
         "crop": [
           635,
           300,
@@ -55,16 +55,16 @@
       {
         "start": 15.0,
         "duration": 7.5,
-        "source": "arrival-rc1-final-web-closed.jpg",
-        "source_sha256": "6445c551d32fb31b1aef73384bb3e07dcc5ce9fadeb1d9b17de7a65abfa4e647",
+        "source": "arrival-rc2-final-web-closed.jpg",
+        "source_sha256": "84c5f8f2118d4e2b2f5ddfec38191df105321b0ee7e78f29bd8b6816648b36de",
         "crop": null,
         "title": "03  원문에 휴관 안내가 있어도 보류해요"
       },
       {
         "start": 22.5,
         "duration": 7.5,
-        "source": "arrival-rc1-final-web-closed.jpg",
-        "source_sha256": "6445c551d32fb31b1aef73384bb3e07dcc5ce9fadeb1d9b17de7a65abfa4e647",
+        "source": "arrival-rc2-final-web-closed.jpg",
+        "source_sha256": "84c5f8f2118d4e2b2f5ddfec38191df105321b0ee7e78f29bd8b6816648b36de",
         "crop": [
           635,
           300,
@@ -74,6 +74,6 @@
         "title": "04  확인이 필요한 원문을 직접 대조해요"
       }
     ],
-    "sha256": "f40bdc123c199df531640ec059aec1c5c18c6931be6cb8c5cbea377e3199317c"
+    "sha256": "565358cf948eda9cf4c294bad00085f63f712199be7200f5d9fb983fc13d8967"
   }
 }

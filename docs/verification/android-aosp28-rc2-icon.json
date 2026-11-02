@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0-rc2",
+  "release_apk_sha256": "779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f",
+  "generated_artwork_sha256": "ae99929907849fbc9f6827bee9c223937b3168b082bcf9da4277d9bd5456a381",
+  "source_resource_sha256": "ae99929907849fbc9f6827bee9c223937b3168b082bcf9da4277d9bd5456a381",
+  "embedded_bitmap_sha256": "add2a146d544813a4a4758b66c2a6e5d14602958a787010a38f2261098e88bfa",
+  "source_exact_bytes_match": true,
+  "embedded_bitmap_pixels_match": true,
+  "bitmap_dimensions": [
+    1254,
+    1254
+  ],
+  "resource_paths": {
+    "drawable/arrival_brand": "res/S7.png",
+    "drawable/ic_arrival": "res/YU.xml",
+    "drawable/ic_arrival_monochrome": "res/WE.xml",
+    "mipmap/ic_launcher": "res/E4.xml",
+    "mipmap/ic_launcher_round": "res/av.xml"
+  },
+  "note": "Android resource packaging re-encodes PNG bytes; decoded RGBA pixels match exactly.",
+  "android9_visual_status": "verified_in_system_app_info_screen",
+  "android9_visual_apk_build_type": "release",
+  "android9_visual_apk_sha256": "779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f",
+  "android9_visual_notes": "System Settings rendered the installed final release icon without clipping the A/route/dot motif. This is an app-info screenshot, not a launcher-grid screenshot.",
+  "android13_themed_icon_visual_status": "not_runtime_tested",
+  "screenshot": {
+    "path": "docs/verification/android-aosp28-rc2-system-icon.png",
+    "sha256": "7e7821524bf0197f023a6fbfd76125d0e7980de2cda6b5e12f8d936d6d13a945"
+  }
+}

@@ -1,0 +1,416 @@
+{
+  "version": "1.0.0-rc2",
+  "apk": "apk/ArrivalBrief_release.apk",
+  "bytes": 6659947,
+  "sha256": "779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f",
+  "tests": [
+    {
+      "name": "studio.ax.arrival.BriefEngineTest",
+      "tests": "42",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "studio.ax.arrival.BriefSessionTest",
+      "tests": "12",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "studio.ax.arrival.NavigationCheckTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "studio.ax.arrival.ParkingMemoQrTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "studio.ax.arrival.RecentDestinationTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "studio.ax.arrival.VisitCompanionTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "lint": [],
+  "runtime": {
+    "pleos": {
+      "status": "blocked_before_install_boot_not_ready",
+      "runner_status": "boot_not_ready_within_budget",
+      "image": "Pleos Connect 2.1.0 API34 x86_64",
+      "image_sha1": "b4f858d5bcc6c71506d7edfc872bcb9e5a11acaa",
+      "host": "No GPU or KVM; software rendering and CPU emulation",
+      "attempted_app_version": "1.0.0-rc1",
+      "attempted_apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+      "started_utc": "2026-11-01T23:54:37Z",
+      "finished_utc": "2026-11-02T00:14:38Z",
+      "elapsed_seconds": 1201.37,
+      "budget_seconds": 1200,
+      "latest_version_verified": false,
+      "latest_apk_install_launch_verified": false,
+      "release_checks": {
+        "path": "/workspace/arrival-runtime-rc1/ArrivalBrief_branded_release.apk",
+        "bytes": 6658807,
+        "sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+        "installed": false,
+        "launched": false,
+        "device_sha_matches": false,
+        "process_alive": false,
+        "screenshot_is_png": false
+      },
+      "install_attempted": false,
+      "first_adb_device": {
+        "timestamp_utc": "2026-11-01T23:56:37Z",
+        "elapsed_seconds": 120.02
+      },
+      "first_system_server": {
+        "timestamp_utc": "2026-11-01T23:59:07Z",
+        "elapsed_seconds": 270.02
+      },
+      "first_package_service": {
+        "timestamp_utc": "2026-11-02T00:01:37Z",
+        "elapsed_seconds": 420.02
+      },
+      "first_boot_completed": null,
+      "emulator_exit": 0,
+      "emulator_exit_interpretation": "Exit code recorded after the runner terminated the emulator at the end of this bounded attempt; not an independent app failure.",
+      "memory_events_delta": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "navihelper_destination_verified": false,
+      "car_ux_restriction_transitions_verified": false,
+      "observed_guest_watchdog": {
+        "detected": true,
+        "episodes": 2,
+        "reported_main_thread_block_seconds": [
+          131,
+          129
+        ],
+        "evidence_lines": [
+          "11-01 16:05:52.247  1425  1654 W Watchdog: *** WATCHDOG KILLING SYSTEM PROCESS: Blocked in handler on  on main thread (main) for 131s",
+          "11-01 16:05:54.935  1425  1654 W Watchdog:     at com.android.server.policy.PermissionPolicyService.grantOrUpgradeDefaultRuntimePermissionsIfNeeded(PermissionPolicyService.java:623)",
+          "11-01 16:06:05.863   437   437 E Zygote  : Exit zygote because system server (pid 1425) has terminated",
+          "11-01 16:14:22.857  4822  4957 W Watchdog: *** WATCHDOG KILLING SYSTEM PROCESS: Blocked in handler on  on main thread (main) for 129s",
+          "11-01 16:14:23.819  4822  4957 W Watchdog:     at com.android.server.policy.PermissionPolicyService.grantOrUpgradeDefaultRuntimePermissionsIfNeeded(PermissionPolicyService.java:623)",
+          "11-01 16:14:25.755  4128  4128 E Zygote  : Exit zygote because system server (pid 4822) has terminated"
+        ],
+        "interpretation": "The guest Watchdog killed both the first and automatically restarted system_server after main-thread blocks of 131 and 129 seconds. Both final stacks waited in PermissionPolicyService via CompletableFuture.get; the logs do not prove that this particular permission callback occupied the full reported blocked intervals or establish the underlying cause. This occurred before application installation."
+      },
+      "scope": "A bounded isolated retry of the unmodified official image. Runtime success is reported only for actions with direct device evidence. No vehicle or destination callback was simulated.",
+      "requirements_url": "https://document.pleos.ai/en/docs/connect/guide/getting-started/application-development/configure-pleos-connect-emulator",
+      "required_followup": "Complete installation, first launch, NaviHelper destination responses and genuine P/Drive UX restriction transitions on supported Pleos hardware or a supported emulator host.",
+      "evidence": {
+        "runtime": "pleos-final-04114df-runtime.json",
+        "observations": "pleos-final-04114df-observations.log",
+        "emulator": "pleos-final-04114df-emulator.log",
+        "selected_logcat": "pleos-final-04114df-selected-logcat.log"
+      },
+      "current_release_scope": {
+        "version": "1.0.0-rc2",
+        "apk_sha256": "779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f",
+        "installed": false,
+        "launched": false,
+        "device_sha_matches": false,
+        "navihelper_destination_verified": false,
+        "car_ux_restriction_transitions_verified": false,
+        "note": "This RC2 publisher imports no Pleos installation or SDK success. Original attempt versions, times, diagnostics and evidence above remain unchanged; independent Pleos follow-up is maintained separately."
+      }
+    },
+    "aosp_android9": {
+      "status": "installed_and_launched",
+      "api": 28,
+      "abi": "x86",
+      "screen": "1280x800 @160dpi",
+      "image_sha1": "ce03c42d80c0fc6dc47f6455dbee7aa275d02780",
+      "target_version": "1.0.0-rc2",
+      "target_apk_sha256": "779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f",
+      "latest_version_status": "release_and_debug_ui_verified",
+      "debug_apk_sha256": "d9aab1943fa677799bf70d830a9b8fab4ae405546af45b082780be59fa2cba4b",
+      "test_apk_sha256": "5c4db2dd26fb55e2837c9f5d76e6007aa7cbbddf0c41d2b5ee2af2678f38bc56",
+      "standard_ui": {
+        "status": "passed",
+        "tests": 16,
+        "failures": 0,
+        "methods": [
+          "vehicleEntryRestrictionsCannotBeOverriddenBySelectionOrChecks",
+          "sponsoringFacilityCannotReplaceTheActualVenueEvenAfterSelection",
+          "savedMemoQrRoundTripsAndClearsWhenEditedOrDriving",
+          "memoQrDoesNotRestoreAfterRecreationAndDeletionClearsIt",
+          "realKeyboardKeepsMemoInputVisibleAndAllowsSaving",
+          "englishRoomNumberCannotBeOverriddenByManualAuditoriumSelection",
+          "destinationPickerPreservesConflictingNoticeAndCannotBypassReview",
+          "parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed",
+          "activeMemoAndQrExpireAtTheStoredDeadline",
+          "malformedSharedPayloadCannotEnterTheForm",
+          "conflictingSourcesShowBothValuesAndPreventConfirmation",
+          "confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy",
+          "warmShareKeepsCurrentDraftUntilExplicitImport",
+          "negativeFloorCannotBeChangedByManualRoomSelection",
+          "sharedIntentWaitsForParkingAndNeverAutoConfirms",
+          "zeroPrefixedBasementFloorsCannotBeOverriddenByManualSelection"
+        ]
+      },
+      "font_1_3_ui": {
+        "status": "passed",
+        "tests": 6,
+        "failures": 0,
+        "methods": [
+          "savedMemoQrRoundTripsAndClearsWhenEditedOrDriving",
+          "realKeyboardKeepsMemoInputVisibleAndAllowsSaving",
+          "destinationPickerPreservesConflictingNoticeAndCannotBypassReview",
+          "parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed",
+          "conflictingSourcesShowBothValuesAndPreventConfirmation",
+          "confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy"
+        ]
+      },
+      "observed": [
+        "Original signing certificate preserved; same-package update from final RC1 to RC2 succeeded.",
+        "Device-side release APK SHA-256 matches all three delivered APK copies.",
+        "Release first launch and release Android app-info system-icon screenshots were captured.",
+        "Separate debug instrumentation passed sixteen unique Activity/Intent/UI tests and six font-scale1.3 repeats.",
+        "New English room-number, negative-floor and basement B03/B0 manual-selection regressions passed in actual app views.",
+        "One OS cmd-process SIGSEGV signature was preserved and reviewed separately; no app-related fatal/ANR signature was observed in the three captured log windows."
+      ],
+      "limitations": [
+        "AOSP non-automotive demo; no Pleos SDK or live vehicle response is inferred.",
+        "CPU emulation and software rendering without GPU/KVM; timings are not performance measurements.",
+        "UI fixture disables animations and suppresses OS error dialogs; runtime logcat is collected separately.",
+        "No physical phone-camera QR scan or physical-vehicle operation is claimed.",
+        "The release-launch log includes an OS cmd-process SIGSEGV with an unresolved cause; this environment is not claimed crash-free."
+      ],
+      "verified_version": "1.0.0-rc2",
+      "verified_apk_sha256": "779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f",
+      "installed_apk_sha256": "779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f",
+      "upgrade_from": "1.0.0-rc1 / versionCode 10 / 04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+      "install": "Success",
+      "launch": "Status: ok; Activity: studio.ax.arrival/.MainActivity; Complete",
+      "icon_verification": {
+        "package_artwork_pixels": "exact_match",
+        "source_artwork_bytes": "exact_match",
+        "adaptive_round_monochrome_resources": "verified_resource_chain",
+        "system_icon_visual": "verified_in_android9_app_info_on_release_build",
+        "evidence": "android-aosp28-rc2-icon.json",
+        "resource_dump": "android-aosp28-rc2-icon.txt",
+        "system_icon_screenshot": "android-aosp28-rc2-system-icon.png",
+        "system_icon_screenshot_sha256": "7e7821524bf0197f023a6fbfd76125d0e7980de2cda6b5e12f8d936d6d13a945",
+        "apk_sha256": "779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f",
+        "visual_notes": "System Settings rendered the installed final release icon without clipping the A/route/dot motif. This is an app-info screenshot, not a launcher-grid screenshot.",
+        "android13_themed_icon_runtime": "not_tested"
+      },
+      "log_review": {
+        "total_fatal_or_anr_signature_lines": 1,
+        "app_related_fatal_or_anr_signature_lines": 0,
+        "os_command_process_fatal_signature_lines": 1,
+        "process": "cmd",
+        "pid": 3164,
+        "thread": "Binder:3164_1",
+        "app_process": "studio.ax.arrival",
+        "app_pid": 3166,
+        "guest_log_timestamp": "11-01 18:14:01.639",
+        "host_launch_result_utc": "2026-11-02T02:14:02Z",
+        "signal": "SIGSEGV / SEGV_MAPERR / null fault address",
+        "evidence_log": "android-aosp28-rc2-logcat.txt",
+        "raw_source": "295-final-logcat.txt",
+        "raw_source_line": 271,
+        "signature": "11-01 18:14:01.639  3164  3165 F libc    : Fatal signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0x0 in tid 3165 (Binder:3164_1), pid 3164 (cmd)",
+        "review": "The fatal line identifies OS command process cmd (3164), distinct from the app process (3166). am start -W returned exit0/Status:ok/Complete, then app PID, actual app screenshot and installed APK SHA were captured. Standard16 and font1.3 six UI tests passed; neither UI log has a fatal/ANR signature. The underlying command-process fault cause is unresolved. This does not claim the whole environment is crash-free.",
+        "cleanup": {
+          "timestampUtc": "2026-11-02T02:27:11Z",
+          "emulator_exit": -10
+        },
+        "cleanup_note": "The runner requested emulator termination after both suites; launcher exit -10 is recorded as observed, not exit0 or a tested app crash."
+      }
+    }
+  },
+  "version_code": 11,
+  "web_tests": 55,
+  "shared_decision_cases": 387,
+  "runtime_history": {
+    "aosp_android9_rc1": {
+      "status": "installed_and_launched",
+      "api": 28,
+      "abi": "x86",
+      "screen": "1280x800 @160dpi",
+      "image_sha1": "ce03c42d80c0fc6dc47f6455dbee7aa275d02780",
+      "verified_version": "1.0.0-rc1",
+      "verified_apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+      "installed_apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+      "upgrade_from": "1.0.0-rc1 / versionCode 10 intermediate c8a6 candidate",
+      "install": "Success",
+      "launch": "Status: ok; Activity: studio.ax.arrival/.MainActivity; Complete",
+      "latest_version_status": "release_and_debug_ui_verified",
+      "debug_apk_sha256": "7fc9bef75f2e6ccf2771db1bc478458759f32b314e1f2da9addcc14e4d6fb829",
+      "test_apk_sha256": "602dbd0242ba914431e3e529fac97e3dcc295c576e9a96cef172561c69329607",
+      "standard_ui": {
+        "status": "passed",
+        "tests": 13,
+        "failures": 0,
+        "methods": [
+          "vehicleEntryRestrictionsCannotBeOverriddenBySelectionOrChecks",
+          "sponsoringFacilityCannotReplaceTheActualVenueEvenAfterSelection",
+          "savedMemoQrRoundTripsAndClearsWhenEditedOrDriving",
+          "memoQrDoesNotRestoreAfterRecreationAndDeletionClearsIt",
+          "realKeyboardKeepsMemoInputVisibleAndAllowsSaving",
+          "destinationPickerPreservesConflictingNoticeAndCannotBypassReview",
+          "parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed",
+          "activeMemoAndQrExpireAtTheStoredDeadline",
+          "malformedSharedPayloadCannotEnterTheForm",
+          "conflictingSourcesShowBothValuesAndPreventConfirmation",
+          "confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy",
+          "warmShareKeepsCurrentDraftUntilExplicitImport",
+          "sharedIntentWaitsForParkingAndNeverAutoConfirms"
+        ]
+      },
+      "font_1_3_ui": {
+        "status": "passed",
+        "tests": 6,
+        "failures": 0,
+        "methods": [
+          "savedMemoQrRoundTripsAndClearsWhenEditedOrDriving",
+          "realKeyboardKeepsMemoInputVisibleAndAllowsSaving",
+          "destinationPickerPreservesConflictingNoticeAndCannotBypassReview",
+          "parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed",
+          "conflictingSourcesShowBothValuesAndPreventConfirmation",
+          "confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy"
+        ]
+      },
+      "observed": [
+        "Original signing certificate preserved; same-package signed update from c8a6 candidate to final APK succeeded. Earlier a10b candidate also upgraded from versionCode5.",
+        "Final installed release SHA-256 matches delivered APK",
+        "Release first screen renders UNKNOWN state with input locked",
+        "Separate debug instrumentation passes thirteen real Activity/Intent/UI tests, including IME, picker preservation, memo expiry and QR lifecycle"
+      ],
+      "limitations": [
+        "AOSP non-automotive demo; no Pleos SDK or live vehicle response is inferred",
+        "CPU emulation and software rendering without GPU/KVM; timings are not performance measurements",
+        "Test fixture suppresses OS error dialogs and disables animations; app FATAL/ANR logs are reviewed separately",
+        "Physical phone camera QR scan and physical vehicle operation are unverified"
+      ],
+      "resources": "Final generated brand artwork, adaptive launcher and round icon included in both tested builds.",
+      "icon_verification": {
+        "package_artwork_pixels": "exact_match",
+        "adaptive_round_monochrome_resources": "present",
+        "system_icon_visual": "verified_in_android9_app_info_on_debug_build",
+        "evidence": "android-aosp28-rc1-icon.json",
+        "android13_themed_icon_runtime": "not_tested"
+      }
+    },
+    "pleos_rc1": {
+      "status": "blocked_before_install_boot_not_ready",
+      "runner_status": "boot_not_ready_within_budget",
+      "image": "Pleos Connect 2.1.0 API34 x86_64",
+      "image_sha1": "b4f858d5bcc6c71506d7edfc872bcb9e5a11acaa",
+      "host": "No GPU or KVM; software rendering and CPU emulation",
+      "attempted_app_version": "1.0.0-rc1",
+      "attempted_apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+      "started_utc": "2026-11-01T23:54:37Z",
+      "finished_utc": "2026-11-02T00:14:38Z",
+      "elapsed_seconds": 1201.37,
+      "budget_seconds": 1200,
+      "latest_version_verified": false,
+      "latest_apk_install_launch_verified": false,
+      "release_checks": {
+        "path": "/workspace/arrival-runtime-rc1/ArrivalBrief_branded_release.apk",
+        "bytes": 6658807,
+        "sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+        "installed": false,
+        "launched": false,
+        "device_sha_matches": false,
+        "process_alive": false,
+        "screenshot_is_png": false
+      },
+      "install_attempted": false,
+      "first_adb_device": {
+        "timestamp_utc": "2026-11-01T23:56:37Z",
+        "elapsed_seconds": 120.02
+      },
+      "first_system_server": {
+        "timestamp_utc": "2026-11-01T23:59:07Z",
+        "elapsed_seconds": 270.02
+      },
+      "first_package_service": {
+        "timestamp_utc": "2026-11-02T00:01:37Z",
+        "elapsed_seconds": 420.02
+      },
+      "first_boot_completed": null,
+      "emulator_exit": 0,
+      "emulator_exit_interpretation": "Exit code recorded after the runner terminated the emulator at the end of this bounded attempt; not an independent app failure.",
+      "memory_events_delta": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "navihelper_destination_verified": false,
+      "car_ux_restriction_transitions_verified": false,
+      "observed_guest_watchdog": {
+        "detected": true,
+        "episodes": 2,
+        "reported_main_thread_block_seconds": [
+          131,
+          129
+        ],
+        "evidence_lines": [
+          "11-01 16:05:52.247  1425  1654 W Watchdog: *** WATCHDOG KILLING SYSTEM PROCESS: Blocked in handler on  on main thread (main) for 131s",
+          "11-01 16:05:54.935  1425  1654 W Watchdog:     at com.android.server.policy.PermissionPolicyService.grantOrUpgradeDefaultRuntimePermissionsIfNeeded(PermissionPolicyService.java:623)",
+          "11-01 16:06:05.863   437   437 E Zygote  : Exit zygote because system server (pid 1425) has terminated",
+          "11-01 16:14:22.857  4822  4957 W Watchdog: *** WATCHDOG KILLING SYSTEM PROCESS: Blocked in handler on  on main thread (main) for 129s",
+          "11-01 16:14:23.819  4822  4957 W Watchdog:     at com.android.server.policy.PermissionPolicyService.grantOrUpgradeDefaultRuntimePermissionsIfNeeded(PermissionPolicyService.java:623)",
+          "11-01 16:14:25.755  4128  4128 E Zygote  : Exit zygote because system server (pid 4822) has terminated"
+        ],
+        "interpretation": "The guest Watchdog killed both the first and automatically restarted system_server after main-thread blocks of 131 and 129 seconds. Both final stacks waited in PermissionPolicyService via CompletableFuture.get; the logs do not prove that this particular permission callback occupied the full reported blocked intervals or establish the underlying cause. This occurred before application installation."
+      },
+      "scope": "A bounded isolated retry of the unmodified official image. Runtime success is reported only for actions with direct device evidence. No vehicle or destination callback was simulated.",
+      "requirements_url": "https://document.pleos.ai/en/docs/connect/guide/getting-started/application-development/configure-pleos-connect-emulator",
+      "required_followup": "Complete installation, first launch, NaviHelper destination responses and genuine P/Drive UX restriction transitions on supported Pleos hardware or a supported emulator host.",
+      "evidence": {
+        "runtime": "pleos-final-04114df-runtime.json",
+        "observations": "pleos-final-04114df-observations.log",
+        "emulator": "pleos-final-04114df-emulator.log",
+        "selected_logcat": "pleos-final-04114df-selected-logcat.log"
+      }
+    }
+  },
+  "verified_at": "2026-11-02T02:29:06.997009+00:00",
+  "lint_history": [
+    {
+      "id": "GradleDependency",
+      "severity": "Warning",
+      "scope": "androidTestImplementation only",
+      "message": "An earlier lint invocation advised androidx.test.ext:junit 1.2.1 -> 1.3.0. The pinned dependency was not changed. A subsequent intermediate invocation reported No issues found; see the current lint array and android-lint.txt for the final result."
+    }
+  ],
+  "source_input_count": 43,
+  "publication_stage": "runtime",
+  "evidence": {
+    "build_inputs": "build-inputs-rc2.json",
+    "runtime": "android-runtime-rc2.json",
+    "build": "android-aosp28-rc2-build.log",
+    "lint": "android-aosp28-rc2-lint.txt",
+    "signature": "android-aosp28-rc2-signature.txt",
+    "package": "android-aosp28-rc2-package.txt",
+    "web_tests": "web-tests-rc2.log"
+  }
+}

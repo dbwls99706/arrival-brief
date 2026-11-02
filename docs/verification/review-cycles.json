@@ -117,7 +117,7 @@
     }
   ],
   "score_policy": "Never award missing evidence or change the rubric to force100. Unverified optical phone scan, live Pleos SDK and field outcomes remain separate.",
-  "final_apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+  "final_apk_sha256": "779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f",
   "incomplete_attempts": [
     {
       "round": 6,
@@ -162,5 +162,41 @@
       "fixes": [],
       "status": "interrupted"
     }
-  ]
+  ],
+  "completion_reviews": [
+    {
+      "phase": "rc2_completion",
+      "agent": "completion_review",
+      "status": "completed",
+      "score": null,
+      "assessment_type": "bounded_regression_review",
+      "report": "completion-independent-review.md",
+      "evidence": "completion-independent-evidence.json",
+      "fixes": [
+        "Preserve English numeric room identity and reject unsupported identifiers before manual selection",
+        "Reject signed, zero, leading-zero and decimal floor tokens as a whole",
+        "Align web and Android parking memo length on the same UTF-16 input limit"
+      ],
+      "scope": "Source-level independent regression verification; no new overall product score and no claim of Pleos or physical-camera validation."
+    },
+    {
+      "phase": "rc2_final_acceptance",
+      "agent": "final_acceptance",
+      "status": "completed",
+      "score": null,
+      "assessment_type": "bounded_regression_review",
+      "report": "completion-final-acceptance.md",
+      "evidence": "completion-final-acceptance.json",
+      "fixes": [
+        "Recognize complete basement and malformed numeric floor tokens before manual selection, including B prefixes, signs, decimals, comma, fraction and exponent forms"
+      ],
+      "scope": "Web and separately compiled Kotlin: 330 fixed cases each; existing 87-case regression repeated. Final APK delivery appendix records runtime and package evidence separately. No new overall product score."
+    }
+  ],
+  "latest_overall_score": {
+    "score": 88,
+    "version": "1.0.0-rc1",
+    "report": "resume-review-final.md",
+    "note": "Historical holistic assessment; RC2 bounded verification has no replacement overall score."
+  }
 }

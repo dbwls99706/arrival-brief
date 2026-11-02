@@ -1,0 +1,165 @@
+692: 11-01 15:55:41.388   395   395 D vold_prepare_subdirs: Setting up mode 771 uid 0 gid 1000 context u:object_r:apex_system_server_data_file:s0 on path: /data/misc_de/0/apexdata/com.android.permission
+759: 11-01 15:55:42.409   397   397 I derive_classpath: ReadClasspathFragment /apex/com.android.permission/etc/classpaths/bootclasspath.pb
+779: 11-01 15:55:42.456   397   397 I derive_classpath: ReadClasspathFragment /apex/com.android.permission/etc/classpaths/systemserverclasspath.pb
+787: 11-01 15:55:42.466   397   397 I derive_classpath: export BOOTCLASSPATH /apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/android.car.builtin.jar:/apex/com.android.i18n/javalib/core-icu4j.jar:/apex/com.android.adservices/javalib/framework-adservices.jar:/apex/com.android.adservices/javalib/framework-sdksandbox.jar:/apex/com.android.appsearch/javalib/framework-appsearch.jar:/apex/com.android.btservices/javalib/framework-bluetooth.jar:/apex/com.android.car.framework/javalib/android.car-module.jar:/apex/com.android.configinfrastructure/javalib/framework-configinfrastructure.jar:/apex/com.android.conscrypt/javalib/conscrypt.jar:/apex/com.android.devicelock/javalib/framework-devicelock.jar:/apex/com.android.healthfitness/javalib/framework-healthfitness.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar:/apex/com.android.media/javalib/updatable-media.jar:/apex/com.android.mediaprovider/javalib/framework-mediaprovider.jar:/apex/com.android.ondevicepersonalization/javalib/framework-ondevicepersonalization.jar:/apex/com.android.os.statsd/javalib/framework-statsd.jar:/apex/com.android.permission/javalib/framework-permission.jar:/apex/com.android.permission/javalib/framework-permission-s.jar:/apex/com.android.scheduling/javalib/framework-scheduling.jar:/apex/com.android.sdkext/javalib/framework-sdkextensions.jar:/apex/com.android.tethering/javalib/framework-connectivity.jar:/apex/com.android.tethering/javalib/framework-connectivity-t.jar:/apex/com.android.tethering/javalib/framework-tethering.jar:/apex/com.android.uwb/javalib/framework-uwb.jar:/apex/com.android.virt/javalib/framework-virtualization.jar:/apex/com.android.wifi/javalib/framework-wifi.jar
+789: 11-01 15:55:42.466   397   397 I derive_classpath: export SYSTEMSERVERCLASSPATH /system/framework/com.android.location.provider.jar:/system/framework/services.jar:/system/framework/EscrowCredentialService.jar:/system/framework/car-frameworks-service.jar:/apex/com.android.adservices/javalib/service-adservices.jar:/apex/com.android.adservices/javalib/service-sdksandbox.jar:/apex/com.android.appsearch/javalib/service-appsearch.jar:/apex/com.android.art/javalib/service-art.jar:/apex/com.android.car.framework/javalib/car-frameworks-service-module.jar:/apex/com.android.configinfrastructure/javalib/service-configinfrastructure.jar:/apex/com.android.healthfitness/javalib/service-healthfitness.jar:/apex/com.android.media/javalib/service-media-s.jar:/apex/com.android.ondevicepersonalization/javalib/service-ondevicepersonalization.jar:/apex/com.android.permission/javalib/service-permission.jar:/apex/com.android.rkpd/javalib/service-rkp.jar
+8224: 11-01 15:58:49.191  1425  1425 D nativeloader: Configuring clns-shared-6 for other apk /system/framework/com.android.location.provider.jar:/system/framework/services.jar:/system/framework/EscrowCredentialService.jar:/system/framework/car-frameworks-service.jar:/apex/com.android.adservices/javalib/service-adservices.jar:/apex/com.android.adservices/javalib/service-sdksandbox.jar:/apex/com.android.appsearch/javalib/service-appsearch.jar:/apex/com.android.art/javalib/service-art.jar:/apex/com.android.car.framework/javalib/car-frameworks-service-module.jar:/apex/com.android.configinfrastructure/javalib/service-configinfrastructure.jar:/apex/com.android.healthfitness/javalib/service-healthfitness.jar:/apex/com.android.media/javalib/service-media-s.jar:/apex/com.android.ondevicepersonalization/javalib/service-ondevicepersonalization.jar:/apex/com.android.permission/javalib/service-permission.jar:/apex/com.android.rkpd/javalib/service-rkp.jar. target_sdk_version=10000, uses_libraries=ALL, library_path=/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/e
+10158: 11-01 15:59:21.977  1425  1425 D CompatConfig: No directory /apex/com.android.permission/etc/compatconfig, skipping
+10411: 11-01 15:59:26.422  1425  1655 I SystemConfig: Reading permissions from /apex/com.android.permission/etc/permissions/privapp_allowlist_com.android.permissioncontroller.xml
+10652: 11-01 15:59:32.561  1425  1531 W android.permission.PermissionManager: Missing ActivityManager; assuming 1047 does not hold android.permission.MANAGE_APP_OPS_MODES
+10805: 11-01 15:59:36.220  1425  1650 W android.permission.PermissionManager: Missing ActivityManager; assuming 1000 holds android.permission.READ_DEVICE_CONFIG
+10985: 11-01 15:59:39.846  1425  1425 D PackageManager: Directories scanned as system partitions: [/system:0, /vendor:524288, /odm:4194304, /oem:262144, /product:1048576, /system_ext:2097152, /apex/com.android.btservices:41943040, /apex/com.android.tzdata:41943040, /apex/com.android.virt:41943040, /apex/com.android.appsearch:58720256, /apex/com.android.runtime:41943040, /apex/com.android.vndk.v34:41943040, /apex/com.android.art:58720256, /apex/ai.pleos.hardware.vehicle.emulator.service:42467328, /apex/com.android.sdkext:41943040, /apex/com.android.healthfitness:41943040, /apex/com.android.adbd:58720256, /apex/com.android.media:58720256, /apex/com.android.devicelock:41943040, /apex/com.android.apex.cts.shim:41943040, /apex/ai.pleos.hardware.placesense.service:42467328, /apex/com.android.ondevicepersonalization:58720256, /apex/com.android.media.swcodec:58720256, /apex/com.android.adservices:58720256, /apex/com.android.neuralnetworks:58720256, /apex/com.android.ipsec:58720256, /apex/com.android.scheduling:58720256, /apex/com.android.i18n:41943040, /apex/com.android.conscrypt:58720256, /apex/com.android.mediaprovider:58720256, /apex/com.android.rkpd:41943040, /apex/com.android.resolv:58720256, /apex/com.android.wifi:58720256, /apex/com.android.permission:58720256, /apex/com.android.uwb:58720256, /apex/ai.pleos.hid:42467328, /apex/com.android.tethering:58720256, /apex/com.android.extservices:58720256, /apex/com.android.configinfrastructure:58720256, /apex/com.android.os.statsd:41943040, /apex/ai.pleos.wifi:42467328, /apex/ai.pleos.profile:42467328, /apex/com.android.car.framework:41943040]
+11497: 11-01 15:59:54.163  1425  1425 I PackageManager: /data/apex/decompressed/com.android.permission@340090000.decompressed.apex changed; collecting certs
+11501: 11-01 15:59:54.278  1425  1425 W PackageManager: Odd, /data/apex/decompressed/com.android.permission@340090000.decompressed.apex doesn't look like an APK
+11502: 11-01 15:59:54.285  1425  1425 W PackageManager: Unrecognized code path /data/apex/decompressed/com.android.permission@340090000.decompressed.apex - using /data
+12553: 11-01 16:00:19.161  1425  1784 W PackageParsing: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.SATELLITE_COMMUNICATION in package: com.android.shell at: Binary XML file line #615
+12554: 11-01 16:00:19.186  1425  1784 W PackageParsing: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.FOREGROUND_SERVICE in package: com.android.shell at: Binary XML file line #647
+12555: 11-01 16:00:19.187  1425  1784 W PackageParsing: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.FOREGROUND_SERVICE_SYSTEM_EXEMPTED in package: com.android.shell at: Binary XML file line #648
+12684: 11-01 16:00:23.191  1425  1785 W PackageParsing: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.POST_NOTIFICATIONS in package: com.android.phone at: Binary XML file line #168
+13217: 11-01 16:00:37.366  1425  1425 I PackageManager: /system/app/CarPermissionControllerRRO changed; collecting certs
+13624: 11-01 16:00:48.065  1425  1786 W PackageParsing: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.CONFIGURE_WIFI_DISPLAY in package: com.android.systemui at: Binary XML file line #284
+13625: 11-01 16:00:48.208  1425  1786 W PackageParsing: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.GET_RUNTIME_PERMISSIONS in package: com.android.systemui at: Binary XML file line #323
+13627: 11-01 16:00:48.393  1425  1786 W PackageParsing: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.READ_DEVICE_CONFIG in package: com.android.systemui at: Binary XML file line #358
+14673: 11-01 16:01:14.294  1425  1786 W PackageParsing: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.RECEIVE_BOOT_COMPLETED in package: com.android.adservices.api at: Binary XML file line #123
+14795: 11-01 16:01:16.689  1425  1425 W PackageManager: Dropping cache of /apex/com.android.permission/priv-app/PermissionController@RELEASE.release_connect_v2.1.0
+14796: 11-01 16:01:16.695  1425  1425 W PackageManager: Dropping cache of /apex/com.android.permission/priv-app/SafetyCenterResources@RELEASE.release_connect_v2.1.0
+14832: 11-01 16:01:16.973  1425  1425 I PackageManager: /apex/com.android.permission/priv-app/SafetyCenterResources@RELEASE.release_connect_v2.1.0 changed; collecting certs
+14834: 11-01 16:01:17.075  1425  1425 I ApexManager: Registering com.android.safetycenter.resources as apk-in-apex of com.android.permission
+14847: 11-01 16:01:17.409  1425  1787 W PackageParsing: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.OBSERVE_SENSOR_PRIVACY in package: com.android.permissioncontroller at: Binary XML file line #59
+14879: 11-01 16:01:17.682  1425  1425 I PackageManager: /apex/com.android.permission/priv-app/PermissionController@RELEASE.release_connect_v2.1.0 changed; collecting certs
+14881: 11-01 16:01:17.902  1425  1425 I ApexManager: Registering com.android.permissioncontroller as apk-in-apex of com.android.permission
+14882: 11-01 16:01:17.978  1425  1425 D PackageManager: No files in app dir /apex/com.android.permission/app
+15621: 11-01 16:01:33.179  1425  1425 W UserSystemPackageInstaller: com.android.permissioncontroller.car.rro is allowlisted unnecessarily since it's a static overlay.
+15714: 11-01 16:01:34.028  1425  2376 W PackageManager: Skipping preparing app data for com.android.permission
+18329: 11-01 16:02:07.211   434   444 E statsd  : Uid 1000 does not have the android.permission.REGISTER_STATS_PULL_ATOM permission when registering atom 10110 (-1)
+18845: 11-01 16:02:17.469  1425  1425 I PackageManager: Starting boot dexopt for reason first-boot
+18881: 11-01 16:02:17.838  1425  1425 I Watchdog: Resuming HandlerChecker: main thread for reason: dexopt. Pause count: 0
+20055: 11-01 16:02:46.459   564   564 D PermissionCache: checking android.permission.MODIFY_AUDIO_SETTINGS for uid=1000 => granted (20541 us)
+20141: 11-01 16:02:49.962   564   564 D PermissionCache: checking android.permission.MODIFY_AUDIO_ROUTING for uid=1000 => granted (3599 us)
+22011: 11-01 16:03:23.201   434   444 E statsd  : Uid 1000 does not have the android.permission.REGISTER_STATS_PULL_ATOM permission when registering atom 10068 (-1)
+23170: 11-01 16:03:38.399  1425  1425 W DefaultPermGrantPolicy: Permission not found: android.permission.CAR_VENDOR_EXTENSION
+23172: 11-01 16:03:38.405  1425  1425 W DefaultPermGrantPolicy: Permission not found: android.permission.CONTROL_DISPLAY_UNITS
+23173: 11-01 16:03:38.429  1425  1425 W DefaultPermGrantPolicy: Permission not found: android.permission.READ_DISPLAY_UNITS
+23174: 11-01 16:03:38.430  1425  1425 W DefaultPermGrantPolicy: Permission not found: android.permission.START_FOREGROUND
+23191: 11-01 16:03:39.184  1425  1425 W DefaultPermGrantPolicy: Permission not found: android.permission.CAR_CONTROL
+23192: 11-01 16:03:39.185  1425  1425 W DefaultPermGrantPolicy: Permission not found: android.permission.CONTROL_CAR_CLIMATE
+23209: 11-01 16:03:39.697  1425  1425 W DefaultPermGrantPolicy: Permission not found: android.permission.MANAGE_WIFI_WHEN_WIRELESS_CONSENT_REQUIRED
+23212: 11-01 16:03:39.717  1425  1425 W DefaultPermGrantPolicy: Permission not found: android.permission.SUGGEST_MANUAL_TIME
+23213: 11-01 16:03:39.728  1425  1425 W DefaultPermGrantPolicy: Permission not found: android.permission.SUGGEST_TELEPHONY_TIME
+23214: 11-01 16:03:39.737  1425  1425 W DefaultPermGrantPolicy: Permission not found: android.permission.SUGGEST_NETWORK_TIME
+23218: 11-01 16:03:39.796  1425  1425 W DefaultPermGrantPolicy: Permission not found: android.permission.SUGGEST_GNSS_TIME
+23462: 11-01 16:03:44.523  1425  1425 W DefaultPermGrantPolicy: Permission not found: com.google.android.permission.INSTALL_WEARABLE_PACKAGES
+23566: 11-01 16:03:45.897  1425  1425 W DefaultPermGrantPolicy: Permission not found: android.permission.SEND_PROTECTED_BROADCAST
+23570: 11-01 16:03:45.898  1425  1425 W DefaultPermGrantPolicy: Permission not found: android.permission.TYPE_APPLICATION_OVERLAY
+23780: 11-01 16:03:50.155  1425  1425 W DefaultPermGrantPolicy: Permission not found: android.permission.BROADCAST
+23795: 11-01 16:03:50.462  1425  1425 W DefaultPermGrantPolicy: Permission not found: android.permission.WRITE_SYSTEM_SETTINGS
+23947: 11-01 16:03:53.585  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.BLUETOOTH_PRIVILEGED which isn't dangerous
+23948: 11-01 16:03:53.586  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.CAPTURE_AUDIO_HOTWORD which isn't dangerous
+23949: 11-01 16:03:53.586  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.CALL_AUDIO_INTERCEPTION which isn't dangerous
+23954: 11-01 16:03:53.766  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.FOREGROUND_SERVICE_LOCATION which isn't dangerous
+23955: 11-01 16:03:53.767  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.SEND_CATEGORY_CAR_NOTIFICATIONS which isn't dangerous
+23956: 11-01 16:03:53.767  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.BROADCAST_CLOSE_SYSTEM_DIALOGS which isn't dangerous
+23957: 11-01 16:03:53.771  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.BIND_VOICE_INTERACTION which isn't dangerous
+23962: 11-01 16:03:53.815  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.MEDIA_CONTENT_CONTROL which isn't dangerous
+23963: 11-01 16:03:53.825  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.BIND_NOTIFICATION_LISTENER_SERVICE which isn't dangerous
+23966: 11-01 16:03:53.957  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.CAPTURE_AUDIO_OUTPUT which isn't dangerous
+23970: 11-01 16:03:53.966  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.WRITE_SMS which isn't dangerous
+24010: 11-01 16:03:54.243  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.INSTALL_LOCATION_TIME_ZONE_PROVIDER_SERVICE which isn't dangerous
+24011: 11-01 16:03:54.243  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.READ_DEVICE_CONFIG which isn't dangerous
+24013: 11-01 16:03:54.281  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.WAKE_LOCK which isn't dangerous
+24018: 11-01 16:03:54.329  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.CHANGE_WIFI_STATE which isn't dangerous
+24026: 11-01 16:03:54.478  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.ACCESS_WIFI_STATE which isn't dangerous
+24027: 11-01 16:03:54.478  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.ACCESS_NETWORK_STATE which isn't dangerous
+24028: 11-01 16:03:54.478  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.CHANGE_NETWORK_STATE which isn't dangerous
+24032: 11-01 16:03:54.543  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.USE_CREDENTIALS which isn't dangerous
+24033: 11-01 16:03:54.543  1425  1425 W DefaultPermGrantPolicy: Ignoring permission android.permission.MANAGE_EXTERNAL_STORAGE which isn't dangerous
+26726: 11-01 16:04:33.633  1425  1655 D SystemServerTimingAsync: InitThreadPoolExec:Update app-ops uidState in case package com.android.permissioncontroller changed
+26774: 11-01 16:04:33.902  1425  1655 D SystemServerTimingAsync: InitThreadPoolExec:Update app-ops uidState in case package com.android.permissioncontroller.car.rro changed
+26998: 11-01 16:04:36.065  1425  3127 W Looper  : Slow dispatch took 3064ms android.perm h=android.os.Handler c=com.android.internal.infra.ServiceConnector$Impl$$ExternalSyntheticLambda2@f8603f9 m=0
+29162: 11-01 16:05:07.726  1425  1425 D SystemServerTiming: Permission_grant_default_permissions-0
+29248: 11-01 16:05:08.707  1425  1425 D SystemServerTiming: Permission_callback_waiting-0
+29501: 11-01 16:05:14.372  1425  3127 W Looper  : Slow delivery took 6583ms android.perm h=android.os.Handler c=com.android.internal.infra.ServiceConnector$Impl$$ExternalSyntheticLambda2@12f49f0 m=0
+30694: 11-01 16:05:34.844  3135  3286 D PermissionCache: checking android.permission.MODIFY_AUDIO_ROUTING for uid=1000 => granted (332088 us)
+30899: 11-01 16:05:38.744  3135  3286 D PermissionCache: checking android.permission.MODIFY_AUDIO_SETTINGS for uid=1000 => granted (17551 us)
+31738: 11-01 16:05:52.247  1425  1654 W Watchdog: *** WATCHDOG KILLING SYSTEM PROCESS: Blocked in handler on  on main thread (main) for 131s
+31910: 11-01 16:05:54.935  1425  1654 W Watchdog:     at com.android.server.policy.PermissionPolicyService.grantOrUpgradeDefaultRuntimePermissionsIfNeeded(PermissionPolicyService.java:623)
+39603: 11-01 16:07:56.893  4822  4822 D nativeloader: Configuring clns-shared-6 for other apk /system/framework/com.android.location.provider.jar:/system/framework/services.jar:/system/framework/EscrowCredentialService.jar:/system/framework/car-frameworks-service.jar:/apex/com.android.adservices/javalib/service-adservices.jar:/apex/com.android.adservices/javalib/service-sdksandbox.jar:/apex/com.android.appsearch/javalib/service-appsearch.jar:/apex/com.android.art/javalib/service-art.jar:/apex/com.android.car.framework/javalib/car-frameworks-service-module.jar:/apex/com.android.configinfrastructure/javalib/service-configinfrastructure.jar:/apex/com.android.healthfitness/javalib/service-healthfitness.jar:/apex/com.android.media/javalib/service-media-s.jar:/apex/com.android.ondevicepersonalization/javalib/service-ondevicepersonalization.jar:/apex/com.android.permission/javalib/service-permission.jar:/apex/com.android.rkpd/javalib/service-rkp.jar. target_sdk_version=10000, uses_libraries=ALL, library_path=/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/e
+41361: 11-01 16:08:18.113  4822  4822 D CompatConfig: No directory /apex/com.android.permission/etc/compatconfig, skipping
+41662: 11-01 16:08:21.431  4822  4958 I SystemConfig: Reading permissions from /apex/com.android.permission/etc/permissions/privapp_allowlist_com.android.permissioncontroller.xml
+41973: 11-01 16:08:27.949  4822  4867 W android.permission.PermissionManager: Missing ActivityManager; assuming 1047 does not hold android.permission.MANAGE_APP_OPS_MODES
+42164: 11-01 16:08:31.178  4822  4954 W android.permission.PermissionManager: Missing ActivityManager; assuming 1000 holds android.permission.READ_DEVICE_CONFIG
+42587: 11-01 16:08:40.373  4822  4822 W PackageManager: No package known for package restrictions com.android.permission
+42842: 11-01 16:08:43.375  4822  4822 W PackageSettings: Missing permission state for package com.android.permissioncontroller.car.rro on user 0
+42933: 11-01 16:08:45.851  4822  4822 D PackageManager: Directories scanned as system partitions: [/system:0, /vendor:524288, /odm:4194304, /oem:262144, /product:1048576, /system_ext:2097152, /apex/com.android.tzdata:41943040, /apex/com.android.virt:41943040, /apex/com.android.mediaprovider:58720256, /apex/com.android.ondevicepersonalization:58720256, /apex/com.android.media.swcodec:58720256, /apex/com.android.appsearch:58720256, /apex/com.android.wifi:58720256, /apex/com.android.extservices:58720256, /apex/com.android.configinfrastructure:58720256, /apex/com.android.scheduling:58720256, /apex/com.android.runtime:41943040, /apex/com.android.permission:58720256, /apex/ai.pleos.wifi:42467328, /apex/ai.pleos.profile:42467328, /apex/com.android.healthfitness:41943040, /apex/ai.pleos.hardware.vehicle.emulator.service:42467328, /apex/com.android.btservices:41943040, /apex/com.android.i18n:41943040, /apex/com.android.adbd:58720256, /apex/com.android.media:58720256, /apex/com.android.car.framework:41943040, /apex/com.android.uwb:58720256, /apex/com.android.conscrypt:58720256, /apex/com.android.adservices:58720256, /apex/com.android.devicelock:41943040, /apex/com.android.art:58720256, /apex/com.android.os.statsd:41943040, /apex/ai.pleos.hid:42467328, /apex/com.android.ipsec:58720256, /apex/ai.pleos.hardware.placesense.service:42467328, /apex/com.android.rkpd:41943040, /apex/com.android.resolv:58720256, /apex/com.android.neuralnetworks:58720256, /apex/com.android.sdkext:41943040, /apex/com.android.tethering:58720256, /apex/com.android.vndk.v34:41943040, /apex/com.android.apex.cts.shim:41943040]
+43415: 11-01 16:08:56.855  4822  4822 I PackageManager: /data/apex/decompressed/com.android.permission@340090000.decompressed.apex changed; collecting certs
+43416: 11-01 16:08:56.959  4822  4822 W PackageManager: Odd, /data/apex/decompressed/com.android.permission@340090000.decompressed.apex doesn't look like an APK
+43417: 11-01 16:08:56.977  4822  4822 W PackageManager: Unrecognized code path /data/apex/decompressed/com.android.permission@340090000.decompressed.apex - using /data
+44692: 11-01 16:09:22.973  4822  4822 W Permission: New decl PackageSetting{4192f71 com.android.ext.adservices.api/10172} of permission  android.permission.ACCESS_ADSERVICES_TOPICS is system; overriding com.android.adservices.api
+44693: 11-01 16:09:22.975  4822  4822 W Permission: New decl PackageSetting{4192f71 com.android.ext.adservices.api/10172} of permission  android.permission.ACCESS_ADSERVICES_ATTRIBUTION is system; overriding com.android.adservices.api
+44694: 11-01 16:09:22.978  4822  4822 W Permission: New decl PackageSetting{4192f71 com.android.ext.adservices.api/10172} of permission  android.permission.ACCESS_ADSERVICES_CUSTOM_AUDIENCE is system; overriding com.android.adservices.api
+44695: 11-01 16:09:22.981  4822  4822 W Permission: New decl PackageSetting{4192f71 com.android.ext.adservices.api/10172} of permission  android.permission.ACCESS_ADSERVICES_AD_ID is system; overriding com.android.adservices.api
+44696: 11-01 16:09:22.982  4822  4822 W Permission: New decl PackageSetting{4192f71 com.android.ext.adservices.api/10172} of permission  android.permission.ACCESS_PRIVILEGED_AD_ID is system; overriding com.android.adservices.api
+44697: 11-01 16:09:22.983  4822  4822 W Permission: New decl PackageSetting{4192f71 com.android.ext.adservices.api/10172} of permission  android.permission.ACCESS_PRIVILEGED_APP_SET_ID is system; overriding com.android.adservices.api
+44698: 11-01 16:09:22.990  4822  4822 W Permission: New decl PackageSetting{4192f71 com.android.ext.adservices.api/10172} of permission  android.permission.MODIFY_ADSERVICES_STATE is system; overriding com.android.adservices.api
+44699: 11-01 16:09:22.991  4822  4822 W Permission: New decl PackageSetting{4192f71 com.android.ext.adservices.api/10172} of permission  android.permission.ACCESS_ADSERVICES_STATE is system; overriding com.android.adservices.api
+44700: 11-01 16:09:22.996  4822  4822 W Permission: New decl PackageSetting{4192f71 com.android.ext.adservices.api/10172} of permission  android.permission.ACCESS_ADSERVICES_MANAGER is system; overriding com.android.adservices.api
+44711: 11-01 16:09:23.069  4822  4822 W PackageManager: Dropping cache of /apex/com.android.permission/priv-app/PermissionController@RELEASE.release_connect_v2.1.0
+44716: 11-01 16:09:23.154  4822  4822 W PackageManager: Dropping cache of /apex/com.android.permission/priv-app/SafetyCenterResources@RELEASE.release_connect_v2.1.0
+44722: 11-01 16:09:23.405  4822  5148 W PackageParsing: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.OBSERVE_SENSOR_PRIVACY in package: com.android.permissioncontroller at: Binary XML file line #59
+44726: 11-01 16:09:23.440  4822  4822 I ApexManager: Registering com.android.safetycenter.resources as apk-in-apex of com.android.permission
+44766: 11-01 16:09:23.665  4822  4822 I ApexManager: Registering com.android.permissioncontroller as apk-in-apex of com.android.permission
+44767: 11-01 16:09:23.702  4822  4822 D PackageManager: No files in app dir /apex/com.android.permission/app
+44815: 11-01 16:09:24.703  4822  5147 W PackageParsing: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.RECEIVE_BOOT_COMPLETED in package: com.android.adservices.api at: Binary XML file line #123
+45641: 11-01 16:09:38.869  4822  4822 W UserSystemPackageInstaller: com.android.permissioncontroller.car.rro is allowlisted unnecessarily since it's a static overlay.
+45700: 11-01 16:09:39.370  4822  5390 W PackageManager: Skipping preparing app data for com.android.permission
+47830: 11-01 16:10:03.835   434   444 E statsd  : Uid 1000 does not have the android.permission.REGISTER_STATS_PULL_ATOM permission when registering atom 10110 (-1)
+48215: 11-01 16:10:09.886  4822  4822 I PackageManager: Starting boot dexopt for reason boot-after-mainline-update
+48467: 11-01 16:10:16.683  4822  4822 I Watchdog: Resuming HandlerChecker: main thread for reason: dexopt. Pause count: 0
+49640: 11-01 16:10:41.491  4129  4129 D PermissionCache: checking android.permission.MODIFY_AUDIO_SETTINGS for uid=1000 => granted (77038 us)
+49756: 11-01 16:10:45.187  4129  4129 D PermissionCache: checking android.permission.MODIFY_AUDIO_ROUTING for uid=1000 => granted (2563 us)
+55896: 11-01 16:12:21.974  4822  4822 W DefaultPermGrantPolicy: Permission not found: android.permission.CAR_VENDOR_EXTENSION
+55945: 11-01 16:12:22.031  4822  4822 W DefaultPermGrantPolicy: Permission not found: android.permission.CONTROL_DISPLAY_UNITS
+55946: 11-01 16:12:22.206  4822  4822 W DefaultPermGrantPolicy: Permission not found: android.permission.READ_DISPLAY_UNITS
+55947: 11-01 16:12:22.207  4822  4822 W DefaultPermGrantPolicy: Permission not found: android.permission.START_FOREGROUND
+55992: 11-01 16:12:22.679  4822  4822 W DefaultPermGrantPolicy: Permission not found: android.permission.CAR_CONTROL
+55993: 11-01 16:12:22.679  4822  4822 W DefaultPermGrantPolicy: Permission not found: android.permission.CONTROL_CAR_CLIMATE
+56011: 11-01 16:12:23.193  4822  4822 W DefaultPermGrantPolicy: Permission not found: android.permission.MANAGE_WIFI_WHEN_WIRELESS_CONSENT_REQUIRED
+56015: 11-01 16:12:23.259  4822  4822 W DefaultPermGrantPolicy: Permission not found: android.permission.SUGGEST_MANUAL_TIME
+56312: 11-01 16:12:27.839  4822  4822 W DefaultPermGrantPolicy: Permission not found: android.permission.SUGGEST_TELEPHONY_TIME
+56316: 11-01 16:12:27.909  4822  4822 W DefaultPermGrantPolicy: Permission not found: android.permission.SUGGEST_NETWORK_TIME
+56317: 11-01 16:12:27.910  4822  4822 W DefaultPermGrantPolicy: Permission not found: android.permission.SUGGEST_GNSS_TIME
+56524: 11-01 16:12:31.510  4822  4822 W DefaultPermGrantPolicy: Permission not found: com.google.android.permission.INSTALL_WEARABLE_PACKAGES
+56565: 11-01 16:12:32.361  4822  4822 W DefaultPermGrantPolicy: Permission not found: android.permission.SEND_PROTECTED_BROADCAST
+56574: 11-01 16:12:32.364  4822  4822 W DefaultPermGrantPolicy: Permission not found: android.permission.TYPE_APPLICATION_OVERLAY
+56858: 11-01 16:12:36.754  4822  4822 W DefaultPermGrantPolicy: Permission not found: android.permission.BROADCAST
+56910: 11-01 16:12:37.289  4822  4822 W DefaultPermGrantPolicy: Permission not found: android.permission.WRITE_SYSTEM_SETTINGS
+57014: 11-01 16:12:39.369  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.BLUETOOTH_PRIVILEGED which isn't dangerous
+57015: 11-01 16:12:39.370  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.CAPTURE_AUDIO_HOTWORD which isn't dangerous
+57016: 11-01 16:12:39.370  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.CALL_AUDIO_INTERCEPTION which isn't dangerous
+57018: 11-01 16:12:39.446  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.FOREGROUND_SERVICE_LOCATION which isn't dangerous
+57019: 11-01 16:12:39.446  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.SEND_CATEGORY_CAR_NOTIFICATIONS which isn't dangerous
+57020: 11-01 16:12:39.446  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.BROADCAST_CLOSE_SYSTEM_DIALOGS which isn't dangerous
+57021: 11-01 16:12:39.446  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.BIND_VOICE_INTERACTION which isn't dangerous
+57025: 11-01 16:12:39.447  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.MEDIA_CONTENT_CONTROL which isn't dangerous
+57026: 11-01 16:12:39.447  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.BIND_NOTIFICATION_LISTENER_SERVICE which isn't dangerous
+57067: 11-01 16:12:39.602  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.CAPTURE_AUDIO_OUTPUT which isn't dangerous
+57068: 11-01 16:12:39.610  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.WRITE_SMS which isn't dangerous
+57072: 11-01 16:12:39.675  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.INSTALL_LOCATION_TIME_ZONE_PROVIDER_SERVICE which isn't dangerous
+57073: 11-01 16:12:39.696  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.READ_DEVICE_CONFIG which isn't dangerous
+57074: 11-01 16:12:39.698  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.WAKE_LOCK which isn't dangerous
+57075: 11-01 16:12:39.698  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.CHANGE_WIFI_STATE which isn't dangerous
+57076: 11-01 16:12:39.699  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.ACCESS_WIFI_STATE which isn't dangerous
+57078: 11-01 16:12:39.703  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.ACCESS_NETWORK_STATE which isn't dangerous
+57079: 11-01 16:12:39.703  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.CHANGE_NETWORK_STATE which isn't dangerous
+57086: 11-01 16:12:39.770  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.USE_CREDENTIALS which isn't dangerous
+57087: 11-01 16:12:39.770  4822  4822 W DefaultPermGrantPolicy: Ignoring permission android.permission.MANAGE_EXTERNAL_STORAGE which isn't dangerous
+57688: 11-01 16:12:50.659  4822  6225 W Looper  : Slow dispatch took 863ms android.perm h=android.os.Handler c=com.android.internal.infra.ServiceConnector$Impl$$ExternalSyntheticLambda2@9490ca6 m=0
+57996: 11-01 16:12:54.762  5982  6084 D PermissionCache: checking android.permission.MODIFY_AUDIO_SETTINGS for uid=1000 => granted (48484 us)
+58364: 11-01 16:13:00.378  5982  6084 D PermissionCache: checking android.permission.MODIFY_AUDIO_ROUTING for uid=1000 => granted (2972 us)
+58574: 11-01 16:13:03.918  4822  4958 D SystemServerTimingAsync: InitThreadPoolExec:Update app-ops uidState in case package com.android.permissioncontroller changed
+58636: 11-01 16:13:04.267  4822  4958 D SystemServerTimingAsync: InitThreadPoolExec:Update app-ops uidState in case package com.android.permissioncontroller.car.rro changed
+60224: 11-01 16:13:28.873  4822  4822 D SystemServerTiming: Permission_grant_default_permissions-0
+60225: 11-01 16:13:28.885  4822  4822 D SystemServerTiming: Permission_callback_waiting-0
+60487: 11-01 16:13:33.218  4822  6225 W Looper  : Slow delivery took 4343ms android.perm h=android.os.Handler c=com.android.internal.infra.ServiceConnector$Impl$$ExternalSyntheticLambda2@4b3da47 m=0
+63478: 11-01 16:14:22.857  4822  4957 W Watchdog: *** WATCHDOG KILLING SYSTEM PROCESS: Blocked in handler on  on main thread (main) for 129s
+63576: 11-01 16:14:23.819  4822  4957 W Watchdog:     at com.android.server.policy.PermissionPolicyService.grantOrUpgradeDefaultRuntimePermissionsIfNeeded(PermissionPolicyService.java:623)

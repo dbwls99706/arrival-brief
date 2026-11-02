@@ -1,0 +1,12 @@
+## 021-package.txt
+Service package: found
+
+## 021-watchdog-set.txt
+cmd: Can't find service: settings
+
+## 021-watchdog-get.txt
+cmd: Can't find service: settings
+
+## 021-permission-services.txt
+ACTIVITY MANAGER SERVICES (dumpsys activity services)
+  (nothing)

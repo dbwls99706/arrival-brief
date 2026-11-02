@@ -15,8 +15,8 @@ object BriefEngine {
   Destination("studio159","스튜디오 159","2F","동문 · 영동대로 방면","B2 퍼플존",patterns("스튜디오\\s*159","studio\\s*159")),
   Destination("conferenceE","컨퍼런스룸 E","3F","동문 · 영동대로 방면","B2 퍼플존",patterns("컨퍼런스\\s*룸\\s*e\\b","conference\\s*room\\s*e\\b")),
   Destination("platz","THE PLATZ","2F","동문 · 영동대로 방면","B2 지하 2층",patterns("the\\s*platz","더\\s*플라츠")),
-  Destination("rooms300","회의실 300~328호","3F","동문 · 영동대로 방면","B2 그린존",patterns("(?:회의실|룸)\\s*3(?:0\\d|1\\d|2[0-8])(?:호|\\b)","(?<!\\d)3(?:0\\d|1\\d|2[0-8])호")),
-  Destination("rooms400","회의실 400~403호","4F","동문 · 영동대로 방면","B2 그린존",patterns("(?:회의실|룸)\\s*40[0-3](?:호|\\b)","(?<!\\d)40[0-3]호"))
+  Destination("rooms300","회의실 300~328호","3F","동문 · 영동대로 방면","B2 그린존",patterns("(?:회의실|룸|\\brooms?)\\s*(?:(?:no\\.?|number)\\s*)?[:：#№]*\\s*3(?:0\\d|1\\d|2[0-8])(?:호|\\b)","(?<!\\d)3(?:0\\d|1\\d|2[0-8])호")),
+  Destination("rooms400","회의실 400~403호","4F","동문 · 영동대로 방면","B2 그린존",patterns("(?:회의실|룸|\\brooms?)\\s*(?:(?:no\\.?|number)\\s*)?[:：#№]*\\s*40[0-3](?:호|\\b)","(?<!\\d)40[0-3]호"))
  )
  // Original notices with changed/cancelled events or unverified explicit venue
  // claims must be reviewed; manual selection cannot override these conflicts.
@@ -140,12 +140,20 @@ object BriefEngine {
   // A matching zone/gate name says nothing about operating status. Any such
   // mention outside a completely interpreted parking clause requires review.
   if(operationalRestriction.containsMatchIn(text)||parkingZone.containsMatchIn(venueText)||entryGate.containsMatchIn(venueText))return Decision("review","주차 구역·진입문에 관한 해석되지 않은 안내 또는 운영 제한 표현이 있습니다. 같은 구역명이어도 이용 가능하다고 판단하지 않습니다. 원문을 생략하지 말고 시설의 최신 운영 안내를 확인하세요.",parkingNotes=parts.parkingNotes)
-  if(Regex("""지하\s*[1-9]\d*\s*(?:층|F\b)|(?<![A-Za-z0-9])B[1-9]\d*\s*(?:층|F(?![A-Za-z0-9])|(?![A-Za-z0-9]))|\bbasement\b""",RegexOption.IGNORE_CASE).containsMatchIn(venueText))return Decision("review","행사장 지하층 또는 해석하지 못한 주차 표현이 있습니다. 원문의 행사장과 주차층·구역을 직접 확인하고, 정보를 바꾸거나 생략하지 않은 별도 주차 안내를 입력하세요.")
+  if(Regex("""지하\s*[1-9]\d*\s*(?:층|F\b)|(?<![A-Za-z0-9])B\s*[+\-−－＋]?\s*(?:\d+(?:\s*[.,/]\s*\d*)*|\.\d+)(?:[eE][+\-−－＋]?\d+)?\s*(?:층|F(?![A-Za-z0-9])|(?![A-Za-z0-9]))|\bbasement\b""",RegexOption.IGNORE_CASE).containsMatchIn(venueText))return Decision("review","행사장 지하층 또는 해석하지 못한 주차 표현이 있습니다. 원문의 행사장과 주차층·구역을 직접 확인하고, 정보를 바꾸거나 생략하지 않은 별도 주차 안내를 입력하세요.")
   if(Regex("""(?:[A-Z]\s*홀|\bhall\s*[A-Z]\b|전시(?:홀|관|장))""",RegexOption.IGNORE_CASE).containsMatchIn(venueText))return Decision("review","지원하지 않는 전시홀 안내가 포함되어 있습니다. 전시홀을 다른 회의실로 대신 선택할 수 없습니다.")
-  val roomNumbers=Regex("""(?:회의실|(?<!볼)룸|\broom)\s*(\d{1,4})(?:호|\b(?!\s*(?:층|F\b)))|(?<!\d)(\d{3,4})호""",RegexOption.IGNORE_CASE).findAll(venueText).map { (it.groupValues[1].ifEmpty { it.groupValues[2] }).toInt() }
-  if(roomNumbers.any { it !in 300..328 && it !in 400..403 })return Decision("review","지원하지 않는 회의실 번호가 있습니다. 다른 장소를 대신 선택하지 말고 행사장의 공식 명칭을 확인하세요.")
+  // Preserve the complete identifier: unknown suffixes cannot fall through to
+  // a different manually selected venue. Explicit floor labels remain floors.
+  val roomTokens=Regex("""(?:회의실|(?<!볼)룸|\brooms?)\s*(?:(?:no\.?|number)\s*)?[:：#№]*\s*(\d+[A-Za-z_]*)(?![\dA-Za-z_])|(?<![\dA-Za-z_])(\d{3,}[A-Za-z_]*)호""",RegexOption.IGNORE_CASE).findAll(venueText)
+   .filterNot { (Regex("""\d+""").matches(it.groupValues[1])&&Regex("""^\s*(?:층|F\b)""",RegexOption.IGNORE_CASE).containsMatchIn(venueText.substring(it.range.last+1)))||Regex("""\d+F""",RegexOption.IGNORE_CASE).matches(it.groupValues[1]) }
+   .map { it.groupValues[1].ifEmpty { it.groupValues[2] } }
+  if(roomTokens.any { !Regex("""[1-9]\d*""").matches(it)||(it.toIntOrNull() ?: -1).let { n->n !in 300..328&&n !in 400..403 } })return Decision("review","지원하지 않거나 불명확한 회의실 번호가 있습니다. 다른 장소를 대신 선택하지 말고 행사장의 공식 명칭을 확인하세요.")
   val matches=destinations.filter { d->d.patterns.any { it.containsMatchIn(venueText) } }
-  val floors=Regex("(?<![\\dB])([1-9][0-9]*)\\s*(?:층|F\\b)",RegexOption.IGNORE_CASE).findAll(venueText).map { it.groupValues[1].toIntOrNull() ?: Int.MAX_VALUE }.toList()
+  // Reject a whole noncanonical floor token instead of matching its tail.
+  val floors=Regex("""(?<![A-Za-z0-9_.])([+\-−－＋]?\s*(?:\d+(?:\s*[.,/]\s*\d*)*|\.\d+)(?:[eE][+\-−－＋]?\d+)?)\s*(?:층|F\b)""",RegexOption.IGNORE_CASE).findAll(venueText).map {
+   val token=it.groupValues[1].trim()
+   if(Regex("""[1-9]\d*""").matches(token)) token.toIntOrNull() ?: Int.MIN_VALUE else Int.MIN_VALUE
+  }.toList()
   if(matches.size==1&&floors.any { it!=matches[0].floor.first().digitToInt() })return Decision("review","안내문에 행사장과 다른 층이 있습니다. 이번에 방문할 행사장과 층이 있는 문장만 남겨주세요. 등록 장소와 다른 일정의 안내는 빼고 다시 확인하세요.")
   if(selectedId!=null&&destinations.none { it.id==selectedId })return Decision("invalid","선택한 장소를 찾을 수 없습니다. 장소를 다시 선택하세요.")
   val d=if(selectedId!=null)destinations.find { it.id==selectedId } else matches.singleOrNull()

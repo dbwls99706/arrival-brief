@@ -1,0 +1,101 @@
+{
+  "version": "1.0.0-rc2",
+  "date": "2026-11-02",
+  "environment": "Cloud Chromium; local managed preview; simulated vehicle state",
+  "scenarios": [
+    "English Room #301 identity preserved; other auditorium selection absent; all checks cannot enable confirm",
+    "Negative floor -3 blocks confirmation after manual auditorium selection and all checks",
+    "Noncanonical basement B03 blocks confirmation after manual auditorium selection and all checks",
+    "Valid auditorium/1.65m/three checks confirms north gate/B3",
+    "Driving hides editing/export and preserves confirmed brief",
+    "Returning to parked requires parking reconfirmation before export",
+    "Conference E official source conflict blocks confirmation",
+    "Closure notice preserved verbatim and blocks confirmation"
+  ],
+  "screenshots": [
+    {
+      "scenario": "initial",
+      "file": "arrival-rc2-final-web-initial.jpg",
+      "bytes": 79090,
+      "sha256": "f8a589d76efd84a723d0ee37e28be8f42b777122c0502b712e6508917251ce81"
+    },
+    {
+      "scenario": "confirmed",
+      "file": "arrival-rc2-final-web-confirmed.jpg",
+      "bytes": 93983,
+      "sha256": "4436dcee45518ff56cf420910f12773b8aea7bebf8a39496d2b010d71ef13366"
+    },
+    {
+      "scenario": "driving",
+      "file": "arrival-rc2-final-web-driving.jpg",
+      "bytes": 47829,
+      "sha256": "1d9ebf861a925d094907108a7ec8dd224fd98db50c768070c255448ad203ec6b"
+    },
+    {
+      "scenario": "conflict",
+      "file": "arrival-rc2-final-web-conflict.jpg",
+      "bytes": 88269,
+      "sha256": "9d607a2a6fd411151bd7711d0366da02144f5791cd9d36ec9748632ffea17dcf"
+    },
+    {
+      "scenario": "closed",
+      "file": "arrival-rc2-final-web-closed.jpg",
+      "bytes": 94189,
+      "sha256": "84c5f8f2118d4e2b2f5ddfec38191df105321b0ee7e78f29bd8b6816648b36de"
+    },
+    {
+      "scenario": "room",
+      "file": "arrival-rc2-web-room-held.jpg",
+      "bytes": 86032,
+      "sha256": "a6b4b4b9c9a4f1d38dc67b9094a5109675cc885f3609f612d6b75b4f63c54850"
+    },
+    {
+      "scenario": "floor",
+      "file": "arrival-rc2-web-floor-held.jpg",
+      "bytes": 81083,
+      "sha256": "c47e7c78df185e64d68e02b4b287952a86919c5f13146bce06a9c6bb8aaccece"
+    },
+    {
+      "scenario": "basement",
+      "file": "arrival-rc2-web-basement-held.jpg",
+      "bytes": 85650,
+      "sha256": "f9b1fda4eee9d71f8375a9e41bd4de10db7ff39e63fda7a35f9e5c7195e0b5e8"
+    },
+    {
+      "scenario": "room-checked",
+      "file": "arrival-rc2-web-room-checked.jpg",
+      "bytes": 85362,
+      "sha256": "79c3aeba5a198547e69674eb7c651686c5825bfac6db24a3c46659fd7be0f861"
+    },
+    {
+      "scenario": "floor-checked",
+      "file": "arrival-rc2-web-floor-checked.jpg",
+      "bytes": 83134,
+      "sha256": "dde34d17a58b6bc88f87954228890579660d1b01d5dd45c2a329fa58341f3a15"
+    },
+    {
+      "scenario": "landing",
+      "file": "arrival-rc2-web-landing.jpg",
+      "bytes": 74698,
+      "sha256": "d610153f308638f79d0d56bc4b96bbf4348dce719b601f2fa93ad240c6665810"
+    }
+  ],
+  "source_sha256": {
+    "dist/arrival/engine.mjs": "3eed7385f221e7098e325a40dda35180d2805cb0a24ff82a0ab74250a693b375",
+    "dist/arrival/visit.mjs": "ebdbbde21ad35e83c4c010f41e9863350d7765919d4a947aec0686e154fa7d3d",
+    "dist/arrival/app.mjs": "8fbd7539c3f51ac18eec536d4949b3b6acc31dd00d8ec7cc2830c0298e63fd63",
+    "dist/arrival/index.html": "97e49ee3c92312c33f705de042ff879d7ea48b59ed9aeff73a2a09d84a060840",
+    "dist/arrival/style.css": "3f2bae2ac41396391248d39db878a9e92bf208db62f4e0ce05d85b16a4939c01"
+  },
+  "limitations": [
+    "Browser simulation does not verify physical vehicle or Pleos service.",
+    "Captures are real UI frames, not a continuous recording."
+  ],
+  "final_capture_after_numeric_floor_fix": true,
+  "landing_source_sha256": {
+    "dist/arrival-brief/index.html": "1bad488e97ee9c712e15b37afccefeab7b9aff28e540f56053c954eb5f399086",
+    "dist/arrival-brief/theme.css": "7633aed1973247237fac7d3c993a0cf7e2f9bc04d178f6b829871b5baa81edc1",
+    "dist/arrival-brief/landing.css": "4015a76655c4a77508c85a268e61d2215d581a1aadadc20b846d775e4c4ecde9",
+    "dist/arrival-brief/landing.mjs": "12f3fc7c0e99d59128ced8ca4396d912ce78c6be6d546546ae9f8a40898b6fed"
+  }
+}

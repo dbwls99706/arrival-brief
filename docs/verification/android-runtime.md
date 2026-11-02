@@ -1,6 +1,37 @@
 # Android 런타임 실행 기록
 
-## 현재 1.0.0-rc1 검증 — 2026-11-02 UTC 갱신
+## 현재 1.0.0-rc2 검증 — 2026-11-02 UTC
+
+최종 서명 release APK는 AOSP Android 9(API 28, x86, 1280×800)에서 기존 최종 RC1(versionCode 10) 위로 업데이트 설치되어 `Success`를 반환했다. RC2(versionCode 11)의 첫 실행은 `Status: ok`와 `Complete`였으며, 기기 안 `base.apk`의 SHA-256은 아래 배포 파일과 일치했다.
+
+| 항목 | 최종 결과 |
+| --- | --- |
+| 버전·파일 크기 | `1.0.0-rc2`, versionCode 11, 6,659,947 bytes |
+| release APK SHA-256 | `779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f` |
+| 빌드 입력 | Android 소스·리소스·설정과 공통 fixture 43개가 성공한 격리 빌드와 작업 소스에서 바이트 일치 |
+| 빌드·정적 검증 | Android 단위 74개, 웹 55개, 공통 판단 사례 387개 통과; Lint 오류·경고 0개 |
+| 실제 앱 UI 검증 | 같은 main 소스의 별도 debug APK에서 고유 시나리오 16개 통과 |
+| 큰 글씨 검증 | 글자 배율 1.3에서 기존 시나리오 6개 반복 통과; 고유 시나리오 수에 중복 합산하지 않음 |
+| 실행 로그 | 앱 관련 FATAL/ANR 시그니처 0건; release 구간의 별도 OS `cmd` SIGSEGV 1건 보존·구분 |
+| 아이콘 | 생성 원본과 패키지 이미지의 디코딩 픽셀 일치; adaptive/round/monochrome 리소스 및 Android 9 시스템 앱정보 화면 표시 확인 |
+
+[현재 release 검증 JSON](release-verification.json), [RC2 런타임 상세](android-runtime-rc2.json), [빌드 입력 해시](build-inputs-rc2.json), [release 설치·실행 로그](android-aosp28-rc2-release.txt), [표준 UI 16개](android-aosp28-rc2-ui-standard.log), [큰 글씨 6개](android-aosp28-rc2-ui-largefont.log), [아이콘 검증](android-aosp28-rc2-icon.json)이 근거다. 서명 release의 설치·실행과 별도 debug instrumentation의 조작 시험을 구분한다. 실제 화면은 [첫 실행](android-aosp28-rc2-release.png), [확정 브리핑](android-aosp28-rc2-confirmed.png), [400dp QR](android-aosp28-rc2-qr.png), [큰 글씨 QR](android-aosp28-rc2-large-qr.png), [시스템 아이콘](android-aosp28-rc2-system-icon.png)에서 확인할 수 있다. Android 13 테마 아이콘의 실제 표시는 검증하지 않았다.
+
+[로그 검토](android-aosp28-rc2-log-review.json)와 [전체 수집 로그](android-aosp28-rc2-logcat.txt)에 OS 명령 프로세스 `cmd`(PID 3164)의 SIGSEGV 1건을 보존했다. 앱 프로세스는 PID 3166으로 구분되며, `am start -W`는 exit 0·`Status: ok`를 반환하고 이후 앱 화면·PID·기기 APK 해시가 확인됐다. 표준·큰 글씨 UI 로그에는 FATAL/ANR 시그니처가 없다. OS 명령 프로세스 오류의 근본 원인은 확정하지 않으며 환경 전체가 충돌 없이 동작했다고 주장하지 않는다. 두 시험이 끝난 뒤 runner가 종료를 요청했으며 에뮬레이터 launcher 종료 코드는 관측값 `-10`으로 기록했다.
+
+영문 `Room 300`, 음수 `-3층`, `B03층`·`B0층` 입력을 수동 오디토리움 선택으로 덮어써 확정할 수 없는지 실제 화면에서 검사했다. [영문 방 번호](android-aosp28-rc2-english-room-manual-blocked.png), [음수 층](android-aosp28-rc2-negative-floor-manual-blocked.png), [B03층](android-aosp28-rc2-basement-b03-manual-blocked.png), [B0층](android-aosp28-rc2-basement-b0-manual-blocked.png)은 각각 원문이 보존된 캡처다. 공통 fixture 387건을 별도 UI 387개나 실차 시험 387회로 계산하지 않는다.
+
+[연속 원본 화면 녹화](android-aosp28-rc2-ui-first180.mp4)는 제한을 180초로 설정했으며 실제 파일 길이는 **179.083833초**다. [30초 설명 영상](../../dist/assets/media/arrival-native-validation.mp4)은 이번 최종 debug UI 캡처 5장을 편집한 영상이다. [영상 메타데이터](../../dist/assets/media/arrival-native-validation.json)의 release/debug APK 해시와 각 `packaged_screenshot` 경로·SHA-256을 실제 파일과 대조했다. 이 영상은 연속 녹화나 Pleos 서비스 성공 영상이 아니다.
+
+QR은 최대 400dp와 화면 크기를 함께 고려해 표시하며 초점 안내를 제공한다. 앱 내부 QR 디코딩 시험과 [별도 두 디코더 검증](completion-qr.md)은 물리 휴대전화 카메라 스캔과 구분한다. 휴대폰 복사본은 앱의 24시간 만료·삭제로 자동 삭제되지 않는다.
+
+### Pleos: RC2 설치·SDK 응답은 미검증
+
+이 RC2 APK를 Pleos에 설치하거나 실행한 성공 기록은 없다. [2026-11-02 추가 진단](completion-pleos.md)과 [상세 JSON](completion-pleos.json)은 공식 이미지의 별도 쓰기 가능한 clone을 4 vCPU·4GiB·소프트웨어 렌더링으로 480초 한도(정리 포함 481.22초) 실행한 결과다. package/activity 서비스까지 도달했으나 `sys.boot_completed=1`이 확인되지 않아 APK 설치를 시도하지 않았다. 요청한 timeout multiplier와 Watchdog 설정은 적용되지 않았으며, 원래 AVD와 시스템 이미지는 보존됐다. 이 진단의 시작 시점 APK 표시는 RC1이며 RC2 검증으로 승계하지 않는다.
+
+아래 보존된 RC1의 20분 시도 역시 앱 설치 전에 OS Watchdog으로 차단된 기록이다. 현재 환경에는 GPU/KVM이 없지만 이를 유일한 실패 원인으로 확정하지 않는다. 실제 NaviHelper 목적지 콜백, CarUxRestrictions 전환, 실차 동작과 물리 휴대전화 QR 스캔은 미검증이다. AOSP는 비차량 데모이며 CPU 에뮬레이션의 시간 기록은 성능 측정이 아니다.
+
+## 보존된 1.0.0-rc1 검증 — 2026-11-02 UTC 기록
 
 최종 release APK는 AOSP Android 9(API 28, x86, 1280×800)에서 원래 서명키의 이전 후보 위로 업데이트 설치되어 `Success`를 반환했고, 첫 실행에서 `Status: ok`와 `Complete`를 확인했다. 기기 안 `base.apk`의 SHA-256도 아래 배포 파일과 일치했다. 이 구간의 실행일은 2026-11-01 UTC다.
 
@@ -14,9 +45,9 @@
 | 실행 로그 | release 첫 실행·표준 UI·큰 글씨 UI의 수집 로그에서 FATAL/ANR 시그니처 0건 |
 | 새 아이콘 | 패키지 안 이미지의 디코딩 픽셀이 생성 원본과 일치; adaptive/round/monochrome 리소스 포함; Android 9 시스템 앱정보 화면의 표시 확인 |
 
-[최종 빌드·release 검증 JSON](release-verification.json), [런타임 상세 JSON](android-runtime-rc1.json), [빌드 입력 43개 해시](build-inputs.json), [아이콘 검증](android-aosp28-rc1-icon.json)이 근거다. 실제 화면은 [첫 실행](android-aosp28-rc1-release.png), [확정 브리핑](android-aosp28-rc1-confirmed.png), [자동으로 전체 표시된 QR](android-aosp28-rc1-qr.png), [큰 글씨 QR](android-aosp28-rc1-large-qr.png), [시스템 아이콘](android-aosp28-rc1-system-icon.png)에서 확인할 수 있다. Android 13 테마 아이콘의 실제 표시는 검증하지 않았다.
+[최종 빌드·release 검증 JSON](release-verification-rc1.json), [런타임 상세 JSON](android-runtime-rc1.json), [빌드 입력 43개 해시](build-inputs-rc1.json), [아이콘 검증](android-aosp28-rc1-icon.json)이 근거다. 실제 화면은 [첫 실행](android-aosp28-rc1-release.png), [확정 브리핑](android-aosp28-rc1-confirmed.png), [자동으로 전체 표시된 QR](android-aosp28-rc1-qr.png), [큰 글씨 QR](android-aosp28-rc1-large-qr.png), [시스템 아이콘](android-aosp28-rc1-system-icon.png)에서 확인할 수 있다. Android 13 테마 아이콘의 실제 표시는 검증하지 않았다.
 
-[연속 원본 화면 녹화](android-aosp28-rc1-ui-first180.mp4)는 녹화 제한을 180초로 설정했으며 실제 파일 길이는 **178.357422초**다. [30초 설명 영상](../../dist/assets/media/arrival-native-validation.mp4)은 최종 debug UI 캡처 5장을 편집한 영상이며 연속 녹화가 아니다. [편집 영상 메타데이터](../../dist/assets/media/arrival-native-validation.json)의 각 화면 경로·SHA-256은 제출 폴더의 실제 캡처와 일치한다.
+[연속 원본 화면 녹화](android-aosp28-rc1-ui-first180.mp4)는 녹화 제한을 180초로 설정했으며 실제 파일 길이는 **178.357422초**다. [30초 설명 영상](../../dist/assets/media/arrival-native-validation-rc1.mp4)은 최종 debug UI 캡처 5장을 편집한 영상이며 연속 녹화가 아니다. [편집 영상 메타데이터](../../dist/assets/media/arrival-native-validation-rc1.json)의 각 화면 경로·SHA-256은 제출 폴더의 실제 캡처와 일치한다.
 
 ### 최종 Pleos 재시도: 앱 설치 전 OS 부팅 차단
 

@@ -2,7 +2,9 @@
 
 행사 안내문에서 세부 장소를 확인하고 출발 전에 진입문·추천 주차를 준비하는 차량용 앱입니다. 사용자가 직접 적은 주차 메모를 같은 기기에서 다시 볼 수 있습니다. 초기 대상은 지원하는 코엑스 삼성동 회의실의 행사에 처음 차량으로 방문하는 운전자입니다. 전시장 Hall A/B/C/D는 현재 지원하지 않습니다.
 
-현재 소스는 `1.0.0-rc1`입니다. 정식 출시·실차 적합성 인증을 뜻하지 않는 검증 후보이며, APK와 런타임 결과는 아래 검증 자료를 기준으로 구분합니다.
+현재 소스는 `1.0.0-rc2`입니다. 정식 출시·실차 적합성 인증을 뜻하지 않는 검증 후보이며, APK와 런타임 결과는 아래 검증 자료를 기준으로 구분합니다.
+
+RC2에서는 영문 회의실 번호와 비정상 층 표기를 다른 장소의 수동 선택으로 덮어쓸 수 없도록 보완했습니다. 주차 메모의 입력 상한을 웹과 Android에서 맞추고, 긴 메모 QR의 문구를 줄여 원문과 저장 시각을 유지하면서 화면 여유에 맞춰 크기를 조절합니다.
 
 ## 사용 흐름
 
@@ -23,7 +25,7 @@
 
 입력은 개방된 준비 영역, 결과는 짙은 도착 패스로 구분합니다. 차량·루프박스 높이 그림, 진입문→주차→행사장의 안내 관계도, 확인/보류 상태의 색상을 사용합니다. 관계도는 실제 지도가 아니며 확인 전에는 진입문·주차 값을 보여주지 않습니다. 주행 화면에서는 확정한 핵심 정보만 표시하고 그림과 모션을 숨깁니다.
 
-소개 첫 화면은 오디토리움(북문·B3 블루존)과 스튜디오159(동문·B2 퍼플존) 예시를 직접 전환하고, 공식 추천과 사용자가 적은 주차 위치를 나눠 보여줍니다. [설계 근거](research/design-reference-2026-11-01.md), [독립 모의 검토 기록](docs/design-review.md), [Android 확정 화면](docs/verification/android-aosp28-rc1-confirmed.png), [Android 메모 QR](docs/verification/android-aosp28-rc1-qr.png)를 제공합니다. Android 캡처는 일반 Android의 debug 자동 UI 시험에서 확보한 화면입니다. 정확한 빌드와 시험 결과는 런타임 기록을 따르며 실제 Pleos 서비스 화면으로 표시하지 않습니다. 실제 사용자 연구나 공식 심사 결과가 아닙니다.
+소개 첫 화면은 오디토리움(북문·B3 블루존)과 스튜디오159(동문·B2 퍼플존) 예시를 직접 전환하고, 공식 추천과 사용자가 적은 주차 위치를 나눠 보여줍니다. [설계 근거](research/design-reference-2026-11-01.md), [독립 모의 검토 기록](docs/design-review.md), [Android 확정 화면](docs/verification/android-aosp28-rc2-confirmed.png), [Android 메모 QR](docs/verification/android-aosp28-rc2-qr.png)를 제공합니다. Android 캡처는 일반 Android의 debug 자동 UI 시험에서 확보한 화면입니다. 정확한 빌드와 시험 결과는 런타임 기록을 따르며 실제 Pleos 서비스 화면으로 표시하지 않습니다. 실제 사용자 연구나 공식 심사 결과가 아닙니다.
 
 ## 실행
 
@@ -60,17 +62,17 @@ Windows는 `gradlew.bat`를 사용합니다. SDK 위치와 release 서명 환경
 
 | 검사 | 확인한 결과 | 근거 |
 | --- | --- | --- |
-| 규칙·상태 시험 | Android 73개·웹 50개 통과, 공통 판단 입력 287건 | [시험·빌드 기록](docs/verification/release-verification.json) |
-| 배포 APK | `1.0.0-rc1`, 6,658,807바이트, 서명 검증 | [APK 정보](apk/README.md) |
+| 규칙·상태 시험 | Android 74개·웹 55개 통과, 공통 판단 입력 387건 | [시험·빌드 기록](docs/verification/release-verification.json) |
+| 배포 APK | `1.0.0-rc2`, 6,659,947바이트, 서명 검증 | [APK 정보](apk/README.md) |
 | Android Lint | 오류 0개·경고 0개 | [빌드 검사](docs/ANDROID_BUILD.md) |
-| 일반 Android 9 | 서명 release APK 설치·실행과 기기 내 SHA-256 일치 | [런타임 기록](docs/verification/android-runtime.md) |
-| Android UI | 별도 debug APK의 표준 UI 13개·글자 크기 1.3배 반복 6개 통과 | [UI 원시 로그](docs/verification/android-aosp28-rc1-ui-standard.log) |
+| 일반 Android 9 | 서명 RC2 release 설치·실행과 기기 내 SHA-256 일치 확인 | [런타임 기록](docs/verification/android-runtime.md) |
+| Android UI | 별도 debug APK의 표준 UI 16개·글자 크기 1.3배 반복 6개 통과 | [런타임 기록](docs/verification/android-runtime.md) |
 | 실제 Pleos 연동 | 환경 부팅 차단으로 앱 설치·SDK 응답·차량 UX 제한 전환은 미검증 | [환경별 결과](docs/verification/release-verification.json) |
 | 디자인·심사 수정 | 독립 검토의 발견 사항·수정·남은 검증을 회차별 기록 | [검증 기록](docs/HYUNDAI_VERIFICATION.md) |
 
 시험 개수는 실제 실행 결과로만 기록하며 공통 입력 사례를 시험 수에 중복 합산하지 않습니다. 일반 Android 데모 실행은 Pleos 서비스 연동이나 실차 성능을 입증하지 않습니다.
 
-[도착 준비 영상](dist/assets/media/arrival-reel.mp4)과 [자료 상충·운영 제한 영상](dist/assets/media/arrival-confirm-reel.mp4)은 최신 후보의 웹 실행을 보여줍니다. 두 웹 영상은 `1.0.0-rc1`의 실제 화면 캡처를 편집한 자료입니다. 각각 30초·1280×720이며 도착 준비·확정·주행 시뮬레이션, 공식 자료 상충과 운영 제한에 따른 보류를 보여줍니다. 웹의 차량 상태는 시뮬레이션이며 연속 녹화·실차 촬영·Pleos 서비스 응답의 증거가 아닙니다.
+[도착 준비 영상](dist/assets/media/arrival-reel.mp4)과 [자료 상충·운영 제한 영상](dist/assets/media/arrival-confirm-reel.mp4)은 `1.0.0-rc2` 웹 실행 화면의 캡처 편집본입니다. 각각 30초·1280×720이며 도착 준비·확정·주행 시뮬레이션, 공식 자료 상충과 운영 제한에 따른 보류를 보여줍니다. 영상의 버전·캡처 시각·소스 해시는 각 metadata를 따릅니다. 웹의 차량 상태는 시뮬레이션이며 연속 녹화·실차 촬영·Pleos 서비스 응답의 증거가 아닙니다.
 
 [Android 실행 영상](dist/assets/media/arrival-native-validation.mp4)는 현재 후보의 일반 Android debug 자동 UI 시험에서 얻은 실제 화면 5장면을 편집한 30초 자료입니다. 확정·자료 상충·메모 복구·QR·주행 잠금을 보여줍니다. 연속 화면 녹화, Pleos 서비스 성공, 휴대폰 광학 스캔의 증거는 아닙니다. APK·캡처의 정확한 버전과 해시는 영상 metadata와 런타임 기록을 따릅니다.
 
@@ -94,7 +96,9 @@ python scripts/check-paths.py
 
 [scripts/package-submission.py](scripts/package-submission.py)는 소스·APK·영상·검증 기록을 묶는 도구입니다. 성공한 빌드에서 기록한 입력 해시와 현재·ZIP 소스를 대조해 이전 APK와 수정된 소스가 섞인 포장을 중단합니다. 바이트 단위 재현 빌드라는 뜻은 아닙니다. 접수양식·동의서·연락처·서명 이미지와 서명 개인키는 저장소와 검토용 ZIP에 포함하지 않습니다. 공식 접수양식과 저장소 링크는 운영 접수 이메일로 전달합니다.
 
-`submission/ArrivalBrief-review-1.0.0-rc1.zip`은 새 화면과 검증 기록을 포함한 현재 검토본입니다. APK는 ZIP의 `dist/downloads/ArrivalBrief_release.apk`에 한 번만 포함하며, 178.357초 원본 영상은 전체 운영 ZIP과 공개 저장소 개별 파일로 보존합니다. 중복 정리와 경로·해시 내역은 ZIP의 `PACKAGE-CONTENTS.md` 및 manifest에 기록합니다. 이전 ZIP은 당시 소스와 산출물을 보존한 기록입니다. 현재 공개 저장소에는 별도 심사 계정 초대가 필요하지 않습니다. 제출 경로는 [운영용 제출 목록](submission/ArrivalBrief-operator-checklist.md)을 기준으로 확인합니다.
+`submission/ArrivalBrief-review-1.0.0-rc2.zip`은 새 화면과 검증 기록을 포함한 현재 검토본입니다. APK는 ZIP의 `dist/downloads/ArrivalBrief_release.apk`에 한 번만 포함합니다. 이전 캡처·원본 녹화는 전체 운영 ZIP의 `evidence-history/`와 공개 저장소 개별 파일로 보존하고, 경로·해시 내역은 검토 ZIP의 `PACKAGE-CONTENTS.md` 및 manifest에 기록합니다. 이전 ZIP은 당시 소스와 산출물을 보존한 기록입니다. 현재 공개 저장소에는 별도 심사 계정 초대가 필요하지 않습니다. 제출 경로는 [운영용 제출 목록](submission/ArrivalBrief-operator-checklist.md)을 기준으로 확인합니다.
+
+1차 접수는 서명한 접수양식이 필수이며, 영상·GitHub·APK는 선택 가산점 자료입니다. 2차 PT 전 실제 동작 앱과 에뮬레이터 또는 기기 시연이 필요합니다. [제출 요건 점검](docs/verification/completion-submission-audit.md)에서 접수 준비와 후속 차량 검증을 구분합니다.
 
 ## 관련 문서
 

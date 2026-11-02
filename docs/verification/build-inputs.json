@@ -1,17 +1,19 @@
 {
-  "version": "1.0.0-rc1",
-  "apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
-  "evidence": "Build inputs from the successful isolated checkout matched the working tree byte-for-byte. This is not a claim of byte-reproducible APK builds.",
+  "version": "1.0.0-rc2",
+  "version_code": 11,
+  "apk_sha256": "779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f",
   "source_snapshot_match": true,
-  "scope": "Android source, resources, Gradle configuration/wrapper and shared decision fixture; excludes build caches and README documentation.",
+  "source_input_count": 43,
+  "evidence": "All 43 inputs in the successful isolated checkout match the working tree byte-for-byte. This does not claim byte-reproducible APK builds.",
+  "scope": "Android source, resources, Gradle configuration/wrapper and shared decision fixture. Excludes build caches, README documentation and web JavaScript/test source.",
   "files": [
     {
       "path": "android/app/build.gradle.kts",
-      "sha256": "c2534f2bc24acb949e42135c1813db5327f7e3fc08bfad7c8ab1ac55945f5847"
+      "sha256": "27a1857f26c8225bfb43a9e36aeb7d1dc4a55aec593911ac1be7427853f65253"
     },
     {
       "path": "android/app/src/androidTest/java/studio/ax/arrival/VisitFlowInstrumentedTest.kt",
-      "sha256": "83f05e058e9e3f47943e76b69a9dccf37ac6479650d3d353dd75b2c76d08abb8"
+      "sha256": "48c201bb9c0147e51a7b257040db67a42fb9b9b242a4452ccfe1519a97919053"
     },
     {
       "path": "android/app/src/main/AndroidManifest.xml",
@@ -31,7 +33,7 @@
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/BriefEngine.kt",
-      "sha256": "b620402d2ca0563c9e61c6eb5159d5de50a0c32e185052d59c91cc584585333f"
+      "sha256": "3b471854725bc3bb270e80891f88f8dd2962519abbe19ee61e89d40d90a381da"
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/BriefSession.kt",
@@ -39,7 +41,7 @@
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/MainActivity.kt",
-      "sha256": "6a1957901d7f0755a14ededf1e05744449e27c07084003f2bdfd0b8370ecc0ac"
+      "sha256": "d6ea7c73c1051209a1722c7700ce40f6183eeb08743c2f6d8dc9336d4e42b71f"
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/NavigationCheck.kt",
@@ -51,7 +53,7 @@
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/ParkingMemoQr.kt",
-      "sha256": "55080b881164e0030c93d0cca66ae1b273cbc4caa5971cee9c76f3646e7ada0c"
+      "sha256": "59a1b3808f059bdf94cec6c9168fd2b1afebd5e58f88ae2f94b2c1af328e796b"
     },
     {
       "path": "android/app/src/main/java/studio/ax/arrival/ParkingMemoStore.kt",
@@ -135,7 +137,7 @@
     },
     {
       "path": "android/app/src/test/java/studio/ax/arrival/ParkingMemoQrTest.kt",
-      "sha256": "7341be610a3bf2ebc8b0a901ef7b1e0e718ba1775fc968ba4746e7232ec3332d"
+      "sha256": "7a1716174851eedebaa0e3f8316c9230abd854d0b60406a625d358d5b704f45c"
     },
     {
       "path": "android/app/src/test/java/studio/ax/arrival/RecentDestinationTest.kt",
@@ -175,7 +177,7 @@
     },
     {
       "path": "tests/decision-cases.tsv",
-      "sha256": "9674f8e78b547a6e27a1eaf0a8b1045cc802b5f98990ac208ef8249a279f6f0e"
+      "sha256": "d55b1c358b017e01e28a39eb35ef83156d25668fe7b934952cdddb85bc489dc2"
     }
   ]
 }

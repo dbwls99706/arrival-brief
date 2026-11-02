@@ -3,7 +3,8 @@ export const PARKING_TTL_MS=24*60*60*1000;
 export function createParkingMemo(memo,now=Date.now()){
  if(typeof memo!=='string'||!Number.isSafeInteger(now)||now<0)throw new TypeError('invalid memo');
  const value=memo.trim();
- if(!value||[...value].length>64||/[\u0000-\u001f\u007f]/.test(value))throw new TypeError('invalid memo');
+ // Match HTML maxlength and Android's LengthFilter: 64 UTF-16 code units.
+ if(!value||value.length>64||/[\u0000-\u001f\u007f]/.test(value))throw new TypeError('invalid memo');
  return {schema:1,memo:value,savedAt:now};
 }
 export function inspectParkingMemo(raw,now=Date.now()){

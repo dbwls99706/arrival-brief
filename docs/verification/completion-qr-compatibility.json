@@ -1,0 +1,463 @@
+{
+  "schema_version": 1,
+  "decision": "Keep compact candidate B. Candidate A improves the two sampled save-time cases but adds four failures in the larger fixed-time baseline; no universally perfect decoder interoperability is claimed.",
+  "production_payload_format": "Arrival Brief\n주차 메모: {memo}\n{saved timestamp in KST}\n휴대폰 복사본은 자동 삭제되지 않음.",
+  "production_source_sha256": "59a1b3808f059bdf94cec6c9168fd2b1afebd5e58f88ae2f94b2c1af328e796b",
+  "additional_save_time_probe": {
+    "sizes": [
+      320
+    ],
+    "images": 20,
+    "decoder_comparisons": 40,
+    "pass": 38,
+    "results": [
+      {
+        "saved_at": 1793574000000,
+        "fixture": "typical_ko-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793574000000,
+        "fixture": "korean_64-320",
+        "match": {
+          "opencv": false,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793574000000,
+        "fixture": "ascii_64-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793574000000,
+        "fixture": "emoji_32_utf16_64-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793574000000,
+        "fixture": "mixed_symbols-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793574000000,
+        "fixture": "combining_marks-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793574000000,
+        "fixture": "varied_korean_64-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793574000000,
+        "fixture": "long_location_64-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793574000000,
+        "fixture": "varied_emoji_32_utf16_64-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793574000000,
+        "fixture": "combining_64_utf16-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793660399000,
+        "fixture": "typical_ko-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793660399000,
+        "fixture": "korean_64-320",
+        "match": {
+          "opencv": false,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793660399000,
+        "fixture": "ascii_64-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793660399000,
+        "fixture": "emoji_32_utf16_64-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793660399000,
+        "fixture": "mixed_symbols-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793660399000,
+        "fixture": "combining_marks-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793660399000,
+        "fixture": "varied_korean_64-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793660399000,
+        "fixture": "long_location_64-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793660399000,
+        "fixture": "varied_emoji_32_utf16_64-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      },
+      {
+        "saved_at": 1793660399000,
+        "fixture": "combining_64_utf16-320",
+        "match": {
+          "opencv": true,
+          "jsqr": true
+        }
+      }
+    ],
+    "scope": "Two deterministic save times and the same ten memo fixtures; no transforms. The only failure was OpenCV on 64 repeated 한 characters. jsQR preserved every payload."
+  },
+  "additional_400px_probe": {
+    "fixture_parameters": {
+      "record_saved_at_ms": 1793574000000,
+      "sizes": [
+        400
+      ],
+      "stress_enabled": false
+    },
+    "summary": {
+      "production_fixtures": 10,
+      "baseline_comparisons": 20,
+      "baseline_pass": 19,
+      "stress_comparisons": 0,
+      "stress_pass": 0,
+      "stress_failed_cases": 0,
+      "incorrect_nonempty_decodes": 0,
+      "screenshot_comparisons": 4,
+      "all_quiet_zones_at_least_four_modules": true
+    },
+    "results": [
+      {
+        "fixture": "typical_ko-400",
+        "transform": "original",
+        "pixels": [
+          400,
+          400
+        ],
+        "matches": {
+          "opencv": true,
+          "jsqr": true
+        },
+        "incorrect_nonempty": []
+      },
+      {
+        "fixture": "korean_64-400",
+        "transform": "original",
+        "pixels": [
+          400,
+          400
+        ],
+        "matches": {
+          "opencv": false,
+          "jsqr": true
+        },
+        "incorrect_nonempty": []
+      },
+      {
+        "fixture": "ascii_64-400",
+        "transform": "original",
+        "pixels": [
+          400,
+          400
+        ],
+        "matches": {
+          "opencv": true,
+          "jsqr": true
+        },
+        "incorrect_nonempty": []
+      },
+      {
+        "fixture": "emoji_32_utf16_64-400",
+        "transform": "original",
+        "pixels": [
+          400,
+          400
+        ],
+        "matches": {
+          "opencv": true,
+          "jsqr": true
+        },
+        "incorrect_nonempty": []
+      },
+      {
+        "fixture": "mixed_symbols-400",
+        "transform": "original",
+        "pixels": [
+          400,
+          400
+        ],
+        "matches": {
+          "opencv": true,
+          "jsqr": true
+        },
+        "incorrect_nonempty": []
+      },
+      {
+        "fixture": "combining_marks-400",
+        "transform": "original",
+        "pixels": [
+          400,
+          400
+        ],
+        "matches": {
+          "opencv": true,
+          "jsqr": true
+        },
+        "incorrect_nonempty": []
+      },
+      {
+        "fixture": "varied_korean_64-400",
+        "transform": "original",
+        "pixels": [
+          400,
+          400
+        ],
+        "matches": {
+          "opencv": true,
+          "jsqr": true
+        },
+        "incorrect_nonempty": []
+      },
+      {
+        "fixture": "long_location_64-400",
+        "transform": "original",
+        "pixels": [
+          400,
+          400
+        ],
+        "matches": {
+          "opencv": true,
+          "jsqr": true
+        },
+        "incorrect_nonempty": []
+      },
+      {
+        "fixture": "varied_emoji_32_utf16_64-400",
+        "transform": "original",
+        "pixels": [
+          400,
+          400
+        ],
+        "matches": {
+          "opencv": true,
+          "jsqr": true
+        },
+        "incorrect_nonempty": []
+      },
+      {
+        "fixture": "combining_64_utf16-400",
+        "transform": "original",
+        "pixels": [
+          400,
+          400
+        ],
+        "matches": {
+          "opencv": true,
+          "jsqr": true
+        },
+        "incorrect_nonempty": []
+      }
+    ]
+  },
+  "rejected_candidate_a": {
+    "payload_format": "Arrival Brief\n주차: {memo}\n{saved timestamp in KST}\n휴대폰 복사본 자동 삭제 안 됨",
+    "candidate_source_sha256": "5424435f14ed935f4f7944881ba64c5f06db24c8e61394e1598a8fb2c347be06",
+    "runs": [
+      {
+        "run": "main",
+        "fixture_parameters": {
+          "record_saved_at_ms": 1800000000000,
+          "sizes": [
+            256,
+            320,
+            512
+          ],
+          "stress_enabled": true
+        },
+        "summary": {
+          "production_fixtures": 30,
+          "baseline_comparisons": 60,
+          "baseline_pass": 56,
+          "stress_comparisons": 420,
+          "stress_pass": 360,
+          "stress_failed_cases": 47,
+          "incorrect_nonempty_decodes": 0,
+          "screenshot_comparisons": 4,
+          "all_quiet_zones_at_least_four_modules": true
+        },
+        "baseline_failures": [
+          {
+            "fixture": "varied_korean_64-256",
+            "transform": "original",
+            "pixels": [
+              256,
+              256
+            ],
+            "matches": {
+              "opencv": false,
+              "jsqr": true
+            },
+            "incorrect_nonempty": []
+          },
+          {
+            "fixture": "combining_64_utf16-256",
+            "transform": "original",
+            "pixels": [
+              256,
+              256
+            ],
+            "matches": {
+              "opencv": false,
+              "jsqr": true
+            },
+            "incorrect_nonempty": []
+          },
+          {
+            "fixture": "combining_64_utf16-320",
+            "transform": "original",
+            "pixels": [
+              320,
+              320
+            ],
+            "matches": {
+              "opencv": false,
+              "jsqr": true
+            },
+            "incorrect_nonempty": []
+          },
+          {
+            "fixture": "combining_64_utf16-512",
+            "transform": "original",
+            "pixels": [
+              512,
+              512
+            ],
+            "matches": {
+              "opencv": false,
+              "jsqr": true
+            },
+            "incorrect_nonempty": []
+          }
+        ]
+      },
+      {
+        "run": "time1",
+        "fixture_parameters": {
+          "record_saved_at_ms": 1793574000000,
+          "sizes": [
+            320
+          ],
+          "stress_enabled": false
+        },
+        "summary": {
+          "production_fixtures": 10,
+          "baseline_comparisons": 20,
+          "baseline_pass": 20,
+          "stress_comparisons": 0,
+          "stress_pass": 0,
+          "stress_failed_cases": 0,
+          "incorrect_nonempty_decodes": 0,
+          "screenshot_comparisons": 4,
+          "all_quiet_zones_at_least_four_modules": true
+        },
+        "baseline_failures": []
+      },
+      {
+        "run": "time2",
+        "fixture_parameters": {
+          "record_saved_at_ms": 1793660399000,
+          "sizes": [
+            320
+          ],
+          "stress_enabled": false
+        },
+        "summary": {
+          "production_fixtures": 10,
+          "baseline_comparisons": 20,
+          "baseline_pass": 20,
+          "stress_comparisons": 0,
+          "stress_pass": 0,
+          "stress_failed_cases": 0,
+          "incorrect_nonempty_decodes": 0,
+          "screenshot_comparisons": 4,
+          "all_quiet_zones_at_least_four_modules": true
+        },
+        "baseline_failures": []
+      }
+    ]
+  },
+  "reproduction": "scripts/verify-qr-handoff.py supports --record-time, --sizes, and --no-stress. Keep the pinned decoder file and dependencies in the main QR report.",
+  "limits": [
+    "A decode returning no result is not the same as an incorrect nonempty decode.",
+    "All additional B-probe failures returned no result in OpenCV; jsQR matched the original source payload.",
+    "Lower QR byte count did not monotonically improve every observed decoding pattern.",
+    "These are software image tests, not physical phone camera or vehicle-display validation."
+  ]
+}

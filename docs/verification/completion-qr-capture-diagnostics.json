@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "scope": "A single diagnostic comparison on each final raw screenshot: whole image, exact 400px QR area, and the same area with 40px white padding. No original QR pixels were changed. Padded results are not raw-app or physical-camera results.",
+  "related_main_report": "completion-qr.json",
+  "release_apk_sha256": "779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f",
+  "capture_build_scope": "Ordinary AOSP debug UI tests using the same frozen main source as the final RC2 release; not a Pleos or physical-vehicle capture.",
+  "versions": {
+    "opencv": "4.12.0",
+    "numpy": "2.2.6",
+    "pillow": "11.3.0",
+    "jsqr": "1.4.0"
+  },
+  "decoder_bundle": {
+    "sha256": "3325b0888fa4745c4e6940897d8c4f426fbaae76901fcbfe1871a04e90a51655",
+    "source": "https://github.com/cozmo/jsQR/blob/8e6a036beafa7053dd44b1b76ac578d22b1b3311/dist/jsQR.js",
+    "license": "Apache-2.0",
+    "included_in_app": false
+  },
+  "records": [
+    {
+      "screenshot_path": "docs/verification/android-aosp28-rc2-qr.png",
+      "screenshot_sha256": "050b9260230881ed292371b60d8ab745b8a25dd7064ea832902be4667244d761",
+      "crop_box_ltrb": [
+        440,
+        102,
+        840,
+        502
+      ],
+      "crop_pixels": [
+        400,
+        400
+      ],
+      "crop_rgb_sha256": "49853e27cf162af7e229d8e1f90b320910ff2f20887cf16078b280f04c7c6d15",
+      "padded_pixels": [
+        480,
+        480
+      ],
+      "padded_inner_pixels_unchanged": true,
+      "decoded_observations": {
+        "whole_screenshot": {
+          "opencv": null,
+          "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 11:19:16 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+        },
+        "qr_400px_crop": {
+          "opencv": null,
+          "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 11:19:16 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+        },
+        "qr_400px_crop_plus_40px_white_border": {
+          "opencv": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 11:19:16 KST\n휴대폰 복사본은 자동 삭제되지 않음.",
+          "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 11:19:16 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+        }
+      },
+      "physical_camera_test": false,
+      "all_nonempty_results_match_current_source_payload": true
+    },
+    {
+      "screenshot_path": "docs/verification/android-aosp28-rc2-large-qr.png",
+      "screenshot_sha256": "a58702388dc418b29967da281b695f7f0241e0cac312d9bd0e6a2095d76b1448",
+      "crop_box_ltrb": [
+        440,
+        90,
+        840,
+        490
+      ],
+      "crop_pixels": [
+        400,
+        400
+      ],
+      "crop_rgb_sha256": "68f3f5bfb37b7df7a7c3b04670cb0933ded177709c1c0d45753c5914cde09907",
+      "padded_pixels": [
+        480,
+        480
+      ],
+      "padded_inner_pixels_unchanged": true,
+      "decoded_observations": {
+        "whole_screenshot": {
+          "opencv": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 11:25:02 KST\n휴대폰 복사본은 자동 삭제되지 않음.",
+          "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 11:25:02 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+        },
+        "qr_400px_crop": {
+          "opencv": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 11:25:02 KST\n휴대폰 복사본은 자동 삭제되지 않음.",
+          "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 11:25:02 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+        },
+        "qr_400px_crop_plus_40px_white_border": {
+          "opencv": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 11:25:02 KST\n휴대폰 복사본은 자동 삭제되지 않음.",
+          "jsqr": "Arrival Brief\n주차 메모: B3 블루존 E12\n2026-11-02 11:25:02 KST\n휴대폰 복사본은 자동 삭제되지 않음."
+        }
+      },
+      "physical_camera_test": false,
+      "all_nonempty_results_match_current_source_payload": true
+    }
+  ],
+  "summary": {
+    "whole_screenshot_pass": 3,
+    "whole_screenshot_comparisons": 4,
+    "qr_crop_pass": 3,
+    "qr_crop_comparisons": 4,
+    "padded_diagnostic_pass": 4,
+    "padded_diagnostic_comparisons": 4,
+    "incorrect_nonempty_decodes": 0
+  },
+  "interpretation": "jsQR decoded both original app screenshots exactly. OpenCV returned no text for the standard screenshot and its 400px crop, but decoded the identical QR pixels when surrounded by 40px additional white padding. This demonstrates sensitivity in the observed OpenCV pipeline; it does not establish a universal root cause or physical scanner success.",
+  "provenance": "Decoder observations were recorded from the one diagnostic command following the failed strict run; padding pixel identity was verified without changing or repeating those decoder outcomes."
+}

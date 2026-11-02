@@ -32,16 +32,16 @@ class ParkingMemoQrTest {
 
     @Test fun textPayloadHasOnlyMemoTimestampAndCopyNotice() {
         val text = ParkingMemoQr.payload(memo, now)!!
-        assertTrue(text.startsWith("Arrival Brief\n주차 위치: B3 블루존 E12\n저장 시각: "))
+        assertTrue(text.startsWith("Arrival Brief\n주차 메모: B3 블루존 E12\n"))
         assertTrue(text.contains("KST"))
-        assertTrue(text.endsWith("휴대폰 복사본은 자동 삭제되지 않습니다."))
+        assertTrue(text.endsWith("휴대폰 복사본은 자동 삭제되지 않음."))
         assertFalse(text.contains("http"))
         assertFalse(text.contains("geo:"))
         assertEquals(text, ParkingMemoQr.payload(memo, now + 1000))
     }
 
     @Test fun unicodePayloadRoundTripsThroughRenderedPixels() {
-        for (text in listOf("B3 블루존 E12", "한".repeat(64), "B2 🅿️ 기둥 12", "A".repeat(64))) {
+        for (text in listOf("B3 블루존 E12", "한".repeat(64), "B2 🅿️ 기둥 12", "🚗".repeat(32), "A".repeat(64))) {
             val record = ParkingMemo(text, now)
             for (size in listOf(256, 512)) {
                 val matrix = ParkingMemoQr.encode(record, now, size)!!
@@ -52,5 +52,15 @@ class ParkingMemoQrTest {
                 assertEquals(matrix, ParkingMemoQr.encode(record, now, size))
             }
         }
+    }
+
+    @Test fun maximumKoreanMemoKeepsQrPayloadCompactWithoutLosingContent() {
+        val longMemo = "한".repeat(64)
+        val text = ParkingMemoQr.payload(ParkingMemo(longMemo, now), now)!!
+        assertTrue(text.contains(longMemo))
+        assertTrue(text.contains("2027-01-15 17:00:00 KST"))
+        // The earlier 351-byte payload failed one independent decoder even before distortion.
+        assertTrue(text.toByteArray(Charsets.UTF_8).size <= 300)
+        assertNull(ParkingMemoQr.payload(ParkingMemo("🚗".repeat(33), now), now))
     }
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="studio.ax.arrival.BriefEngineTest" tests="42" skipped="0" failures="0" errors="0" timestamp="2026-11-02T02:09:30.282Z" hostname="33b9bcea6b8b" time="0.54">
+  <properties/>
+  <testcase name="invalidSelectionCannotFallBackToGuessedDestination" classname="studio.ax.arrival.BriefEngineTest" time="0.122"/>
+  <testcase name="eventLifecycleNeedsReviewEvenWithKnownRoom" classname="studio.ax.arrival.BriefEngineTest" time="0.036"/>
+  <testcase name="subjectlessCompletionKeepsOriginalMeaning" classname="studio.ax.arrival.BriefEngineTest" time="0.021"/>
+  <testcase name="originalKnownZonesAndGatesCannotBypassComparison" classname="studio.ax.arrival.BriefEngineTest" time="0.04"/>
+  <testcase name="politeParkingClausesKeepTheirOriginalWords" classname="studio.ax.arrival.BriefEngineTest" time="0.015"/>
+  <testcase name="unboundedFloorNumbersCannotDisappear" classname="studio.ax.arrival.BriefEngineTest" time="0.004"/>
+  <testcase name="facilityOperatingStatusIsPreservedAndHeldRegardlessOfPolarity" classname="studio.ax.arrival.BriefEngineTest" time="0.012"/>
+  <testcase name="sourceConflictCannotBeExported" classname="studio.ax.arrival.BriefEngineTest" time="0.004"/>
+  <testcase name="politeParkingCannotHideUnknownWordsOrConflicts" classname="studio.ax.arrival.BriefEngineTest" time="0.005"/>
+  <testcase name="selectionCannotBypassFloorConflict" classname="studio.ax.arrival.BriefEngineTest" time="0.006"/>
+  <testcase name="parkingClausesStaySeparateAndInspectible" classname="studio.ax.arrival.BriefEngineTest" time="0.001"/>
+  <testcase name="sharedWebAndAndroidDecisionCorpus" classname="studio.ax.arrival.BriefEngineTest" time="0.129"/>
+  <testcase name="cancelledAndFFloor" classname="studio.ax.arrival.BriefEngineTest" time="0.001"/>
+  <testcase name="unlabelledRoomsCannotBorrowFacilityFromSponsorship" classname="studio.ax.arrival.BriefEngineTest" time="0.002"/>
+  <testcase name="ordinaryIntroductionsRemainDistinctFromFacilityStatus" classname="studio.ax.arrival.BriefEngineTest" time="0.003"/>
+  <testcase name="uncontestedOfficialMappings" classname="studio.ax.arrival.BriefEngineTest" time="0.004"/>
+  <testcase name="unknownAndOtherFacility" classname="studio.ax.arrival.BriefEngineTest" time="0.001"/>
+  <testcase name="eventNegationDoesNotAuthorizePhysicalVisits" classname="studio.ax.arrival.BriefEngineTest" time="0.008"/>
+  <testcase name="recognisedVenueRemainsACandidateUntilUserChecksTheNotice" classname="studio.ax.arrival.BriefEngineTest" time="0.001"/>
+  <testcase name="ordinaryDatesTicketsAndEventDescriptionsStayUsable" classname="studio.ax.arrival.BriefEngineTest" time="0.004"/>
+  <testcase name="pastedLineBreaksCannotBypassNearbyOrChangedVenueChecks" classname="studio.ax.arrival.BriefEngineTest" time="0.002"/>
+  <testcase name="unparsedAccessOperationsAreHeldRegardlessOfPermissionGrammar" classname="studio.ax.arrival.BriefEngineTest" time="0.01"/>
+  <testcase name="unparsedParkingAndEntryNotesRemainVisibleAndBlock" classname="studio.ax.arrival.BriefEngineTest" time="0.007"/>
+  <testcase name="venueDeclarationsAreCheckedBeyondTheFormerLengthBound" classname="studio.ax.arrival.BriefEngineTest" time="0.002"/>
+  <testcase name="sameNameClosedOrUninterpretedAccessStillNeedsReview" classname="studio.ax.arrival.BriefEngineTest" time="0.01"/>
+  <testcase name="explicitNonOccurrenceAndInabilityToVisitBlockMatchingNames" classname="studio.ax.arrival.BriefEngineTest" time="0.015"/>
+  <testcase name="conflictingVenueAndFloor" classname="studio.ax.arrival.BriefEngineTest" time="0.001"/>
+  <testcase name="invalidAndExcessHeight" classname="studio.ax.arrival.BriefEngineTest" time="0.007"/>
+  <testcase name="conflictingOfficialSourcesBlockConfirmation" classname="studio.ax.arrival.BriefEngineTest" time="0.003"/>
+  <testcase name="unparsedParkingAndDoorWordsAreHeldAnywhereInAClause" classname="studio.ax.arrival.BriefEngineTest" time="0.007"/>
+  <testcase name="heightBoundaryWarningSurvivesExport" classname="studio.ax.arrival.BriefEngineTest" time="0.013"/>
+  <testcase name="excessiveHeightTakesPriorityOverSourceConflict" classname="studio.ax.arrival.BriefEngineTest" time="0.0"/>
+  <testcase name="mixedScheduleAndRegistrationFloorsExplainHowToRecover" classname="studio.ax.arrival.BriefEngineTest" time="0.004"/>
+  <testcase name="outputHasSourceAndNoLoadingDock" classname="studio.ax.arrival.BriefEngineTest" time="0.001"/>
+  <testcase name="stoppedDeferredReplacedAndOnlineEventsFailClosed" classname="studio.ax.arrival.BriefEngineTest" time="0.003"/>
+  <testcase name="exhibitionHallAndHotelCannotBeOverriddenByMeetingRoomSelection" classname="studio.ax.arrival.BriefEngineTest" time="0.003"/>
+  <testcase name="changedCancelledAndConflictingDeclarationsCannotBeSelected" classname="studio.ax.arrival.BriefEngineTest" time="0.006"/>
+  <testcase name="venueDeclarationsRequireTheirOwnFacilityAndNoUnknownRemainder" classname="studio.ax.arrival.BriefEngineTest" time="0.007"/>
+  <testcase name="invitationParkingCannotOverrideOfficialParking" classname="studio.ax.arrival.BriefEngineTest" time="0.002"/>
+  <testcase name="eventStateAndRemoteFormatDoNotAuthorizePhysicalVisits" classname="studio.ax.arrival.BriefEngineTest" time="0.005"/>
+  <testcase name="ambiguityMustBeExplicit" classname="studio.ax.arrival.BriefEngineTest" time="0.002"/>
+  <testcase name="exactHeightFactsAndOrdinaryAdmissionRemainUsable" classname="studio.ax.arrival.BriefEngineTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

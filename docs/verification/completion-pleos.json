@@ -1,0 +1,131 @@
+{
+  "checked_date_kst": "2026-11-02",
+  "status": "blocked_before_install_boot_not_ready",
+  "official_supported_host_verified": false,
+  "host": {
+    "architecture": "x86_64",
+    "logical_cpu_count": 9,
+    "cpu_quota": "800000 100000",
+    "memory_limit_bytes": 8589934592,
+    "dev_kvm": false,
+    "dev_dri": false,
+    "nvidia_device": false,
+    "emulator_accel_check_exit": 3,
+    "emulator_accel_check": "KVM requires a CPU that supports vmx or svm"
+  },
+  "official_requirements_checked": {
+    "emulator": "2.1.0",
+    "emulator_release_date": "2026-10-19",
+    "android_api": 34,
+    "cold_boot": true,
+    "ram_gib": 4,
+    "hardware_graphics": true,
+    "gpu_required": true,
+    "navihelper": "3.0.5"
+  },
+  "official_archive_sha1_recorded_in_prior_verified_attempt": "b4f858d5bcc6c71506d7edfc872bcb9e5a11acaa",
+  "diagnostic": {
+    "started_utc": "2026-11-02T01:33:52Z",
+    "finished_utc": "2026-11-02T01:41:53Z",
+    "budget_seconds": 480,
+    "elapsed_seconds": 481.22,
+    "status": "diagnostic_boot_not_ready_within_budget",
+    "clone_preserved_original_avd": true,
+    "system_image_modified": false,
+    "app_modified": false,
+    "vcpus": 4,
+    "ram_gib": 4,
+    "graphics": "software",
+    "cpu_acceleration": "TCG; KVM unavailable",
+    "snapshot_used": false,
+    "diagnostic_userdata": "separate writable clone; prior attempt was read-only",
+    "timeout_multiplier_requested": 5,
+    "timeout_multiplier_applied": false,
+    "timeout_multiplier_reason": "emulator rejected non-qemu.* property; getprop remained empty",
+    "watchdog_millis_requested": 300000,
+    "watchdog_millis_applied": false,
+    "watchdog_command_exit": 20,
+    "watchdog_command_error": "cmd: Can't find service: settings",
+    "boot_completed": false,
+    "apk_install_attempted": false,
+    "apk_installed": false,
+    "apk_launched": false,
+    "apk_sha256_at_start": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+    "memory_events_delta": {
+      "low": 0,
+      "high": 0,
+      "max": 5555,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0
+    },
+    "emulator_exit_after_requested_cleanup": 0,
+    "navihelper_callback_observed": false,
+    "actual_car_ux_restriction_transition_observed": false,
+    "interpretation": "The 8-minute clone diagnostic reached package and activity services but not completed boot. Neither requested timeout change was applied. This does not test whether an effective timeout increase would solve boot, and does not establish a sole GPU or software root cause."
+  },
+  "sdk_contract_review": {
+    "dependency": "NaviHelper 3.0.5",
+    "permission": "pleos.car.permission.NAVI_ROUTE",
+    "lifecycle": "initialize, addListener, getDestinationInfo, callback, removeListener, release",
+    "ux_api": "CarUxRestrictionsManager current restrictions and listener",
+    "scope": "source/official API contract only; not live platform integration"
+  },
+  "previous_watchdog_analysis": {
+    "first_callback_wait_to_kill_seconds": 43.54,
+    "second_callback_wait_to_kill_seconds": 53.972,
+    "whole_main_block_seconds": [
+      131,
+      129
+    ],
+    "boot_dexopt_approx_seconds": [
+      0.4,
+      6.8
+    ],
+    "android_perm_delivery_delay_ms": [
+      6583,
+      4343
+    ],
+    "runtime_permission_persistence_dispatch_delay_ms": [
+      37881,
+      23782
+    ],
+    "conclusion": "Broad service/handler scheduling delays were observed. The callback did not account for the entire reported main-thread block. Successful PermissionController startup/callback completion was not found in captured logs; the underlying cause remains unresolved."
+  },
+  "evidence": {
+    "completion-pleos-diagnostic.json": {
+      "bytes": 127280,
+      "sha256": "3aff0766e6575b6a9942f21e9e5e3f6e0709c9ace5400ad92608505ca121b3de"
+    },
+    "completion-pleos-emulator.log": {
+      "bytes": 9681,
+      "sha256": "5a062bd1250f0a54fb87e8f90853de24997eefa9d0e417e7d2ac2ddde92aa646"
+    },
+    "completion-pleos-prior-excerpt.txt": {
+      "bytes": 32981,
+      "sha256": "016be81571a24dfef3d0ba5481dd248865aef23d9b6cdd3437bd75d34b3e918b"
+    },
+    "completion-pleos-diagnostic-excerpt.txt": {
+      "bytes": 1474,
+      "sha256": "4d149504a8e7410a29504feac8a580e361f48b6839a7a9befdb0dce3494958f3"
+    },
+    "completion-pleos-setting-results.txt": {
+      "bytes": 258,
+      "sha256": "97a77ea64b03d7a1af01a92ec8d664343483a6a403fe2b03329ea219ba0ec9df"
+    }
+  },
+  "raw_diagnostic_log": {
+    "bytes": 2589030,
+    "sha256": "282f7d8da8473dd97ba945288b5ea42031bd83aa7739a27606aaa6ac3572faa0",
+    "gzip_outer_submission_path": "evidence/completion-pleos-diagnostic.log.gz",
+    "gzip_bytes": 238416,
+    "gzip_sha256": "dc1ec8b0a2af13c2e75248e8162370530be664715f4082c0d18d43d9f5b727ff"
+  },
+  "not_verified": [
+    "Pleos release APK installation and launch",
+    "real NaviHelper destination callback",
+    "genuine CarUxRestrictions changes",
+    "physical phone camera QR scan",
+    "physical vehicle behavior"
+  ]
+}

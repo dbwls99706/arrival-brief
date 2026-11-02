@@ -1,17 +1,17 @@
 # Arrival Brief 검증 기록과 남은 범위
 
-현재 소스는 `1.0.0-rc1`이며 정식 출시나 실차 적합성 인증을 뜻하지 않는 검증 후보입니다. 최신 배포 APK의 버전·해시·실행 결과는 [release-verification.json](verification/release-verification.json)과 [런타임 기록](verification/android-runtime.md)에서 함께 확인합니다. 단위시험, 일반 Android 데모, 실제 Pleos 서비스를 각각 구분합니다.
+현재 소스는 `1.0.0-rc2`이며 정식 출시나 실차 적합성 인증을 뜻하지 않는 검증 후보입니다. 최신 배포 APK의 버전·해시·실행 결과는 [release-verification.json](verification/release-verification.json)과 [런타임 기록](verification/android-runtime.md)에서 함께 확인합니다. 단위시험, 일반 Android 데모, 실제 Pleos 서비스를 각각 구분합니다.
 
 ## 최종 빌드 검사
 
-- release: `1.0.0-rc1`, versionCode 10, 6,658,807바이트
-- Android JUnit 73개·웹 50개 통과, 공통 입력 287건
+- release: `1.0.0-rc2`, versionCode 11, 6,659,947바이트
+- Android JUnit 74개·웹 55개 통과, 공통 입력 387건
 - Android Lint 오류 0개·경고 0개, APK v2 서명 검증
-- SHA-256: `04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf`
-- 일반 Android 9: 서명 release 설치·첫 실행과 기기 내 SHA-256 일치 확인
-- 별도 debug UI 시험: 표준 13개·글자 크기 1.3배 반복 6개 통과. 해당 실행 로그에서 FATAL·ANR 0건
+- SHA-256: `779d69f709e16a9ec2a4ffb9de235d908f442c4f8dd25bc80fd574c12d003f0f`
+- 일반 Android 9: 서명 RC2 release 설치·첫 실행과 기기 내 SHA-256 일치 확인
+- 별도 debug UI 시험: RC2 표준 16개·글자 크기 1.3배 반복 6개 통과
 
-글자 크기 1.3배 시험은 동일 과업의 반복 검증이며 새로운 기능 시험 수로 합산하지 않습니다. 환경·APK 구분과 원시 로그는 [최종 런타임 기록](verification/android-runtime-rc1.json)을 따릅니다.
+글자 크기 1.3배 시험은 동일 과업의 반복 검증이며 새로운 기능 시험 수로 합산하지 않습니다. 환경·APK 구분과 원시 로그는 [RC2 런타임 기록](verification/android-runtime-rc2.json)을 따릅니다. 앱 프로세스의 FATAL·ANR 시그니처는 관찰되지 않았지만, release 실행 로그에는 별도 OS `cmd` 프로세스의 SIGSEGV 1건이 있어 [로그 분류 기록](verification/android-aosp28-rc2-log-review.json)에 보존했습니다. 환경 전체가 무오류였다고 표현하지 않습니다.
 
 ## 현재 검증 기준
 
@@ -48,16 +48,21 @@ NaviHelper는 사용자 요청과 플랫폼 입력 허용 상태에서 목적지
 
 개방된 입력 영역과 짙은 도착 패스로 준비·확정 정보를 구분합니다. 자동차와 루프박스 높이 그림, 진입문·주차·행사장 관계도, 블루·그린·앰버 상태와 문구를 함께 사용합니다. 관계도는 실제 지도나 길찾기가 아닙니다. 주행 화면에서는 보조 그림·메모·입력을 숨기고 확정한 핵심 정보만 남깁니다. 운영체제가 화면 전체를 제한할 가능성은 별도입니다.
 
-[Android 확정 화면](verification/android-aosp28-rc1-confirmed.png), [Android 메모 QR](verification/android-aosp28-rc1-qr.png), [웹 메모](verification/arrival-rc1-parking-memo.jpg), [모바일](verification/arrival-rc1-mobile.jpg)을 제공합니다. Android 사진은 일반 Android의 debug 자동 UI 시험 캡처이며 정확한 빌드·시험 범위는 런타임 기록을 따릅니다. `arrival-v05-*.jpg`와 [디자인 검토 기록](design-review.md)의 0.4·0.5 결과는 과거 버전의 증거입니다. 현재 독립 심사 보고서는 버전별 기록에서 확인합니다. 실제 사용자 조사·공식 심사·차량 시인성 인증으로 표현하지 않습니다.
+[Android 확정 화면](verification/android-aosp28-rc2-confirmed.png), [Android 메모 QR](verification/android-aosp28-rc2-qr.png)와 [영문 회의실 충돌 보류](verification/arrival-rc2-web-room-held.jpg)를 제공합니다. Android 사진은 일반 Android의 debug 자동 UI 시험 캡처이며 정확한 빌드·시험 범위는 런타임 기록을 따릅니다. `arrival-v05-*.jpg`와 [디자인 검토 기록](design-review.md)의 0.4·0.5·RC1 결과는 과거 버전의 증거입니다. 현재 독립 심사 보고서는 버전별 기록에서 확인합니다. 실제 사용자 조사·공식 심사·차량 시인성 인증으로 표현하지 않습니다.
 
 ## 독립 검토와 수정
 
-검토자는 회차마다 새로 구성했으며, 소스 확인·독립 입력 시험·실제 화면 확인의 범위를 각 보고서에 기록했습니다. 점수는 공식 심사 결과가 아닌 내부 준비도입니다. [회차 기록](verification/review-cycles.json)과 [최종 검토](verification/resume-review-final.md)에서 대상 APK와 완료 상태를 함께 확인합니다.
+검토자는 회차마다 새로 구성했으며, 소스 확인·독립 입력 시험·실제 화면 확인의 범위를 각 보고서에 기록했습니다. 점수는 공식 심사 결과가 아닌 내부 준비도입니다. [회차 기록](verification/review-cycles.json), [RC1 검토](verification/resume-review-final.md), [RC2 추가 독립 검토](verification/completion-independent-review.md)와 [최종 인수 검토](verification/completion-final-acceptance.md)에서 대상 소스·APK와 완료 상태를 함께 확인합니다. 이전 점수를 새 버전의 점수나 공식 심사 점수로 자동 승격하지 않습니다.
 
 - 행사 미개최·종료 문장을 보류하고, 문장이 나뉘거나 주어가 생략된 경우를 양쪽 엔진의 공통 회귀에 추가했습니다.
 - 보류한 원문 문장을 화면에 표시하고 접근성 설명에서도 실제 내용을 읽을 수 있게 했습니다.
 - 정차 상태로 돌아온 뒤에도 행사장·높이·주차 확인이 모두 충족돼야 복사·보관할 수 있도록 조건을 통일했습니다.
 - Android에서 주차 메모 QR을 열면 표시 영역으로 이동하고, 만료·삭제·잠금 상태에서는 QR을 제거합니다.
+- RC2에서는 `Room 300`, `Room #301` 등 영문 회의실 번호가 원문에 있는데 다른 장소를 선택해 확정하던 경로를 차단했습니다. 음수·0·소수·앞자리 0을 가진 층 표기와 `B0`·`B03`도 정상 층의 일부로 읽지 않고 보류합니다.
+- 최종 인수 검토에서 웹과 Kotlin의 층·회의실 입력 330조합을 각각 통과했습니다. 추가 독립 검토자는 마지막 층 표기 보완 뒤 기존 87조합을 웹·Kotlin에서 각각 다시 실행했고 상태 조합 12,424 assertion도 재검증했습니다. 메모 길이 경계 6개와 각 소스 해시는 해당 보고서에 기록했습니다. 서로 다른 검토자의 결과를 중복 합산하거나 고유 기능 수·실제 차량 시험 수로 표현하지 않습니다.
+- 웹과 Android의 메모 상한을 UTF-16 64단위로 맞췄습니다. QR은 메모 원문·저장 시각·복사본 수명 안내를 유지한 채 문구를 줄이고, 화면 여유에 따라 최대 400dp로 표시합니다. 물리적 휴대폰 판독 성공 여부와 구분합니다.
+
+[독립 QR 검증](verification/completion-qr.md)은 원문 일치와 미판독을 구분합니다. 기본 조건과 모의 변환에서 개선을 확인했지만 일부 디코더·저장 시각·변환 조합의 미판독이 남았습니다. 이 결과를 모든 카메라의 완벽한 호환이나 실물 휴대폰의 광학 판독 성공으로 표현하지 않습니다.
 
 고정 입력의 통과나 모의 검토 점수를 임의 자연어 전체의 정확성, 실제 사용자 성과 또는 차량 적합성으로 확대하지 않습니다.
 
@@ -67,12 +72,12 @@ NaviHelper는 사용자 요청과 플랫폼 입력 허용 상태에서 목적지
 - 차량 플랫폼의 입력 허용은 물리적 정차 측정이 아닙니다. 별도 주차 확인이 필요하며 연결 해제·상태 미확인·입력 제한에는 잠금을 유지합니다.
 - 주행 중 process death 후 확정 브리핑을 자동 복구하지 않습니다. 최근 목적지는 입력 허용 상태에서 다시 검토하는 초안입니다.
 - 저장소는 명시적으로 보관한 목적지와 주차 메모에 한정합니다. 안내문·높이·내비 주소는 영구 보관하지 않고 백업·기기 간 전송에서 제외합니다.
-- 최종 20분 Pleos 시도는 OS 부팅을 완료하지 못해 앱 설치 명령을 시도하지 않았습니다. 환경 부팅 차단으로 설치·SDK 응답·주행 규제 전환은 미검증이며 앱 실행 실패로 판정하지 않습니다. 상세 오류와 상태는 [최종 런타임 JSON](verification/android-runtime-rc1.json)에 기록했습니다.
+- 이전 20분 Pleos 시도와 별도 복사본의 추가 8분 진단 모두 OS 부팅을 완료하지 못해 앱 설치 명령을 시도하지 않았습니다. timeout 변경 요청도 실제로 적용되지 않았습니다. 환경 부팅 차단으로 설치·SDK 응답·주행 규제 전환은 미검증이며 앱 실행 실패로 판정하지 않습니다. [추가 Pleos 진단](verification/completion-pleos.md)에 실제 명령·결과·지원 PC의 후속 검증 절차를 기록했습니다.
 - Pleos 공식 이미지의 해시·부팅 시도·실제 오류는 런타임 기록에 남깁니다. GPU·가상화 요건을 충족하지 못한 호스트의 실패를 앱 성공 또는 단일 원인 확정으로 바꾸지 않습니다.
 
 ## 영상과 제출 자료
 
-두 웹 영상은 `1.0.0-rc1`의 실제 화면 캡처를 편집한 자료입니다. 각각 30초·1280×720이며 도착 준비·확정·주행 시뮬레이션, 공식 자료 상충과 운영 제한에 따른 보류를 보여줍니다. 웹의 차량 상태는 시뮬레이션이며 연속 녹화·실차 촬영·Pleos 서비스 응답의 증거가 아닙니다. [도착 안내 metadata](../dist/assets/media/arrival-metadata.json)와 [자료 상충 metadata](../dist/assets/media/arrival-confirm-metadata.json)에 캡처·사양·해시를 기록했습니다.
+두 웹 영상은 `1.0.0-rc2`의 실제 화면 캡처를 편집한 자료입니다. 각각 30초·1280×720이며 도착 준비·확정·주행 시뮬레이션, 공식 자료 상충과 운영 제한에 따른 보류를 보여줍니다. 웹의 차량 상태는 시뮬레이션이며 연속 녹화·실차 촬영·Pleos 서비스 응답의 증거가 아닙니다. [도착 안내 metadata](../dist/assets/media/arrival-metadata.json)와 [자료 상충 metadata](../dist/assets/media/arrival-confirm-metadata.json)에 정확한 버전·캡처·사양·해시를 기록했습니다.
 
 새 Android 검증 영상 `arrival-native-validation.mp4`는 현재 후보의 일반 Android debug 자동 UI 시험에서 얻은 실제 화면 5장면을 편집한 30초 자료입니다. 확정·자료 상충·메모 복구·QR·주행 잠금을 보여줍니다. 연속 화면 녹화, Pleos 서비스 성공, 휴대폰 광학 스캔의 증거는 아닙니다. APK·캡처의 정확한 버전과 해시는 영상 metadata와 런타임 기록을 따릅니다.
 
@@ -85,3 +90,5 @@ NaviHelper는 사용자 요청과 플랫폼 입력 허용 상태에서 목적지
 3. 공식 자료가 상충하는 3개 분류는 시설의 최신 원문·운영 정보가 필요합니다.
 4. 시간 절감·만족도·재사용률·제휴·MAU·매출은 측정·확보하지 않았습니다. [사업 가설](USER_EVIDENCE.md)은 관측할 과업과 검증 방법을 정의하며 실적 수치를 만들지 않습니다. 외부 휴대폰 메모앱에서 QR 복사본을 읽은 행동은 Arrival Brief MAU·앱 재열람으로 계산하지 않습니다.
 5. 최종 파일명·첨부물·공개 저장소와 APK 접근을 대조한 뒤 운영 안내에 따라 접수합니다.
+
+서명한 접수양식과 선택 산출물의 준비는 1차 접수 요건이며, 2차 PT 전 실제 동작·시연 요건과 구분합니다. [공식 요건 대조 결과](verification/completion-submission-audit.md)를 따르며 파일 준비를 이메일 발송이나 주최 측 접수 확인으로 표현하지 않습니다.

@@ -179,8 +179,8 @@ class VisitFlowInstrumentedTest {
                 val pixels = IntArray(bitmap.width * bitmap.height)
                 bitmap.getPixels(pixels, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
                 val decoded = QRCodeReader().decode(BinaryBitmap(HybridBinarizer(RGBLuminanceSource(bitmap.width, bitmap.height, pixels)))).text
-                assertTrue(decoded.contains("주차 위치: B3 블루존 E12"))
-                assertTrue(decoded.contains("휴대폰 복사본은 자동 삭제되지 않습니다."))
+                assertTrue(decoded.contains("주차 메모: B3 블루존 E12"))
+                assertTrue(decoded.contains("휴대폰 복사본은 자동 삭제되지 않음."))
             }
         capture("saved-memo-qr")
         onView(withContentDescription("직접 적는 주차 위치 메모, 최대 64자")).perform(scrollTo(), replaceText("B2 퍼플존 P7"), closeSoftKeyboard())
@@ -283,6 +283,34 @@ class VisitFlowInstrumentedTest {
         onView(withText("도착 브리핑 확정")).perform(scrollTo()).check(matches(not(isEnabled())))
         onView(withText("브리핑 복사")).check(matches(not(isDisplayed())))
         capture("picker-preserves-conflicting-source")
+    }
+    private fun assertNoticeRemainsBlockedAfterManualSelection(original: String, evidence: String) {
+        scenario = ActivityScenario.launch(MainActivity::class.java)
+        enterDemo()
+        onView(withText("행사 안내문으로 찾기")).perform(scrollTo(), click())
+        onView(withContentDescription("행사 장소 안내")).perform(scrollTo(), replaceText(original), closeSoftKeyboard())
+        onView(withText("회의실 선택")).perform(scrollTo(), click())
+        onView(withText("오디토리움 · 3F")).perform(click())
+        onView(withContentDescription("루프박스와 적재물을 포함한 차량 전체 높이, 미터")).check(matches(withText("1.65")))
+        onView(withText("적재물을 포함한 전체 높이를 확인했습니다.")).perform(scrollTo(), click()).check(matches(isChecked()))
+        onView(allOf(isAssignableFrom(CheckBox::class.java), withText(containsString("현재 유효"))))
+            .perform(scrollTo(), click()).check(matches(isChecked()))
+        onView(withText("안전하게 주차한 상태입니다.")).perform(scrollTo(), click()).check(matches(isChecked()))
+        onView(withText("도착 브리핑 확정")).perform(scrollTo()).check(matches(not(isEnabled())))
+        onView(withText("브리핑 복사")).check(matches(not(isDisplayed())))
+        onView(withContentDescription("행사 장소 안내")).perform(scrollTo()).check(matches(withText(original)))
+        capture(evidence)
+    }
+    @Test fun englishRoomNumberCannotBeOverriddenByManualAuditoriumSelection() {
+        assertNoticeRemainsBlockedAfterManualSelection("COEX Room 300, 3F", "english-room-manual-blocked")
+    }
+    @Test fun negativeFloorCannotBeChangedByManualRoomSelection() {
+        assertNoticeRemainsBlockedAfterManualSelection("코엑스 오디토리움 -3층", "negative-floor-manual-blocked")
+    }
+    @Test fun zeroPrefixedBasementFloorsCannotBeOverriddenByManualSelection() {
+        assertNoticeRemainsBlockedAfterManualSelection("코엑스 오디토리움 B03층", "basement-b03-manual-blocked")
+        scenario.close()
+        assertNoticeRemainsBlockedAfterManualSelection("코엑스 오디토리움 B0층", "basement-b0-manual-blocked")
     }
     @Test fun activeMemoAndQrExpireAtTheStoredDeadline() {
         val savedAt = System.currentTimeMillis() - ParkingMemoPolicy.TTL_MS + 60_000

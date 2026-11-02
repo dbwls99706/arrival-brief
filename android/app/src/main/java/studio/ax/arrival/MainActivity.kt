@@ -427,7 +427,11 @@ class MainActivity : Activity() {
         memoPanel.addView(textView("휴대폰에 복사한 내용에는 이 앱의 24시간 만료·삭제가 적용되지 않습니다.", 16f, warning))
         memoQrPanel = column().apply { visibility = View.GONE }
         memoQrPanel.addView(textView("휴대폰 카메라로 스캔하세요", 20f).apply { setTypeface(null, Typeface.BOLD) })
-        val qrSize = dp((resources.configuration.screenWidthDp - 56).coerceIn(256, 320))
+        // Reserve room for headings/close action and keep the code inside the
+        // actual screen on phones, while giving long memos more pixels in-car.
+        val qrSizeDp = minOf(resources.configuration.screenWidthDp - 88,
+            resources.configuration.screenHeightDp - 200, 400).coerceAtLeast(160)
+        val qrSize = dp(qrSizeDp)
         memoQrImage = ImageView(this).apply {
             contentDescription = "저장한 주차 위치를 휴대폰으로 가져가는 QR"
             setBackgroundColor(Color.WHITE)
@@ -435,6 +439,7 @@ class MainActivity : Activity() {
             isSaveEnabled = false
         }
         memoQrPanel.addView(memoQrImage, LinearLayout.LayoutParams(qrSize, qrSize).apply { gravity = Gravity.CENTER_HORIZONTAL })
+        memoQrPanel.addView(textView("잘 읽히지 않으면 QR에 가까이 대고 초점을 맞춰주세요.", 15f, muted))
         memoQrPanel.addView(button("QR 닫기", true) { clearMemoQr() })
         memoPanel.addView(memoQrPanel)
         memoPanel.addView(textView("메모 1건만 기기에 저장하며 서버 전송·백업하지 않습니다. 만료 뒤 다음 확인 시 삭제됩니다.", 14f, muted))

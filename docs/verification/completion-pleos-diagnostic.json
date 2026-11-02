@@ -1,0 +1,831 @@
+{
+  "started_utc": "2026-11-02T01:33:52Z",
+  "budget_seconds": 480,
+  "status": "diagnostic_boot_not_ready_within_budget",
+  "supported_host": false,
+  "boot_completed": false,
+  "apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+  "installed": false,
+  "launched": false,
+  "navihelper_verified": false,
+  "ux_restrictions_verified": false,
+  "changes": [
+    "separate cloned AVD",
+    "vCPU count increased from 2 to 4",
+    "requested ro.hw_timeout_multiplier=5",
+    "will request watchdog_timeout_millis=300000 if settings service responds"
+  ],
+  "commands": [
+    {
+      "label": "001-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 1
+    },
+    {
+      "label": "002-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 1
+    },
+    {
+      "label": "003-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 1
+    },
+    {
+      "label": "004-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 1
+    },
+    {
+      "label": "005-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 1
+    },
+    {
+      "label": "006-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 1
+    },
+    {
+      "label": "007-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 1
+    },
+    {
+      "label": "008-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 1
+    },
+    {
+      "label": "009-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 1
+    },
+    {
+      "label": "010-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "010-boot",
+      "arguments": [
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 124
+    },
+    {
+      "label": "010-multiplier",
+      "arguments": [
+        "shell",
+        "getprop",
+        "ro.hw_timeout_multiplier"
+      ],
+      "exit": 124
+    },
+    {
+      "label": "010-processes",
+      "arguments": [
+        "shell",
+        "ps",
+        "-A"
+      ],
+      "exit": 124
+    },
+    {
+      "label": "010-permission-services",
+      "arguments": [
+        "shell",
+        "dumpsys",
+        "activity",
+        "services",
+        "com.android.permissioncontroller"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "011-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "011-boot",
+      "arguments": [
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "011-multiplier",
+      "arguments": [
+        "shell",
+        "getprop",
+        "ro.hw_timeout_multiplier"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "011-processes",
+      "arguments": [
+        "shell",
+        "ps",
+        "-A"
+      ],
+      "exit": 124
+    },
+    {
+      "label": "012-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "012-boot",
+      "arguments": [
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "012-multiplier",
+      "arguments": [
+        "shell",
+        "getprop",
+        "ro.hw_timeout_multiplier"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "012-processes",
+      "arguments": [
+        "shell",
+        "ps",
+        "-A"
+      ],
+      "exit": 124
+    },
+    {
+      "label": "012-package",
+      "arguments": [
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "013-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "013-boot",
+      "arguments": [
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "013-multiplier",
+      "arguments": [
+        "shell",
+        "getprop",
+        "ro.hw_timeout_multiplier"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "013-processes",
+      "arguments": [
+        "shell",
+        "ps",
+        "-A"
+      ],
+      "exit": 124
+    },
+    {
+      "label": "013-package",
+      "arguments": [
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "014-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "014-boot",
+      "arguments": [
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "014-multiplier",
+      "arguments": [
+        "shell",
+        "getprop",
+        "ro.hw_timeout_multiplier"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "014-processes",
+      "arguments": [
+        "shell",
+        "ps",
+        "-A"
+      ],
+      "exit": 124
+    },
+    {
+      "label": "014-package",
+      "arguments": [
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "014-permission-services",
+      "arguments": [
+        "shell",
+        "dumpsys",
+        "activity",
+        "services",
+        "com.android.permissioncontroller"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "015-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "015-boot",
+      "arguments": [
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "015-multiplier",
+      "arguments": [
+        "shell",
+        "getprop",
+        "ro.hw_timeout_multiplier"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "015-processes",
+      "arguments": [
+        "shell",
+        "ps",
+        "-A"
+      ],
+      "exit": 124
+    },
+    {
+      "label": "015-package",
+      "arguments": [
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "016-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "016-boot",
+      "arguments": [
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "016-multiplier",
+      "arguments": [
+        "shell",
+        "getprop",
+        "ro.hw_timeout_multiplier"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "016-processes",
+      "arguments": [
+        "shell",
+        "ps",
+        "-A"
+      ],
+      "exit": 124
+    },
+    {
+      "label": "016-package",
+      "arguments": [
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "017-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "017-boot",
+      "arguments": [
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "017-multiplier",
+      "arguments": [
+        "shell",
+        "getprop",
+        "ro.hw_timeout_multiplier"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "017-processes",
+      "arguments": [
+        "shell",
+        "ps",
+        "-A"
+      ],
+      "exit": 124
+    },
+    {
+      "label": "017-package",
+      "arguments": [
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "018-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "018-boot",
+      "arguments": [
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "018-multiplier",
+      "arguments": [
+        "shell",
+        "getprop",
+        "ro.hw_timeout_multiplier"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "018-processes",
+      "arguments": [
+        "shell",
+        "ps",
+        "-A"
+      ],
+      "exit": 124
+    },
+    {
+      "label": "018-package",
+      "arguments": [
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "018-permission-services",
+      "arguments": [
+        "shell",
+        "dumpsys",
+        "activity",
+        "services",
+        "com.android.permissioncontroller"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "019-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "019-boot",
+      "arguments": [
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "019-multiplier",
+      "arguments": [
+        "shell",
+        "getprop",
+        "ro.hw_timeout_multiplier"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "019-processes",
+      "arguments": [
+        "shell",
+        "ps",
+        "-A"
+      ],
+      "exit": 124
+    },
+    {
+      "label": "019-package",
+      "arguments": [
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "020-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "020-boot",
+      "arguments": [
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "020-multiplier",
+      "arguments": [
+        "shell",
+        "getprop",
+        "ro.hw_timeout_multiplier"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "020-processes",
+      "arguments": [
+        "shell",
+        "ps",
+        "-A"
+      ],
+      "exit": 124
+    },
+    {
+      "label": "020-package",
+      "arguments": [
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "021-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "021-boot",
+      "arguments": [
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "021-multiplier",
+      "arguments": [
+        "shell",
+        "getprop",
+        "ro.hw_timeout_multiplier"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "021-processes",
+      "arguments": [
+        "shell",
+        "ps",
+        "-A"
+      ],
+      "exit": 124
+    },
+    {
+      "label": "021-package",
+      "arguments": [
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "021-watchdog-set",
+      "arguments": [
+        "shell",
+        "settings",
+        "put",
+        "global",
+        "watchdog_timeout_millis",
+        "300000"
+      ],
+      "exit": 20
+    },
+    {
+      "label": "021-watchdog-get",
+      "arguments": [
+        "shell",
+        "settings",
+        "get",
+        "global",
+        "watchdog_timeout_millis"
+      ],
+      "exit": 20
+    },
+    {
+      "label": "021-permission-services",
+      "arguments": [
+        "shell",
+        "dumpsys",
+        "activity",
+        "services",
+        "com.android.permissioncontroller"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "022-state",
+      "arguments": [
+        "get-state"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "022-boot",
+      "arguments": [
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 124
+    }
+  ],
+  "observations": [
+    {
+      "elapsed_seconds": 0.01,
+      "adb_state": ""
+    },
+    {
+      "elapsed_seconds": 15.02,
+      "adb_state": ""
+    },
+    {
+      "elapsed_seconds": 30.03,
+      "adb_state": ""
+    },
+    {
+      "elapsed_seconds": 45.03,
+      "adb_state": ""
+    },
+    {
+      "elapsed_seconds": 60.03,
+      "adb_state": ""
+    },
+    {
+      "elapsed_seconds": 75.04,
+      "adb_state": ""
+    },
+    {
+      "elapsed_seconds": 90.04,
+      "adb_state": ""
+    },
+    {
+      "elapsed_seconds": 105.05,
+      "adb_state": ""
+    },
+    {
+      "elapsed_seconds": 120.05,
+      "adb_state": ""
+    },
+    {
+      "elapsed_seconds": 135.06,
+      "adb_state": "device",
+      "boot_completed": "",
+      "timeout_multiplier": "",
+      "processes": "USER           PID  PPID        VSZ    RSS WCHAN            ADDR S NAME                       \nroot             1     0   10917704  12620 0                   0 S init\nroot             2     0          0      0 0                   0 S [kthreadd]\nroot             3     2          0      0 0                   0 I [rcu_gp]\nroot             4     2          0      0 0                   0 I [slub_flushwq]\nroot             5     2          0      0 0                   0 I [netns]\nroot             6     2          0      0 0                   0 I [kworker/0:0-events]\nroot             7     2          0      0 0                   0 I [kworker/0:0H-events_highpri]\nroot             8     2          0      0 0                   0 I [kworker/u8:0-events_unbound]\nroot             9     2          0      0 0                   0 I [mm_percpu_wq]\nroot            10     2          0      0 0                   0 I [kworker/u8:1-loop16]\nroot            11     2          0      0 0                   0 I [rcu_tasks_kthread]\nroot            12     2          0      0 0                   0 I [rcu_tasks_trace_kthread]\nroot            13     2          0      0 0                   0 R [ksoftirqd/0]\nroot            14     2          0      0 0                   0 I [rcu_preempt]\nroot            15     2          0      0 0                   0 S [rcub/0]\nroot            16     2          0      0 0                   0 S [rcu_exp_gp_kthread_worker]\nroot            17     2          0      0 0                   0 S [rcu_exp_par_gp_kthread_worker]\nroot            18     2          0      0 0                   0 S [migration/0]\nroot            19     2          0      0 0                   0 I [kworker/0:1-events_power_efficient]\nroot            20     2          0      0 0                   0 S [cpuhp/0]\nroot            21     2          0      0 0                   0 S [cpuhp/1]\nroot            22     2          0      0 0                   0 S [migration/1]\nroot            23     2          0      0 0                   0 S [ksoftirqd/1]\nroot            24     2          0      0 0                   0 I [kworker/1:0-virtio_vsock]\nroot            25     2          0      0 0                   0 I [kworker/1:0H-events_highpri]\nroot            26     2          0      0 0                   0 S [cpuhp/2]\nroot"
+    },
+    {
+      "elapsed_seconds": 168.16,
+      "adb_state": "device",
+      "boot_completed": "",
+      "timeout_multiplier": "",
+      "processes": "USER           PID  PPID        VSZ    RSS WCHAN            ADDR S NAME                       \nroot             1     0   10917704  12624 0                   0 S init\nroot             2     0          0      0 0                   0 S [kthreadd]\nroot             3     2          0      0 0                   0 I [rcu_gp]\nroot             4     2          0      0 0                   0 I [slub_flushwq]\nroot             5     2          0      0 0                   0 I [netns]\nroot             6     2          0      0 0                   0 I [kworker/0:0-events]\nroot             7     2          0      0 0                   0 I [kworker/0:0H-events_highpri]\nroot             8     2          0      0 0                   0 I [kworker/u8:0-events_unbound]\nroot             9     2          0      0 0                   0 I [mm_percpu_wq]\nroot            10     2          0      0 0                   0 I [kworker/u8:1-events_unbound]\nroot            11     2          0      0 0                   0 I [rcu_tasks_kthread]\nroot            12     2          0      0 0                   0 I [rcu_tasks_trace_kthread]\nroot            13     2          0      0 0                   0 S [ksoftirqd/0]\nroot            14     2          0      0 0                   0 I [rcu_preempt]\nroot            15     2          0      0 0                   0 S [rcub/0]\nroot            16     2          0      0 0                   0 S [rcu_exp_gp_kthread_worker]\nroot            17     2          0      0 0                   0 S [rcu_exp_par_gp_kthread_worker]\nroot            18     2          0      0 0                   0 S [migration/0]\nroot            19     2          0      0 0                   0 I [kworker/0:1-events]\nroot            20     2          0      0 0                   0 S [cpuhp/0]\nroot            21     2          0      0 0                   0 S [cpuhp/1]\nroot            22     2          0      0 0                   0 S [migration/1]\nroot            23     2          0      0 0                   0 S [ksoftirqd/1]\nroot            24     2          0      0 0                   0 I [kworker/1:0-virtio_vsock]\nroot            25     2          0      0 0                   0 I [kworker/1:0H-events_highpri]\nroot            26     2          0      0 0                   0 S [cpuhp/2]\nroot            27     2          0      0 0                   0 S [migration/2]\nroot            28     2          0      0 0                   0 S [ksoftirqd/2]\nroot            29     2          0      0 0                   0 I [kworker/2:0-cgroup_destroy]\nroot            30     2          0      0 0                   0 I [kworker/2:0H-kverityd]\nroot            31     2          0      0 0                   0 S [cpuhp/3]\nroot            32     2          0      0 0                   0 S [migration/3]\nroot            33     2          0      0 0                   0 S [ksoftirqd/3]\nroot            34     2          0      0 0                   0 I [kworker/3:0-slub_flushwq]\nroot            35     2          0      0 0                   0 I [kworker/3:0H-kverityd]\nroot            36     2          0      0 0                   0 I [inet_frag_wq]\nroot            37     2          0      0 0                   0 S [kauditd]\nroot            38     2          0      0 0                   0 S [khungtaskd]\nroot            39     2          0      0 0                   0 S [oom_reaper]\nroot            40     2          0      0 0                   0 I [writeback]\nroot            41     2          0      0 0                   0 S [kcompactd0]\nroot            42     2          0      0 0                   0 S [khugepaged]\nroot            43     2          0      0 0                   0 I [cryptd]\nroot            44     2          0      0 0                   0 I [kblockd]\nroot            45     2          0      0 0                   0 I [blkcg_punt_bio]\nroot            46     2          0      0 0                   0 I [kworker/3:1-events]\nroot            47     2          0      0 0                   0 I [edac-poller]\nroot            48     2          0      0 0                   0 I [devfreq_wq]\nroot            49     2          0      0 0                   0 S [watchdogd]\nroot            50     2          0      0 0                   0 I [kworker/1:1-mm_percpu_wq]\nroot            51     2          0      0 0                   0 I [kworker/2:1-mm_percpu_wq]\nroot            52     2          0      0 0                   0 I [kworker/1:1H-kverityd]\nroot            53     2          0      0 0                   0 S [kswapd0]\nroot            54     2          0      0 0                   0 I [kworker/u9:0-hci0]\nroot            55     2          0      0 0                   0 S [erofs_worker/0]\nroot            56     2          0      0 0                   0 S [erofs_worker/1]\nroot            57     2          0      0 0                   0 S [erofs_worker/2]\nroot            58     2          0      0 0                   0 S [erofs_worker/3]\nroot            59     2          0      0 0                   0 I [kthrotld]\nroot            60     2          0      0 0                   0 S [dmabuf-deferred-free-worker]\nroot            61     2          0      0 0                   0 I [uas]\nroot            62     2          0      0 0                   0 I [dm_bufio_cache]\nroot            63     2          0      0 0                   0 I [kworker/0:1H-kverityd]\nroot            64     2          0      0 0                   0 I [mld]\nroot            65     2          0      0 0                   0 I [ipv6_addrconf]\nroot            67     2          0      0 0                   0 I [kworker/0:2-events]\nroot            68     2          0      0 0                   0 I [kworker/1:2-virtio_vsock]\nroot            69     2          0"
+    },
+    {
+      "elapsed_seconds": 193.77,
+      "adb_state": "device",
+      "boot_completed": "",
+      "timeout_multiplier": "",
+      "processes": "USER           PID  PPID        VSZ    RSS WCHAN            ADDR S NAME                       \nroot             1     0   10917704  12624 0                   0 S init\nroot             2     0          0      0 0                   0 S [kthreadd]\nroot             3     2          0      0 0                   0 I [rcu_gp]\nroot             4     2          0      0 0                   0 I [slub_flushwq]\nroot             5     2          0      0 0                   0 I [netns]\nroot             6     2          0      0 0                   0 I [kworker/0:0-events]\nroot             7     2          0      0 0                   0 I [kworker/0:0H-events_highpri]\nroot             8     2          0      0 0                   0 I [kworker/u8:0-loop23]\nroot             9     2          0      0 0                   0 I [mm_percpu_wq]\nroot            10     2          0      0 0                   0 I [kworker/u8:1-flush-254:43]\nroot            11     2          0      0 0                   0 I [rcu_tasks_kthread]\nroot            12     2          0      0 0                   0 I [rcu_tasks_trace_kthread]\nroot            13     2          0      0 0                   0 S [ksoftirqd/0]\nroot            14     2          0      0 0                   0 I [rcu_preempt]\nroot            15     2          0      0 0                   0 S [rcub/0]\nroot            16     2          0      0 0                   0 S [rcu_exp_gp_kthread_worker]\nroot            17     2          0      0 0                   0 S [rcu_exp_par_gp_kthread_worker]\nroot            18     2          0      0 0                   0 S [migration/0]\nroot            19     2          0      0 0                   0 I [kworker/0:1-events]\nroot            20     2          0      0 0                   0 S [cpuhp/0]\nroot            21     2          0      0 0                   0 S [cpuhp/1]\nroot            22     2          0      0 0                   0 S [migration/1]\nroot            23     2          0      0 0                   0 S [ksoftirqd/1]\nroot            24     2          0      0 0                   0 I [kworker/1:0-virtio_vsock]\nroot            25     2          0      0 0                   0 I [kworker/1:0H-events_highpri]\nroot            26     2          0      0 0                   0 S [cpuhp/2]\nroot            27     2          0      0 0                   0 S [migration/2]\nroot            28     2          0      0 0                   0 S [ksoftirqd/2]\nroot            29     2          0      0 0                   0 I [kworker/2:0-cgroup_destroy]\nroot            30     2          0      0 0                   0 I [kworker/2:0H-kverityd]\nroot            31     2          0      0 0                   0 S [cpuhp/3]\nroot            32     2          0      0 0                   0 S [migration/3]\nroot            33     2          0      0 0                   0 S [ksoftirqd/3]\nroot            34     2          0      0 0                   0 I [kworker/3:0-slub_flushwq]\nroot            35     2          0      0 0                   0 I [kworker/3:0H-kverityd]\nroot            36     2          0      0 0                   0 I [inet_frag_wq]\nroot            37     2          0      0 0                   0 S [kauditd]\nroot            38     2          0      0 0                   0 S [khungtaskd]\nroot            39     2          0      0 0                   0 S [oom_reaper]\nroot            40     2          0      0 0                   0 I [writeback]\nroot            41     2          0      0 0                   0 S [kcompactd0]\nroot            42     2          0      0 0                   0 S [khugepaged]\nroot            43     2          0      0 0                   0 I [cryptd]\nroot            44     2          0      0 0                   0 I [kblockd]\nroot            45     2          0      0 0                   0 I [blkcg_punt_bio]\nroot            46     2          0      0 0                   0 I [kworker/3:1-events]\nroot            47     2          0      0 0                   0 I [edac-poller]\nroot            48     2          0      0 0                   0 I [devfreq_wq]\nroot            49     2          0      0 0                   0 S [watchdogd]\nroot            50     2          0      0 0                   0 I [kworker/1:1-mm_percpu_wq]\nroot            51     2          0      0 0                   0 I [kworker/2:1-mm_percpu_wq]\nroot            52     2          0      0 0                   0 I [kworker/1:1H-kblockd]\nroot            53     2          0      0 0                   0 S [kswapd0]\nroot            54     2          0      0 0                   0 I [kworker/u9:0-hci0]\nroot            55     2          0      0 0                   0 S [erofs_worker/0]\nroot            56     2          0      0 0                   0 S [erofs_worker/1]\nroot            57     2          0      0 0                   0 S [erofs_worker/2]\nroot            58     2          0      0 0                   0 S [erofs_worker/3]\nroot            59     2          0      0 0                   0 I [kthrotld]\nroot            60     2          0      0 0                   0 S [dmabuf-deferred-free-worker]\nroot            61     2          0      0 0                   0 I [uas]\nroot            62     2          0      0 0                   0 I [dm_bufio_cache]\nroot            63     2          0      0 0                   0 I [kworker/0:1H-kverityd]\nroot            64     2          0      0 0                   0 I [mld]\nroot            65     2          0      0 0                   0 I [ipv6_addrconf]\nroot            67     2          0      0 0                   0 I [kworker/0:2-cgroup_destroy]\nroot            68     2          0      0 0                   0 I [kworker/1:2-virtio_vsock]\nroot            69     2          0      0 0                   0 I [kworker/3:1H-kverityd]\nroot            70     2          0      0 0                   0 S [khvcd]\nroot            71     2          0      0 0                   0 I [kworker/u8:2-ext4-rsv-conversion]\nroot            72     2          0      0 0                   0 S [hwrng]\nroot            73     2          0      0 0                   0 I [kworker/3:2-mm_percpu_wq]\nroot            74     2          0      0 0                   0 S [jbd2/vdd1-8]\nroot            75     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            77     2          0      0 0                   0 I [kdmflush/254:0]\nroot            78     2          0      0 0                   0 I [kdmflush/254:1]\nroot            79     2          0      0 0                   0 I [kdmflush/254:2]\nroot            80     2          0      0 0                   0 I [kdmflush/254:3]\nroot            81     2          0      0 0                   0 I [kdmflush/254:4]\nroot            82     2          0      0 0                   0 I [kdmflush/254:5]\nroot            83     2          0      0 0                   0 I [kverityd]\nroot            84     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            85     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            86     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            87     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            88     2          0      0 0                   0 I [kworker/2:1H-kverityd]\nroot            89     2          0      0 0                   0 I [kworker/3:2H-kverityd]\nroot            90     2          0      0 0                   0 I [kworker/3:3H-kverityd]\nroot            92     1   10885860   8192 0"
+    },
+    {
+      "elapsed_seconds": 220.24,
+      "adb_state": "device",
+      "boot_completed": "",
+      "timeout_multiplier": "",
+      "processes": "USER           PID  PPID        VSZ    RSS WCHAN            ADDR S NAME                       \nroot             1     0   10917704  12624 0                   0 S init\nroot             2     0          0      0 0                   0 S [kthreadd]\nroot             3     2          0      0 0                   0 I [rcu_gp]\nroot             4     2          0      0 0                   0 I [slub_flushwq]\nroot             5     2          0      0 0                   0 I [netns]\nroot             6     2          0      0 0                   0 I [kworker/0:0-events]\nroot             7     2          0      0 0                   0 I [kworker/0:0H-events_highpri]\nroot             8     2          0      0 0                   0 I [kworker/u8:0-ext4-rsv-conversion]\nroot             9     2          0      0 0                   0 I [mm_percpu_wq]\nroot            10     2          0      0 0                   0 I [kworker/u8:1-loop23]\nroot            11     2          0      0 0                   0 I [rcu_tasks_kthread]\nroot            12     2          0      0 0                   0 I [rcu_tasks_trace_kthread]\nroot            13     2          0      0 0                   0 S [ksoftirqd/0]\nroot            14     2          0      0 0                   0 I [rcu_preempt]\nroot            15     2          0      0 0                   0 S [rcub/0]\nroot            16     2          0      0 0                   0 S [rcu_exp_gp_kthread_worker]\nroot            17     2          0      0 0                   0 S [rcu_exp_par_gp_kthread_worker]\nroot            18     2          0      0 0                   0 S [migration/0]\nroot            19     2          0      0 0                   0 I [kworker/0:1-events]\nroot            20     2          0      0 0                   0 S [cpuhp/0]\nroot            21     2          0      0 0                   0 S [cpuhp/1]\nroot            22     2          0      0 0                   0 S [migration/1]\nroot            23     2          0      0 0                   0 S [ksoftirqd/1]\nroot            24     2          0      0 0                   0 I [kworker/1:0-virtio_vsock]\nroot            25     2          0      0 0                   0 I [kworker/1:0H-events_highpri]\nroot            26     2          0      0 0                   0 S [cpuhp/2]\nroot            27     2          0      0 0                   0 S [migration/2]\nroot            28     2          0      0 0                   0 S [ksoftirqd/2]\nroot            29     2          0      0 0                   0 I [kworker/2:0-cgroup_destroy]\nroot            30     2          0      0 0                   0 I [kworker/2:0H-kverityd]\nroot            31     2          0      0 0                   0 S [cpuhp/3]\nroot            32     2          0      0 0                   0 S [migration/3]\nroot            33     2          0      0 0                   0 S [ksoftirqd/3]\nroot            34     2          0      0 0                   0 I [kworker/3:0-slub_flushwq]\nroot            35     2          0      0 0                   0 I [kworker/3:0H-kverityd]\nroot            36     2          0      0 0                   0 I [inet_frag_wq]\nroot            37     2          0      0 0                   0 S [kauditd]\nroot            38     2          0      0 0                   0 S [khungtaskd]\nroot            39     2          0      0 0                   0 S [oom_reaper]\nroot            40     2          0      0 0                   0 I [writeback]\nroot            41     2          0      0 0                   0 S [kcompactd0]\nroot            42     2          0      0 0                   0 S [khugepaged]\nroot            43     2          0      0 0                   0 I [cryptd]\nroot            44     2          0      0 0                   0 I [kblockd]\nroot            45     2          0      0 0                   0 I [blkcg_punt_bio]\nroot            46     2          0      0 0                   0 I [kworker/3:1-events]\nroot            47     2          0      0 0                   0 I [edac-poller]\nroot            48     2          0      0 0                   0 I [devfreq_wq]\nroot            49     2          0      0 0                   0 S [watchdogd]\nroot            50     2          0      0 0                   0 I [kworker/1:1-mm_percpu_wq]\nroot            51     2          0      0 0                   0 I [kworker/2:1-virtio_vsock]\nroot            52     2          0      0 0                   0 I [kworker/1:1H-kverityd]\nroot            53     2          0      0 0                   0 S [kswapd0]\nroot            54     2          0      0 0                   0 I [kworker/u9:0-hci0]\nroot            55     2          0      0 0                   0 S [erofs_worker/0]\nroot            56     2          0      0 0                   0 S [erofs_worker/1]\nroot            57     2          0      0 0                   0 S [erofs_worker/2]\nroot            58     2          0      0 0                   0 S [erofs_worker/3]\nroot            59     2          0      0 0                   0 I [kthrotld]\nroot            60     2          0      0 0                   0 S [dmabuf-deferred-free-worker]\nroot            61     2          0      0 0                   0 I [uas]\nroot            62     2          0      0 0                   0 I [dm_bufio_cache]\nroot            63     2          0      0 0                   0 I [kworker/0:1H-kverityd]\nroot            64     2          0      0 0                   0 I [mld]\nroot            65     2          0      0 0                   0 I [ipv6_addrconf]\nroot            67     2          0      0 0                   0 I [kworker/0:2-mm_percpu_wq]\nroot            68     2          0      0 0                   0 I [kworker/1:2-virtio_vsock]\nroot            69     2          0      0 0                   0 I [kworker/3:1H-kverityd]\nroot            70     2          0      0 0                   0 S [khvcd]\nroot            71     2          0      0 0                   0 I [kworker/u8:2-ext4-rsv-conversion]\nroot            72     2          0      0 0                   0 S [hwrng]\nroot            73     2          0      0 0                   0 I [kworker/3:2-mm_percpu_wq]\nroot            74     2          0      0 0                   0 S [jbd2/vdd1-8]\nroot            75     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            77     2          0      0 0                   0 I [kdmflush/254:0]\nroot            78     2          0      0 0                   0 I [kdmflush/254:1]\nroot            79     2          0      0 0                   0 I [kdmflush/254:2]\nroot            80     2          0      0 0                   0 I [kdmflush/254:3]\nroot            81     2          0      0 0                   0 I [kdmflush/254:4]\nroot            82     2          0      0 0                   0 I [kdmflush/254:5]\nroot            83     2          0      0 0                   0 I [kverityd]\nroot            84     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            85     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            86     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            87     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            88     2          0      0 0                   0 I [kworker/2:1H-kverityd]\nroot            89     2          0      0 0                   0 I [kworker/3:2H-kverityd]\nroot            90     2          0      0 0                   0 I [kworker/3:3H-kverityd]\nroot            92     1   10885860   8192 0                   0 S init\nroot            93     1   10869580   8712 0                   0 S ueventd\nroot           100     2          0      0 0                   0 I [kdmflush/254:6]\nroot           101     2          0      0 0                   0 I [kdmflush/254:7]\nroot           102     2          0      0 0                   0 I [kdmflush/254:8]\nroot           103     2          0      0 0                   0 I [kdmflush/254:9]\nroot           104     2          0      0 0                   0 I [kdmflush/254:10]\nroot           105     2          0      0 0                   0 I [kdmflush/254:11]\nroot           106     2          0      0 0                   0 I [kdmflush/254:12]\nroot           107     2          0      0 0                   0 I [kdmflush/254:13]\nroot           108     2          0      0 0                   0 I [kdmflush/254:14]\nroot           109     2          0      0 0                   0 I [kdmflush/254:15]\nroot           110     2          0      0 0                   0 I [kdmflush/254:16]\nroot           111     2          0      0 0                   0 I [kdmflush/254:17]\nroot           112     2          0      0 0                   0 I [kdmflush/254:18]\nroot           113     2          0      0 0                   0 I [kdmflush/254:19]\nroot           114     2          0      0 0                   0 I [kdmflush/254:20]\nroot           115     2          0      0 0                   0 I [kdmflush/254:21]\nroot           116     2          0      0 0                   0 I [kdmflush/254:22]\nroot           117     2          0      0 0                   0 I [kdmflush/254:23]\nroot           118     2          0      0 0                   0 I [kdmflush/254:24]\nroot           119     2          0      0 0                   0 I [kdmflush/254:25]\nroot           120     2          0      0 0                   0 I [kdmflush/254:26]\nroot           121     2          0      0 0                   0 I [kdmflush/254:27]\nroot           122     2          0      0 0                   0 I [kdmflush/254:28]\nroot           123     2          0      0 0                   0 I [kdmflush/254:29]\nroot           124     2          0      0 0                   0 I [kdmflush/254:30]\nroot           125     2          0      0 0                   0 I [kdmflush/254:31]\nroot           126     2          0      0 0                   0 I [kdmflush/254:32]\nroot           127     2          0      0 0                   0 I [kdmflush/254:33]\nroot           128     2          0      0 0                   0 I [kdmflush/254:34]\nroot           129     2          0      0 0                   0 I [kdmflush/254:35]\nroot           130     2          0      0 0                   0 I [kdmflush/254:36]\nroot           131     2          0      0 0                   0 I [kdmflush/254:37]\nroot           132     2          0      0 0                   0 I [kdmflush/254:38]\nroot           133     2          0      0 0                   0 I [kdmflush/254:39]\nroot           134     2          0      0 0                   0 I [kdmflush/254:40]"
+    },
+    {
+      "elapsed_seconds": 246.77,
+      "adb_state": "device",
+      "boot_completed": "",
+      "timeout_multiplier": "",
+      "processes": "USER           PID  PPID        VSZ    RSS WCHAN            ADDR S NAME                       \nroot             1     0   10917704  12624 0                   0 S init\nroot             2     0          0      0 0                   0 S [kthreadd]\nroot             3     2          0      0 0                   0 I [rcu_gp]\nroot             4     2          0      0 0                   0 I [slub_flushwq]\nroot             5     2          0      0 0                   0 I [netns]\nroot             6     2          0      0 0                   0 I [kworker/0:0-events]\nroot             7     2          0      0 0                   0 I [kworker/0:0H-events_highpri]\nroot             8     2          0      0 0                   0 I [kworker/u8:0-ext4-rsv-conversion]\nroot             9     2          0      0 0                   0 I [mm_percpu_wq]\nroot            10     2          0      0 0                   0 I [kworker/u8:1-loop24]\nroot            11     2          0      0 0                   0 I [rcu_tasks_kthread]\nroot            12     2          0      0 0                   0 I [rcu_tasks_trace_kthread]\nroot            13     2          0      0 0                   0 S [ksoftirqd/0]\nroot            14     2          0      0 0                   0 R [rcu_preempt]\nroot            15     2          0      0 0                   0 S [rcub/0]\nroot            16     2          0      0 0                   0 S [rcu_exp_gp_kthread_worker]\nroot            17     2          0      0 0                   0 S [rcu_exp_par_gp_kthread_worker]\nroot            18     2          0      0 0                   0 S [migration/0]\nroot            19     2          0      0 0                   0 I [kworker/0:1-events]\nroot            20     2          0      0 0                   0 S [cpuhp/0]\nroot            21     2          0      0 0                   0 S [cpuhp/1]\nroot            22     2          0      0 0                   0 S [migration/1]\nroot            23     2          0      0 0                   0 S [ksoftirqd/1]\nroot            24     2          0      0 0                   0 I [kworker/1:0-virtio_vsock]\nroot            25     2          0      0 0                   0 I [kworker/1:0H-events_highpri]\nroot            26     2          0      0 0                   0 S [cpuhp/2]\nroot            27     2          0      0 0                   0 S [migration/2]\nroot            28     2          0      0 0                   0 S [ksoftirqd/2]\nroot            29     2          0      0 0                   0 I [kworker/2:0-cgroup_destroy]\nroot            30     2          0      0 0                   0 I [kworker/2:0H-kverityd]\nroot            31     2          0      0 0                   0 S [cpuhp/3]\nroot            32     2          0      0 0                   0 S [migration/3]\nroot            33     2          0      0 0                   0 S [ksoftirqd/3]\nroot            34     2          0      0 0                   0 I [kworker/3:0-slub_flushwq]\nroot            35     2          0      0 0                   0 I [kworker/3:0H-kverityd]\nroot            36     2          0      0 0                   0 I [inet_frag_wq]\nroot            37     2          0      0 0                   0 S [kauditd]\nroot            38     2          0      0 0                   0 S [khungtaskd]\nroot            39     2          0      0 0                   0 S [oom_reaper]\nroot            40     2          0      0 0                   0 I [writeback]\nroot            41     2          0      0 0                   0 S [kcompactd0]\nroot            42     2          0      0 0                   0 S [khugepaged]\nroot            43     2          0      0 0                   0 I [cryptd]\nroot            44     2          0      0 0                   0 I [kblockd]\nroot            45     2          0      0 0                   0 I [blkcg_punt_bio]\nroot            46     2          0      0 0                   0 I [kworker/3:1-events]\nroot            47     2          0      0 0                   0 I [edac-poller]\nroot            48     2          0      0 0                   0 I [devfreq_wq]\nroot            49     2          0      0 0                   0 S [watchdogd]\nroot            50     2          0      0 0                   0 I [kworker/1:1-mm_percpu_wq]\nroot            51     2          0      0 0                   0 I [kworker/2:1-virtio_vsock]\nroot            52     2          0      0 0                   0 I [kworker/1:1H-kverityd]\nroot            53     2          0      0 0                   0 S [kswapd0]\nroot            54     2          0      0 0                   0 I [kworker/u9:0-hci0]\nroot            55     2          0      0 0                   0 S [erofs_worker/0]\nroot            56     2          0      0 0                   0 S [erofs_worker/1]\nroot            57     2          0      0 0                   0 S [erofs_worker/2]\nroot            58     2          0      0 0                   0 S [erofs_worker/3]\nroot            59     2          0      0 0                   0 I [kthrotld]\nroot            60     2          0      0 0                   0 S [dmabuf-deferred-free-worker]\nroot            61     2          0      0 0                   0 I [uas]\nroot            62     2          0      0 0                   0 I [dm_bufio_cache]\nroot            63     2          0      0 0                   0 I [kworker/0:1H-kverityd]\nroot            64     2          0      0 0                   0 I [mld]\nroot            65     2          0      0 0                   0 I [ipv6_addrconf]\nroot            67     2          0      0 0                   0 I [kworker/0:2-virtio_vsock]\nroot            68     2          0      0 0                   0 R [kworker/1:2+virtio_vsock]\nroot            69     2          0      0 0                   0 I [kworker/3:1H-kverityd]\nroot            70     2          0      0 0                   0 S [khvcd]\nroot            71     2          0      0 0                   0 I [kworker/u8:2-ext4-rsv-conversion]\nroot            72     2          0      0 0                   0 S [hwrng]\nroot            73     2          0      0 0                   0 I [kworker/3:2-mm_percpu_wq]\nroot            74     2          0      0 0                   0 S [jbd2/vdd1-8]\nroot            75     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            77     2          0      0 0                   0 I [kdmflush/254:0]\nroot            78     2          0      0 0                   0 I [kdmflush/254:1]\nroot            79     2          0      0 0                   0 I [kdmflush/254:2]\nroot            80     2          0      0 0                   0 I [kdmflush/254:3]\nroot            81     2          0      0 0                   0 I [kdmflush/254:4]\nroot            82     2          0      0 0                   0 I [kdmflush/254:5]\nroot            83     2          0      0 0                   0 I [kverityd]\nroot            84     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            85     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            86     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            87     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            88     2          0      0 0                   0 I [kworker/2:1H-kverityd]\nroot            89     2          0      0 0                   0 I [kworker/3:2H-kverityd]\nroot            90     2          0      0 0                   0 I [kworker/3:3H-kverityd]\nroot            92     1   10885860   8192 0                   0 S init\nroot            93     1   10869580   8712 0                   0 S ueventd\nroot           100     2          0      0 0                   0 I [kdmflush/254:6]\nroot           101     2          0      0 0                   0 I [kdmflush/254:7]\nroot           102     2          0      0 0                   0 I [kdmflush/254:8]\nroot           103     2          0      0 0                   0 I [kdmflush/254:9]\nroot           104     2          0      0 0                   0 I [kdmflush/254:10]\nroot           105     2          0      0 0                   0 I [kdmflush/254:11]\nroot           106     2          0      0 0                   0 I [kdmflush/254:12]\nroot           107     2          0      0 0                   0 I [kdmflush/254:13]\nroot           108     2          0      0 0                   0 I [kdmflush/254:14]\nroot           109     2          0      0 0                   0 I [kdmflush/254:15]\nroot           110     2          0      0 0                   0 I [kdmflush/254:16]\nroot           111     2          0      0 0                   0 I [kdmflush/254:17]\nroot           112     2          0      0 0                   0 I [kdmflush/254:18]"
+    },
+    {
+      "elapsed_seconds": 275.65,
+      "adb_state": "device",
+      "boot_completed": "",
+      "timeout_multiplier": "",
+      "processes": "USER           PID  PPID        VSZ    RSS WCHAN            ADDR S NAME                       \nroot             1     0   10917704  12628 0                   0 S init\nroot             2     0          0      0 0                   0 S [kthreadd]\nroot             3     2          0      0 0                   0 I [rcu_gp]\nroot             4     2          0      0 0                   0 I [slub_flushwq]\nroot             5     2          0      0 0                   0 I [netns]\nroot             6     2          0      0 0                   0 I [kworker/0:0-events]\nroot             7     2          0      0 0                   0 I [kworker/0:0H-events_highpri]\nroot             8     2          0      0 0                   0 I [kworker/u8:0-ext4-rsv-conversion]\nroot             9     2          0      0 0                   0 I [mm_percpu_wq]\nroot            10     2          0      0 0                   0 I [kworker/u8:1-writeback]\nroot            11     2          0      0 0                   0 I [rcu_tasks_kthread]\nroot            12     2          0      0 0                   0 I [rcu_tasks_trace_kthread]\nroot            13     2          0      0 0                   0 S [ksoftirqd/0]\nroot            14     2          0      0 0                   0 I [rcu_preempt]\nroot            15     2          0      0 0                   0 S [rcub/0]\nroot            16     2          0      0 0                   0 S [rcu_exp_gp_kthread_worker]\nroot            17     2          0      0 0                   0 S [rcu_exp_par_gp_kthread_worker]\nroot            18     2          0      0 0                   0 S [migration/0]\nroot            19     2          0      0 0                   0 I [kworker/0:1-events]\nroot            20     2          0      0 0                   0 S [cpuhp/0]\nroot            21     2          0      0 0                   0 S [cpuhp/1]\nroot            22     2          0      0 0                   0 S [migration/1]\nroot            23     2          0      0 0                   0 S [ksoftirqd/1]\nroot            24     2          0      0 0                   0 I [kworker/1:0-virtio_vsock]\nroot            25     2          0      0 0                   0 I [kworker/1:0H-events_highpri]\nroot            26     2          0      0 0                   0 S [cpuhp/2]\nroot            27     2          0      0 0                   0 S [migration/2]\nroot            28     2          0      0 0                   0 S [ksoftirqd/2]\nroot            29     2          0      0 0                   0 I [kworker/2:0-cgroup_destroy]\nroot            30     2          0      0 0                   0 I [kworker/2:0H-kverityd]\nroot            31     2          0      0 0                   0 S [cpuhp/3]\nroot            32     2          0      0 0                   0 S [migration/3]\nroot            33     2          0      0 0                   0 S [ksoftirqd/3]\nroot            34     2          0      0 0                   0 I [kworker/3:0-slub_flushwq]\nroot            35     2          0      0 0                   0 I [kworker/3:0H-kverityd]\nroot            36     2          0      0 0                   0 I [inet_frag_wq]\nroot            37     2          0      0 0                   0 S [kauditd]\nroot            38     2          0      0 0                   0 S [khungtaskd]\nroot            39     2          0      0 0                   0 S [oom_reaper]\nroot            40     2          0      0 0                   0 I [writeback]\nroot            41     2          0      0 0                   0 S [kcompactd0]\nroot            42     2          0      0 0                   0 S [khugepaged]\nroot            43     2          0      0 0                   0 I [cryptd]\nroot            44     2          0      0 0                   0 I [kblockd]\nroot            45     2          0      0 0                   0 I [blkcg_punt_bio]\nroot            46     2          0      0 0                   0 I [kworker/3:1-events]\nroot            47     2          0      0 0                   0 I [edac-poller]\nroot            48     2          0      0 0                   0 I [devfreq_wq]\nroot            49     2          0      0 0                   0 S [watchdogd]\nroot            50     2          0      0 0                   0 I [kworker/1:1-mm_percpu_wq]\nroot            51     2          0      0 0                   0 I [kworker/2:1-events]\nroot            52     2          0      0 0                   0 I [kworker/1:1H-kverityd]\nroot            53     2          0      0 0                   0 S [kswapd0]\nroot            54     2          0      0 0                   0 I [kworker/u9:0-hci0]\nroot            55     2          0      0 0                   0 S [erofs_worker/0]\nroot            56     2          0      0 0                   0 S [erofs_worker/1]\nroot            57     2          0      0 0                   0 S [erofs_worker/2]\nroot            58     2          0      0 0                   0 S [erofs_worker/3]\nroot            59     2          0      0 0                   0 I [kthrotld]\nroot            60     2          0      0 0                   0 S [dmabuf-deferred-free-worker]\nroot            61     2          0      0 0                   0 I [uas]\nroot            62     2          0      0 0                   0 I [dm_bufio_cache]\nroot            63     2          0      0 0                   0 I [kworker/0:1H-kverityd]\nroot            64     2          0      0 0                   0 I [mld]\nroot            65     2          0      0 0                   0 I [ipv6_addrconf]\nroot            67     2          0      0 0                   0 I [kworker/0:2-events]\nroot            68     2          0      0 0                   0 I [kworker/1:2-virtio_vsock]\nroot            69     2          0      0 0                   0 I [kworker/3:1H-kverityd]\nroot            70     2          0      0 0                   0 S [khvcd]\nroot            71     2          0      0 0                   0 I [kworker/u8:2-ext4-rsv-conversion]\nroot            72     2          0      0 0                   0 S [hwrng]\nroot            73     2          0      0 0                   0 I [kworker/3:2-mm_percpu_wq]\nroot            74     2          0      0 0                   0 S [jbd2/vdd1-8]\nroot            75     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            77     2          0      0 0                   0 I [kdmflush/254:0]\nroot            78     2          0      0 0                   0 I [kdmflush/254:1]\nroot            79     2          0      0 0                   0 I [kdmflush/254:2]\nroot            80     2          0      0 0                   0 I [kdmflush/254:3]\nroot            81     2          0      0 0                   0 I [kdmflush/254:4]\nroot            82     2          0      0 0                   0 I [kdmflush/254:5]\nroot            83     2          0      0 0                   0 I [kverityd]\nroot            84     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            85     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            86     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            87     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            88     2          0      0 0                   0 I [kworker/2:1H-kverityd]\nroot            89     2          0      0 0                   0 I [kworker/3:2H-kverityd]\nroot            90     2          0      0 0                   0 I [kworker/3:3H-kverityd]\nroot            92     1   10885860   8192 0                   0 S init\nroot            93     1   10869580   8712 0                   0 S ueventd\nroot           100     2          0      0 0                   0 I [kdmflush/254:6]\nroot           101     2          0      0 0                   0 I [kdmflush/254:7]\nroot           102     2          0      0 0                   0 I [kdmflush/254:8]\nroot           103     2          0      0 0                   0 I [kdmflush/254:9]\nroot           104     2          0      0 0                   0 I [kdmflush/254:10]\nroot           105     2          0      0 0                   0 I [kdmflush/254:11]\nroot           106     2          0      0 0                   0 I [kdmflush/254:12]\nroot           107     2          0      0 0                   0 I [kdmflush/254:13]\nroot           108     2          0      0 0                   0 I [kdmflush/254:14]\nroot           109     2          0      0 0                   0 I [kdmflush/254:15]\nroot           110     2          0      0 0                   0 I [kdmflush/254:16]\nroot           111     2          0      0 0                   0 I [kdmflush/254:17]\nroot           112     2          0      0 0                   0 I [kdmflush/254:18]\nroot           113     2          0      0 0                   0 I [kdmflush/254:19]\nroot           114     2          0      0 0                   0 I [kdmflush/254:20]\nroot           115     2          0      0 0                   0 I [kdmflush/254:21]\nroot           116     2          0      0 0                   0 I [kdmflush/254:22]\nroot           117     2          0      0 0                   0 I [kdmflush/254:23]\nroot           118     2          0      0 0                   0 I [kdmflush/254:24]\nroot           119     2          0      0 0                   0 I [kdmflush/254:25]\nroot           120     2          0      0 0                   0 I [kdmflush/254:26]\nroot           121     2          0      0 0                   0 I [kdmflush/254:27]\nroot           122     2          0      0 0                   0 I [kdmflush/254:28]\nroot           123     2          0      0 0                   0 I [kdmflush/254:29]\nroot           124     2          0      0 0                   0 I [kdmflush/254:30]\nroot           125     2          0      0 0                   0 I [kdmflush/254:31]\nroot           126     2          0      0 0                   0 I [kdmflush/254:32]\nroot           127     2          0      0 0                   0 I [kdmflush/254:33]\nroot           128     2          0      0 0                   0 I [kdmflush/254:34]\nroot           129     2          0      0 0                   0 I [kdmflush/254:35]\nroot           130     2          0      0 0                   0 I [kdmflush/254:36]\nroot           131     2          0      0 0                   0 I [kdmflush/254:37]\nroot           132     2          0      0 0                   0 I [kdmflush/254:38]\nroot           133     2          0      0 0                   0 I [kdmflush/254:39]\nroot           134     2          0      0 0                   0 I [kdmflush/254:40]\nroot           135     2          0      0 0                   0 I [kdmflush/254:41]\nroot           136     2          0      0 0                   0 I [kdmflush/254:42]\nroot           141     2          0      0 0                   0 I [ext4-rsv-conver]\nroot           142     2          0      0 0                   0 I [ext4-rsv-conver]\nroot           143     2          0      0 0                   0 I [ext4-rsv-conver]\nroot           144     2          0      0 0                   0 I [kworker/u8:3-loop15]\nroot           145     2          0      0 0                   0 I [ext4-rsv-conver]\nsystem         150     1   10843812   4632 0                   0 S android.automotive.telemetryd@1.0\nprng_seeder    152     1   10880676   6696 0                   0 S prng_seeder\nroot           153     2          0      0 0                   0 S [sugov:0]\nroot           154     2          0      0 0                   0 S [sugov:1]\nroot           155     2          0      0 0                   0 S [sugov:2]\nroot           157     2          0      0 0                   0 S [sugov:3]\nroot           160     2          0      0 0                   0 I [kworker/2:2-events]\nroot           162     2          0      0 0                   0 S [irq/18-goldfish_pipe_dprctd]\nlogd           164     1   10833828   6468 0                   0 S logd\nlmkd           166     1   10825004   3008 0                   0 S lmkd\nroot           167     2          0      0 0                   0 I [cfg80211]\nsystem         169     1   10837952   5832 0                   0 S servicemanager\nsystem         170     1   10862212   6932 0                   0 S hwservicemanager\nroot           172     2          0      0 0                   0 S [psimon]\nroot           180     1   10850276   3060 0                   0 S qemu-props\nsystem         183     1   10861620   6684 0                   0 S carwatchdogd\ngraphics       188     1   10783852   8756 0                   0 S cardisplayproxyd\ngraphics       191     1   10947808  12952 0                   0 S android.hardware.automotive.evs-mock\nroot           193     1   10853720   9712 0                   0 S vold\nroot           199     2          0      0 0                   0 I [kdmflush/254:43]\nroot           203     2          0      0 0                   0 I [usbip_event]\nsystem         204     1   10847992   5356 0                   0 S android.system.suspend-service\nsystem         205     1   10885144   5828 0                   0 S carpowerpolicyd\nkeystore       206     1"
+    },
+    {
+      "elapsed_seconds": 302.34,
+      "adb_state": "device",
+      "boot_completed": "",
+      "timeout_multiplier": "",
+      "processes": "USER           PID  PPID        VSZ    RSS WCHAN            ADDR S NAME                       \nroot             1     0   10917704  12628 0                   0 S init\nroot             2     0          0      0 0                   0 S [kthreadd]\nroot             3     2          0      0 0                   0 I [rcu_gp]\nroot             4     2          0      0 0                   0 I [slub_flushwq]\nroot             5     2          0      0 0                   0 I [netns]\nroot             6     2          0      0 0                   0 I [kworker/0:0-events]\nroot             7     2          0      0 0                   0 I [kworker/0:0H-events_highpri]\nroot             8     2          0      0 0                   0 I [kworker/u8:0-ext4-rsv-conversion]\nroot             9     2          0      0 0                   0 I [mm_percpu_wq]\nroot            10     2          0      0 0                   0 I [kworker/u8:1-events_unbound]\nroot            11     2          0      0 0                   0 I [rcu_tasks_kthread]\nroot            12     2          0      0 0                   0 I [rcu_tasks_trace_kthread]\nroot            13     2          0      0 0                   0 S [ksoftirqd/0]\nroot            14     2          0      0 0                   0 I [rcu_preempt]\nroot            15     2          0      0 0                   0 S [rcub/0]\nroot            16     2          0      0 0                   0 S [rcu_exp_gp_kthread_worker]\nroot            17     2          0      0 0                   0 S [rcu_exp_par_gp_kthread_worker]\nroot            18     2          0      0 0                   0 S [migration/0]\nroot            19     2          0      0 0                   0 I [kworker/0:1-events]\nroot            20     2          0      0 0                   0 S [cpuhp/0]\nroot            21     2          0      0 0                   0 S [cpuhp/1]\nroot            22     2          0      0 0                   0 S [migration/1]\nroot            23     2          0      0 0                   0 S [ksoftirqd/1]\nroot            24     2          0      0 0                   0 I [kworker/1:0-virtio_vsock]\nroot            25     2          0      0 0                   0 I [kworker/1:0H-events_highpri]\nroot            26     2          0      0 0                   0 S [cpuhp/2]\nroot            27     2          0      0 0                   0 S [migration/2]\nroot            28     2          0      0 0                   0 S [ksoftirqd/2]\nroot            29     2          0      0 0                   0 I [kworker/2:0-cgroup_destroy]\nroot            30     2          0      0 0                   0 I [kworker/2:0H-kverityd]\nroot            31     2          0      0 0                   0 S [cpuhp/3]\nroot            32     2          0      0 0                   0 S [migration/3]\nroot            33     2          0      0 0                   0 S [ksoftirqd/3]\nroot            34     2          0      0 0                   0 I [kworker/3:0-slub_flushwq]\nroot            35     2          0      0 0                   0 I [kworker/3:0H-kverityd]\nroot            36     2          0      0 0                   0 I [inet_frag_wq]\nroot            37     2          0      0 0                   0 S [kauditd]\nroot            38     2          0      0 0                   0 S [khungtaskd]\nroot            39     2          0      0 0                   0 S [oom_reaper]\nroot            40     2          0      0 0                   0 I [writeback]\nroot            41     2          0      0 0                   0 S [kcompactd0]\nroot            42     2          0      0 0                   0 S [khugepaged]\nroot            43     2          0      0 0                   0 I [cryptd]\nroot            44     2          0      0 0                   0 I [kblockd]\nroot            45     2          0      0 0                   0 I [blkcg_punt_bio]\nroot            46     2          0      0 0                   0 I [kworker/3:1-events]\nroot            47     2          0      0 0                   0 I [edac-poller]\nroot            48     2          0      0 0                   0 I [devfreq_wq]\nroot            49     2          0      0 0                   0 S [watchdogd]\nroot            50     2          0      0 0                   0 I [kworker/1:1-mm_percpu_wq]\nroot            51     2          0      0 0                   0 I [kworker/2:1-mm_percpu_wq]\nroot            52     2          0      0 0                   0 I [kworker/1:1H-kblockd]\nroot            53     2          0      0 0                   0 S [kswapd0]\nroot            54     2          0      0 0                   0 I [kworker/u9:0-hci0]\nroot            55     2          0      0 0                   0 S [erofs_worker/0]\nroot            56     2          0      0 0                   0 S [erofs_worker/1]\nroot            57     2          0      0 0                   0 S [erofs_worker/2]\nroot            58     2          0      0 0                   0 S [erofs_worker/3]\nroot            59     2          0      0 0                   0 I [kthrotld]\nroot            60     2          0      0 0                   0 S [dmabuf-deferred-free-worker]\nroot            61     2          0      0 0                   0 I [uas]\nroot            62     2          0      0 0                   0 I [dm_bufio_cache]\nroot            63     2          0      0 0                   0 I [kworker/0:1H-kblockd]\nroot            64     2          0      0 0                   0 I [mld]\nroot            65     2          0      0 0                   0 I [ipv6_addrconf]\nroot            67     2          0      0 0                   0 I [kworker/0:2-virtio_vsock]\nroot            68     2          0      0 0                   0 I [kworker/1:2-virtio_vsock]\nroot            69     2          0      0 0                   0 I [kworker/3:1H-kverityd]\nroot            70     2          0      0 0                   0 S [khvcd]\nroot            71     2          0      0 0                   0 I [kworker/u8:2-ext4-rsv-conversion]\nroot            72     2          0      0 0                   0 S [hwrng]\nroot            73     2          0      0 0                   0 I [kworker/3:2-cgroup_destroy]\nroot            74     2          0      0 0                   0 S [jbd2/vdd1-8]\nroot            75     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            77     2          0      0 0                   0 I [kdmflush/254:0]\nroot            78     2          0      0 0                   0 I [kdmflush/254:1]\nroot            79     2          0"
+    },
+    {
+      "elapsed_seconds": 330.23,
+      "adb_state": "device",
+      "boot_completed": "",
+      "timeout_multiplier": "",
+      "processes": "USER           PID  PPID        VSZ    RSS WCHAN            ADDR S NAME                       \nroot             1     0   10917704  12628 0                   0 S init\nroot             2     0          0      0 0                   0 S [kthreadd]\nroot             3     2          0      0 0                   0 I [rcu_gp]\nroot             4     2          0      0 0                   0 I [slub_flushwq]\nroot             5     2          0      0 0                   0 I [netns]\nroot             7     2          0      0 0                   0 I [kworker/0:0H-events_highpri]\nroot             8     2          0      0 0                   0 I [kworker/u8:0-ext4-rsv-conversion]\nroot             9     2          0      0 0                   0 I [mm_percpu_wq]\nroot            10     2          0      0 0                   0 I [kworker/u8:1-events_unbound]\nroot            11     2          0      0 0                   0 I [rcu_tasks_kthread]\nroot            12     2          0      0 0                   0 I [rcu_tasks_trace_kthread]\nroot            13     2          0      0 0                   0 S [ksoftirqd/0]\nroot            14     2          0      0 0                   0 I [rcu_preempt]\nroot            15     2          0      0 0                   0 S [rcub/0]\nroot            16     2          0      0 0                   0 S [rcu_exp_gp_kthread_worker]\nroot            17     2          0      0 0                   0 S [rcu_exp_par_gp_kthread_worker]\nroot            18     2          0      0 0                   0 S [migration/0]\nroot            19     2          0      0 0                   0 I [kworker/0:1-events]\nroot            20     2          0      0 0                   0 S [cpuhp/0]\nroot            21     2          0      0 0                   0 S [cpuhp/1]\nroot            22     2          0      0 0                   0 S [migration/1]\nroot            23     2          0      0 0                   0 S [ksoftirqd/1]\nroot            24     2          0      0 0                   0 I [kworker/1:0-virtio_vsock]\nroot            25     2          0      0 0                   0 I [kworker/1:0H-events_highpri]\nroot            26     2          0      0 0                   0 S [cpuhp/2]\nroot            27     2          0      0 0                   0 S [migration/2]\nroot            28     2          0      0 0                   0 S [ksoftirqd/2]\nroot            30     2          0      0 0                   0 I [kworker/2:0H-kverityd]\nroot            31     2          0      0 0                   0 S [cpuhp/3]\nroot            32     2          0      0 0                   0 S [migration/3]\nroot            33     2          0      0 0                   0 S [ksoftirqd/3]\nroot            35     2          0      0 0                   0 I [kworker/3:0H-kverityd]\nroot            36     2          0      0 0                   0 I [inet_frag_wq]\nroot            37     2          0      0 0                   0 S [kauditd]\nroot            38     2          0      0 0                   0 S [khungtaskd]\nroot            39     2          0      0 0                   0 S [oom_reaper]\nroot            40     2          0      0 0                   0 I [writeback]\nroot            41     2          0      0 0                   0 S [kcompactd0]\nroot            42     2          0      0 0                   0 S [khugepaged]\nroot            43     2          0      0 0                   0 I [cryptd]\nroot            44     2          0      0 0                   0 I [kblockd]\nroot            45     2          0      0 0                   0 I [blkcg_punt_bio]\nroot            46     2          0      0 0                   0 I [kworker/3:1-events]\nroot            47     2          0      0 0                   0 I [edac-poller]\nroot            48     2          0      0 0                   0 I [devfreq_wq]\nroot            49     2          0      0 0                   0 S [watchdogd]\nroot            51     2          0      0 0                   0 I [kworker/2:1-virtio_vsock]\nroot            52     2          0      0 0                   0 I [kworker/1:1H-kblockd]\nroot            53     2          0      0 0                   0 S [kswapd0]\nroot            54     2          0      0 0                   0 I [kworker/u9:0-hci0]\nroot            55     2          0      0 0                   0 S [erofs_worker/0]\nroot            56     2          0      0 0                   0 S [erofs_worker/1]\nroot            57     2          0      0 0                   0 S [erofs_worker/2]\nroot            58     2          0      0 0                   0 S [erofs_worker/3]\nroot            59     2          0      0 0                   0 I [kthrotld]\nroot            60     2          0      0 0                   0 S [dmabuf-deferred-free-worker]\nroot            61     2          0      0 0                   0 I [uas]\nroot            62     2          0      0 0                   0 I [dm_bufio_cache]\nroot            63     2          0      0 0                   0 I [kworker/0:1H-kblockd]\nroot            64     2          0      0 0                   0 I [mld]\nroot            65     2          0      0 0                   0 I [ipv6_addrconf]\nroot            67     2          0      0 0                   0 I [kworker/0:2-events]\nroot            68     2          0      0 0                   0 I [kworker/1:2-virtio_vsock]\nroot            69     2          0      0 0                   0 I [kworker/3:1H-kverityd]\nroot            70     2          0      0 0                   0 S [khvcd]\nroot            71     2          0      0 0                   0 I [kworker/u8:2-ext4-rsv-conversion]\nroot            72     2          0      0 0                   0 S [hwrng]\nroot            73     2          0      0 0                   0 I [kworker/3:2-mm_percpu_wq]\nroot            74     2          0      0 0                   0 S [jbd2/vdd1-8]\nroot            75     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            77     2          0      0 0                   0 I [kdmflush/254:0]\nroot            78     2          0      0 0                   0 I [kdmflush/254:1]\nroot            79     2          0      0 0                   0 I [kdmflush/254:2]\nroot            80     2          0      0 0                   0 I [kdmflush/254:3]\nroot            81     2          0      0 0                   0 I [kdmflush/254:4]\nroot            82     2          0      0 0                   0 I [kdmflush/254:5]\nroot            83     2          0      0 0                   0 I [kverityd]\nroot            84     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            85     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            86     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            87     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            88     2          0      0 0                   0 I [kworker/2:1H-kblockd]\nroot            89     2          0      0 0                   0 I [kworker/3:2H-kverityd]\nroot            90     2          0      0 0                   0 I [kworker/3:3H-kblockd]\nroot            92     1   10885860   8192 0                   0 S init\nroot            93     1   10869580   8712 0                   0 S ueventd\nroot           100     2          0      0 0                   0 I [kdmflush/254:6]\nroot           101     2          0      0 0                   0 I [kdmflush/254:7]\nroot           102     2          0      0 0                   0 I [kdmflush/254:8]\nroot           103     2          0      0 0                   0 I [kdmflush/254:9]\nroot           104     2          0      0 0                   0 I [kdmflush/254:10]\nroot           105     2          0      0 0                   0 I [kdmflush/254:11]\nroot           106     2          0      0 0                   0 I [kdmflush/254:12]\nroot           107     2          0      0 0                   0 I [kdmflush/254:13]\nroot           108     2          0      0 0                   0 I [kdmflush/254:14]\nroot           109     2          0      0 0                   0 I [kdmflush/254:15]\nroot           110     2          0      0 0                   0 I [kdmflush/254:16]\nroot           111     2          0      0 0                   0 I [kdmflush/254:17]\nroot           112     2          0      0 0                   0 I [kdmflush/254:18]\nroot           113     2          0      0 0                   0 I [kdmflush/254:19]\nroot           114     2          0      0 0                   0 I [kdmflush/254:20]\nroot           115     2          0      0 0                   0 I [kdmflush/254:21]\nroot           116     2          0      0 0                   0 I [kdmflush/254:22]\nroot           117     2          0      0 0                   0 I [kdmflush/254:23]\nroot           118     2          0      0 0                   0 I [kdmflush/254:24]\nroot           119     2          0      0 0                   0 I [kdmflush/254:25]\nroot           120     2          0      0 0                   0 I [kdmflush/254:26]\nroot           121     2          0      0 0                   0 I [kdmflush/254:27]\nroot           122     2          0      0 0                   0 I [kdmflush/254:28]\nroot           123     2          0      0 0                   0 I [kdmflush/254:29]\nroot           124     2          0      0 0                   0 I [kdmflush/254:30]\nroot           125     2          0      0 0                   0 I [kdmflush/254:31]\nroot           126     2          0      0 0                   0 I [kdmflush/254:32]\nroot           127     2          0      0 0                   0 I [kdmflush/254:33]\nroot           128     2          0      0 0                   0 I [kdmflush/254:34]\nroot           129     2          0      0 0                   0 I [kdmflush/254:35]\nroot           130     2          0      0 0                   0 I [kdmflush/254:36]\nroot           131     2          0      0 0                   0 I [kdmflush/254:37]\nroot           132     2          0      0 0                   0 I [kdmflush/254:38]\nroot           133     2          0      0 0                   0 I [kdmflush/254:39]\nroot           134     2          0      0 0                   0 I [kdmflush/254:40]\nroot           135     2          0      0 0                   0 I [kdmflush/254:41]\nroot           136     2          0      0 0                   0 I [kdmflush/254:42]\nroot           141     2          0      0 0                   0 I [ext4-rsv-conver]"
+    },
+    {
+      "elapsed_seconds": 357.57,
+      "adb_state": "device",
+      "boot_completed": "",
+      "timeout_multiplier": "",
+      "processes": "USER           PID  PPID        VSZ    RSS WCHAN            ADDR S NAME                       \nroot             1     0   10917704  12628 0                   0 S init\nroot             2     0          0      0 0                   0 S [kthreadd]\nroot             3     2          0      0 0                   0 I [rcu_gp]\nroot             4     2          0      0 0                   0 I [slub_flushwq]\nroot             5     2          0      0 0                   0 I [netns]\nroot             7     2          0      0 0                   0 I [kworker/0:0H-events_highpri]\nroot             8     2          0      0 0                   0 I [kworker/u8:0-ext4-rsv-conversion]\nroot             9     2          0      0 0                   0 I [mm_percpu_wq]\nroot            10     2          0      0 0                   0 I [kworker/u8:1-writeback]\nroot            11     2          0      0 0                   0 I [rcu_tasks_kthread]\nroot            12     2          0      0 0                   0 I [rcu_tasks_trace_kthread]\nroot            13     2          0      0 0                   0 S [ksoftirqd/0]\nroot            14     2          0      0 0                   0 I [rcu_preempt]\nroot            15     2          0      0 0                   0 S [rcub/0]\nroot            16     2          0      0 0                   0 S [rcu_exp_gp_kthread_worker]\nroot            17     2          0      0 0                   0 S [rcu_exp_par_gp_kthread_worker]\nroot            18     2          0      0 0                   0 S [migration/0]\nroot            19     2          0      0 0                   0 I [kworker/0:1-events]\nroot            20     2          0      0 0                   0 S [cpuhp/0]\nroot            21     2          0      0 0                   0 S [cpuhp/1]\nroot            22     2          0      0 0                   0 S [migration/1]\nroot            23     2          0      0 0                   0 S [ksoftirqd/1]\nroot            24     2          0      0 0                   0 I [kworker/1:0-virtio_vsock]\nroot            25     2          0      0 0                   0 I [kworker/1:0H-events_highpri]\nroot            26     2          0      0 0                   0 S [cpuhp/2]\nroot            27     2          0      0 0                   0 S [migration/2]\nroot            28     2          0      0 0                   0 S [ksoftirqd/2]\nroot            30     2          0      0 0                   0 I [kworker/2:0H-kverityd]\nroot            31     2          0      0 0                   0 S [cpuhp/3]\nroot            32     2          0      0 0                   0 S [migration/3]\nroot            33     2          0      0 0                   0 S [ksoftirqd/3]\nroot            35     2          0      0 0                   0 I [kworker/3:0H-kverityd]\nroot            36     2          0      0 0                   0 I [inet_frag_wq]\nroot            37     2          0      0 0                   0 S [kauditd]\nroot            38     2          0      0 0                   0 S [khungtaskd]\nroot            39     2          0      0 0                   0 S [oom_reaper]\nroot            40     2          0      0 0                   0 I [writeback]\nroot            41     2          0      0 0                   0 S [kcompactd0]\nroot            42     2          0      0 0                   0 S [khugepaged]\nroot            43     2          0      0 0                   0 I [cryptd]\nroot            44     2          0      0 0                   0 I [kblockd]\nroot            45     2          0      0 0                   0 I [blkcg_punt_bio]\nroot            46     2          0      0 0                   0 I [kworker/3:1-events]\nroot            47     2          0      0 0                   0 I [edac-poller]\nroot            48     2          0      0 0                   0 I [devfreq_wq]\nroot            49     2          0      0 0                   0 S [watchdogd]\nroot            51     2          0      0 0                   0 I [kworker/2:1-events]\nroot            52     2          0      0 0                   0 I [kworker/1:1H-kverityd]\nroot            53     2          0      0 0                   0 S [kswapd0]\nroot            54     2          0      0 0                   0 I [kworker/u9:0-hci0]\nroot            55     2          0      0 0                   0 S [erofs_worker/0]\nroot            56     2          0      0 0                   0 S [erofs_worker/1]\nroot            57     2          0      0 0                   0 S [erofs_worker/2]\nroot            58     2          0      0 0                   0 S [erofs_worker/3]\nroot            59     2          0      0 0                   0 I [kthrotld]\nroot            60     2          0      0 0                   0 S [dmabuf-deferred-free-worker]\nroot            61     2          0      0 0                   0 I [uas]\nroot            62     2          0      0 0                   0 I [dm_bufio_cache]\nroot            63     2          0      0 0                   0 I [kworker/0:1H-kverityd]\nroot            64     2          0      0 0                   0 I [mld]\nroot            65     2          0      0 0                   0 I [ipv6_addrconf]\nroot            67     2          0      0 0                   0 I [kworker/0:2-events]\nroot            68     2          0      0 0                   0 I [kworker/1:2-virtio_vsock]\nroot            69     2          0      0 0                   0 I [kworker/3:1H-kverityd]\nroot            70     2          0      0 0                   0 S [khvcd]\nroot            71     2          0      0 0                   0 I [kworker/u8:2-ext4-rsv-conversion]\nroot            72     2          0      0 0                   0 S [hwrng]\nroot            73     2          0      0 0                   0 I [kworker/3:2-events]\nroot            74     2          0      0 0                   0 S [jbd2/vdd1-8]\nroot            75     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            77     2          0      0 0                   0 I [kdmflush/254:0]\nroot            78     2          0      0 0                   0 I [kdmflush/254:1]\nroot            79     2          0      0 0                   0 I [kdmflush/254:2]\nroot            80     2          0      0 0                   0 I [kdmflush/254:3]\nroot            81     2          0      0 0                   0 I [kdmflush/254:4]\nroot            82     2          0      0 0                   0 I [kdmflush/254:5]\nroot            83     2          0      0 0                   0 I [kverityd]\nroot            84     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            85     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            86     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            87     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            88     2          0      0 0                   0 I [kworker/2:1H-kverityd]\nroot            89     2          0      0 0                   0 I [kworker/3:2H-kverityd]\nroot            90     2          0      0 0                   0 I [kworker/3:3H-kverityd]\nroot            92     1   10885860   8192 0                   0 S init\nroot            93     1   10869580   8712 0                   0 S ueventd\nroot           100     2          0      0 0                   0 I [kdmflush/254:6]\nroot           101     2          0      0 0                   0 I [kdmflush/254:7]\nroot           102     2          0      0 0                   0 I [kdmflush/254:8]\nroot           103     2          0      0 0                   0 I [kdmflush/254:9]\nroot           104     2          0      0 0                   0 I [kdmflush/254:10]\nroot           105     2          0      0 0                   0 I [kdmflush/254:11]\nroot           106     2          0      0 0                   0 I [kdmflush/254:12]\nroot           107     2          0      0 0                   0 I [kdmflush/254:13]\nroot           108     2          0      0 0                   0 I [kdmflush/254:14]\nroot           109     2          0      0 0                   0 I [kdmflush/254:15]\nroot           110     2          0      0 0                   0 I [kdmflush/254:16]\nroot           111     2          0      0 0                   0 I [kdmflush/254:17]\nroot           112     2          0      0 0                   0 I [kdmflush/254:18]\nroot           113     2          0      0 0                   0 I [kdmflush/254:19]\nroot           114     2          0      0 0                   0 I [kdmflush/254:20]\nroot           115     2          0      0 0                   0 I [kdmflush/254:21]\nroot           116     2          0      0 0                   0 I [kdmflush/254:22]\nroot           117     2          0      0 0                   0 I [kdmflush/254:23]\nroot           118     2          0      0 0                   0 I [kdmflush/254:24]\nroot           119     2          0      0 0                   0 I [kdmflush/254:25]\nroot           120     2          0      0 0                   0 I [kdmflush/254:26]\nroot           121     2          0      0 0                   0 I [kdmflush/254:27]\nroot           122     2          0      0 0                   0 I [kdmflush/254:28]\nroot           123     2          0      0 0                   0 I [kdmflush/254:29]\nroot           124     2          0      0 0                   0 I [kdmflush/254:30]\nroot           125     2          0      0 0                   0 I [kdmflush/254:31]\nroot           126     2          0      0 0                   0 I [kdmflush/254:32]\nroot           127     2          0      0 0                   0 I [kdmflush/254:33]\nroot           128     2          0      0 0                   0 I [kdmflush/254:34]\nroot           129     2          0      0 0                   0 I [kdmflush/254:35]\nroot           130     2          0      0 0                   0 I [kdmflush/254:36]\nroot           131     2          0      0 0                   0 I [kdmflush/254:37]\nroot           132     2          0      0 0                   0 I [kdmflush/254:38]\nroot           133     2          0      0 0                   0 I [kdmflush/254:39]\nroot           134     2          0      0 0                   0 I [kdmflush/254:40]\nroot           135     2          0      0 0                   0 I [kdmflush/254:41]\nroot           136     2          0      0 0                   0 I [kdmflush/254:42]\nroot           141     2          0      0 0                   0 I [ext4-rsv-conver]\nroot           142     2          0      0 0                   0 I [ext4-rsv-conver]\nroot           143     2          0      0 0                   0 I [ext4-rsv-conver]\nroot           145     2          0      0 0                   0 I [ext4-rsv-conver]\nsystem         150     1   10843812   4632 0                   0 S android.automotive.telemetryd@1.0\nprng_seeder    152     1   10880676   6696 0                   0 S prng_seeder\nroot           153     2          0      0 0                   0 S [sugov:0]\nroot           154     2          0      0 0                   0 S [sugov:1]\nroot           155     2          0      0 0                   0 S [sugov:2]\nroot           157     2          0      0 0                   0 S [sugov:3]\nroot           160     2          0      0 0                   0 I [kworker/2:2-events]\nroot           162     2          0      0 0                   0 S [irq/18-goldfish_pipe_dprctd]\nlogd           164     1   10833828   6536 0                   0 S logd\nlmkd           166     1   10825004   3008 0                   0 S lmkd\nroot           167     2          0      0 0                   0 I [cfg80211]\nsystem         169     1   10837952   6096 0                   0 S servicemanager\nsystem         170     1   10862212   6932 0                   0 S hwservicemanager\nroot           172     2          0      0 0                   0 S [psimon]\nroot           180     1   10850276   3060 0                   0 S qemu-props\nsystem         183     1   10861620   6684 0                   0 S carwatchdogd\ngraphics       188     1   10783852   8756 0                   0 S cardisplayproxyd\ngraphics       191     1   10947808  12952 0                   0 S android.hardware.automotive.evs-mock\nroot           193     1   10853720   9712 0                   0 S vold\nroot           199     2          0      0 0                   0 I [kdmflush/254:43]\nroot           203     2          0      0 0                   0 I [usbip_event]\nsystem         204     1   10847992   5412 0                   0 S android.system.suspend-service\nsystem"
+    },
+    {
+      "elapsed_seconds": 386.28,
+      "adb_state": "device",
+      "boot_completed": "",
+      "timeout_multiplier": "",
+      "processes": "USER           PID  PPID        VSZ    RSS WCHAN            ADDR S NAME                       \nroot             1     0   10917704  12628 0                   0 S init\nroot             2     0          0      0 0                   0 S [kthreadd]\nroot             3     2          0      0 0                   0 I [rcu_gp]\nroot             4     2          0      0 0                   0 I [slub_flushwq]\nroot             5     2          0      0 0                   0 I [netns]\nroot             7     2          0      0 0                   0 I [kworker/0:0H-events_highpri]\nroot             8     2          0      0 0                   0 I [kworker/u8:0-ext4-rsv-conversion]\nroot             9     2          0      0 0                   0 I [mm_percpu_wq]\nroot            10     2          0      0 0                   0 I [kworker/u8:1-writeback]\nroot            11     2          0      0 0                   0 I [rcu_tasks_kthread]\nroot            12     2          0      0 0                   0 I [rcu_tasks_trace_kthread]\nroot            13     2          0      0 0                   0 S [ksoftirqd/0]\nroot            14     2          0      0 0                   0 R [rcu_preempt]\nroot            15     2          0      0 0                   0 S [rcub/0]\nroot            16     2          0      0 0                   0 S [rcu_exp_gp_kthread_worker]\nroot            17     2          0      0 0                   0 S [rcu_exp_par_gp_kthread_worker]\nroot            18     2          0      0 0                   0 S [migration/0]\nroot            19     2          0      0 0                   0 I [kworker/0:1-events]\nroot            20     2          0      0 0                   0 S [cpuhp/0]\nroot            21     2          0      0 0                   0 S [cpuhp/1]\nroot            22     2          0      0 0                   0 S [migration/1]\nroot            23     2          0      0 0                   0 S [ksoftirqd/1]\nroot            24     2          0      0 0                   0 I [kworker/1:0-events]\nroot            25     2          0      0 0                   0 I [kworker/1:0H-events_highpri]\nroot            26     2          0      0 0                   0 S [cpuhp/2]\nroot            27     2          0      0 0                   0 S [migration/2]\nroot            28     2          0      0 0                   0 S [ksoftirqd/2]\nroot            30     2          0      0 0                   0 I [kworker/2:0H-kverityd]\nroot            31     2          0      0 0                   0 S [cpuhp/3]\nroot            32     2          0      0 0                   0 S [migration/3]\nroot            33     2          0      0 0                   0 S [ksoftirqd/3]\nroot            35     2          0      0 0                   0 I [kworker/3:0H-kverityd]\nroot            36     2          0      0 0                   0 I [inet_frag_wq]\nroot            37     2          0      0 0                   0 S [kauditd]\nroot            38     2          0      0 0                   0 S [khungtaskd]\nroot            39     2          0      0 0                   0 S [oom_reaper]\nroot            40     2          0      0 0                   0 I [writeback]\nroot            41     2          0      0 0                   0 S [kcompactd0]\nroot            42     2          0      0 0                   0 S [khugepaged]\nroot            43     2          0      0 0                   0 I [cryptd]\nroot            44     2          0      0 0                   0 I [kblockd]\nroot            45     2          0      0 0                   0 I [blkcg_punt_bio]\nroot            46     2          0      0 0                   0 I [kworker/3:1-events]\nroot            47     2          0      0 0                   0 I [edac-poller]\nroot            48     2          0      0 0                   0 I [devfreq_wq]\nroot            49     2          0      0 0                   0 S [watchdogd]\nroot            51     2          0      0 0                   0 I [kworker/2:1-events]\nroot            52     2          0      0 0                   0 I [kworker/1:1H-kblockd]\nroot            53     2          0      0 0                   0 S [kswapd0]\nroot            54     2          0      0 0                   0 I [kworker/u9:0-hci0]\nroot            55     2          0      0 0                   0 S [erofs_worker/0]\nroot            56     2          0      0 0                   0 S [erofs_worker/1]\nroot            57     2          0      0 0                   0 S [erofs_worker/2]\nroot            58     2          0      0 0                   0 S [erofs_worker/3]\nroot            59     2          0      0 0                   0 I [kthrotld]\nroot            60     2          0      0 0                   0 S [dmabuf-deferred-free-worker]\nroot            61     2          0      0 0                   0 I [uas]\nroot            62     2          0      0 0                   0 I [dm_bufio_cache]\nroot            63     2          0      0 0                   0 I [kworker/0:1H-kblockd]\nroot            64     2          0      0 0                   0 I [mld]\nroot            65     2          0      0 0                   0 I [ipv6_addrconf]\nroot            67     2          0      0 0                   0 I [kworker/0:2-events]\nroot            68     2          0      0 0                   0 I [kworker/1:2-virtio_vsock]\nroot            69     2          0      0 0                   0 I [kworker/3:1H-kverityd]\nroot            70     2          0      0 0                   0 S [khvcd]\nroot            71     2          0      0 0                   0 I [kworker/u8:2-ext4-rsv-conversion]\nroot            72     2          0      0 0                   0 S [hwrng]\nroot            73     2          0      0 0                   0 I [kworker/3:2-events]\nroot            74     2          0      0 0                   0 S [jbd2/vdd1-8]\nroot            75     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            77     2          0      0 0                   0 I [kdmflush/254:0]\nroot            78     2          0      0 0                   0 I [kdmflush/254:1]\nroot            79     2          0      0 0                   0 I [kdmflush/254:2]\nroot            80     2          0      0 0                   0 I [kdmflush/254:3]\nroot            81     2          0      0 0                   0 I [kdmflush/254:4]\nroot            82     2          0      0 0                   0 I [kdmflush/254:5]\nroot            83     2          0      0 0                   0 I [kverityd]\nroot            84     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            85     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            86     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            87     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            88     2          0      0 0                   0 I [kworker/2:1H-kblockd]\nroot            89     2          0      0 0                   0 I [kworker/3:2H-kverityd]\nroot            90     2          0      0 0                   0 I [kworker/3:3H-kblockd]\nroot            92     1   10885860   8192 0                   0 S init\nroot            93     1   10869580   8712 0                   0 S ueventd\nroot           100     2          0      0 0                   0 I [kdmflush/254:6]\nroot           101     2          0      0 0                   0 I [kdmflush/254:7]\nroot           102     2          0      0 0                   0 I [kdmflush/254:8]\nroot           103     2          0      0 0                   0 I [kdmflush/254:9]\nroot           104     2          0      0 0                   0 I [kdmflush/254:10]\nroot           105     2          0      0 0                   0 I [kdmflush/254:11]\nroot           106     2          0      0 0                   0 I [kdmflush/254:12]\nroot           107     2          0      0 0                   0 I [kdmflush/254:13]\nroot           108     2          0      0 0                   0 I [kdmflush/254:14]\nroot           109     2          0      0 0                   0 I [kdmflush/254:15]\nroot           110     2          0      0 0                   0 I [kdmflush/254:16]\nroot           111     2          0      0 0                   0 I [kdmflush/254:17]\nroot           112     2          0      0 0                   0 I [kdmflush/254:18]\nroot           113     2          0      0 0                   0 I [kdmflush/254:19]\nroot           114     2          0      0 0                   0 I [kdmflush/254:20]\nroot           115     2          0      0 0                   0 I [kdmflush/254:21]\nroot           116     2          0      0 0                   0 I [kdmflush/254:22]\nroot           117     2          0      0 0                   0 I [kdmflush/254:23]\nroot           118     2          0      0 0                   0 I [kdmflush/254:24]\nroot           119     2          0      0 0                   0 I [kdmflush/254:25]\nroot           120     2          0      0 0                   0 I [kdmflush/254:26]\nroot           121     2          0      0 0                   0 I [kdmflush/254:27]\nroot           122     2          0      0 0                   0 I [kdmflush/254:28]\nroot           123"
+    },
+    {
+      "elapsed_seconds": 413.49,
+      "adb_state": "device",
+      "boot_completed": "",
+      "timeout_multiplier": "",
+      "processes": "USER           PID  PPID        VSZ    RSS WCHAN            ADDR S NAME                       \nroot             1     0   10917704  12628 0                   0 S init\nroot             2     0          0      0 0                   0 S [kthreadd]\nroot             3     2          0      0 0                   0 I [rcu_gp]\nroot             4     2          0      0 0                   0 I [slub_flushwq]\nroot             5     2          0      0 0                   0 I [netns]\nroot             7     2          0      0 0                   0 I [kworker/0:0H-events_highpri]\nroot             8     2          0      0 0                   0 I [kworker/u8:0-ext4-rsv-conversion]\nroot             9     2          0      0 0                   0 I [mm_percpu_wq]\nroot            10     2          0      0 0                   0 I [kworker/u8:1-flush-254:43]\nroot            11     2          0      0 0                   0 I [rcu_tasks_kthread]\nroot            12     2          0      0 0                   0 I [rcu_tasks_trace_kthread]\nroot            13     2          0      0 0                   0 S [ksoftirqd/0]\nroot            14     2          0      0 0                   0 I [rcu_preempt]\nroot            15     2          0      0 0                   0 S [rcub/0]\nroot            16     2          0      0 0                   0 S [rcu_exp_gp_kthread_worker]\nroot            17     2          0      0 0                   0 S [rcu_exp_par_gp_kthread_worker]\nroot            18     2          0      0 0                   0 S [migration/0]\nroot            19     2          0      0 0                   0 I [kworker/0:1-events]\nroot            20     2          0      0 0                   0 S [cpuhp/0]\nroot            21     2          0      0 0                   0 S [cpuhp/1]\nroot            22     2          0      0 0                   0 S [migration/1]\nroot            23     2          0      0 0                   0 S [ksoftirqd/1]\nroot            24     2          0      0 0                   0 I [kworker/1:0-virtio_vsock]\nroot            25     2          0      0 0                   0 I [kworker/1:0H-events_highpri]\nroot            26     2          0      0 0                   0 S [cpuhp/2]\nroot            27     2          0      0 0                   0 S [migration/2]\nroot            28     2          0      0 0                   0 S [ksoftirqd/2]\nroot            30     2          0      0 0                   0 I [kworker/2:0H-kverityd]\nroot            31     2          0      0 0                   0 S [cpuhp/3]\nroot            32     2          0      0 0                   0 S [migration/3]\nroot            33     2          0      0 0                   0 S [ksoftirqd/3]\nroot            35     2          0      0 0                   0 I [kworker/3:0H-kverityd]\nroot            36     2          0      0 0                   0 I [inet_frag_wq]\nroot            37     2          0      0 0                   0 S [kauditd]\nroot            38     2          0      0 0                   0 S [khungtaskd]\nroot            39     2          0      0 0                   0 S [oom_reaper]\nroot            40     2          0      0 0                   0 I [writeback]\nroot            41     2          0      0 0                   0 S [kcompactd0]\nroot            42     2          0      0 0                   0 S [khugepaged]\nroot            43     2          0      0 0                   0 I [cryptd]\nroot            44     2          0      0 0                   0 I [kblockd]\nroot            45     2          0      0 0                   0 I [blkcg_punt_bio]\nroot            46     2          0      0 0                   0 I [kworker/3:1-events]\nroot            47     2          0      0 0                   0 I [edac-poller]\nroot            48     2          0      0 0                   0 I [devfreq_wq]\nroot            49     2          0      0 0                   0 S [watchdogd]\nroot            51     2          0      0 0                   0 I [kworker/2:1-events]\nroot            52     2          0      0 0                   0 I [kworker/1:1H-kblockd]\nroot            53     2          0      0 0                   0 S [kswapd0]\nroot            54     2          0      0 0                   0 I [kworker/u9:0-hci0]\nroot            55     2          0      0 0                   0 S [erofs_worker/0]\nroot            56     2          0      0 0                   0 S [erofs_worker/1]\nroot            57     2          0      0 0                   0 S [erofs_worker/2]\nroot            58     2          0      0 0                   0 S [erofs_worker/3]\nroot            59     2          0      0 0                   0 I [kthrotld]\nroot            60     2          0      0 0                   0 S [dmabuf-deferred-free-worker]\nroot            61     2          0      0 0                   0 I [uas]\nroot            62     2          0      0 0                   0 I [dm_bufio_cache]\nroot            63     2          0      0 0                   0 I [kworker/0:1H-kverityd]\nroot            64     2          0      0 0                   0 I [mld]\nroot            65     2          0      0 0                   0 I [ipv6_addrconf]\nroot            67     2          0      0 0                   0 I [kworker/0:2-events]\nroot            68     2          0      0 0                   0 I [kworker/1:2-virtio_vsock]\nroot            69     2          0      0 0                   0 I [kworker/3:1H-kverityd]\nroot            70     2          0      0 0                   0 S [khvcd]\nroot            72     2          0      0 0                   0 S [hwrng]\nroot            73     2          0      0 0                   0 I [kworker/3:2-events]\nroot            74     2          0      0 0                   0 S [jbd2/vdd1-8]\nroot            75     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            77     2          0      0 0                   0 I [kdmflush/254:0]\nroot            78     2          0      0 0                   0 I [kdmflush/254:1]\nroot            79     2          0      0 0                   0 I [kdmflush/254:2]\nroot            80     2          0      0 0                   0 I [kdmflush/254:3]\nroot            81     2          0      0 0                   0 I [kdmflush/254:4]\nroot            82     2          0      0 0                   0 I [kdmflush/254:5]\nroot            83     2          0      0 0                   0 I [kverityd]\nroot            84     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            85     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            86     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            87     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            88     2          0      0 0                   0 I [kworker/2:1H-kverityd]\nroot            89     2          0      0 0                   0 I [kworker/3:2H-kverityd]\nroot            90     2          0      0 0                   0 I [kworker/3:3H-kverityd]\nroot            92     1   10885860   8192 0                   0 S init\nroot            93     1   10869580   8712 0                   0 S ueventd\nroot           100     2          0      0 0                   0 I [kdmflush/254:6]\nroot           101     2          0      0 0                   0 I [kdmflush/254:7]\nroot           102     2          0      0 0                   0 I [kdmflush/254:8]\nroot           103     2          0      0 0                   0 I [kdmflush/254:9]\nroot           104     2          0      0 0                   0 I [kdmflush/254:10]\nroot           105     2          0      0 0                   0 I [kdmflush/254:11]\nroot           106     2          0      0 0                   0 I [kdmflush/254:12]\nroot           107     2          0      0 0                   0 I [kdmflush/254:13]\nroot           108     2          0      0 0                   0 I [kdmflush/254:14]\nroot           109     2          0      0 0                   0 I [kdmflush/254:15]\nroot           110     2          0      0 0                   0 I [kdmflush/254:16]\nroot           111     2          0      0 0                   0 I [kdmflush/254:17]\nroot           112     2          0      0 0                   0 I [kdmflush/254:18]\nroot           113     2          0      0 0                   0 I [kdmflush/254:19]\nroot           114     2          0      0 0                   0 I [kdmflush/254:20]\nroot           115     2          0      0 0                   0 I [kdmflush/254:21]\nroot           116     2          0      0 0                   0 I [kdmflush/254:22]\nroot           117     2          0      0 0                   0 I [kdmflush/254:23]\nroot           118     2          0      0 0                   0 I [kdmflush/254:24]\nroot           119     2          0      0 0                   0 I [kdmflush/254:25]\nroot           120     2          0      0 0                   0 I [kdmflush/254:26]\nroot           121     2          0      0 0                   0 I [kdmflush/254:27]\nroot           122     2          0      0 0                   0 I [kdmflush/254:28]\nroot           123     2          0      0 0                   0 I [kdmflush/254:29]\nroot           124     2          0      0 0                   0 I [kdmflush/254:30]\nroot           125     2          0      0 0                   0 I [kdmflush/254:31]\nroot           126     2          0      0 0                   0 I [kdmflush/254:32]\nroot           127     2          0      0 0                   0 I [kdmflush/254:33]\nroot           128     2          0      0 0                   0 I [kdmflush/254:34]\nroot           129     2          0      0 0                   0 I [kdmflush/254:35]\nroot           130     2          0      0 0                   0 I [kdmflush/254:36]\nroot           131     2          0      0 0                   0 I [kdmflush/254:37]\nroot           132     2          0      0 0                   0 I [kdmflush/254:38]\nroot           133     2          0      0 0                   0 I [kdmflush/254:39]\nroot           134     2          0      0 0                   0 I [kdmflush/254:40]\nroot           135     2          0      0 0                   0 I [kdmflush/254:41]\nroot           136     2          0      0 0                   0 I [kdmflush/254:42]\nroot           141     2          0      0 0                   0 I [ext4-rsv-conver]\nroot           142     2          0      0 0                   0 I [ext4-rsv-conver]\nroot           143     2          0      0 0                   0 I [ext4-rsv-conver]\nroot           145     2          0      0 0                   0 I [ext4-rsv-conver]\nsystem         150     1   10843812   4632 0                   0 S android.automotive.telemetryd@1.0\nprng_seeder    152     1   10880676   6696 0                   0 S prng_seeder\nroot           153     2          0      0 0                   0 S [sugov:0]\nroot           154     2          0      0 0                   0 S [sugov:1]\nroot           155     2          0      0 0                   0 S [sugov:2]\nroot           157     2          0      0 0                   0 S [sugov:3]\nroot           160     2          0      0 0                   0 I [kworker/2:2-events]\nroot           162     2          0      0 0                   0 S [irq/18-goldfish_pipe_dprctd]\nlogd           164     1   10833828   6580 0                   0 S logd\nlmkd           166     1   10825004   3008 0                   0 S lmkd\nroot           167     2          0      0 0                   0 I [cfg80211]\nsystem         169     1   10837952   6096 0                   0 S servicemanager\nsystem         170     1   10862212   6932 0                   0 S hwservicemanager\nroot           172     2          0      0 0                   0 S [psimon]\nroot           180     1   10850276   3060 0                   0 S qemu-props\nsystem         183     1   10861620   6684 0                   0 S carwatchdogd\ngraphics       188     1   10783852   8756 0                   0 S cardisplayproxyd\ngraphics       191     1   10947808  12952 0                   0 S android.hardware.automotive.evs-mock\nroot           193     1   10853720   9712 0                   0 S vold\nroot           199     2          0      0 0                   0 I [kdmflush/254:43]\nroot           203     2          0      0 0                   0 I [usbip_event]\nsystem         204     1   10847992   5412 0                   0 S android.system.suspend-service\nsystem         205     1   10885144   5828 0                   0 S carpowerpolicyd\nkeystore       206     1   10902288  14904 0                   0 S keystore2\nsystem         207     1   10823528   4968 0                   0 S android.hardware.atrace@1.0-service\nnobody         209     1   10926596   8596 0                   0 S android.hardware.security.keymint-service\nvehicle_network 211    1   10879032  13344 0                   0 S ai.pleos.hardware.vehicle@V2-sdv-service\nroot           256     2          0      0 0                   0 I [blk_crypto_wq]\nroot           266     2          0      0 0                   0 I [kworker/u9:1-blk_crypto_wq]\nroot"
+    },
+    {
+      "elapsed_seconds": 439.55,
+      "adb_state": "device",
+      "boot_completed": "",
+      "timeout_multiplier": "",
+      "processes": "USER           PID  PPID        VSZ    RSS WCHAN            ADDR S NAME                       \nroot             1     0   10917704  12628 0                   0 S init\nroot             2     0          0      0 0                   0 S [kthreadd]\nroot             3     2          0      0 0                   0 I [rcu_gp]\nroot             4     2          0      0 0                   0 I [slub_flushwq]\nroot             5     2          0      0 0                   0 I [netns]\nroot             7     2          0      0 0                   0 I [kworker/0:0H-events_highpri]\nroot             8     2          0      0 0                   0 I [kworker/u8:0-ext4-rsv-conversion]\nroot             9     2          0      0 0                   0 I [mm_percpu_wq]\nroot            10     2          0      0 0                   0 I [kworker/u8:1-writeback]\nroot            11     2          0      0 0                   0 I [rcu_tasks_kthread]\nroot            12     2          0      0 0                   0 I [rcu_tasks_trace_kthread]\nroot            13     2          0      0 0                   0 S [ksoftirqd/0]\nroot            14     2          0      0 0                   0 R [rcu_preempt]\nroot            15     2          0      0 0                   0 S [rcub/0]\nroot            16     2          0      0 0                   0 S [rcu_exp_gp_kthread_worker]\nroot            17     2          0      0 0                   0 S [rcu_exp_par_gp_kthread_worker]\nroot            18     2          0      0 0                   0 S [migration/0]\nroot            19     2          0      0 0                   0 I [kworker/0:1-events]\nroot            20     2          0      0 0                   0 S [cpuhp/0]\nroot            21     2          0      0 0                   0 S [cpuhp/1]\nroot            22     2          0      0 0                   0 S [migration/1]\nroot            23     2          0      0 0                   0 S [ksoftirqd/1]\nroot            24     2          0      0 0                   0 I [kworker/1:0-virtio_vsock]\nroot            25     2          0      0 0                   0 I [kworker/1:0H-events_highpri]\nroot            26     2          0      0 0                   0 S [cpuhp/2]\nroot            27     2          0      0 0                   0 S [migration/2]\nroot            28     2          0      0 0                   0 S [ksoftirqd/2]\nroot            30     2          0      0 0                   0 I [kworker/2:0H-kverityd]\nroot            31     2          0      0 0                   0 S [cpuhp/3]\nroot            32     2          0      0 0                   0 S [migration/3]\nroot            33     2          0      0 0                   0 S [ksoftirqd/3]\nroot            35     2          0      0 0                   0 I [kworker/3:0H-kverityd]\nroot            36     2          0      0 0                   0 I [inet_frag_wq]\nroot            37     2          0      0 0                   0 S [kauditd]\nroot            38     2          0      0 0                   0 S [khungtaskd]\nroot            39     2          0      0 0                   0 S [oom_reaper]\nroot            40     2          0      0 0                   0 I [writeback]\nroot            41     2          0      0 0                   0 S [kcompactd0]\nroot            42     2          0      0 0                   0 S [khugepaged]\nroot            43     2          0      0 0                   0 I [cryptd]\nroot            44     2          0      0 0                   0 I [kblockd]\nroot            45     2          0      0 0                   0 I [blkcg_punt_bio]\nroot            46     2          0      0 0                   0 I [kworker/3:1-virtio_vsock]\nroot            47     2          0      0 0                   0 I [edac-poller]\nroot            48     2          0      0 0                   0 I [devfreq_wq]\nroot            49     2          0      0 0                   0 S [watchdogd]\nroot            51     2          0      0 0                   0 I [kworker/2:1-events]\nroot            52     2          0      0 0                   0 I [kworker/1:1H-kblockd]\nroot            53     2          0      0 0                   0 S [kswapd0]\nroot            55     2          0      0 0                   0 S [erofs_worker/0]\nroot            56     2          0      0 0                   0 S [erofs_worker/1]\nroot            57     2          0      0 0                   0 S [erofs_worker/2]\nroot            58     2          0      0 0                   0 S [erofs_worker/3]\nroot            59     2          0      0 0                   0 I [kthrotld]\nroot            60     2          0      0 0                   0 S [dmabuf-deferred-free-worker]\nroot            61     2          0      0 0                   0 I [uas]\nroot            62     2          0      0 0                   0 I [dm_bufio_cache]\nroot            63     2          0      0 0                   0 I [kworker/0:1H-kblockd]\nroot            64     2          0      0 0                   0 I [mld]\nroot            65     2          0      0 0                   0 I [ipv6_addrconf]\nroot            67     2          0      0 0                   0 I [kworker/0:2-events]\nroot            68     2          0      0 0                   0 I [kworker/1:2-virtio_vsock]\nroot            69     2          0      0 0                   0 I [kworker/3:1H-kverityd]\nroot            70     2          0      0 0                   0 S [khvcd]\nroot            72     2          0      0 0                   0 S [hwrng]\nroot            73     2          0      0 0                   0 I [kworker/3:2-virtio_vsock]\nroot            74     2          0      0 0                   0 S [jbd2/vdd1-8]\nroot            75     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            77     2          0      0 0                   0 I [kdmflush/254:0]\nroot            78     2          0      0 0                   0 I [kdmflush/254:1]\nroot            79     2          0      0 0                   0 I [kdmflush/254:2]\nroot            80     2          0      0 0                   0 I [kdmflush/254:3]\nroot            81     2          0      0 0                   0 I [kdmflush/254:4]\nroot            82     2          0      0 0                   0 I [kdmflush/254:5]\nroot            83     2          0      0 0                   0 I [kverityd]\nroot            84     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            85     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            86     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            87     2          0      0 0                   0 I [ext4-rsv-conver]\nroot            88     2          0      0 0                   0 I [kworker/2:1H-kverityd]\nroot            89     2          0      0 0                   0 I [kworker/3:2H-kverityd]\nroot            90     2          0      0 0                   0 I [kworker/3:3H-kblockd]\nroot            92     1   10885860   8192 0                   0 S init\nroot            93     1   10869580   8712 0                   0 S ueventd\nroot           100     2          0      0 0                   0 I [kdmflush/254:6]\nroot           101     2          0      0 0                   0 I [kdmflush/254:7]\nroot           102     2          0      0 0                   0 I [kdmflush/254:8]\nroot           103     2          0      0 0                   0 I [kdmflush/254:9]\nroot           104     2          0      0 0                   0 I [kdmflush/254:10]\nroot           105     2          0      0 0                   0 I [kdmflush/254:11]\nroot           106     2          0      0 0                   0 I [kdmflush/254:12]\nroot           107     2          0      0 0                   0 I [kdmflush/254:13]\nroot           108     2          0      0 0                   0 I [kdmflush/254:14]\nroot           109     2          0      0 0                   0 I [kdmflush/254:15]\nroot           110     2          0      0 0                   0 I [kdmflush/254:16]\nroot           111     2          0      0 0                   0 I [kdmflush/254:17]\nroot           112     2          0      0 0                   0 I [kdmflush/254:18]\nroot           113     2          0      0 0                   0 I [kdmflush/254:19]\nroot           114     2          0      0 0                   0 I [kdmflush/254:20]\nroot           115     2          0      0 0                   0 I [kdmflush/254:21]\nroot           116     2          0      0 0                   0 I [kdmflush/254:22]\nroot           117     2          0      0 0                   0 I [kdmflush/254:23]\nroot           118     2          0      0 0                   0 I [kdmflush/254:24]\nroot           119     2          0      0 0                   0 I [kdmflush/254:25]\nroot           120     2          0      0 0                   0 I [kdmflush/254:26]\nroot           121     2          0      0 0                   0 I [kdmflush/254:27]\nroot           122     2          0      0 0                   0 I [kdmflush/254:28]\nroot           123     2          0      0 0                   0 I [kdmflush/254:29]\nroot           124     2          0      0 0                   0 I [kdmflush/254:30]\nroot           125     2          0      0 0                   0 I [kdmflush/254:31]\nroot           126     2          0      0 0                   0 I [kdmflush/254:32]\nroot           127     2          0      0 0                   0 I [kdmflush/254:33]\nroot           128     2          0      0 0                   0 I [kdmflush/254:34]\nroot           129     2          0      0 0                   0 I [kdmflush/254:35]\nroot           130     2          0      0 0                   0 I [kdmflush/254:36]\nroot           131     2          0      0 0                   0 I [kdmflush/254:37]\nroot           132     2          0      0 0                   0 I [kdmflush/254:38]\nroot           133     2          0      0 0                   0 I [kdmflush/254:39]\nroot           134     2          0      0 0                   0 I [kdmflush/254:40]\nroot           135     2          0      0 0                   0 I [kdmflush/254:41]\nroot           136     2          0      0 0                   0 I [kdmflush/254:42]\nroot           141     2          0      0 0                   0 I [ext4-rsv-conver]\nroot           142     2          0      0 0                   0 I [ext4-rsv-conver]\nroot           143     2          0      0 0                   0 I [ext4-rsv-conver]\nroot           145     2          0      0 0                   0 I [ext4-rsv-conver]\nsystem         150     1   10843812   4632 0                   0 S android.automotive.telemetryd@1.0\nprng_seeder"
+    },
+    {
+      "elapsed_seconds": 478.76,
+      "adb_state": "device",
+      "boot_completed": "",
+      "timeout_multiplier": "",
+      "processes": ""
+    }
+  ],
+  "memory_events_before": "low 0\nhigh 0\nmax 1129287\noom 2\noom_kill 2\noom_group_kill 0\n",
+  "emulator_arguments": [
+    "/workspace/scratch/50d0ea0bf7dd/android-tools/sdk/emulator/emulator",
+    "-avd",
+    "ArrivalPleosDiag",
+    "-no-window",
+    "-no-audio",
+    "-no-boot-anim",
+    "-no-snapshot",
+    "-accel",
+    "off",
+    "-gpu",
+    "software",
+    "-cores",
+    "4",
+    "-memory",
+    "4096",
+    "-prop",
+    "ro.hw_timeout_multiplier=5",
+    "-port",
+    "5556"
+  ],
+  "emulator_pid": 5,
+  "elapsed_seconds": 481.22,
+  "watchdog_timeout_observed": "",
+  "emulator_exit_after_cleanup": 0,
+  "memory_events_after": "low 0\nhigh 0\nmax 1134842\noom 2\noom_kill 2\noom_group_kill 0\n",
+  "finished_utc": "2026-11-02T01:41:53Z"
+}

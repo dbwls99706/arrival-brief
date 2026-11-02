@@ -13,6 +13,8 @@ p.add_argument('--font', type=Path, required=True)
 p.add_argument('--output', type=Path, required=True)
 p.add_argument('--release-sha256', required=True)
 p.add_argument('--debug-sha256', required=True)
+p.add_argument('--version', default='1.0.0-rc1')
+p.add_argument('--evidence-prefix', default='android-aosp28-rc1')
 a=p.parse_args();a.output.mkdir(parents=True, exist_ok=True)
 scenes=[
  ('arrival-confirmed-parked.png','01  현재 행사장·차량 높이·주차 상태를 확인해요'),
@@ -29,11 +31,11 @@ with tempfile.TemporaryDirectory(prefix='arrival-native-video-') as td:
   if not source.is_file():raise FileNotFoundError(source)
   (t/f'title{i}.txt').write_text(title)
   packaged={
-   'arrival-confirmed-parked.png':'android-aosp28-rc1-confirmed.png',
-   'arrival-source-conflict-evidence.png':'android-aosp28-rc1-source-conflict.png',
-   'arrival-parking-memo-restored.png':'android-aosp28-rc1-memo.png',
-   'arrival-saved-memo-qr.png':'android-aosp28-rc1-qr.png',
-   'arrival-confirmed-driving-locked.png':'android-aosp28-rc1-driving.png',
+   'arrival-confirmed-parked.png':f'{a.evidence_prefix}-confirmed.png',
+   'arrival-source-conflict-evidence.png':f'{a.evidence_prefix}-source-conflict.png',
+   'arrival-parking-memo-restored.png':f'{a.evidence_prefix}-memo.png',
+   'arrival-saved-memo-qr.png':f'{a.evidence_prefix}-qr.png',
+   'arrival-confirmed-driving-locked.png':f'{a.evidence_prefix}-driving.png',
   }
   proof.append({'file':name,'packaged_screenshot':'docs/verification/'+packaged[name],'sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'start_seconds':i*6,'duration_seconds':6})
   filters=(f"scale=1024:640:flags=lanczos,pad=1280:720:128:48:color=0x152b3e,"
@@ -47,6 +49,6 @@ with tempfile.TemporaryDirectory(prefix='arrival-native-video-') as td:
  subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-ss','2','-i',str(target),'-frames:v','1',str(a.output/'arrival-native-validation-poster.jpg')],check=True)
 vtt='WEBVTT\n\n'+''.join(f'{i+1}\n00:00:{i*6:02d}.000 --> 00:00:{(i+1)*6:02d}.000\n{title}\n일반 Android의 자동 UI 시험 캡처 편집. 실제 차량 연동 영상이 아닙니다.\n\n' for i,(_,title) in enumerate(scenes))
 (a.output/'arrival-native-validation.vtt').write_text(vtt.rstrip()+'\n')
-meta={'version':'1.0.0-rc1','kind':'edited_stills_from_actual_android_instrumentation','duration_seconds':30,'width':1280,'height':720,'fps':30,'release_apk_sha256':a.release_sha256,'tested_debug_apk_sha256':a.debug_sha256,'note':'Separate debug instrumentation, same main source as release. No continuous screen recording or live Pleos response is claimed. Phone optical QR scan is unverified.','screenshots':proof,'video_sha256':hashlib.sha256(target.read_bytes()).hexdigest()}
+meta={'version':a.version,'kind':'edited_stills_from_actual_android_instrumentation','duration_seconds':30,'width':1280,'height':720,'fps':30,'release_apk_sha256':a.release_sha256,'tested_debug_apk_sha256':a.debug_sha256,'note':'Separate debug instrumentation, same main source as release. No continuous screen recording or live Pleos response is claimed. Phone optical QR scan is unverified.','screenshots':proof,'video_sha256':hashlib.sha256(target.read_bytes()).hexdigest()}
 (a.output/'arrival-native-validation.json').write_text(json.dumps(meta,ensure_ascii=False,indent=2)+'\n')
 print(json.dumps({'video':str(target),'bytes':target.stat().st_size,'sha256':meta['video_sha256']}))

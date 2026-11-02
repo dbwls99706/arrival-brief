@@ -9,6 +9,8 @@ import tempfile
 
 p = argparse.ArgumentParser(description=__doc__)
 p.add_argument('--font', type=Path, required=True)
+p.add_argument('--version', default='1.0.0-rc2')
+p.add_argument('--evidence-prefix', default='arrival-rc2-final-web')
 a = p.parse_args()
 root = Path(__file__).resolve().parents[1]
 captures = root / 'docs/verification'
@@ -38,9 +40,9 @@ for prefix, title, scenes in scenarios:
     records = []
     with tempfile.TemporaryDirectory(prefix='arrival-web-video-') as temp:
         temp = Path(temp)
-        (temp / 'footer.txt').write_text('1.0.0-rc1 실제 웹 화면 캡처 편집 · 차량 상태 시뮬레이션 · 실차 영상이 아닙니다')
+        (temp / 'footer.txt').write_text(a.version + ' 실제 웹 화면 캡처 편집 · 차량 상태 시뮬레이션 · 실차 영상이 아닙니다')
         for i, (name, caption, crop) in enumerate(scenes):
-            source = captures / f'arrival-rc1-final-web-{name}.jpg'
+            source = captures / f'{a.evidence_prefix}-{name}.jpg'
             if not source.is_file():
                 raise FileNotFoundError(source)
             (temp / f'title{i}.txt').write_text(caption)
@@ -69,7 +71,7 @@ for prefix, title, scenes in scenarios:
     metadata = json.loads(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries',
         'stream=codec_name,codec_type,width,height,pix_fmt,r_frame_rate,nb_frames:format=duration,size', '-of', 'json', str(target)]))
     metadata['content'] = {'title': title, 'method': '실제 웹 화면 캡처 편집. 실시간 화면 녹화나 실차 영상이 아님.',
-        'app_version': '1.0.0-rc1', 'vehicle_state': '웹 시뮬레이션', 'audio': 'none', 'font': 'Noto Sans KR (OFL)',
+        'app_version': a.version, 'vehicle_state': '웹 시뮬레이션', 'audio': 'none', 'font': 'Noto Sans KR (OFL)',
         'screenshot_fit': '원본 비율 유지. 일부 장면은 실제 결과·출처·원문 확인 영역을 확대.',
         'source_engine_sha256': sha(root / 'dist/arrival/engine.mjs'),
         'source_app_sha256': sha(root / 'dist/arrival/app.mjs'),
