@@ -16,9 +16,9 @@
 - APK 버전: 1.0.0-rc4
 - APK SHA-256: 865fb8368a81351575790fade68d5d27d805c1cfa8290897082fef056faa9da9
 - 익명 검토 ZIP: ArrivalBrief-review-1.0.0-rc4.zip
-- ZIP SHA-256: 2c0fdf064b0510bc0e080d4140f94ce0ae464e796d6335f2adc38d18a8130a42
+- ZIP SHA-256: 53bce5590242f9a04cbcb729e90afd4a1a72f91d0b3acda81dd2ae62ab4eaff3
 - 앱 소스 목록 SHA-256: 2e21ba4043a53d67342e41620c2b3e1299514fd36cf386ad798cc19a4a4de0cb
-- 편집 영상: dist/assets/media/arrival-reel.mp4, arrival-confirm-reel.mp4, arrival-native-validation.mp4
+- 편집 영상: dist/assets/media/arrival-reframed.mp4, dist/assets/media/arrival-confirm-reframed.mp4, dist/assets/media/arrival-native-validation.mp4
 - 실제 서명 release 연속 시연: dist/assets/media/arrival-native-journey.mp4 · 1.0.0-rc3 · 이전 버전 기록 (당시 영상·APK·원본 캡처 해시 대조)
 - 포함 영상의 촬영 버전: 1.0.0-rc3. 각 metadata와 manifest의 media_evidence에 현재 버전·이전 버전 관계를 명시했습니다. 이전 영상은 현재 APK의 실행 검증이 아닙니다. 두 웹 영상과 Android debug 캡처 편집본, 실제 release 연속 시연을 구분합니다. 어느 영상도 실제 Pleos 신호·실차·실물 휴대폰 광학 QR 성공을 뜻하지 않습니다.
 - 현재 화면: screenshots/rc4/README.md. 바이트가 같은 이미지 사본은 검토 ZIP에서 원본 한 곳으로 연결합니다.

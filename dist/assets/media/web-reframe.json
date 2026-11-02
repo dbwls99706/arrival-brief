@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "kind": "reframed_historical_web_stills",
+  "app_version": "1.0.0-rc3",
+  "scope": "Layout-only re-edit of original RC3 web screenshots; not a new app execution or continuous recording",
+  "layout": "Centered titles and captures; equal horizontal margins; source background color; no UI content changes",
+  "videos": [
+    {
+      "prefix": "arrival",
+      "source_metadata": {
+        "path": "dist/assets/media/arrival-metadata.json",
+        "sha256": "ace448a69f8a4894bda8a33ba59906fac37d63dce20f3a1e65dd3be897363bd5"
+      },
+      "source_video": {
+        "path": "dist/assets/media/arrival-reel.mp4",
+        "sha256": "7e7f6c4af58313275fe0a15117a19c88e9f2362b7329f8b4cbb071a86dbd2881"
+      },
+      "scenes": [
+        {
+          "start": 0.0,
+          "duration": 7.5,
+          "source": "arrival-rc3-final-web-initial.jpg",
+          "source_sha256": "28560a5f31faad7a06c427693c0a56e0e4ec65fbae859405b024add81c0831af",
+          "title": "01  행사장과 차량 전체 높이를 확인해요",
+          "crop": [
+            0,
+            0,
+            1332,
+            926
+          ],
+          "placement": [
+            209,
+            66,
+            862,
+            600
+          ],
+          "fit": "contain"
+        },
+        {
+          "start": 7.5,
+          "duration": 7.5,
+          "source": "arrival-rc3-final-web-confirmed.jpg",
+          "source_sha256": "6128636f2592b87e9a539b2a7e0483c26e6af601347ee8fff51ec33570ea4bf2",
+          "title": "02  현재 행사장·높이·주차 상태를 직접 확인해요",
+          "crop": [
+            0,
+            0,
+            1332,
+            926
+          ],
+          "placement": [
+            209,
+            66,
+            862,
+            600
+          ],
+          "fit": "contain"
+        },
+        {
+          "start": 15.0,
+          "duration": 7.5,
+          "source": "arrival-rc3-final-web-confirmed.jpg",
+          "source_sha256": "6128636f2592b87e9a539b2a7e0483c26e6af601347ee8fff51ec33570ea4bf2",
+          "title": "03  확정한 진입문과 추천 주차를 한 장에",
+          "crop": [
+            634,
+            6,
+            656,
+            800
+          ],
+          "placement": [
+            394,
+            66,
+            492,
+            600
+          ],
+          "fit": "contain"
+        },
+        {
+          "start": 22.5,
+          "duration": 7.5,
+          "source": "arrival-rc3-final-web-driving.jpg",
+          "source_sha256": "1d9ebf861a925d094907108a7ec8dd224fd98db50c768070c255448ad203ec6b",
+          "title": "04  주행 체험에서는 입력을 잠가요",
+          "crop": [
+            52,
+            0,
+            1260,
+            596
+          ],
+          "placement": [
+            60,
+            92,
+            1160,
+            548
+          ],
+          "fit": "contain"
+        }
+      ],
+      "output": {
+        "path": "dist/assets/media/arrival-reframed.mp4",
+        "sha256": "ce133d32c03148d1308fe931c9220b80812d614e8ee084ef22a126973266dfcf",
+        "bytes": 283744,
+        "width": 1280,
+        "height": 720,
+        "duration_seconds": 30
+      },
+      "poster": {
+        "path": "dist/assets/media/arrival-reframed-poster.jpg",
+        "sha256": "ce080ef8721e67eb497f31597fdbacbba071e37cae96bf0e590537d12e103d58"
+      }
+    },
+    {
+      "prefix": "arrival-confirm",
+      "source_metadata": {
+        "path": "dist/assets/media/arrival-confirm-metadata.json",
+        "sha256": "21553f2e847d40bc8446859725459193e8fa381de3217d1741d55546237afbbd"
+      },
+      "source_video": {
+        "path": "dist/assets/media/arrival-confirm-reel.mp4",
+        "sha256": "9f23501a4aba908e4e5b64e462fcd5e3ee0fb20820b0c57cdc879ff7af713994"
+      },
+      "scenes": [
+        {
+          "start": 0.0,
+          "duration": 7.5,
+          "source": "arrival-rc3-final-web-conflict.jpg",
+          "source_sha256": "ef2da17e148597434be1736ac66b2beaa82786d65584dafde38d591b9262faf9",
+          "title": "01  공식 주차 자료가 서로 다르면 보류해요",
+          "crop": [
+            0,
+            0,
+            1332,
+            926
+          ],
+          "placement": [
+            209,
+            66,
+            862,
+            600
+          ],
+          "fit": "contain"
+        },
+        {
+          "start": 7.5,
+          "duration": 7.5,
+          "source": "arrival-rc3-final-web-conflict.jpg",
+          "source_sha256": "ef2da17e148597434be1736ac66b2beaa82786d65584dafde38d591b9262faf9",
+          "title": "02  두 원문의 구역과 확인 날짜를 함께 봐요",
+          "crop": [
+            634,
+            302,
+            656,
+            572
+          ],
+          "placement": [
+            296,
+            66,
+            688,
+            600
+          ],
+          "fit": "contain"
+        },
+        {
+          "start": 15.0,
+          "duration": 7.5,
+          "source": "arrival-rc3-final-web-closed.jpg",
+          "source_sha256": "fd42637b8d45063feade72806aa9a06837e20a3e72e211517500366c948d1c9a",
+          "title": "03  원문에 휴관 안내가 있어도 보류해요",
+          "crop": [
+            0,
+            0,
+            1332,
+            926
+          ],
+          "placement": [
+            209,
+            66,
+            862,
+            600
+          ],
+          "fit": "contain"
+        },
+        {
+          "start": 22.5,
+          "duration": 7.5,
+          "source": "arrival-rc3-final-web-closed.jpg",
+          "source_sha256": "fd42637b8d45063feade72806aa9a06837e20a3e72e211517500366c948d1c9a",
+          "title": "04  확인이 필요한 원문을 직접 대조해요",
+          "crop": [
+            634,
+            302,
+            656,
+            572
+          ],
+          "placement": [
+            296,
+            66,
+            688,
+            600
+          ],
+          "fit": "contain"
+        }
+      ],
+      "output": {
+        "path": "dist/assets/media/arrival-confirm-reframed.mp4",
+        "sha256": "7349eb114e96f6666916599776623d0e2844b63f225ee90ef17ed51f11736efa",
+        "bytes": 316990,
+        "width": 1280,
+        "height": 720,
+        "duration_seconds": 30
+      },
+      "poster": {
+        "path": "dist/assets/media/arrival-confirm-reframed-poster.jpg",
+        "sha256": "92be24ee0292bef9f1945f2a71ab2c0a8b4adb9c8029917e6d0562afae281ef7"
+      }
+    }
+  ]
+}

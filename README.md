@@ -87,7 +87,7 @@ Windows는 `gradlew.bat`를 사용합니다. SDK 위치와 release 서명 환경
 
 [RC3 실제 앱 연속 시연](dist/assets/media/arrival-native-journey.mp4)은 이전 버전의 흐름 참고 자료입니다. RC4의 새 확대 기능은 현재 스크린샷과 검증 JSON에서 확인하세요. 일반 Android에서 서명된 RC3 release의 안내문 가져오기·확정·주행 데모 잠금·주차 메모·QR을 연결합니다. 주행 상태는 일반 Android용 데모이며 실제 Pleos 신호가 아닙니다. 단일 가변 프레임 녹화의 영상 길이와 자동화 경과 시간은 다르므로 동작 속도 측정에 쓰지 않습니다. 원본 녹화·장면 대조·배포 영상의 관계는 [촬영 기록](dist/assets/media/arrival-native-journey.json)과 [독립 영상 검토](docs/verification/rc3-release-video-review.md)에 명시합니다.
 
-[도착 준비 영상](dist/assets/media/arrival-reel.mp4)과 [자료 상충·운영 제한 영상](dist/assets/media/arrival-confirm-reel.mp4)은 `1.0.0-rc3` 웹 실행 화면의 캡처 편집본입니다. 각각 30초·1280×720이며 도착 준비·확정·주행 시뮬레이션, 공식 자료 상충과 운영 제한에 따른 보류를 보여줍니다. 영상의 버전·캡처 시각·소스 해시는 각 metadata를 따릅니다. 웹의 차량 상태는 시뮬레이션이며 연속 녹화·실차 촬영·Pleos 서비스 응답의 증거가 아닙니다.
+[도착 준비 영상](dist/assets/media/arrival-reframed.mp4)과 [자료 상충·운영 제한 영상](dist/assets/media/arrival-confirm-reframed.mp4)은 `1.0.0-rc3` 웹 실행 화면의 캡처 편집본입니다. 각각 30초·1280×720이며 도착 준비·확정·주행 시뮬레이션, 공식 자료 상충과 운영 제한에 따른 보류를 보여줍니다. 제목과 캡처를 중앙에 맞추고 잘라낸 영역의 여백을 정리했습니다. 앱 화면 내용과 RC3 캡처 원본은 바꾸지 않았습니다. 원본 영상·metadata를 보존하며, 재편집본의 원본 연결·크롭·배치·파일 해시는 [web-reframe.json](dist/assets/media/web-reframe.json)에 기록합니다. 웹의 차량 상태는 시뮬레이션이며 연속 녹화·실차 촬영·Pleos 서비스 응답의 증거가 아닙니다.
 
 [Android 실행 영상](dist/assets/media/arrival-native-validation.mp4)는 RC3의 일반 Android debug 자동 UI 시험에서 얻은 실제 화면 5장면을 편집한 30초 자료입니다. 확정·자료 상충·메모 복구·QR·주행 잠금을 보여줍니다. 연속 화면 녹화, Pleos 서비스 성공, 휴대폰 광학 스캔의 증거는 아닙니다. APK·캡처의 정확한 버전과 해시는 영상 metadata와 런타임 기록을 따릅니다.
 

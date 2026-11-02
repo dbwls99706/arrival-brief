@@ -277,6 +277,21 @@ def validate_current_qr(version, apk_sha256, runtime, root=ROOT):
 def validate_media_evidence(version, apk_sha256, root=ROOT):
     """Validate each video against its own release, never relabel prior footage."""
     records, images, json_records, archives = [], set(), set(), {}
+    separate_media = []
+    reframe_path = 'dist/assets/media/web-reframe.json'
+    reframes = {}
+    if (root / reframe_path).is_file():
+        reframe = json.loads((root / reframe_path).read_text())
+        entries = reframe.get('videos', [])
+        if (reframe.get('schema_version') != 1
+                or reframe.get('kind') != 'reframed_historical_web_stills'
+                or reframe.get('app_version') != '1.0.0-rc3'
+                or reframe.get('scope') != 'Layout-only re-edit of original RC3 web screenshots; not a new app execution or continuous recording'
+                or len(entries) != 2
+                or {item.get('prefix') for item in entries} != {'arrival', 'arrival-confirm'}):
+            raise ValueError('Invalid historical web reframe manifest')
+        reframes = {item['prefix']: item for item in entries}
+        json_records.add(reframe_path)
     source_fields = {'source_engine_sha256': 'dist/arrival/engine.mjs',
                      'source_app_sha256': 'dist/arrival/app.mjs', 'source_html_sha256': 'dist/arrival/index.html',
                      'source_style_sha256': 'dist/arrival/style.css', 'source_design_sha256': 'dist/design.css',
@@ -326,6 +341,74 @@ def validate_media_evidence(version, apk_sha256, root=ROOT):
             raise ValueError('Media capture differs from recorded evidence: ' + path)
         images.add(path)
 
+    def probe(path):
+        try:
+            return json.loads(subprocess.check_output(
+                ['ffprobe', '-v', 'error', '-show_entries',
+                 'stream=codec_type,width,height:format=duration', '-of', 'json', str(path)],
+                stderr=subprocess.PIPE, timeout=30))
+        except (OSError, subprocess.SubprocessError, ValueError) as error:
+            raise ValueError('Cannot inspect media dimensions and duration: ' + str(path)) from error
+
+    def rectangle(value, width, height):
+        return (isinstance(value, list) and len(value) == 4
+                and all(type(n) is int for n in value)
+                and value[0] >= 0 and value[1] >= 0 and value[2] > 0 and value[3] > 0
+                and value[0] + value[2] <= width and value[1] + value[3] <= height)
+
+    def apply_reframe(prefix, meta, record):
+        entry = reframes[prefix]
+        original_path = f'dist/assets/media/{prefix}-reel.mp4'
+        original_bytes = (root / original_path).read_bytes()
+        if (record['scope'] != 'historical_release' or record['version'] != '1.0.0-rc3'
+                or entry.get('source_metadata') != {'path': record['metadata_path'], 'sha256': record['metadata_sha256']}
+                or entry.get('source_video') != {'path': original_path, 'sha256': meta['sha256']}):
+            raise ValueError('Reframe does not identify the unchanged RC3 sources: ' + prefix)
+        with zipfile.ZipFile(root / record['source_archive']['original_path']) as archive:
+            if archive.read(original_path) != original_bytes:
+                raise ValueError('Reframe source video differs from the RC3 source archive: ' + prefix)
+        scenes = entry.get('scenes', [])
+        if len(scenes) != 4 or len(meta['scenes']) != 4:
+            raise ValueError('Reframe must preserve all four original screenshot scenes')
+        dimensions = {}
+        for index, (scene, original) in enumerate(zip(scenes, meta['scenes'])):
+            if (scene.get('source') != original['source']
+                    or scene.get('source_sha256') != original['source_sha256']
+                    or scene.get('start') != original['start'] or scene.get('start') != index * 7.5
+                    or scene.get('duration') != original['duration'] or scene.get('duration') != 7.5
+                    or scene.get('fit') != 'contain'
+                    or not isinstance(scene.get('title'), str) or not scene['title'].strip()
+                    or not rectangle(scene.get('placement'), 1280, 720)):
+                raise ValueError('Reframe scene source, timing or placement differs: ' + prefix)
+            source_path = relative_evidence_path(scene['source'])
+            capture(scene['source'], scene['source_sha256'])
+            if scene['source'] not in dimensions:
+                streams = probe(root / source_path).get('streams', [])
+                if len(streams) != 1 or streams[0].get('codec_type') != 'video':
+                    raise ValueError('Reframe source is not one still-image stream')
+                dimensions[scene['source']] = (streams[0]['width'], streams[0]['height'])
+            if 'crop' not in scene or (scene['crop'] is not None and not rectangle(scene['crop'], *dimensions[scene['source']])):
+                raise ValueError('Reframe crop is missing or outside the original screenshot')
+        output = entry.get('output', {})
+        output_path = f'dist/assets/media/{prefix}-reframed.mp4'
+        if (output.get('path') != output_path or output.get('width') != 1280 or output.get('height') != 720
+                or output.get('duration_seconds') != 30 or type(output.get('bytes')) is not int):
+            raise ValueError('Unexpected reframe delivery path or video format')
+        data = (root / output_path).read_bytes()
+        if len(data) != output['bytes'] or digest(data) != output.get('sha256'):
+            raise ValueError('Reframed video differs from its recorded bytes')
+        inspected = probe(root / output_path)
+        streams = inspected.get('streams', [])
+        if (len(streams) != 1 or streams[0] != {'codec_type': 'video', 'width': 1280, 'height': 720}
+                or abs(float(inspected.get('format', {}).get('duration', -1)) - 30.0) > 0.05):
+            raise ValueError('Reframed video must be silent 30-second 1280x720 video')
+        original = {'path': original_path, 'sha256': meta['sha256'], 'bytes': len(original_bytes)}
+        record.update(video_path=output_path, video_sha256=output['sha256'], source_video=original,
+                      presentation_manifest={'path': reframe_path, 'sha256': digest((root / reframe_path).read_bytes()), 'prefix': prefix})
+        separate_media.append({'original_path': original_path, 'sha256': original['sha256'], 'bytes': original['bytes'],
+                               'reason': 'historical_source_video_delivered_separately',
+                               'outer_zip_path': 'evidence-history/' + original_path})
+
     for prefix in ('arrival', 'arrival-confirm'):
         metadata_path = f'dist/assets/media/{prefix}-metadata.json'
         meta = json.loads((root / metadata_path).read_text())['content']
@@ -345,6 +428,8 @@ def validate_media_evidence(version, apk_sha256, root=ROOT):
         for scene in meta['scenes']:
             capture(scene['source'], scene['source_sha256'])
         record.update(video_path=video_path, video_sha256=meta['sha256'], source_files={path: meta[field] for field, path in source_fields.items()})
+        if prefix in reframes:
+            apply_reframe(prefix, meta, record)
         records.append(record)
 
     metadata_path = 'dist/assets/media/arrival-native-validation.json'
@@ -392,7 +477,8 @@ def validate_media_evidence(version, apk_sha256, root=ROOT):
                   source_video=journey['source_video'], frame_validation=journey['frame_validation'])
     records.append(record)
     return {'records': records, 'required_images': images, 'json_records': json_records,
-            'source_archives': list(archives.values()), 'journey_metadata': metadata_path}
+            'source_archives': list(archives.values()), 'separate_media': separate_media,
+            'journey_metadata': metadata_path}
 
 
 def delivery_plan(version, apk_sha256, root=ROOT):
@@ -458,7 +544,7 @@ def delivery_plan(version, apk_sha256, root=ROOT):
     for name in required_images:
         if not (root / name).is_file() or not allowed(Path(name)):
             raise ValueError('Current proof capture is missing or excluded: ' + name)
-    records = list(media['source_archives'])
+    records = list(media['source_archives']) + media.get('separate_media', [])
     apk_data = (root / PACKAGED_APK).read_bytes()
     canonical = root / 'apk/ArrivalBrief_release.apk'
     if canonical.is_file() and canonical.read_bytes() != apk_data:
@@ -690,6 +776,35 @@ def verify_archive(path, compare_root=None):
                     raise ValueError('Current media does not identify the current APK')
                 if scope == 'historical_release' and record.get('source_archive') not in manifest['delivery_omissions']:
                     raise ValueError('Historical media source archive has no preserved delivery identity')
+                presentation = record.get('presentation_manifest')
+                reframed_paths = {f'dist/assets/media/{prefix}-reframed.mp4': prefix
+                                  for prefix in ('arrival', 'arrival-confirm')}
+                if record['video_path'] in reframed_paths or presentation:
+                    prefix = reframed_paths.get(record['video_path'])
+                    if (prefix is None or record['kind'] != 'edited_web_stills'
+                            or record['version'] != '1.0.0-rc3' or scope != 'historical_release'
+                            or not isinstance(presentation, dict)
+                            or presentation.get('path') != 'dist/assets/media/web-reframe.json'
+                            or presentation.get('prefix') != prefix
+                            or digest(z.read(presentation['path'])) != presentation.get('sha256')):
+                        raise ValueError('Packaged historical reframe identity is invalid')
+                    reframe = json.loads(z.read(presentation['path']))
+                    videos = [item for item in reframe.get('videos', []) if item.get('prefix') == prefix]
+                    if len(videos) != 1:
+                        raise ValueError('Packaged reframe has no unique video entry')
+                    entry = videos[0]
+                    source_video = record.get('source_video', {})
+                    if (entry.get('source_metadata') != {'path': record['metadata_path'], 'sha256': record['metadata_sha256']}
+                            or entry.get('source_video') != {key: source_video.get(key) for key in ('path', 'sha256')}
+                            or entry.get('output', {}).get('path') != record['video_path']
+                            or entry.get('output', {}).get('sha256') != record['video_sha256']
+                            or entry.get('output', {}).get('bytes') != len(z.read(record['video_path']))
+                            or not any(item.get('original_path') == source_video.get('path')
+                                       and item.get('sha256') == source_video.get('sha256')
+                                       and item.get('bytes') == source_video.get('bytes')
+                                       and item.get('reason') == 'historical_source_video_delivered_separately'
+                                       for item in manifest['delivery_omissions'])):
+                        raise ValueError('Packaged reframe and original source delivery disagree')
             for name in manifest.get('hash_linked_evidence_records', []):
                 if name not in expected:
                     raise ValueError('Hash-linked evidence is missing: ' + name)
@@ -852,6 +967,8 @@ def main():
         journey_scope = '현재 버전' if journey['scope'] == 'current_release' else '이전 버전 기록'
         journey_line = f"- 실제 서명 release 연속 시연: dist/assets/media/arrival-native-journey.mp4 · {journey['version']} · {journey_scope} (당시 영상·APK·원본 캡처 해시 대조)\n"
     media_versions = ', '.join(sorted({record['version'] for record in plan['media_evidence']}))
+    edited_video_paths = ', '.join(record['video_path'] for record in plan['media_evidence']
+                                  if record['kind'] != 'continuous_actual_release_ui')
     checklist.write_text(f'''# Arrival Brief 운영용 제출 목록
 
 이 문서는 운영 전달용이며 익명 검토 ZIP에 포함하지 않습니다. 이메일은 발송하지 않았습니다.
@@ -872,7 +989,7 @@ def main():
 - 익명 검토 ZIP: {zip_path.name}
 - ZIP SHA-256: {zip_hash}
 - 앱 소스 목록 SHA-256: {source_digest}
-- 편집 영상: dist/assets/media/arrival-reel.mp4, arrival-confirm-reel.mp4, arrival-native-validation.mp4
+- 편집 영상: {edited_video_paths}
 {journey_line}- 포함 영상의 촬영 버전: {media_versions}. 각 metadata와 manifest의 media_evidence에 현재 버전·이전 버전 관계를 명시했습니다. 이전 영상은 현재 APK의 실행 검증이 아닙니다. 두 웹 영상과 Android debug 캡처 편집본, 실제 release 연속 시연을 구분합니다. 어느 영상도 실제 Pleos 신호·실차·실물 휴대폰 광학 QR 성공을 뜻하지 않습니다.
 - 현재 화면: screenshots/{plan['tag']}/README.md. 바이트가 같은 이미지 사본은 검토 ZIP에서 원본 한 곳으로 연결합니다.
 - 운영자 자료: examples/organizer/README.md. 합성 예시와 준비 양식이며 실제 제휴·채택·매출 성과가 아닙니다.
