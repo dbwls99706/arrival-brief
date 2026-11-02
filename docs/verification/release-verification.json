@@ -50,14 +50,81 @@
   "lint": [],
   "runtime": {
     "pleos": {
-      "status": "final_cold_boot_retry_pending",
+      "status": "blocked_before_install_boot_not_ready",
+      "runner_status": "boot_not_ready_within_budget",
       "image": "Pleos Connect 2.1.0 API34 x86_64",
       "image_sha1": "b4f858d5bcc6c71506d7edfc872bcb9e5a11acaa",
-      "host": "no GPU, no KVM",
-      "initial_attempt": "Cold boot reached ADB but package service was not present; vendor ProfileHal SIGABRT and eth0-not-ready messages were observed",
+      "host": "No GPU or KVM; software rendering and CPU emulation",
+      "attempted_app_version": "1.0.0-rc1",
+      "attempted_apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+      "started_utc": "2026-11-01T23:54:37Z",
+      "finished_utc": "2026-11-02T00:14:38Z",
+      "elapsed_seconds": 1201.37,
+      "budget_seconds": 1200,
       "latest_version_verified": false,
-      "required_followup": "Complete isolated default-network cold boot attempt, then record installation/SDK state if OS services become available",
-      "requirements_url": "https://document.pleos.ai/en/docs/connect/guide/getting-started/application-development/configure-pleos-connect-emulator"
+      "latest_apk_install_launch_verified": false,
+      "release_checks": {
+        "path": "/workspace/arrival-runtime-rc1/ArrivalBrief_branded_release.apk",
+        "bytes": 6658807,
+        "sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+        "installed": false,
+        "launched": false,
+        "device_sha_matches": false,
+        "process_alive": false,
+        "screenshot_is_png": false
+      },
+      "install_attempted": false,
+      "first_adb_device": {
+        "timestamp_utc": "2026-11-01T23:56:37Z",
+        "elapsed_seconds": 120.02
+      },
+      "first_system_server": {
+        "timestamp_utc": "2026-11-01T23:59:07Z",
+        "elapsed_seconds": 270.02
+      },
+      "first_package_service": {
+        "timestamp_utc": "2026-11-02T00:01:37Z",
+        "elapsed_seconds": 420.02
+      },
+      "first_boot_completed": null,
+      "emulator_exit": 0,
+      "emulator_exit_interpretation": "Exit code recorded after the runner terminated the emulator at the end of this bounded attempt; not an independent app failure.",
+      "memory_events_delta": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "navihelper_destination_verified": false,
+      "car_ux_restriction_transitions_verified": false,
+      "observed_guest_watchdog": {
+        "detected": true,
+        "episodes": 2,
+        "reported_main_thread_block_seconds": [
+          131,
+          129
+        ],
+        "evidence_lines": [
+          "11-01 16:05:52.247  1425  1654 W Watchdog: *** WATCHDOG KILLING SYSTEM PROCESS: Blocked in handler on  on main thread (main) for 131s",
+          "11-01 16:05:54.935  1425  1654 W Watchdog:     at com.android.server.policy.PermissionPolicyService.grantOrUpgradeDefaultRuntimePermissionsIfNeeded(PermissionPolicyService.java:623)",
+          "11-01 16:06:05.863   437   437 E Zygote  : Exit zygote because system server (pid 1425) has terminated",
+          "11-01 16:14:22.857  4822  4957 W Watchdog: *** WATCHDOG KILLING SYSTEM PROCESS: Blocked in handler on  on main thread (main) for 129s",
+          "11-01 16:14:23.819  4822  4957 W Watchdog:     at com.android.server.policy.PermissionPolicyService.grantOrUpgradeDefaultRuntimePermissionsIfNeeded(PermissionPolicyService.java:623)",
+          "11-01 16:14:25.755  4128  4128 E Zygote  : Exit zygote because system server (pid 4822) has terminated"
+        ],
+        "interpretation": "The guest Watchdog killed both the first and automatically restarted system_server after main-thread blocks of 131 and 129 seconds. Both final stacks waited in PermissionPolicyService via CompletableFuture.get; the logs do not prove that this particular permission callback occupied the full reported blocked intervals or establish the underlying cause. This occurred before application installation."
+      },
+      "scope": "A bounded isolated retry of the unmodified official image. Runtime success is reported only for actions with direct device evidence. No vehicle or destination callback was simulated.",
+      "requirements_url": "https://document.pleos.ai/en/docs/connect/guide/getting-started/application-development/configure-pleos-connect-emulator",
+      "required_followup": "Complete installation, first launch, NaviHelper destination responses and genuine P/Drive UX restriction transitions on supported Pleos hardware or a supported emulator host.",
+      "evidence": {
+        "runtime": "pleos-final-04114df-runtime.json",
+        "observations": "pleos-final-04114df-observations.log",
+        "emulator": "pleos-final-04114df-emulator.log",
+        "selected_logcat": "pleos-final-04114df-selected-logcat.log"
+      }
     },
     "aosp_android9": {
       "status": "installed_and_launched",
@@ -241,6 +308,14 @@
         "failures": 0,
         "note": "Repeated confirmed-driving case for raw video; not an additional unique test"
       }
+    },
+    "pleos_parallel_resume": {
+      "status": "interrupted_before_install",
+      "image": "Pleos Connect 2.1.0 API34 x86_64",
+      "package_service_observed": true,
+      "boot_completed_observed": false,
+      "emulator_exit": -9,
+      "note": "A prior concurrent build/AOSP/Pleos attempt reached PackageManager and later received SIGKILL. Memory contention was plausible but no before/after OOM counter baseline was recorded, so OOM is not asserted as the cause."
     }
   },
   "verified_at": "2026-11-01T23:49:38.101416+00:00",

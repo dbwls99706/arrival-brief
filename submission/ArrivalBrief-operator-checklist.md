@@ -3,14 +3,16 @@
 이 문서는 운영 전달용이며 익명 심사용 ZIP에 포함하지 않습니다.
 
 - 저장소: https://github.com/dbwls99706/arrival-brief
-- APK 경로: apk/ArrivalBrief_release.apk
-- APK 버전: 0.5.0-prototype
-- APK SHA-256: c8ba298b9396aa567e84b2e6e5cdfb2f0dbcc2c50788042ea85620f9649f39f4
-- 익명 검토 ZIP: ArrivalBrief-review-0.5.0-prototype.zip
-- ZIP SHA-256: 99e6a95ca582b5b9c3906570a33fd9d3d31bbf85d287c5e454889ce49e9a205e
-- 앱 소스 목록 SHA-256: 453274410462607be42269330b567a02230dd15758e05295827bd69c14619e56
-- 영상: dist/assets/media/arrival-reel.mp4, arrival-confirm-reel.mp4
-- 영상은 동봉한 웹 프로토타입의 캡처 편집본이며 차량 SDK의 실제 응답을 촬영한 영상은 아닙니다.
+- 저장소 APK 경로: apk/ArrivalBrief_release.apk
+- 익명 ZIP 내부 APK 경로: dist/downloads/ArrivalBrief_release.apk (동일 APK 1개만 포함)
+- 178.357초 연속 원본 녹화: docs/verification/android-aosp28-rc1-ui-first180.mp4. 익명 ZIP에서 분리했으며 전체 운영 ZIP과 공개 저장소에 보존했습니다. 동일 바이트 캡처 중복과 문서 경로 조정은 익명 ZIP의 PACKAGE-CONTENTS.md 및 manifest에 기록했습니다.
+- APK 버전: 1.0.0-rc1
+- APK SHA-256: 04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf
+- 익명 검토 ZIP: ArrivalBrief-review-1.0.0-rc1.zip
+- ZIP SHA-256: 365282b206724df1cac9644887496e9bb9e182f0ad81999ac8016a9b3f88fde0
+- 앱 소스 목록 SHA-256: 80d863b4ed41baeebef9ef4ae5163d2691efc848eafed141582bb71a2364b929
+- 영상: dist/assets/media/arrival-reel.mp4, arrival-confirm-reel.mp4, arrival-native-validation.mp4
+- 앞의 두 영상은 1.0.0-rc1 실제 웹 화면 편집본입니다. 마지막 영상은 rc1과 같은 main 소스의 일반 Android debug 자동 UI 시험 실제 캡처 편집본입니다. 모두 연속 실차 녹화나 Pleos SDK 실제 응답 영상이 아닙니다.
 
 ## 본인 또는 운영 확인이 필요한 항목
 

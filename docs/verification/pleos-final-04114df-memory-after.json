@@ -1,0 +1,14 @@
+{
+  "timestamp_utc": "2026-11-02T00:14:38Z",
+  "memory.events": {
+    "low": 0,
+    "high": 0,
+    "max": 1067480,
+    "oom": 2,
+    "oom_kill": 2,
+    "oom_group_kill": 0
+  },
+  "memory.current": "3930636288",
+  "memory.max": "8589934592",
+  "memory.peak": "8591065088"
+}

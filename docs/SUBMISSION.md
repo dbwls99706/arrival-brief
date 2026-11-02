@@ -21,7 +21,7 @@ python scripts/package-submission.py \
   --private-token APPLICANT_EMAIL
 ```
 
-스크립트는 현재 APK와 `docs/verification/release-verification.json`의 해시·크기·버전이 같은지 확인합니다. APK를 `dist/downloads/ArrivalBrief_release.apk`로 동기화하므로 `dist`를 정적 서버 루트로 사용하는 경우에도 다운로드가 가능합니다. 또한 `build-inputs.json`의 APK 해시·버전·기록된 입력 해시를 현재 소스와 ZIP에 담긴 원본에 대조합니다. 빌드 뒤 소스가 바뀌어 이전 APK와 섞이면 포장을 중단하므로 다시 빌드해야 합니다. 이는 성공한 빌드의 입력과 제출 소스가 같다는 검사이며 바이트 단위 재현 빌드를 주장하지 않습니다. 변경된 파일은 다시 패키징해야 합니다.
+스크립트는 현재 APK와 `docs/verification/release-verification.json`의 해시·크기·버전이 같은지 확인합니다. 저장소 APK와 `dist/downloads/ArrivalBrief_release.apk`의 바이트 동일성을 검사하며 파일을 자동 복사하지 않습니다. 두 파일은 패키징 전에 동일하게 준비해야 합니다. 익명 ZIP에는 `dist/downloads/ArrivalBrief_release.apk` 한 곳에만 APK를 담으며 `dist`를 정적 서버 루트로 사용하는 경우에도 다운로드가 가능합니다. 또한 `build-inputs.json`의 APK 해시·버전·기록된 입력 해시를 현재 소스와 ZIP에 담긴 원본에 대조합니다. 빌드 뒤 소스가 바뀌어 이전 APK와 섞이면 포장을 중단하므로 다시 빌드해야 합니다. 이는 성공한 빌드의 입력과 제출 소스가 같다는 검사이며 바이트 단위 재현 빌드를 주장하지 않습니다. 변경된 파일은 다시 패키징해야 합니다.
 
 ## 확인
 
@@ -30,6 +30,8 @@ python scripts/check-paths.py
 python scripts/check-paths.py --static-root dist
 python scripts/package-submission.py --verify /absolute/path/to/ArrivalBrief-review-VERSION.zip
 ```
+
+익명 ZIP은 전송 용량을 줄이기 위해 APK의 루트 `apk` 복사본을 제외하고, 이전 캡처 3쌍에서 바이트가 같은 중복만 한 파일로 통합합니다. 앱 소스·APK 바이트·고유 캡처·30초 편집 영상 3편과 검증 결과는 유지합니다. 178.357초 연속 원본 영상은 전체 운영 ZIP과 공개 저장소의 개별 파일에 별도로 보존합니다. 파일 위치 변경과 해시는 ZIP의 `PACKAGE-CONTENTS.md` 및 manifest에 기록합니다.
 
 ZIP 안의 `SUBMISSION-MANIFEST.json`은 파일별 크기·SHA-256과 앱 소스 목록을 담습니다. 검사는 ZIP의 앱 소스가 현재 작업 폴더와 같은지도 비교합니다. 이 비교는 소스 전달 누락과 변경을 찾는 것이며 APK의 비트 단위 재현 빌드나 실제 Pleos 실행을 증명하지 않습니다.
 

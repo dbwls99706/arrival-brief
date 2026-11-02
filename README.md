@@ -65,7 +65,7 @@ Windows는 `gradlew.bat`를 사용합니다. SDK 위치와 release 서명 환경
 | Android Lint | 오류 0개·경고 0개 | [빌드 검사](docs/ANDROID_BUILD.md) |
 | 일반 Android 9 | 서명 release APK 설치·실행과 기기 내 SHA-256 일치 | [런타임 기록](docs/verification/android-runtime.md) |
 | Android UI | 별도 debug APK의 표준 UI 13개·글자 크기 1.3배 반복 6개 통과 | [UI 원시 로그](docs/verification/android-aosp28-rc1-ui-standard.log) |
-| 실제 Pleos 연동 | 목적지 응답·차량 UX 제한 전환은 미검증 | [환경별 결과](docs/verification/release-verification.json) |
+| 실제 Pleos 연동 | 환경 부팅 차단으로 앱 설치·SDK 응답·차량 UX 제한 전환은 미검증 | [환경별 결과](docs/verification/release-verification.json) |
 | 디자인·심사 수정 | 독립 검토의 발견 사항·수정·남은 검증을 회차별 기록 | [검증 기록](docs/HYUNDAI_VERIFICATION.md) |
 
 시험 개수는 실제 실행 결과로만 기록하며 공통 입력 사례를 시험 수에 중복 합산하지 않습니다. 일반 Android 데모 실행은 Pleos 서비스 연동이나 실차 성능을 입증하지 않습니다.
@@ -94,7 +94,7 @@ python scripts/check-paths.py
 
 [scripts/package-submission.py](scripts/package-submission.py)는 소스·APK·영상·검증 기록을 묶는 도구입니다. 성공한 빌드에서 기록한 입력 해시와 현재·ZIP 소스를 대조해 이전 APK와 수정된 소스가 섞인 포장을 중단합니다. 바이트 단위 재현 빌드라는 뜻은 아닙니다. 접수양식·동의서·연락처·서명 이미지와 서명 개인키는 저장소와 검토용 ZIP에 포함하지 않습니다. 공식 접수양식과 저장소 링크는 운영 접수 이메일로 전달합니다.
 
-`submission/ArrivalBrief-review-1.0.0-rc1.zip`은 새 화면과 검증 기록을 포함한 현재 검토본입니다. 이전 ZIP은 당시 소스와 산출물을 보존한 기록입니다. 현재 공개 저장소에는 별도 심사 계정 초대가 필요하지 않습니다. 제출 경로는 [운영용 제출 목록](submission/ArrivalBrief-operator-checklist.md)을 기준으로 확인합니다.
+`submission/ArrivalBrief-review-1.0.0-rc1.zip`은 새 화면과 검증 기록을 포함한 현재 검토본입니다. APK는 ZIP의 `dist/downloads/ArrivalBrief_release.apk`에 한 번만 포함하며, 178.357초 원본 영상은 전체 운영 ZIP과 공개 저장소 개별 파일로 보존합니다. 중복 정리와 경로·해시 내역은 ZIP의 `PACKAGE-CONTENTS.md` 및 manifest에 기록합니다. 이전 ZIP은 당시 소스와 산출물을 보존한 기록입니다. 현재 공개 저장소에는 별도 심사 계정 초대가 필요하지 않습니다. 제출 경로는 [운영용 제출 목록](submission/ArrivalBrief-operator-checklist.md)을 기준으로 확인합니다.
 
 ## 관련 문서
 

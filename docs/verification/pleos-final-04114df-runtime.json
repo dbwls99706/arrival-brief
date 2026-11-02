@@ -1,0 +1,3918 @@
+{
+  "started_utc": "2026-11-01T23:54:37Z",
+  "status": "boot_not_ready_within_budget",
+  "serial": "emulator-5556",
+  "avd": "ArrivalPleos21",
+  "budget_seconds": 1200,
+  "release": {
+    "path": "/workspace/arrival-runtime-rc1/ArrivalBrief_branded_release.apk",
+    "bytes": 6658807,
+    "sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+    "installed": false,
+    "launched": false,
+    "device_sha_matches": false,
+    "process_alive": false,
+    "screenshot_is_png": false
+  },
+  "scope": "Official Pleos image; software graphics and CPU emulation. No simulated app callbacks.",
+  "navihelper_destination_verified": false,
+  "car_ux_restriction_transitions_verified": false,
+  "memory_before": {
+    "timestamp_utc": "2026-11-01T23:54:37Z",
+    "memory.events": {
+      "low": 0,
+      "high": 0,
+      "max": 1067480,
+      "oom": 2,
+      "oom_kill": 2,
+      "oom_group_kill": 0
+    },
+    "memory.current": "2531688448",
+    "memory.max": "8589934592",
+    "memory.peak": "8591065088"
+  },
+  "commands": [
+    {
+      "label": "000-adb-start",
+      "arguments": [
+        "start-server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:54:37Z",
+      "elapsed_seconds": 0.01
+    },
+    {
+      "label": "poll-000-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 1,
+      "timestamp_utc": "2026-11-01T23:54:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-001-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 1,
+      "timestamp_utc": "2026-11-01T23:55:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-002-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 1,
+      "timestamp_utc": "2026-11-01T23:55:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-003-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 1,
+      "timestamp_utc": "2026-11-01T23:56:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-004-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:56:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-004-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:56:41Z",
+      "elapsed_seconds": 3.81
+    },
+    {
+      "label": "poll-004-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 124,
+      "timestamp_utc": "2026-11-01T23:56:49Z",
+      "elapsed_seconds": 8.01
+    },
+    {
+      "label": "poll-004-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:56:52Z",
+      "elapsed_seconds": 3.44
+    },
+    {
+      "label": "poll-004-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:56:56Z",
+      "elapsed_seconds": 3.85
+    },
+    {
+      "label": "poll-004-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:57:00Z",
+      "elapsed_seconds": 3.45
+    },
+    {
+      "label": "poll-005-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:57:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-005-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:57:09Z",
+      "elapsed_seconds": 2.03
+    },
+    {
+      "label": "poll-005-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 1,
+      "timestamp_utc": "2026-11-01T23:57:12Z",
+      "elapsed_seconds": 3.31
+    },
+    {
+      "label": "poll-005-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:57:15Z",
+      "elapsed_seconds": 2.26
+    },
+    {
+      "label": "poll-005-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:57:18Z",
+      "elapsed_seconds": 2.9
+    },
+    {
+      "label": "poll-005-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:57:20Z",
+      "elapsed_seconds": 2.12
+    },
+    {
+      "label": "poll-006-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:57:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-006-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:57:39Z",
+      "elapsed_seconds": 1.64
+    },
+    {
+      "label": "poll-006-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 1,
+      "timestamp_utc": "2026-11-01T23:57:41Z",
+      "elapsed_seconds": 2.31
+    },
+    {
+      "label": "poll-006-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:57:42Z",
+      "elapsed_seconds": 1.15
+    },
+    {
+      "label": "poll-006-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:57:44Z",
+      "elapsed_seconds": 1.72
+    },
+    {
+      "label": "poll-006-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:57:46Z",
+      "elapsed_seconds": 2.44
+    },
+    {
+      "label": "poll-007-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:58:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-007-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:58:10Z",
+      "elapsed_seconds": 2.59
+    },
+    {
+      "label": "poll-007-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 1,
+      "timestamp_utc": "2026-11-01T23:58:14Z",
+      "elapsed_seconds": 3.99
+    },
+    {
+      "label": "poll-007-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:58:16Z",
+      "elapsed_seconds": 1.79
+    },
+    {
+      "label": "poll-007-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:58:18Z",
+      "elapsed_seconds": 2.28
+    },
+    {
+      "label": "poll-007-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:58:20Z",
+      "elapsed_seconds": 2.0
+    },
+    {
+      "label": "poll-008-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:58:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-008-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:58:40Z",
+      "elapsed_seconds": 2.47
+    },
+    {
+      "label": "poll-008-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 1,
+      "timestamp_utc": "2026-11-01T23:58:44Z",
+      "elapsed_seconds": 4.16
+    },
+    {
+      "label": "poll-008-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:58:46Z",
+      "elapsed_seconds": 2.47
+    },
+    {
+      "label": "poll-008-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:58:50Z",
+      "elapsed_seconds": 3.67
+    },
+    {
+      "label": "poll-008-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:58:52Z",
+      "elapsed_seconds": 2.17
+    },
+    {
+      "label": "poll-009-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:59:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-009-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:59:09Z",
+      "elapsed_seconds": 2.19
+    },
+    {
+      "label": "poll-009-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:59:12Z",
+      "elapsed_seconds": 3.15
+    },
+    {
+      "label": "poll-009-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:59:16Z",
+      "elapsed_seconds": 3.65
+    },
+    {
+      "label": "poll-009-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:59:18Z",
+      "elapsed_seconds": 2.24
+    },
+    {
+      "label": "poll-009-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:59:21Z",
+      "elapsed_seconds": 2.32
+    },
+    {
+      "label": "poll-010-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:59:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-010-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:59:39Z",
+      "elapsed_seconds": 2.11
+    },
+    {
+      "label": "poll-010-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:59:42Z",
+      "elapsed_seconds": 2.76
+    },
+    {
+      "label": "poll-010-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:59:44Z",
+      "elapsed_seconds": 2.04
+    },
+    {
+      "label": "poll-010-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:59:46Z",
+      "elapsed_seconds": 1.69
+    },
+    {
+      "label": "poll-010-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-01T23:59:48Z",
+      "elapsed_seconds": 2.57
+    },
+    {
+      "label": "poll-011-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:00:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-011-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:00:09Z",
+      "elapsed_seconds": 2.27
+    },
+    {
+      "label": "poll-011-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:00:12Z",
+      "elapsed_seconds": 2.55
+    },
+    {
+      "label": "poll-011-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:00:14Z",
+      "elapsed_seconds": 1.82
+    },
+    {
+      "label": "poll-011-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:00:16Z",
+      "elapsed_seconds": 2.48
+    },
+    {
+      "label": "poll-011-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:00:19Z",
+      "elapsed_seconds": 2.56
+    },
+    {
+      "label": "poll-012-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:00:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-012-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:00:39Z",
+      "elapsed_seconds": 1.78
+    },
+    {
+      "label": "poll-012-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:00:41Z",
+      "elapsed_seconds": 2.53
+    },
+    {
+      "label": "poll-012-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:00:43Z",
+      "elapsed_seconds": 1.95
+    },
+    {
+      "label": "poll-012-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:00:45Z",
+      "elapsed_seconds": 1.77
+    },
+    {
+      "label": "poll-012-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:00:48Z",
+      "elapsed_seconds": 2.48
+    },
+    {
+      "label": "poll-013-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:01:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-013-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:01:09Z",
+      "elapsed_seconds": 1.81
+    },
+    {
+      "label": "poll-013-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:01:12Z",
+      "elapsed_seconds": 2.74
+    },
+    {
+      "label": "poll-013-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:01:14Z",
+      "elapsed_seconds": 2.43
+    },
+    {
+      "label": "poll-013-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:01:16Z",
+      "elapsed_seconds": 1.82
+    },
+    {
+      "label": "poll-013-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:01:18Z",
+      "elapsed_seconds": 1.67
+    },
+    {
+      "label": "poll-014-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:01:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-014-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:01:40Z",
+      "elapsed_seconds": 2.51
+    },
+    {
+      "label": "poll-014-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:01:42Z",
+      "elapsed_seconds": 2.4
+    },
+    {
+      "label": "poll-014-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:01:46Z",
+      "elapsed_seconds": 3.57
+    },
+    {
+      "label": "poll-014-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:01:50Z",
+      "elapsed_seconds": 3.98
+    },
+    {
+      "label": "poll-014-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:01:53Z",
+      "elapsed_seconds": 3.26
+    },
+    {
+      "label": "poll-015-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:02:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-015-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:02:10Z",
+      "elapsed_seconds": 2.46
+    },
+    {
+      "label": "poll-015-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:02:13Z",
+      "elapsed_seconds": 2.98
+    },
+    {
+      "label": "poll-015-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:02:15Z",
+      "elapsed_seconds": 2.5
+    },
+    {
+      "label": "poll-015-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:02:18Z",
+      "elapsed_seconds": 2.62
+    },
+    {
+      "label": "poll-015-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:02:20Z",
+      "elapsed_seconds": 2.39
+    },
+    {
+      "label": "poll-016-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:02:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-016-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:02:39Z",
+      "elapsed_seconds": 2.26
+    },
+    {
+      "label": "poll-016-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:02:42Z",
+      "elapsed_seconds": 2.47
+    },
+    {
+      "label": "poll-016-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:02:44Z",
+      "elapsed_seconds": 2.01
+    },
+    {
+      "label": "poll-016-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:02:47Z",
+      "elapsed_seconds": 2.79
+    },
+    {
+      "label": "poll-016-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:02:49Z",
+      "elapsed_seconds": 2.42
+    },
+    {
+      "label": "poll-017-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:03:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-017-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:03:09Z",
+      "elapsed_seconds": 1.92
+    },
+    {
+      "label": "poll-017-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:03:12Z",
+      "elapsed_seconds": 2.88
+    },
+    {
+      "label": "poll-017-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:03:14Z",
+      "elapsed_seconds": 1.8
+    },
+    {
+      "label": "poll-017-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:03:16Z",
+      "elapsed_seconds": 1.87
+    },
+    {
+      "label": "poll-017-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:03:17Z",
+      "elapsed_seconds": 1.75
+    },
+    {
+      "label": "poll-018-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:03:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-018-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:03:39Z",
+      "elapsed_seconds": 1.75
+    },
+    {
+      "label": "poll-018-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:03:42Z",
+      "elapsed_seconds": 2.91
+    },
+    {
+      "label": "poll-018-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:03:43Z",
+      "elapsed_seconds": 1.28
+    },
+    {
+      "label": "poll-018-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:03:45Z",
+      "elapsed_seconds": 1.96
+    },
+    {
+      "label": "poll-018-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:03:47Z",
+      "elapsed_seconds": 2.21
+    },
+    {
+      "label": "poll-019-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:04:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-019-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:04:09Z",
+      "elapsed_seconds": 2.0
+    },
+    {
+      "label": "poll-019-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:04:12Z",
+      "elapsed_seconds": 3.3
+    },
+    {
+      "label": "poll-019-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:04:15Z",
+      "elapsed_seconds": 2.22
+    },
+    {
+      "label": "poll-019-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:04:17Z",
+      "elapsed_seconds": 1.87
+    },
+    {
+      "label": "poll-019-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:04:18Z",
+      "elapsed_seconds": 1.82
+    },
+    {
+      "label": "poll-020-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:04:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-020-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:04:39Z",
+      "elapsed_seconds": 1.55
+    },
+    {
+      "label": "poll-020-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:04:41Z",
+      "elapsed_seconds": 2.77
+    },
+    {
+      "label": "poll-020-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:04:44Z",
+      "elapsed_seconds": 2.14
+    },
+    {
+      "label": "poll-020-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:04:45Z",
+      "elapsed_seconds": 1.64
+    },
+    {
+      "label": "poll-020-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:04:47Z",
+      "elapsed_seconds": 1.69
+    },
+    {
+      "label": "poll-021-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:05:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-021-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:05:09Z",
+      "elapsed_seconds": 1.47
+    },
+    {
+      "label": "poll-021-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:05:11Z",
+      "elapsed_seconds": 2.51
+    },
+    {
+      "label": "poll-021-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:05:13Z",
+      "elapsed_seconds": 2.13
+    },
+    {
+      "label": "poll-021-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:05:15Z",
+      "elapsed_seconds": 1.43
+    },
+    {
+      "label": "poll-021-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:05:16Z",
+      "elapsed_seconds": 1.3
+    },
+    {
+      "label": "poll-022-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:05:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-022-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:05:39Z",
+      "elapsed_seconds": 2.02
+    },
+    {
+      "label": "poll-022-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:05:42Z",
+      "elapsed_seconds": 2.6
+    },
+    {
+      "label": "poll-022-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:05:44Z",
+      "elapsed_seconds": 2.33
+    },
+    {
+      "label": "poll-022-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:05:46Z",
+      "elapsed_seconds": 2.18
+    },
+    {
+      "label": "poll-022-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:05:49Z",
+      "elapsed_seconds": 2.42
+    },
+    {
+      "label": "poll-023-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:06:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-023-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:06:09Z",
+      "elapsed_seconds": 1.9
+    },
+    {
+      "label": "poll-023-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 1,
+      "timestamp_utc": "2026-11-02T00:06:13Z",
+      "elapsed_seconds": 3.86
+    },
+    {
+      "label": "poll-023-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:06:16Z",
+      "elapsed_seconds": 2.66
+    },
+    {
+      "label": "poll-023-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:06:19Z",
+      "elapsed_seconds": 3.02
+    },
+    {
+      "label": "poll-023-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:06:21Z",
+      "elapsed_seconds": 2.35
+    },
+    {
+      "label": "poll-024-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:06:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-024-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:06:39Z",
+      "elapsed_seconds": 1.7
+    },
+    {
+      "label": "poll-024-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 1,
+      "timestamp_utc": "2026-11-02T00:06:41Z",
+      "elapsed_seconds": 2.33
+    },
+    {
+      "label": "poll-024-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:06:44Z",
+      "elapsed_seconds": 2.46
+    },
+    {
+      "label": "poll-024-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:06:46Z",
+      "elapsed_seconds": 2.01
+    },
+    {
+      "label": "poll-024-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:06:47Z",
+      "elapsed_seconds": 1.71
+    },
+    {
+      "label": "poll-025-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:07:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-025-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:07:09Z",
+      "elapsed_seconds": 1.74
+    },
+    {
+      "label": "poll-025-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 1,
+      "timestamp_utc": "2026-11-02T00:07:11Z",
+      "elapsed_seconds": 2.48
+    },
+    {
+      "label": "poll-025-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:07:14Z",
+      "elapsed_seconds": 2.53
+    },
+    {
+      "label": "poll-025-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:07:16Z",
+      "elapsed_seconds": 1.81
+    },
+    {
+      "label": "poll-025-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:07:17Z",
+      "elapsed_seconds": 1.7
+    },
+    {
+      "label": "poll-026-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:07:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-026-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:07:39Z",
+      "elapsed_seconds": 1.79
+    },
+    {
+      "label": "poll-026-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 1,
+      "timestamp_utc": "2026-11-02T00:07:41Z",
+      "elapsed_seconds": 2.55
+    },
+    {
+      "label": "poll-026-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:07:42Z",
+      "elapsed_seconds": 0.89
+    },
+    {
+      "label": "poll-026-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:07:45Z",
+      "elapsed_seconds": 2.22
+    },
+    {
+      "label": "poll-026-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:07:47Z",
+      "elapsed_seconds": 2.08
+    },
+    {
+      "label": "poll-027-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:08:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-027-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:08:09Z",
+      "elapsed_seconds": 2.13
+    },
+    {
+      "label": "poll-027-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:08:12Z",
+      "elapsed_seconds": 2.98
+    },
+    {
+      "label": "poll-027-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:08:14Z",
+      "elapsed_seconds": 2.15
+    },
+    {
+      "label": "poll-027-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:08:18Z",
+      "elapsed_seconds": 3.14
+    },
+    {
+      "label": "poll-027-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:08:20Z",
+      "elapsed_seconds": 2.73
+    },
+    {
+      "label": "poll-028-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:08:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-028-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:08:39Z",
+      "elapsed_seconds": 1.85
+    },
+    {
+      "label": "poll-028-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:08:41Z",
+      "elapsed_seconds": 2.27
+    },
+    {
+      "label": "poll-028-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:08:44Z",
+      "elapsed_seconds": 2.37
+    },
+    {
+      "label": "poll-028-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:08:46Z",
+      "elapsed_seconds": 2.56
+    },
+    {
+      "label": "poll-028-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:08:49Z",
+      "elapsed_seconds": 2.68
+    },
+    {
+      "label": "poll-029-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:09:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-029-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:09:09Z",
+      "elapsed_seconds": 2.12
+    },
+    {
+      "label": "poll-029-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:09:12Z",
+      "elapsed_seconds": 3.03
+    },
+    {
+      "label": "poll-029-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:09:14Z",
+      "elapsed_seconds": 2.1
+    },
+    {
+      "label": "poll-029-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:09:16Z",
+      "elapsed_seconds": 1.83
+    },
+    {
+      "label": "poll-029-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:09:18Z",
+      "elapsed_seconds": 2.11
+    },
+    {
+      "label": "poll-030-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:09:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-030-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:09:39Z",
+      "elapsed_seconds": 1.93
+    },
+    {
+      "label": "poll-030-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:09:42Z",
+      "elapsed_seconds": 3.35
+    },
+    {
+      "label": "poll-030-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:09:45Z",
+      "elapsed_seconds": 2.68
+    },
+    {
+      "label": "poll-030-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:09:48Z",
+      "elapsed_seconds": 2.88
+    },
+    {
+      "label": "poll-030-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:09:51Z",
+      "elapsed_seconds": 3.16
+    },
+    {
+      "label": "poll-031-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:10:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-031-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:10:09Z",
+      "elapsed_seconds": 2.27
+    },
+    {
+      "label": "poll-031-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:10:13Z",
+      "elapsed_seconds": 3.39
+    },
+    {
+      "label": "poll-031-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:10:16Z",
+      "elapsed_seconds": 3.39
+    },
+    {
+      "label": "poll-031-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:10:19Z",
+      "elapsed_seconds": 2.46
+    },
+    {
+      "label": "poll-031-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:10:21Z",
+      "elapsed_seconds": 2.7
+    },
+    {
+      "label": "poll-032-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:10:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-032-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:10:39Z",
+      "elapsed_seconds": 2.19
+    },
+    {
+      "label": "poll-032-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:10:43Z",
+      "elapsed_seconds": 3.23
+    },
+    {
+      "label": "poll-032-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:10:45Z",
+      "elapsed_seconds": 2.58
+    },
+    {
+      "label": "poll-032-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:10:48Z",
+      "elapsed_seconds": 3.15
+    },
+    {
+      "label": "poll-032-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:10:51Z",
+      "elapsed_seconds": 2.78
+    },
+    {
+      "label": "poll-033-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:11:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-033-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:11:09Z",
+      "elapsed_seconds": 1.63
+    },
+    {
+      "label": "poll-033-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:11:10Z",
+      "elapsed_seconds": 1.37
+    },
+    {
+      "label": "poll-033-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:11:11Z",
+      "elapsed_seconds": 0.76
+    },
+    {
+      "label": "poll-033-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:11:12Z",
+      "elapsed_seconds": 0.88
+    },
+    {
+      "label": "poll-033-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:11:13Z",
+      "elapsed_seconds": 1.49
+    },
+    {
+      "label": "poll-034-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:11:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-034-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:11:39Z",
+      "elapsed_seconds": 1.46
+    },
+    {
+      "label": "poll-034-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:11:41Z",
+      "elapsed_seconds": 2.36
+    },
+    {
+      "label": "poll-034-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:11:43Z",
+      "elapsed_seconds": 1.78
+    },
+    {
+      "label": "poll-034-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:11:45Z",
+      "elapsed_seconds": 1.85
+    },
+    {
+      "label": "poll-034-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:11:46Z",
+      "elapsed_seconds": 1.69
+    },
+    {
+      "label": "poll-035-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:12:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-035-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:12:10Z",
+      "elapsed_seconds": 2.39
+    },
+    {
+      "label": "poll-035-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:12:13Z",
+      "elapsed_seconds": 2.99
+    },
+    {
+      "label": "poll-035-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:12:15Z",
+      "elapsed_seconds": 2.21
+    },
+    {
+      "label": "poll-035-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:12:17Z",
+      "elapsed_seconds": 1.91
+    },
+    {
+      "label": "poll-035-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:12:19Z",
+      "elapsed_seconds": 2.23
+    },
+    {
+      "label": "poll-036-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:12:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-036-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:12:40Z",
+      "elapsed_seconds": 2.39
+    },
+    {
+      "label": "poll-036-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:12:42Z",
+      "elapsed_seconds": 2.65
+    },
+    {
+      "label": "poll-036-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:12:45Z",
+      "elapsed_seconds": 2.71
+    },
+    {
+      "label": "poll-036-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:12:47Z",
+      "elapsed_seconds": 1.87
+    },
+    {
+      "label": "poll-036-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:12:49Z",
+      "elapsed_seconds": 2.28
+    },
+    {
+      "label": "poll-037-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:13:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-037-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:13:10Z",
+      "elapsed_seconds": 2.78
+    },
+    {
+      "label": "poll-037-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:13:13Z",
+      "elapsed_seconds": 3.21
+    },
+    {
+      "label": "poll-037-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:13:16Z",
+      "elapsed_seconds": 2.42
+    },
+    {
+      "label": "poll-037-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:13:18Z",
+      "elapsed_seconds": 2.25
+    },
+    {
+      "label": "poll-037-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:13:20Z",
+      "elapsed_seconds": 2.11
+    },
+    {
+      "label": "poll-038-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:13:37Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-038-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:13:39Z",
+      "elapsed_seconds": 1.7
+    },
+    {
+      "label": "poll-038-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:13:41Z",
+      "elapsed_seconds": 2.07
+    },
+    {
+      "label": "poll-038-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:13:43Z",
+      "elapsed_seconds": 1.85
+    },
+    {
+      "label": "poll-038-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:13:45Z",
+      "elapsed_seconds": 2.64
+    },
+    {
+      "label": "poll-038-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:13:48Z",
+      "elapsed_seconds": 2.76
+    },
+    {
+      "label": "poll-039-device",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "get-state"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:14:07Z",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "label": "poll-039-boot",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:14:09Z",
+      "elapsed_seconds": 2.21
+    },
+    {
+      "label": "poll-039-system-server",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "pidof",
+        "system_server"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:14:12Z",
+      "elapsed_seconds": 2.61
+    },
+    {
+      "label": "poll-039-package",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "package"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:14:14Z",
+      "elapsed_seconds": 2.21
+    },
+    {
+      "label": "poll-039-surface",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "SurfaceFlinger"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:14:16Z",
+      "elapsed_seconds": 1.97
+    },
+    {
+      "label": "poll-039-activity",
+      "arguments": [
+        "-s",
+        "emulator-5556",
+        "shell",
+        "service",
+        "check",
+        "activity"
+      ],
+      "exit": 0,
+      "timestamp_utc": "2026-11-02T00:14:18Z",
+      "elapsed_seconds": 1.72
+    }
+  ],
+  "observations": [
+    {
+      "timestamp_utc": "2026-11-01T23:54:37Z",
+      "elapsed_seconds": 0.02,
+      "device": "",
+      "memory": {
+        "timestamp_utc": "2026-11-01T23:54:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "2533023744",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-01T23:55:07Z",
+      "elapsed_seconds": 30.02,
+      "device": "",
+      "memory": {
+        "timestamp_utc": "2026-11-01T23:55:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "3836387328",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-01T23:55:37Z",
+      "elapsed_seconds": 60.02,
+      "device": "",
+      "memory": {
+        "timestamp_utc": "2026-11-01T23:55:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "5305036800",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-01T23:56:07Z",
+      "elapsed_seconds": 90.02,
+      "device": "",
+      "memory": {
+        "timestamp_utc": "2026-11-01T23:56:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "6161211392",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-01T23:56:37Z",
+      "elapsed_seconds": 120.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-01T23:56:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "6601035776",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-01T23:57:07Z",
+      "elapsed_seconds": 150.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-01T23:57:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "6870827008",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-01T23:57:37Z",
+      "elapsed_seconds": 180.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-01T23:57:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "7048179712",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-01T23:58:07Z",
+      "elapsed_seconds": 210.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-01T23:58:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "7102099456",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-01T23:58:37Z",
+      "elapsed_seconds": 240.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-01T23:58:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "7244980224",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-01T23:59:07Z",
+      "elapsed_seconds": 270.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-01T23:59:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "7405711360",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "1425",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-01T23:59:37Z",
+      "elapsed_seconds": 300.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-01T23:59:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "7539785728",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "1425",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:00:07Z",
+      "elapsed_seconds": 330.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:00:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "7539531776",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "1425",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:00:37Z",
+      "elapsed_seconds": 360.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:00:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "7626801152",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "1425",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:01:07Z",
+      "elapsed_seconds": 390.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:01:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "7869870080",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "1425",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:01:37Z",
+      "elapsed_seconds": 420.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:01:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "7929364480",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "1425",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:02:07Z",
+      "elapsed_seconds": 450.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:02:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "7951691776",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "1425",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:02:37Z",
+      "elapsed_seconds": 480.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:02:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8022081536",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "1425",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:03:07Z",
+      "elapsed_seconds": 510.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:03:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8023269376",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "1425",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:03:37Z",
+      "elapsed_seconds": 540.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:03:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8069283840",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "1425",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:04:07Z",
+      "elapsed_seconds": 570.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:04:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8095866880",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "1425",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:04:37Z",
+      "elapsed_seconds": 600.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:04:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8096997376",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "1425",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:05:07Z",
+      "elapsed_seconds": 630.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:05:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8107421696",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "1425",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:05:37Z",
+      "elapsed_seconds": 660.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:05:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8137248768",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "1425 3842",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:06:07Z",
+      "elapsed_seconds": 690.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:06:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8149368832",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:06:37Z",
+      "elapsed_seconds": 720.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:06:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8151412736",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:07:07Z",
+      "elapsed_seconds": 750.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:07:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8153849856",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:07:37Z",
+      "elapsed_seconds": 780.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:07:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8155533312",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:08:07Z",
+      "elapsed_seconds": 810.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:08:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8153378816",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "4822",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:08:37Z",
+      "elapsed_seconds": 840.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:08:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8156688384",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "4822",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:09:07Z",
+      "elapsed_seconds": 870.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:09:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8158171136",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "4822",
+      "package": "Service package: not found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: not found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:09:37Z",
+      "elapsed_seconds": 900.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:09:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8158318592",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "4822",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:10:07Z",
+      "elapsed_seconds": 930.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:10:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8159637504",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "4822",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:10:37Z",
+      "elapsed_seconds": 960.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:10:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8160927744",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "4822",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:11:07Z",
+      "elapsed_seconds": 990.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:11:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8162115584",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "4822",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:11:37Z",
+      "elapsed_seconds": 1020.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:11:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8164446208",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "4822",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:12:07Z",
+      "elapsed_seconds": 1050.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:12:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8165429248",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "4822",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:12:37Z",
+      "elapsed_seconds": 1080.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:12:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8166891520",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "4822",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:13:07Z",
+      "elapsed_seconds": 1110.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:13:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8180133888",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "4822",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:13:37Z",
+      "elapsed_seconds": 1140.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:13:37Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8183980032",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "4822",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    },
+    {
+      "timestamp_utc": "2026-11-02T00:14:07Z",
+      "elapsed_seconds": 1170.02,
+      "device": "device",
+      "memory": {
+        "timestamp_utc": "2026-11-02T00:14:07Z",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 1067480,
+          "oom": 2,
+          "oom_kill": 2,
+          "oom_group_kill": 0
+        },
+        "memory.current": "8235892736",
+        "memory.max": "8589934592",
+        "memory.peak": "8591065088"
+      },
+      "boot": "",
+      "system_server": "4822 7023",
+      "package": "Service package: found",
+      "surface_flinger": "Service SurfaceFlinger: found",
+      "activity": "Service activity: found"
+    }
+  ],
+  "updated_utc": "2026-11-02T00:14:38Z",
+  "elapsed_seconds": 1201.37,
+  "emulator_arguments": [
+    "/workspace/scratch/50d0ea0bf7dd/android-tools/sdk/emulator/emulator",
+    "-avd",
+    "ArrivalPleos21",
+    "-read-only",
+    "-no-window",
+    "-no-audio",
+    "-no-boot-anim",
+    "-no-snapshot",
+    "-accel",
+    "off",
+    "-gpu",
+    "software",
+    "-port",
+    "5556"
+  ],
+  "emulator_pid": 15,
+  "finished_utc": "2026-11-02T00:14:38Z",
+  "emulator_exit": 0,
+  "memory_after": {
+    "timestamp_utc": "2026-11-02T00:14:38Z",
+    "memory.events": {
+      "low": 0,
+      "high": 0,
+      "max": 1067480,
+      "oom": 2,
+      "oom_kill": 2,
+      "oom_group_kill": 0
+    },
+    "memory.current": "3930636288",
+    "memory.max": "8589934592",
+    "memory.peak": "8591065088"
+  },
+  "memory_events_delta": {
+    "low": 0,
+    "high": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0
+  }
+}

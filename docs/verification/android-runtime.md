@@ -1,5 +1,35 @@
 # Android 런타임 실행 기록
 
+## 현재 1.0.0-rc1 검증 — 2026-11-02 UTC 갱신
+
+최종 release APK는 AOSP Android 9(API 28, x86, 1280×800)에서 원래 서명키의 이전 후보 위로 업데이트 설치되어 `Success`를 반환했고, 첫 실행에서 `Status: ok`와 `Complete`를 확인했다. 기기 안 `base.apk`의 SHA-256도 아래 배포 파일과 일치했다. 이 구간의 실행일은 2026-11-01 UTC다.
+
+| 항목 | 최종 결과 |
+| --- | --- |
+| 버전·파일 크기 | `1.0.0-rc1`, versionCode 10, 6,658,807 bytes |
+| release APK SHA-256 | `04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf` |
+| 빌드·정적 검증 | Android 단위 73개, 웹 50개, 공통 판단 사례 287개 통과; Lint 오류·경고 0개 |
+| 실제 앱 UI 검증 | 동일한 main 소스의 별도 debug APK에서 고유 시나리오 13개 통과 |
+| 큰 글씨 검증 | 글자 배율 1.3에서 기존 시나리오 6개 반복 통과; 추가 고유 시나리오로 합산하지 않음 |
+| 실행 로그 | release 첫 실행·표준 UI·큰 글씨 UI의 수집 로그에서 FATAL/ANR 시그니처 0건 |
+| 새 아이콘 | 패키지 안 이미지의 디코딩 픽셀이 생성 원본과 일치; adaptive/round/monochrome 리소스 포함; Android 9 시스템 앱정보 화면의 표시 확인 |
+
+[최종 빌드·release 검증 JSON](release-verification.json), [런타임 상세 JSON](android-runtime-rc1.json), [빌드 입력 43개 해시](build-inputs.json), [아이콘 검증](android-aosp28-rc1-icon.json)이 근거다. 실제 화면은 [첫 실행](android-aosp28-rc1-release.png), [확정 브리핑](android-aosp28-rc1-confirmed.png), [자동으로 전체 표시된 QR](android-aosp28-rc1-qr.png), [큰 글씨 QR](android-aosp28-rc1-large-qr.png), [시스템 아이콘](android-aosp28-rc1-system-icon.png)에서 확인할 수 있다. Android 13 테마 아이콘의 실제 표시는 검증하지 않았다.
+
+[연속 원본 화면 녹화](android-aosp28-rc1-ui-first180.mp4)는 녹화 제한을 180초로 설정했으며 실제 파일 길이는 **178.357422초**다. [30초 설명 영상](../../dist/assets/media/arrival-native-validation.mp4)은 최종 debug UI 캡처 5장을 편집한 영상이며 연속 녹화가 아니다. [편집 영상 메타데이터](../../dist/assets/media/arrival-native-validation.json)의 각 화면 경로·SHA-256은 제출 폴더의 실제 캡처와 일치한다.
+
+### 최종 Pleos 재시도: 앱 설치 전 OS 부팅 차단
+
+2026-11-01 23:54:37부터 2026-11-02 00:14:38 UTC까지 공식 Pleos Connect 2.1.0(API 34, x86_64) 이미지를 단독으로 재시도했다. 부팅·검증 예산은 20분이며 종료 정리를 포함한 기록은 1201.37초다. ADB, SurfaceFlinger, package/activity 서비스까지 도달했으나 `sys.boot_completed=1`에는 도달하지 못했다. **최종 APK 설치 명령은 실행되지 않았고, 앱 실행·NaviHelper 목적지 응답·실제 CarUxRestrictions 전환은 검증되지 않았다.**
+
+첫 `system_server`와 자동 재시작된 `system_server`가 각각 main 스레드 131초·129초 정체로 guest Watchdog에 의해 종료됐다. 두 종료 시점의 stack은 `PermissionPolicyService.grantOrUpgradeDefaultRuntimePermissionsIfNeeded → CompletableFuture.get` 대기를 보여준다. 해당 권한 콜백이 보고된 정체 시간 전체를 차지했다고 단정하지 않으며, 근본 원인은 확정하지 않았다. 후속 SystemUI `DeadSystemException`은 시스템 종료 이후의 결과다. 이 시도에서 host OOM 카운터 증가는 0이었고 VM은 예산 종료 뒤 정상 정리됐다. 앱은 설치되기 전이므로 앱 설치 실패나 앱 자체 충돌로 분류하지 않는다.
+
+근거: [최종 Pleos 요약](pleos-final-04114df-summary.json), [전체 명령·관찰 상태 JSON](pleos-final-04114df-runtime.json), [부팅 관찰](pleos-final-04114df-observations.log), [선별 시스템 로그](pleos-final-04114df-selected-logcat.log). 현재 호스트에는 GPU/KVM이 없으며, GPU 부재를 위 실패의 단일 원인으로 확정하지 않는다. 지원 환경에서 설치·SDK 응답·실제 주행 규제 전환을 다시 확인해야 한다.
+
+AOSP 결과는 일반 Android의 비차량 데모다. QR 비트맵의 내용 디코딩은 시험했지만 물리 휴대전화 카메라 스캔, 실차 동작, 장시간 안정성 및 성능 측정은 포함하지 않는다. 아래 이전 버전 기록은 당시 관측 이력으로 보존하며 현재 RC1의 검증 범위와 구분한다.
+
+## 이전 기록 — 2026-10-30 이후
+
 기록 기준일: 2026-10-30 UTC. release APK의 빌드·서명과 구분한 실행 기록이다. Pleos 시도는 **시스템 초기화 실패로 APK 설치를 완료하지 못한 상태**다. 아래 일반 Android 9의 0.3.0 실행 결과는 비차량 데모이며 Pleos SDK·차량 신호 성공 기록이 아니다.
 
 ## 사용한 이미지와 환경
