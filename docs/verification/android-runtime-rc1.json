@@ -1,0 +1,254 @@
+{
+  "version": "1.0.0-rc1",
+  "version_code": 10,
+  "release_apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+  "release_bytes": 6658807,
+  "unit_tests": 73,
+  "web_tests": 50,
+  "shared_decision_cases": 287,
+  "aosp": {
+    "status": "installed_and_launched",
+    "api": 28,
+    "abi": "x86",
+    "screen": "1280x800 @160dpi",
+    "image_sha1": "ce03c42d80c0fc6dc47f6455dbee7aa275d02780",
+    "verified_version": "1.0.0-rc1",
+    "verified_apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+    "installed_apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+    "upgrade_from": "1.0.0-rc1 / versionCode 10 intermediate c8a6 candidate",
+    "install": "Success",
+    "launch": "Status: ok; Activity: studio.ax.arrival/.MainActivity; Complete",
+    "latest_version_status": "release_and_debug_ui_verified",
+    "debug_apk_sha256": "7fc9bef75f2e6ccf2771db1bc478458759f32b314e1f2da9addcc14e4d6fb829",
+    "test_apk_sha256": "602dbd0242ba914431e3e529fac97e3dcc295c576e9a96cef172561c69329607",
+    "standard_ui": {
+      "status": "passed",
+      "tests": 13,
+      "failures": 0,
+      "methods": [
+        "vehicleEntryRestrictionsCannotBeOverriddenBySelectionOrChecks",
+        "sponsoringFacilityCannotReplaceTheActualVenueEvenAfterSelection",
+        "savedMemoQrRoundTripsAndClearsWhenEditedOrDriving",
+        "memoQrDoesNotRestoreAfterRecreationAndDeletionClearsIt",
+        "realKeyboardKeepsMemoInputVisibleAndAllowsSaving",
+        "destinationPickerPreservesConflictingNoticeAndCannotBypassReview",
+        "parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed",
+        "activeMemoAndQrExpireAtTheStoredDeadline",
+        "malformedSharedPayloadCannotEnterTheForm",
+        "conflictingSourcesShowBothValuesAndPreventConfirmation",
+        "confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy",
+        "warmShareKeepsCurrentDraftUntilExplicitImport",
+        "sharedIntentWaitsForParkingAndNeverAutoConfirms"
+      ]
+    },
+    "font_1_3_ui": {
+      "status": "passed",
+      "tests": 6,
+      "failures": 0,
+      "methods": [
+        "savedMemoQrRoundTripsAndClearsWhenEditedOrDriving",
+        "realKeyboardKeepsMemoInputVisibleAndAllowsSaving",
+        "destinationPickerPreservesConflictingNoticeAndCannotBypassReview",
+        "parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed",
+        "conflictingSourcesShowBothValuesAndPreventConfirmation",
+        "confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy"
+      ]
+    },
+    "observed": [
+      "Original signing certificate preserved; same-package signed update from c8a6 candidate to final APK succeeded. Earlier a10b candidate also upgraded from versionCode5.",
+      "Final installed release SHA-256 matches delivered APK",
+      "Release first screen renders UNKNOWN state with input locked",
+      "Separate debug instrumentation passes thirteen real Activity/Intent/UI tests, including IME, picker preservation, memo expiry and QR lifecycle"
+    ],
+    "limitations": [
+      "AOSP non-automotive demo; no Pleos SDK or live vehicle response is inferred",
+      "CPU emulation and software rendering without GPU/KVM; timings are not performance measurements",
+      "Test fixture suppresses OS error dialogs and disables animations; app FATAL/ANR logs are reviewed separately",
+      "Physical phone camera QR scan and physical vehicle operation are unverified"
+    ],
+    "resources": "Final generated brand artwork, adaptive launcher and round icon included in both tested builds.",
+    "icon_verification": {
+      "package_artwork_pixels": "exact_match",
+      "adaptive_round_monochrome_resources": "present",
+      "system_icon_visual": "verified_in_android9_app_info_on_debug_build",
+      "evidence": "android-aosp28-rc1-icon.json",
+      "android13_themed_icon_runtime": "not_tested"
+    }
+  },
+  "pleos": {
+    "status": "final_cold_boot_retry_pending",
+    "image": "Pleos Connect 2.1.0 API34 x86_64",
+    "image_sha1": "b4f858d5bcc6c71506d7edfc872bcb9e5a11acaa",
+    "host": "no GPU, no KVM",
+    "initial_attempt": "Cold boot reached ADB but package service was not present; vendor ProfileHal SIGABRT and eth0-not-ready messages were observed",
+    "latest_version_verified": false,
+    "required_followup": "Complete isolated default-network cold boot attempt, then record installation/SDK state if OS services become available",
+    "requirements_url": "https://document.pleos.ai/en/docs/connect/guide/getting-started/application-development/configure-pleos-connect-emulator"
+  },
+  "continuous_ui_video": {
+    "path": "android-aosp28-rc1-ui-first180.mp4",
+    "bytes": 3828953,
+    "sha256": "876a6f60a3e533348261f561702d7e6ba0838b09aca82a367d74735918a0faf1",
+    "build_type": "debug",
+    "debug_apk_sha256": "7fc9bef75f2e6ccf2771db1bc478458759f32b314e1f2da9addcc14e4d6fb829",
+    "description": "Continuous Android screenrecord of the first 180 seconds of the final app-owned UI test run. Ordinary AOSP, not Pleos or a real vehicle. The first scenarios are operating-restriction checks.",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800
+        }
+      ],
+      "format": {
+        "duration": "178.357422"
+      }
+    }
+  },
+  "fatal_or_anr_signature_lines": [],
+  "scope_notes": [
+    "Release install/update/launch and device-side SHA match were tested separately from debug UI instrumentation.",
+    "Thirteen unique standard UI tests and six repeated at font scale 1.3; repeats are not additional unique scenarios.",
+    "Original notice quotes, QR automatic visibility, recheck gates after returning from driving, and memo expiry were exercised in actual app views.",
+    "QR bitmap pixels were decoded; no physical phone-camera scan is claimed.",
+    "No physical-vehicle behavior or performance measurement is inferred from software emulation."
+  ],
+  "earlier_incomplete_run": {
+    "status": "superseded_not_counted",
+    "reason": "The pre-branding run was stopped after the user requested the final generated icon. All final checks reran against the branded source snapshot.",
+    "release_apk_sha256": "c8a6fd7a330adc8e1b1b74feb290933fe5cde66807f859468b5a7c1ff6644103"
+  },
+  "screenshots": [
+    {
+      "path": "android-aosp28-rc1-confirmed.png",
+      "sha256": "1c33e0098f1d442ad396f424fa42c94ce8390d51e7db0aeb54847e4ed847784e",
+      "bytes": 104532
+    },
+    {
+      "path": "android-aosp28-rc1-driving.png",
+      "sha256": "2885b61eff55d2c3107afbda6dfe68b4c6664e206bef65c11e1061d85a546918",
+      "bytes": 46125
+    },
+    {
+      "path": "android-aosp28-rc1-event-ended.png",
+      "sha256": "eb72f1f6f9ee3295c52c39dee5786874fceb19a214fb712e5fd708c22a12eb1d",
+      "bytes": 112081
+    },
+    {
+      "path": "android-aosp28-rc1-event-not-held.png",
+      "sha256": "d8bf69cdc2339d1535c90bd763575f798ca94ecc27d03843298b12c292808198",
+      "bytes": 110964
+    },
+    {
+      "path": "android-aosp28-rc1-ime.png",
+      "sha256": "085a31ac811081d3d774752809ae8df0d39ba96bf3f80508c32e6d71dae5fb1b",
+      "bytes": 74247
+    },
+    {
+      "path": "android-aosp28-rc1-large-confirmed.png",
+      "sha256": "babdad37865ddc9d184e26c7ce5e851722f0084bd60087822010ef4e73ff6f87",
+      "bytes": 115246
+    },
+    {
+      "path": "android-aosp28-rc1-large-driving.png",
+      "sha256": "8ea35c778506be0876e5a26ecadeaead6d9c6925b52ba84f9a7615a6673768d0",
+      "bytes": 47255
+    },
+    {
+      "path": "android-aosp28-rc1-large-ime.png",
+      "sha256": "a3e73e093349b8eff0f5ca2f13c5958035f1cc3637ccc786028ea79fc0490f1d",
+      "bytes": 75366
+    },
+    {
+      "path": "android-aosp28-rc1-large-picker.png",
+      "sha256": "24ca3434282399744b0ef5a8a30dfa3f7d4deba6dddd6c4eb52f14dbaf7a66e5",
+      "bytes": 113107
+    },
+    {
+      "path": "android-aosp28-rc1-large-qr.png",
+      "sha256": "d494918bd52569e3bf91a8108791f2b56ab02026a9bdbd4bf9a7095044888d08",
+      "bytes": 54925
+    },
+    {
+      "path": "android-aosp28-rc1-memo.png",
+      "sha256": "f5d123a1db25217a0608659b558bf93da4f099b6c389d9ba2476b6519f3b1ed7",
+      "bytes": 103457
+    },
+    {
+      "path": "android-aosp28-rc1-picker.png",
+      "sha256": "ff4acfa50ba29113b937e37b172461ab0e95bf6ee45cc2627a7f99bc1c170ea0",
+      "bytes": 118439
+    },
+    {
+      "path": "android-aosp28-rc1-qr.png",
+      "sha256": "c662f2543c4a2f8a4ca13ad7c8ca79c12c1bbb55e5ab33e7d228d9183d7f6e0a",
+      "bytes": 45752
+    },
+    {
+      "path": "android-aosp28-rc1-release.png",
+      "sha256": "fae6e687ff9fdb3774ddf5ad12e70c7cc816ef263f70cebc4bb3746851abb8d0",
+      "bytes": 77843
+    },
+    {
+      "path": "android-aosp28-rc1-restriction-1.png",
+      "sha256": "63b0ca8bf24629b34d79525f3555f5ca3ae42ff2e949f67d3c7a60695b809dcd",
+      "bytes": 113597
+    },
+    {
+      "path": "android-aosp28-rc1-restriction-4.png",
+      "sha256": "205722c9e3cda32819ddd5fa552275408b4fecc6962c4164a051772b95a70378",
+      "bytes": 115566
+    },
+    {
+      "path": "android-aosp28-rc1-restriction-7.png",
+      "sha256": "24633b391f72360de66e4b501d2d8717db9f0c885d23007b5e343105372ec779",
+      "bytes": 109673
+    },
+    {
+      "path": "android-aosp28-rc1-return-checks-required.png",
+      "sha256": "dea24010ca5e1f13e9de534b09775ca324442171da3126fc424b9870a7886fed",
+      "bytes": 106119
+    },
+    {
+      "path": "android-aosp28-rc1-share-locked.png",
+      "sha256": "d1dce738b8ab063019e21f67db6eed75da127468cf0ef75a9ffeb38df8d094d8",
+      "bytes": 75628
+    },
+    {
+      "path": "android-aosp28-rc1-source-conflict.png",
+      "sha256": "a5048d95b7a9afbbf28f60430efec54c8ab7316eebc4d70a179fd174fd505cf9",
+      "bytes": 105843
+    },
+    {
+      "path": "android-aosp28-rc1-subjectless-ended.png",
+      "sha256": "f247cc34fe7aaf24f7342547c4b8232a1ff7144fd1334fb93806ab7742aee3a5",
+      "bytes": 110062
+    },
+    {
+      "path": "android-aosp28-rc1-ttl-after.png",
+      "sha256": "aee1b616e6e8c5e371afeb7b0609dbd3824b84b5e52f1db0fd6474f7f2ecf9b9",
+      "bytes": 81582
+    },
+    {
+      "path": "android-aosp28-rc1-ttl-before.png",
+      "sha256": "22181b6e8d02f83ed8c741b2a714b35d63cd1b2b18e25fc4e2f816e9c33446d2",
+      "bytes": 45659
+    },
+    {
+      "path": "android-aosp28-rc1-venue-attribution-picker.png",
+      "sha256": "38b0b85e8b3117b38f17586c0b808e518866822250fb04007f471e52cc7a6304",
+      "bytes": 102963
+    },
+    {
+      "path": "android-aosp28-rc1-venue-attribution.png",
+      "sha256": "8918cf70a9894480ae596dd1d8131fc3c3309736f89c675efb25858906c493b0",
+      "bytes": 102984
+    },
+    {
+      "path": "android-aosp28-rc1-system-icon.png",
+      "sha256": "7ccee980d3c7fb17676d3f25a0099d7ce345a43723b690c158f8f81e3feddb8e",
+      "bytes": 39848
+    }
+  ]
+}

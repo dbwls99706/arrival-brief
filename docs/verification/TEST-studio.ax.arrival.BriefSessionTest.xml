@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="studio.ax.arrival.BriefSessionTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-11-01T13:36:12.060Z" hostname="33b9bcea6b8b" time="0.006">
+<testsuite name="studio.ax.arrival.BriefSessionTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-11-01T23:32:53.529Z" hostname="33b9bcea6b8b" time="0.013">
   <properties/>
   <testcase name="defaultAndUnknownModesFailClosed" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
   <testcase name="reconnectRejectsPreviousServiceCallbacks" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
+  <testcase name="exportingAfterUnlockRequiresAllCurrentHumanChecks" classname="studio.ax.arrival.BriefSessionTest" time="0.002"/>
   <testcase name="lockingRetainsConfirmedBriefAndRequiresReconfirmation" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
-  <testcase name="editingNoticeInvalidatesOldConfirmationAndSelection" classname="studio.ax.arrival.BriefSessionTest" time="0.0"/>
+  <testcase name="editingNoticeInvalidatesOldConfirmationAndSelection" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
   <testcase name="platformRequiresExplicitUnrestrictedValues" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
   <testcase name="lateUnrestrictedCallbackCannotUnlockDisconnectedService" classname="studio.ax.arrival.BriefSessionTest" time="0.0"/>
-  <testcase name="heightCorrectionPreservesSelectedPlaceButInvalidatesReview" classname="studio.ax.arrival.BriefSessionTest" time="0.0"/>
+  <testcase name="heightCorrectionPreservesSelectedPlaceButInvalidatesReview" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
+  <testcase name="matchedNavigationStillRequiresCurrentEventReview" classname="studio.ax.arrival.BriefSessionTest" time="0.0"/>
   <testcase name="conflictedSourcesNeverConfirmEvenWithAllChecks" classname="studio.ax.arrival.BriefSessionTest" time="0.0"/>
-  <testcase name="platformAndSimulationSignalsCannotBeConfused" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
+  <testcase name="platformAndSimulationSignalsCannotBeConfused" classname="studio.ax.arrival.BriefSessionTest" time="0.002"/>
   <testcase name="confirmationRequiresBothHumanChecks" classname="studio.ax.arrival.BriefSessionTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

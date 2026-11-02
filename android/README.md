@@ -1,6 +1,6 @@
-# Arrival Brief Android prototype
+# Arrival Brief Android release candidate
 
-Kotlin/native Android app for parked arrival preparation. Select a supported room directly or paste an event notice, review the facility and total vehicle height, and confirm a sourced briefing. There is no external AI request, analytics, current-position tracking, fabricated route or vehicle-control call.
+Kotlin/native Android app for parked arrival preparation. Import a text share from another app on the same Android device, select a supported room or paste an event notice, review the facility and total vehicle height, and confirm a sourced briefing. An explicitly entered parking memo can be saved and reopened on that device. There is no external AI request, analytics, current-position tracking, fabricated route or vehicle-control call.
 
 ## Build
 
@@ -32,20 +32,30 @@ The reader has a six-second timeout, one-shot request tokens and listener releas
 ## Source and session rules
 
 - Eight COEX meeting-room groups are recognized. Five are guideable; Conference Room E, rooms 300-328 and rooms 400-403 are blocked due to conflicting official sources. Exhibition halls A/B/C/D are outside the scope.
-- Basement floors, unsupported room numbers, other/nearby facilities, cancelled notices and invalid heights require review or block confirmation. The common corpus `tests/decision-cases.tsv` is used by both web and Kotlin tests.
-- Explicit height review and safe-parking acknowledgement are required. Destination/height edits invalidate previous confirmations. Height above 2.2m is blocked; exactly 2.2m retains a boundary warning.
+- Explicit parking clauses can be separated from the venue clause only when their grammar is recognized. Their floor, zone and gate are checked against the selected official recommendation. A sponsor or reference mentioning COEX is not sufficient venue ownership; unparsed parking/entry restrictions and explicit non-occurrence or prohibition remain blocked. Contradictory or unrecognized clauses, unsupported room numbers, other/nearby facilities, cancelled notices and invalid heights require review or block confirmation. The common corpus `tests/decision-cases.tsv` is used by both web and Kotlin tests.
+- Explicit review of the current event venue, total vehicle height and safe parking is required. Destination/height edits invalidate previous confirmations. Height above 2.2m is blocked; exactly 2.2m retains a boundary warning.
 - Rotation retains the volatile session. Process recreation drops the notice, height and confirmed briefing. A live in-memory confirmation may remain visible in restricted mode, subject to OS blocking.
 - The user can explicitly save one confirmed destination ID, timestamp and dataset version in private preferences for 24 hours. No raw notice, height, navigation name/address or confirmed driving card is persisted. Expired, future-dated, stale-version, unknown and source-conflict records are rejected.
 - Restore/delete require input access. Restore creates an unconfirmed draft with empty height and renewed checks. It does not recover a confirmed briefing during a restricted/driving restart and does not transfer anything from a phone.
 - Automatic backup and sensitive view-state saving are disabled. Copying the derived briefing is explicit and includes sources, not the pasted notice.
 
+The parser recognizes supported patterns; it is not a general language-understanding system. Undeclared unfamiliar proper nouns and the assignment of registration floors across multiple events are not fully resolved. For ambiguous notices, the user must verify the original event, facility, floor and parking details, then separate the relevant clauses without dropping or altering those details.
+
+## Notice sharing and parking memo
+
+`ACTION_SEND` with `text/plain` accepts a bounded in-memory notice. Raw intent contents are immediately scrubbed. A pending share never automatically replaces a confirmed briefing: platform input permission, a separate safe-parking confirmation, and an explicit import action are required. Cold and warm activity entry follow the same policy. This is same-device Android sharing, not phone-to-car transport.
+
+A manual parking memo holds at most 64 characters for 24 hours in private preferences. Viewing, saving and deleting require platform input permission and a separate safe-parking confirmation. Driving/unknown state, background transition and recreation clear sensitive visible fields and require review again. No raw notice or navigation address is stored. The user can delete the memo, and expired or invalid records are rejected. Automatic backup/transfer excludes the preferences.
+
+The memo is distinct from the official recommended parking zone and is not live localization or a walking route. After explicit safe-parking review, Android can display a plain-text QR containing the saved memo. A phone camera must read it and the user must separately save the text; this does not open a URL, use a server, or synchronize devices. The app's expiry/deletion policy does not delete phone copies. Expiry is enforced by foreground checks and on the next read/launch; no exact-time background deletion is scheduled while the process is stopped. QR visibility is cleared by restrictions, backgrounding and expiry. Real camera-to-display optical scanning remains a separate unverified check.
+
 ## Verification boundaries
 
-The 0.5.0 release updates the native visual interface with a vehicle-height illustration, preparation and destination relationship diagrams, and semantic step colors. These diagrams are not geographic routes. Compilation, unit tests, lint and release signing were checked; the new native UI has not yet been run on a device or emulator. The older runtime observations below do not validate the 0.5.0 UI.
+The current source is `1.0.0-rc1` (versionCode 10). The vehicle-height illustration, semantic state colors and destination relationship diagram support the preparation flow; the diagram is not a geographic route.
 
-The current version, APK hash, test counts and lint findings are in [release-verification.json](../docs/verification/release-verification.json). Unit tests and compilation are separate from real SDK service behavior. See [runtime observations](../docs/verification/android-runtime.md) for the recorded APK version and environment. The previous 0.4.0 release was installed and launched on AOSP Android 9. Explicit demo entry, height/facility/parking review, confirmation, driving input lock, and landscape readability at 1280×800 and logical 960×600 were observed. The following destination-storage observations belong to the earlier 0.3.0 release. Explicit demo confirmation, restricted-mode display, destination-only saving and unconfirmed draft restore after force-stop/restart were observed. Restored height and review checks were empty; confirmation remained disabled. System UI ANR and intermittent UIAutomator null-root failures limit this software-emulated session. These observations do not validate real NaviHelper callbacks, automotive restrictions, performance or long-duration stability.
+The exact current APK version, hash, unit tests, lint and signing results are in [release-verification.json](../docs/verification/release-verification.json). [Runtime observations](../docs/verification/android-runtime.md) identify the build and environment for each install, launch and interaction result. Release APK observations and debug instrumentation results must be reported separately. Historical 0.3/0.4/0.5 observations are not evidence for the new candidate.
 
-The Pleos emulator attempt failed during system initialization and installation on the available host. Actual permissions, destination responses, driving restrictions and activity blocking need a supported Pleos environment. There is no live parking service, indoor navigation, passenger drop-off recommendation or entrance-coordinate handoff.
+Compilation, fake-adapter contract tests and ordinary Android demo execution do not validate real NaviHelper callbacks, permissions, automotive restrictions, performance or long-duration stability. A supported Pleos runtime is still required for those checks. The host's GPU and virtualization limitations are recorded with actual emulator output rather than assigning an unproven single cause.
 
 ## Official sources
 

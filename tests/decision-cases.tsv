@@ -49,3 +49,240 @@ hall_b_floor	코엑스 B홀 1층	1.65	grand	false
 hall_english	COEX Hall A	1.65	auditorium	false
 hall_mixed	코엑스 오디토리움 및 A홀	1.65	auditorium	false
 exhibition_hall	코엑스 전시홀 A	1.65	auditorium	false
+parking_line	코엑스 오디토리움 3층\n주차: B3 블루존	1.65		true
+parking_sentence	11월 7일 코엑스 오디토리움 3층에서 만나요. 주차는 B3 블루존입니다.	1.65		true
+parking_location_first	코엑스 스튜디오 159 2층 행사. 지하 2층 주차장을 이용해 주세요.	1.65		true
+parking_english	COEX auditorium 3F. Parking: B3 blue zone.	1.65		true
+parking_floor_only	코엑스 오디토리움 3층\n주차 안내: 지하 3층	1.65		true
+parking_compact	코엑스 오디토리움 3층\n주차:B3블루존	1.65		true
+parking_second_note	코엑스 오디토리움 3층\n주차: B3\n주차구역: 블루존	1.65		true
+parking_plural_consistent	코엑스 오디토리움 3층\n주차: B3 / 지하 3층 블루존	1.65		true
+parking_wrong_floor	코엑스 오디토리움 3층\n주차: B2 블루존	1.65		false
+parking_wrong_zone	코엑스 오디토리움 3층\n주차: B3 퍼플존	1.65		false
+parking_conflicting_notes	코엑스 오디토리움 3층\n주차: B3 블루존\n주차: B2 퍼플존	1.65		false
+parking_floor_disagreement	코엑스 스튜디오 159 2층 행사. 지하 3층 주차장을 이용해 주세요.	1.65		false
+parking_hidden_venue	코엑스 오디토리움 3층\n주차: B3 블루존 행사장 지하 2층	1.65		false
+parking_hidden_unsupported	코엑스 오디토리움 3층\n주차: B3 코엑스 마곡 행사장 변경	1.65		false
+parking_hidden_cancel	코엑스 오디토리움 3층\n주차: B3 블루존. 행사 취소	1.65		false
+parking_hidden_unknown_words	코엑스 오디토리움 3층\n주차: B3 뒷문을 이용	1.65		false
+parking_venue_basement	코엑스 오디토리움 지하 3층\n주차: B3 블루존	1.65		false
+parking_manual_choice_conflict	코엑스 행사 안내\n주차: B3 블루존	1.65	studio159	false
+parking_manual_choice_match	코엑스 행사 안내\n주차: B3 블루존	1.65	auditorium	true
+parking_official_conflict	코엑스 컨퍼런스룸 E 3층\n주차: B2 퍼플존	1.65		false
+parking_compact_wrong_floor	코엑스 오디토리움 3층\n주차:B2블루존	1.65		false
+basement_attached_hangul	코엑스 오디토리움B3에서 행사	1.65		false
+relocated_songdo	코엑스 오디토리움에서 진행하던 행사를 송도컨벤시아로 옮겼습니다.	1.65		false
+actual_songdo	코엑스 오디토리움 3층. 실제 행사장은 송도컨벤시아입니다.	1.65		false
+event_ddp	코엑스 오디토리움 3층 행사는 DDP 아트홀에서 진행합니다.	1.65		false
+cancelled_en	COEX auditorium 3F event cancelled	1.65		false
+canceled_en	COEX auditorium 3F event canceled	1.65	auditorium	false
+cancellation_en	COEX auditorium 3F. Event cancellation.	1.65		false
+cancelled_attached_kr	코엑스 오디토리움 3층 행사는 cancelled입니다.	1.65		false
+postponed_en	COEX auditorium 3F event postponed	1.65		false
+relocated_unknown_en	COEX auditorium 3F event relocated to Aurora Center	1.65		false
+moved_unknown_en	COEX auditorium 3F. The event has moved to Aurora Center.	1.65	auditorium	false
+moved_multiline_en	COEX auditorium 3F event moved\n to Aurora Center	1.65		false
+changed_location_en	COEX auditorium 3F. The venue has been changed.	1.65		false
+no_longer_en	The event is no longer at COEX auditorium 3F.	1.65		false
+unknown_venue_claim_kr	코엑스 오디토리움 3층. 실제 행사장은 한빛센터입니다.	1.65	auditorium	false
+unknown_event_place_kr	코엑스 오디토리움 3층 행사는 한빛센터에서 진행합니다.	1.65		false
+unknown_venue_claim_en	COEX auditorium 3F. Venue: Aurora Center.	1.65	auditorium	false
+unknown_event_place_en	COEX auditorium 3F. The event will be held at Aurora Center.	1.65		false
+conflicting_venue_claims	장소: 코엑스 오디토리움. 실제 장소: 코엑스 아셈볼룸.	1.65	auditorium	false
+changed_unknown_kr	코엑스 오디토리움 행사가 하늘센터로 바뀌었습니다.	1.65		false
+moved_unknown_kr	코엑스 오디토리움 행사가 하늘센터로 이동했습니다.	1.65		false
+relocation_unknown_kr	코엑스 오디토리움 행사를 하늘센터로 이전했습니다.	1.65		false
+ddp_attached_kr	코엑스 오디토리움 3층 DDP아트홀	1.65		false
+parking_cannot_hide_change	코엑스 오디토리움 3층\n주차: B3 블루존\nEvent cancelled	1.65		false
+supported_venue_claim_kr	장소: 코엑스 오디토리움 3층.	1.65		true
+supported_venue_claim_en	Venue: COEX auditorium 3F.	1.65		true
+supported_event_place_kr	행사는 코엑스 오디토리움 3층에서 진행합니다.	1.65		true
+supported_event_place_en	The event will be held at COEX auditorium 3F.	1.65		true
+arrival_before_time	코엑스 오디토리움 3층. 오후 2시 이전에 도착해주세요.	1.65		true
+registration_floor	코엑스 오디토리움 3층. 1층 로비에서 등록해주세요.	1.65		false
+mixed_event_floors	코엑스 오전 그랜드볼룸 1층, 오후 오디토리움 3층	1.65		false
+mixed_event_selected	코엑스 오전 그랜드볼룸 1층, 오후 오디토리움 3층	1.65	auditorium	false
+unknown_conjoined_venue	장소: 코엑스 오디토리움과 한빛센터	1.65	auditorium	false
+unknown_alternate_venue	장소: 코엑스 오디토리움 / 한빛센터	1.65		false
+event_stopped	코엑스 오디토리움 3층. 행사는 더 이상 열리지 않습니다.	1.65		false
+event_stopped_manual	코엑스 오디토리움 3층. 행사는 더 이상 열리지 않습니다.	1.65	auditorium	false
+event_deferred	코엑스 오디토리움 3층 행사. 본 행사는 다음 달로 미뤄졌습니다.	1.65		false
+event_deferred_manual	코엑스 오디토리움 3층 행사. 본 행사는 다음 달로 미뤄졌습니다.	1.65	auditorium	false
+final_venue_unknown	코엑스 오디토리움 3층. 최종 개최지: 한빛센터.	1.65		false
+final_venue_unknown_manual	코엑스 오디토리움 3층. 최종 개최지: 한빛센터.	1.65	auditorium	false
+event_does_elsewhere	코엑스 오디토리움 3층. 이번 행사는 한빛센터에서 합니다.	1.65		false
+event_does_elsewhere_manual	코엑스 오디토리움 3층. 이번 행사는 한빛센터에서 합니다.	1.65	auditorium	false
+event_online_conversion	코엑스 오디토리움 3층 행사를 줌 온라인으로 전환했습니다.	1.65		false
+event_online_conversion_manual	코엑스 오디토리움 3층 행사를 줌 온라인으로 전환했습니다.	1.65	auditorium	false
+known_final_venue	최종 개최지: 코엑스 오디토리움 3층.	1.65		true
+known_event_does	이번 행사는 코엑스 오디토리움 3층에서 합니다.	1.65		true
+parking_polite_sentence	코엑스 오디토리움 3층에서 열리는 정기총회입니다. 주차는 B3 블루존을 이용해 주세요.	1.65		true
+parking_polite_line	장소: 코엑스 오디토리움 3층\n주차: B3 블루존 이용 바랍니다.	1.65		true
+parking_polite_topic	코엑스 오디토리움 3층\n주차: B3 블루존은 이용해 주십시오.	1.65		true
+parking_polite_studio	코엑스 스튜디오159 2층\n주차: B2 퍼플존을 이용하여 주십시오.	1.65		true
+parking_polite_unknown_suffix	코엑스 오디토리움 3층\n주차: B3 블루존을 이용 바랍니다 뒷문으로	1.65		false
+parking_polite_basement_venue	코엑스 오디토리움 3층\n주차: B3 블루존을 이용해 주세요. 진입은 지하 2층입니다.	1.65		false
+parking_polite_wrong_floor	코엑스 오디토리움 3층\n주차: B2 블루존을 이용해 주세요.	1.65		false
+parking_polite_wrong_zone	코엑스 오디토리움 3층\n주차: B3 퍼플존을 이용해 주십시오.	1.65		false
+unparsed_parking_zone_gate	코엑스 오디토리움 3층\n주차: 퍼플존 / 동문	1.65		false
+unparsed_parking_only	코엑스 오디토리움 3층\n주차는 퍼플존만 이용하세요.	1.65	auditorium	false
+unparsed_parking_to	코엑스 오디토리움 3층\n주차: 퍼플존에 주차하세요.	1.65		false
+unparsed_parking_unknown	코엑스 오디토리움 3층\n주차: 별도 승인 구역	1.65		false
+unparsed_parking_inline	코엑스 오디토리움 3층 주차: 퍼플존	1.65		false
+unparsed_parking_label	코엑스 오디토리움 3층\n주차구역은 퍼플존입니다.	1.65		false
+unparsed_parking_english	COEX auditorium 3F. Parking: purple zone only.	1.65		false
+unparsed_entry_south	코엑스 오디토리움 3층\n진입문: 남문	1.65		false
+unparsed_entry_east	코엑스 오디토리움 3층\n입구: 동문	1.65	auditorium	false
+unparsed_entry_english	COEX auditorium 3F. gate:south	1.65		false
+unparsed_entry_matching	코엑스 오디토리움 3층\n진입문: 북문	1.65		false
+raw_zone_conflict	코엑스 오디토리움 3층. 현장 운영에 따라 퍼플존만 개방합니다.	1.65		false
+raw_gate_conflict	코엑스 오디토리움 3층. 남문으로 오세요.	1.65		false
+raw_gate_english	COEX auditorium 3F. Use the east gate.	1.65		false
+raw_access_uninterpreted	코엑스 오디토리움 3층. 북문과 블루존에서 안내합니다.	1.65		false
+raw_manual_zone_conflict	코엑스 행사 안내. 블루존에서 뵙겠습니다.	1.65	studio159	false
+raw_manual_gate_conflict	코엑스 행사 안내. 북문에서 뵙겠습니다.	1.65	studio159	false
+raw_zone_english_attached	코엑스 오디토리움 3층. purple zone만 개방합니다.	1.65		false
+operation_gate_closed	코엑스 오디토리움 3층\n북문은 폐쇄되었습니다.	1.65		false
+operation_gate_forbidden	코엑스 오디토리움 3층\n북문 이용 금지	1.65		false
+operation_zone_closed	코엑스 오디토리움 3층\n블루존은 폐쇄되었습니다.	1.65		false
+operation_zone_restricted	코엑스 오디토리움 3층\n블루존은 통제 중입니다.	1.65		false
+operation_entry_prohibited	코엑스 오디토리움 3층\n진입 금지	1.65		false
+operation_gate_closed_en	코엑스 오디토리움 3층\nThe north gate is closed.	1.65		false
+operation_entry_restricted_en	코엑스 오디토리움 3층\nEntry restricted.	1.65		false
+operation_gate_manual	코엑스 오디토리움 3층\n북문은 폐쇄되었습니다.	1.65	auditorium	false
+operation_zone_manual	코엑스 오디토리움 3층\n블루존은 폐쇄되었습니다.	1.65	auditorium	false
+operation_same_zone_uninterpreted	코엑스 오디토리움 3층\n블루존에서 뵙겠습니다.	1.65		false
+access_vehicle_unavailable	코엑스 오디토리움 3층 행사\n금일은 차량 진입이 불가합니다.	1.65		false
+access_arrival_unavailable	코엑스 오디토리움 3층 행사\n입차 불가	1.65		false
+access_prohibit_inflected	코엑스 오디토리움 3층 행사\n오늘은 차량 출입을 금합니다.	1.65		false
+access_refrain	코엑스 오디토리움 3층 행사\n차량 출입을 삼가주세요.	1.65		false
+access_exit_denied	코엑스 오디토리움 3층 행사\n출차가 허용되지 않습니다.	1.65		false
+access_passage_restricted	코엑스 오디토리움 3층 행사\n통행을 제한합니다.	1.65		false
+access_door_suspended	코엑스 오디토리움 3층 행사\n출입문 운영이 중단되었습니다.	1.65		false
+access_unavailable_en	코엑스 오디토리움 3층 행사\nVehicle access unavailable.	1.65		false
+access_entrance_denied_en	코엑스 오디토리움 3층 행사\nEntrance is not permitted.	1.65		false
+access_entry_denied_en	코엑스 오디토리움 3층 행사\nEntry prohibited today.	1.65		false
+access_drive_in_denied_en	코엑스 오디토리움 3층 행사\nDrive-in is not allowed.	1.65		false
+access_gate_unavailable_en	코엑스 오디토리움 3층 행사\nThe gate is unavailable.	1.65		false
+height_fact_kr	코엑스 오디토리움 3층 행사\n시설 진입 제한 높이: 2.2m.	1.65		true
+height_fact_kr_long	코엑스 오디토리움 3층 행사\n주차장 진입 제한 높이 2.20미터입니다.	1.65		true
+height_fact_en	코엑스 오디토리움 3층 행사\nParking entrance height limit: 2.2m.	1.65		true
+event_admission_context	코엑스 오디토리움 3층 행사\nAdmission opens at 09:00. 행사 주제는 미래 모빌리티입니다.	1.65		true
+height_fact_wrong	코엑스 오디토리움 3층 행사\n시설 진입 제한 높이: 2.3m.	1.65		false
+height_fact_with_denial	코엑스 오디토리움 3층 행사\n시설 진입 제한 높이: 2.2m 입차 불가	1.65		false
+parking_prefixed_unavailable	코엑스 오디토리움\n오늘은 주차장을 이용할 수 없습니다.	1.65		false
+parking_verb_unavailable	코엑스 오디토리움\n오늘은 주차할 수 없습니다.	1.65		false
+door_entrance_unavailable	코엑스 오디토리움\n금일 입구를 이용할 수 없습니다.	1.65		false
+door_entrance_blocked	코엑스 오디토리움\n오늘 입구를 막습니다.	1.65		false
+door_main_unavailable	코엑스 오디토리움\n정문 이용 불가	1.65		false
+door_back_do_not_use	코엑스 오디토리움\n후문은 사용하지 마세요.	1.65		false
+door_exit_unavailable	코엑스 오디토리움\n오늘 출구를 사용할 수 없습니다.	1.65		false
+door_side_unparsed	코엑스 오디토리움\n옆문은 안내에 따라 이용하세요.	1.65		false
+door_small_unparsed	코엑스 오디토리움\n쪽문을 사용해주세요.	1.65		false
+door_large_unparsed	코엑스 오디토리움\n대문으로 오세요.	1.65		false
+parking_prefixed_en	코엑스 오디토리움\nToday parking is unavailable.	1.65		false
+door_exit_en	코엑스 오디토리움\nThe exit cannot be used today.	1.65		false
+car_park_unavailable	코엑스 오디토리움\nThe car park is unavailable.	1.65		false
+external_ballroom_sponsor	장소: 연세대학교 백양누리 그랜드볼룸\n후원: 코엑스	1.65		false
+unowned_ballroom_sponsor	장소: 그랜드볼룸\n후원: 코엑스	1.65	grand	false
+coex_with_unknown_facility	장소: 코엑스 연세대학교 백양누리 그랜드볼룸 1층	1.65		false
+external_ballroom_sponsor_en	Venue: Yonsei University Grand Ballroom 1F. Sponsor: COEX.	1.65		false
+unknown_facility_suffix	장소: 코엑스 그랜드볼룸 1층 별관	1.65		false
+known_claim_ending	장소: 코엑스 그랜드볼룸 1층입니다.	1.65		true
+known_claim_samseong	장소: 코엑스 삼성동 오디토리움 (3층)	1.65		true
+known_claim_other_sponsor	장소: 코엑스 오디토리움 3층\n후원: 협력사	1.65		true
+claim_long_unknown_tail	장소: 코엑스 그랜드볼룸 1층                                                                                                                                                                                    연세대학교 별관	1.65	grand	false
+unlabelled_external_sponsor	연세대학교 백양누리 그랜드볼룸\n후원: 코엑스	1.65		false
+unlabelled_external_prose	행사 안내\n연세대학교 백양누리 그랜드볼룸에서 만나요.\n후원: 코엑스	1.65	grand	false
+unlabelled_external_gap	코엑스 후원 연세대학교 백양누리 그랜드볼룸	1.65		false
+sponsorship_room_not_venue	후원: 코엑스 그랜드볼룸	1.65	grand	false
+event_not_held_kr	코엑스 오디토리움에서는 행사를 진행하지 않습니다.	1.65		false
+event_not_hosted_kr	코엑스 오디토리움에서는 행사를 개최하지 않습니다.	1.65		false
+venue_visit_impossible	코엑스 그랜드볼룸 1층\n엘리베이터 공사로 행사장 방문이 불가능합니다.	1.65		false
+venue_visit_cannot	코엑스 그랜드볼룸 1층\n행사장을 방문할 수 없습니다.	1.65		false
+venue_visit_cannot_en	COEX grand ballroom 1F. Visitors cannot visit the venue.	1.65		false
+ordinary_design_conference	코엑스 오디토리움 3층에서 열리는 디자인 컨퍼런스입니다.	1.65		true
+facility_closed_day	코엑스 오디토리움 3층\n금일 휴관합니다.	1.65		false
+facility_operation_stopped	코엑스 오디토리움 3층\n행사장 운영을 중단합니다.	1.65		false
+facility_event_stopped	코엑스 오디토리움 3층\n행사는 중단되었습니다.	1.65		false
+facility_business_suspended	코엑스 오디토리움 3층\n시설은 휴업 중입니다.	1.65		false
+facility_doors_close	코엑스 오디토리움 3층\n오늘 행사장 문을 닫습니다.	1.65		false
+facility_closed_grounds	코엑스 오디토리움 3층\n금일은 휴장입니다.	1.65		false
+facility_holiday	코엑스 오디토리움 3층\n시설은 휴무입니다.	1.65		false
+facility_permanently_closed	코엑스 오디토리움 3층\n행사장이 폐관했습니다.	1.65		false
+facility_day_off	코엑스 오디토리움 3층\n오늘은 쉬는 날입니다.	1.65		false
+facility_event_nonoccurrence	코엑스 오디토리움 3층\n이번 행사는 비개최입니다.	1.65		false
+facility_operation_positive_unverified	코엑스 오디토리움 3층\n시설은 정상 운영합니다.	1.65		false
+facility_business_reopening_unverified	코엑스 오디토리움 3층\n내일 영업을 재개합니다.	1.65		false
+facility_doors_open_unverified	코엑스 오디토리움 3층\n오늘 행사장 문을 엽니다.	1.65		false
+ordinary_event_introduction	코엑스 오디토리움 3층\n행사 소개: 미래 모빌리티 기술 강연입니다.	1.65		true
+event_does_not_open	코엑스 오디토리움에서 행사를 열지 않습니다.	1.65		false
+event_fell_through	코엑스 오디토리움 3층\n행사가 무산되었습니다.	1.65		false
+event_nonface_format	코엑스 오디토리움 3층\n행사는 비대면으로 개최됩니다.	1.65		false
+event_online_only	코엑스 오디토리움 3층\n온라인으로만 진행합니다.	1.65		false
+event_zoom_only	코엑스 오디토리움 3층\nZoom으로만 진행합니다.	1.65		false
+event_absent_today	코엑스 오디토리움 3층\n금일은 행사가 없습니다.	1.65		false
+event_not_established	코엑스 오디토리움 3층\n행사가 불성립되었습니다.	1.65		false
+event_remote_format	코엑스 오디토리움 3층\n원격 행사로 진행합니다.	1.65		false
+event_hybrid_format	코엑스 오디토리움 3층\n하이브리드 행사로 진행합니다.	1.65		false
+ordinary_event_datetime	코엑스 오디토리움 3층\n행사 일시: 2026년 11월 7일 14:00	1.65		true
+ordinary_event_tickets	코엑스 오디토리움 3층\n입장권은 현장에서 확인합니다. Admission is free.	1.65		true
+ordinary_event_description	코엑스 오디토리움 3층\n행사 소개: 디자인과 미래 모빌리티를 다루는 강연입니다.	1.65		true
+resume_event_negation_0_auto	코엑스 오디토리움 3층\n오늘 행사는 안 합니다.	1.65		false
+resume_event_negation_0_auditorium	코엑스 오디토리움 3층\n오늘 행사는 안 합니다.	1.65	auditorium	false
+resume_event_negation_1_auto	코엑스 오디토리움 3층\n이번 행사는 하지 않습니다.	1.65		false
+resume_event_negation_1_auditorium	코엑스 오디토리움 3층\n이번 행사는 하지 않습니다.	1.65	auditorium	false
+resume_event_negation_2_auto	코엑스 오디토리움 3층\n오늘 공연은 안 해요.	1.65		false
+resume_event_negation_2_auditorium	코엑스 오디토리움 3층\n오늘 공연은 안 해요.	1.65	auditorium	false
+resume_event_negation_3_auto	코엑스 오디토리움 3층\n이번 회의는 못 합니다.	1.65		false
+resume_event_negation_3_auditorium	코엑스 오디토리움 3층\n이번 회의는 못 합니다.	1.65	auditorium	false
+resume_event_negation_4_auto	코엑스 오디토리움 3층\n강연은 하지 않아요.	1.65		false
+resume_event_negation_4_auditorium	코엑스 오디토리움 3층\n강연은 하지 않아요.	1.65	auditorium	false
+resume_event_negation_5_auto	코엑스 오디토리움 3층\nThis event is not happening.	1.65		false
+resume_event_negation_5_auditorium	코엑스 오디토리움 3층\nThis event is not happening.	1.65	auditorium	false
+resume_event_negation_6_auto	코엑스 오디토리움 3층\nThere is no event today.	1.65		false
+resume_event_negation_6_auditorium	코엑스 오디토리움 3층\nThere is no event today.	1.65	auditorium	false
+resume_event_negation_7_auto	코엑스 오디토리움 3층\nThe conference won't take place.	1.65		false
+resume_event_negation_7_auditorium	코엑스 오디토리움 3층\nThe conference won't take place.	1.65	auditorium	false
+resume_event_negation_8_auto	코엑스 오디토리움 3층\nToday's meeting isn't happening.	1.65		false
+resume_event_negation_8_auditorium	코엑스 오디토리움 3층\nToday's meeting isn't happening.	1.65	auditorium	false
+resume_event_negation_9_auto	코엑스 오디토리움 3층\nNo concert today.	1.65		false
+resume_event_negation_9_auditorium	코엑스 오디토리움 3층\nNo concert today.	1.65	auditorium	false
+resume_event_negation_10_auto	코엑스 오디토리움 3층\nThis seminar does not happen today.	1.65		false
+resume_event_negation_10_auditorium	코엑스 오디토리움 3층\nThis seminar does not happen today.	1.65	auditorium	false
+resume_event_lifecycle_0_auto	코엑스 오디토리움 3층\n행사가 종료되었습니다.	1.65		false
+resume_event_lifecycle_0_auditorium	코엑스 오디토리움 3층\n행사가 종료되었습니다.	1.65	auditorium	false
+resume_event_lifecycle_1_auto	코엑스 오디토리움 3층\n이번 행사는 이미 끝났습니다.	1.65		false
+resume_event_lifecycle_1_auditorium	코엑스 오디토리움 3층\n이번 행사는 이미 끝났습니다.	1.65	auditorium	false
+resume_event_lifecycle_2_auto	코엑스 오디토리움 3층\n오늘 공연은 모두 마쳤습니다.	1.65		false
+resume_event_lifecycle_2_auditorium	코엑스 오디토리움 3층\n오늘 공연은 모두 마쳤습니다.	1.65	auditorium	false
+resume_event_lifecycle_3_auto	코엑스 오디토리움 3층\nThe event has ended.	1.65		false
+resume_event_lifecycle_3_auditorium	코엑스 오디토리움 3층\nThe event has ended.	1.65	auditorium	false
+resume_event_lifecycle_4_auto	코엑스 오디토리움 3층\nThe conference is over.	1.65		false
+resume_event_lifecycle_4_auditorium	코엑스 오디토리움 3층\nThe conference is over.	1.65	auditorium	false
+resume_event_lifecycle_5_auto	코엑스 오디토리움 3층\nThe meeting has concluded.	1.65		false
+resume_event_lifecycle_5_auditorium	코엑스 오디토리움 3층\nThe meeting has concluded.	1.65	auditorium	false
+resume_event_lifecycle_6_auto	코엑스 오디토리움 3층\n행사는 18시에 종료 예정입니다.	1.65		false
+resume_event_lifecycle_6_auditorium	코엑스 오디토리움 3층\n행사는 18시에 종료 예정입니다.	1.65	auditorium	false
+resume_event_lifecycle_7_auto	코엑스 오디토리움 3층\nThe event ends at 18:00.	1.65		false
+resume_event_lifecycle_7_auditorium	코엑스 오디토리움 3층\nThe event ends at 18:00.	1.65	auditorium	false
+completion_subject_omitted_0_auto	코엑스 오디토리움 3층\n종료되었습니다.	1.65		false
+completion_subject_omitted_0_manual	코엑스 오디토리움 3층\n종료되었습니다.	1.65	auditorium	false
+completion_subject_omitted_1_auto	코엑스 오디토리움 3층\n일정이 끝났습니다.	1.65		false
+completion_subject_omitted_1_manual	코엑스 오디토리움 3층\n일정이 끝났습니다.	1.65	auditorium	false
+completion_subject_omitted_2_auto	코엑스 오디토리움 3층\n모두 마쳤습니다.	1.65		false
+completion_subject_omitted_2_manual	코엑스 오디토리움 3층\n모두 마쳤습니다.	1.65	auditorium	false
+completion_subject_omitted_3_auto	코엑스 오디토리움 3층\nIt has ended.	1.65		false
+completion_subject_omitted_3_manual	코엑스 오디토리움 3층\nIt has ended.	1.65	auditorium	false
+completion_subject_omitted_4_auto	코엑스 오디토리움 3층\nIt is over.	1.65		false
+completion_subject_omitted_4_manual	코엑스 오디토리움 3층\nIt is over.	1.65	auditorium	false
+completion_subject_omitted_5_auto	코엑스 오디토리움 3층\nIt’s over.	1.65		false
+completion_subject_omitted_5_manual	코엑스 오디토리움 3층\nIt’s over.	1.65	auditorium	false
+completion_subject_omitted_6_auto	코엑스 오디토리움 3층\nThis is over.	1.65		false
+completion_subject_omitted_6_manual	코엑스 오디토리움 3층\nThis is over.	1.65	auditorium	false
+completion_subject_omitted_7_auto	코엑스 오디토리움 3층\nAlready completed.	1.65		false
+completion_subject_omitted_7_manual	코엑스 오디토리움 3층\nAlready completed.	1.65	auditorium	false
+completion_subject_omitted_8_auto	코엑스 오디토리움 3층\nNow finished.	1.65		false
+completion_subject_omitted_8_manual	코엑스 오디토리움 3층\nNow finished.	1.65	auditorium	false
+completion_subject_omitted_9_auto	코엑스 오디토리움 3층\nConcluded yesterday.	1.65		false
+completion_subject_omitted_9_manual	코엑스 오디토리움 3층\nConcluded yesterday.	1.65	auditorium	false

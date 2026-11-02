@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="studio.ax.arrival.ParkingMemoQrTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-11-01T23:32:53.560Z" hostname="33b9bcea6b8b" time="0.293">
+  <properties/>
+  <testcase name="expiredFutureOrInvalidMemoCannotBecomeQr" classname="studio.ax.arrival.ParkingMemoQrTest" time="0.009"/>
+  <testcase name="textPayloadHasOnlyMemoTimestampAndCopyNotice" classname="studio.ax.arrival.ParkingMemoQrTest" time="0.002"/>
+  <testcase name="unicodePayloadRoundTripsThroughRenderedPixels" classname="studio.ax.arrival.ParkingMemoQrTest" time="0.27"/>
+  <testcase name="exportRequiresSavedUneditedMemoAndBothSafetySignals" classname="studio.ax.arrival.ParkingMemoQrTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

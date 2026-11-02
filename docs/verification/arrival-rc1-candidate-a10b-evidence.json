@@ -1,0 +1,376 @@
+{
+  "kind": "historical candidate evidence, superseded after round6 fixes",
+  "candidate_apk_sha256": "a10b1f7ea7f93010b01553468822581300bd1558864a878c2ea8fdc58870c5a6",
+  "release_verification": {
+    "version": "1.0.0-rc1",
+    "apk": "apk/ArrivalBrief_release.apk",
+    "bytes": 5579851,
+    "sha256": "a10b1f7ea7f93010b01553468822581300bd1558864a878c2ea8fdc58870c5a6",
+    "tests": [
+      {
+        "name": "studio.ax.arrival.BriefEngineTest",
+        "tests": "28",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "studio.ax.arrival.BriefSessionTest",
+        "tests": "11",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "studio.ax.arrival.NavigationCheckTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "studio.ax.arrival.ParkingMemoQrTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "studio.ax.arrival.RecentDestinationTest",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "studio.ax.arrival.VisitCompanionTest",
+        "tests": "5",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      }
+    ],
+    "lint": [],
+    "runtime": {
+      "pleos": {
+        "status": "final_cold_boot_retry_pending",
+        "image": "Pleos Connect 2.1.0 API34 x86_64",
+        "image_sha1": "b4f858d5bcc6c71506d7edfc872bcb9e5a11acaa",
+        "host": "no GPU, no KVM",
+        "initial_attempt": "Cold boot reached ADB but package service was not present; vendor ProfileHal SIGABRT and eth0-not-ready messages were observed",
+        "latest_version_verified": false,
+        "required_followup": "Complete isolated Ethernet compatibility cold boot attempt, then record installation/SDK state if OS services become available",
+        "requirements_url": "https://document.pleos.ai/en/docs/connect/guide/getting-started/application-development/configure-pleos-connect-emulator"
+      },
+      "aosp_android9": {
+        "status": "installed_and_launched",
+        "api": 28,
+        "abi": "x86",
+        "screen": "1280x800 @160dpi",
+        "image_sha1": "ce03c42d80c0fc6dc47f6455dbee7aa275d02780",
+        "verified_version": "1.0.0-rc1",
+        "verified_apk_sha256": "a10b1f7ea7f93010b01553468822581300bd1558864a878c2ea8fdc58870c5a6",
+        "installed_apk_sha256": "a10b1f7ea7f93010b01553468822581300bd1558864a878c2ea8fdc58870c5a6",
+        "upgrade_from": "0.5.0-prototype / versionCode 5",
+        "install": "Success",
+        "launch": "Status: ok; Activity: studio.ax.arrival/.MainActivity; Complete",
+        "latest_version_status": "candidate_release_and_ui_verified_pending_judge6_parser_revision",
+        "debug_apk_sha256": "b05eb857f14ae2537865dab275928ee7c96318db92eb312286657cead5271851",
+        "test_apk_sha256": "6b84e5c92068358183a0cfb372101f443b8615abe59442e2fa8b6538cbad12cb",
+        "standard_ui": {
+          "tests": 11,
+          "failures": 0,
+          "status": "passed"
+        },
+        "font_1_3_ui": {
+          "status": "passed",
+          "tests": 6,
+          "failures": 0
+        },
+        "observed": [
+          "Original signing certificate preserved; update from versionCode5 to10 succeeded",
+          "Final installed release SHA-256 matches delivered APK",
+          "Release first screen renders UNKNOWN state with input locked",
+          "Separate debug instrumentation passes eleven real Activity/Intent/UI tests, including IME, picker preservation, memo expiry and QR lifecycle"
+        ],
+        "limitations": [
+          "AOSP non-automotive demo; no Pleos SDK or live vehicle response is inferred",
+          "CPU emulation and software rendering without GPU/KVM; timings are not performance measurements",
+          "Test fixture suppresses OS error dialogs and disables animations; app FATAL/ANR logs are reviewed separately",
+          "Physical phone camera QR scan and physical vehicle operation are unverified"
+        ],
+        "video_repeat_ui": {
+          "status": "passed",
+          "tests": 1,
+          "failures": 0,
+          "note": "Repeated confirmed-driving case for raw video; not an additional unique test"
+        }
+      }
+    },
+    "version_code": 10,
+    "web_tests": 36,
+    "shared_decision_cases": 153,
+    "runtime_history": {
+      "aosp_android9_0.3.0": {
+        "status": "installed_and_launched",
+        "api": 28,
+        "abi": "x86",
+        "screen": "1280x800 @160dpi",
+        "image_sha1": "ce03c42d80c0fc6dc47f6455dbee7aa275d02780",
+        "install": "Success",
+        "launch": "Status: ok; Activity: studio.ax.arrival/.MainActivity; Complete",
+        "observed": [
+          "release upgrade install succeeded with original signing key",
+          "initial UNKNOWN state locks inputs",
+          "explicit non-vehicle demo entry",
+          "manual facility, total-height and safe-parking checks enable confirmation",
+          "confirmed Auditorium brief shows north gate and B3 Blue zone",
+          "driving demo locks input and retains confirmed briefing in current process",
+          "explicit destination-only save survives force-stop and restart",
+          "restored destination has empty height, unchecked reviews and disabled confirmation",
+          "explicit delete removes the remembered destination and disables restore"
+        ],
+        "limitations": [
+          "non-automotive simulation only; no Pleos SDK success claimed",
+          "host lacks GPU/KVM; System UI ANR dismissed, UIAutomator intermittently returned null root",
+          "no performance, long-duration or real vehicle validation"
+        ],
+        "verified_version": "0.3.0-prototype",
+        "latest_version_status": "pending_0.4.0_runtime_check"
+      },
+      "aosp_android9_0.4.0": {
+        "status": "installed_and_launched",
+        "api": 28,
+        "abi": "x86",
+        "screen": "1280x800 @160dpi; logical display override 960x600 also checked",
+        "image_sha1": "ce03c42d80c0fc6dc47f6455dbee7aa275d02780",
+        "install": "Success",
+        "launch": "Status: ok; Activity: studio.ax.arrival/.MainActivity; Complete",
+        "observed": [
+          "release update installed with original signing key",
+          "initial UNKNOWN state hides input and offers explicit non-vehicle demo entry",
+          "explicit demo begins with example Auditorium and height1.65m",
+          "manual facility, total-height and safe-parking checks gate confirmation",
+          "unconfirmed preview shows checklist without gate/parking route values",
+          "confirmed Auditorium shows north gate and B3 Blue zone in dark briefing panel",
+          "driving demo hides input, copy and save actions while retaining confirmed brief",
+          "960x600 logical display retains locked confirmed briefing with destination, gate, parking, height and field-signage priority text visible"
+        ],
+        "limitations": [
+          "non-automotive AOSP simulation only; no Pleos SDK or live vehicle signal success claimed",
+          "software rendering and CPU emulation without GPU/KVM; Android System UI ANR was dismissed during initial host setup",
+          "no performance, long-duration, real vehicle or 0.4.0 process-restart storage UI validation; prior0.3.0 storage observations are preserved separately"
+        ],
+        "verified_version": "0.4.0-prototype",
+        "verified_apk_sha256": "40ce148be83d608acae1e7bd1bb381619c8ad7896ee7f01fa2cd354d6e4a276f",
+        "latest_version_status": "installed_launched_and_core_ui_checked"
+      },
+      "pleos_0.2.0": {
+        "status": "blocked_before_install",
+        "image": "Pleos Connect 2.1.0 API34 x86_64",
+        "image_sha1": "b4f858d5bcc6c71506d7edfc872bcb9e5a11acaa",
+        "host": "no GPU, no KVM",
+        "observed": "Boot did not complete; guest system services failed; adb install failed with PackageManagerInternal.freeStorage NullPointerException. Application was not launched.",
+        "required_followup": "Re-test installation, first launch, SDK services and UX restriction transitions on supported hardware.",
+        "requirements_url": "https://document.pleos.ai/docs/connect/guide/getting-started/application-development/configure-pleos-connect-emulator",
+        "attempted_app_version": "0.2.0-prototype",
+        "latest_version_verified": false
+      }
+    },
+    "verified_at": "2026-11-01",
+    "lint_history": [
+      {
+        "id": "GradleDependency",
+        "severity": "Warning",
+        "scope": "androidTestImplementation only",
+        "message": "An earlier lint invocation advised androidx.test.ext:junit 1.2.1 -> 1.3.0. The pinned dependency was not changed; final lint reported No issues found."
+      }
+    ]
+  },
+  "build_inputs": {
+    "version": "1.0.0-rc1",
+    "apk_sha256": "a10b1f7ea7f93010b01553468822581300bd1558864a878c2ea8fdc58870c5a6",
+    "evidence": "Build inputs from the successful isolated checkout matched the working tree byte-for-byte. This is not a claim of byte-reproducible APK builds.",
+    "source_snapshot_match": true,
+    "files": [
+      {
+        "path": "android/app/build.gradle.kts",
+        "sha256": "c2534f2bc24acb949e42135c1813db5327f7e3fc08bfad7c8ab1ac55945f5847"
+      },
+      {
+        "path": "android/app/src/androidTest/java/studio/ax/arrival/VisitFlowInstrumentedTest.kt",
+        "sha256": "75b1db4af92477e8ad8549d49a83d9859a5db6664baa9a991e97cef89bc973b9"
+      },
+      {
+        "path": "android/app/src/main/AndroidManifest.xml",
+        "sha256": "2cc09a7b9457099a2ac2a44f6878f2837edf70ea9ed55db2ab9dce24b19fecff"
+      },
+      {
+        "path": "android/app/src/main/assets/third_party/ZXing-LICENSE.txt",
+        "sha256": "3f62881f0566227a24b12e5a754cc79f39aaa94883038e95c94812e1f50af42f"
+      },
+      {
+        "path": "android/app/src/main/assets/third_party/ZXing-NOTICE.txt",
+        "sha256": "4db4b60aace29ec6c5c4f13ca9cac1930d3c0c54bcc67dceead0c10771120e66"
+      },
+      {
+        "path": "android/app/src/main/java/studio/ax/arrival/ArrivalSceneView.kt",
+        "sha256": "6c6f4db28657d63f77c60315cd328107008df739c498eb49f36b00193defe5d7"
+      },
+      {
+        "path": "android/app/src/main/java/studio/ax/arrival/BriefEngine.kt",
+        "sha256": "a3628efb00a4a2e760435b294d8ab0d535be395dec003cca78abb9ee12b2e681"
+      },
+      {
+        "path": "android/app/src/main/java/studio/ax/arrival/BriefSession.kt",
+        "sha256": "a86dfbe8f300b74a506d920d766128590dd8bec7b6c25328e2ae17f292e52f62"
+      },
+      {
+        "path": "android/app/src/main/java/studio/ax/arrival/MainActivity.kt",
+        "sha256": "7450cecde8f8dde1688b2f3c4a63e7a4b88394c15eb335f8d7284c144c294904"
+      },
+      {
+        "path": "android/app/src/main/java/studio/ax/arrival/NavigationCheck.kt",
+        "sha256": "70863109f9547206fabd43cef40ee9369f8905a2f13e467314e65a5b09ce9213"
+      },
+      {
+        "path": "android/app/src/main/java/studio/ax/arrival/NavigationDestinationReader.kt",
+        "sha256": "461d41a0dc50ad4eff1c80ebcf9b9b2a4694e7ad8a4b2574ad367b7d21b930bb"
+      },
+      {
+        "path": "android/app/src/main/java/studio/ax/arrival/ParkingMemoQr.kt",
+        "sha256": "55080b881164e0030c93d0cca66ae1b273cbc4caa5971cee9c76f3646e7ada0c"
+      },
+      {
+        "path": "android/app/src/main/java/studio/ax/arrival/ParkingMemoStore.kt",
+        "sha256": "c809ba00ce87a9a8997689417bd56148aade6bbe123c03961676475691d74200"
+      },
+      {
+        "path": "android/app/src/main/java/studio/ax/arrival/ParkingSourceEvidence.kt",
+        "sha256": "3a33d8fef20301756c067a93a13c242b106c07b884cb5d907952703c45790078"
+      },
+      {
+        "path": "android/app/src/main/java/studio/ax/arrival/PlatformVehicleGateway.kt",
+        "sha256": "1f93564e45d8172e40892ff46dd0850271b3090c0e373d3e2adaabfe998c47f9"
+      },
+      {
+        "path": "android/app/src/main/java/studio/ax/arrival/RecentDestination.kt",
+        "sha256": "29b6d5be5646f40695f2346f54da7dbe47cb3b0fd261f2d0a8fc1e9950eedfa0"
+      },
+      {
+        "path": "android/app/src/main/java/studio/ax/arrival/RecentDestinationStore.kt",
+        "sha256": "3043edd217188e70e1d6d871fcc4bdb40e47df9f14e34b11240788165172307f"
+      },
+      {
+        "path": "android/app/src/main/java/studio/ax/arrival/VehicleGateway.kt",
+        "sha256": "2fd579fe4de9aeb5c2bb7e688302f6d959852751a6eafd4c28d839eb4eec2934"
+      },
+      {
+        "path": "android/app/src/main/java/studio/ax/arrival/VisitCompanion.kt",
+        "sha256": "95d3d82e64ad710aab1fe15669403acf4b1a2ba23559376d6c5ef19e4539234e"
+      },
+      {
+        "path": "android/app/src/main/res/drawable/ic_arrival.xml",
+        "sha256": "3f860067f32ec06e544692091bec46243b92182fda09be9c37e9c71d30f0968c"
+      },
+      {
+        "path": "android/app/src/main/res/values/strings.xml",
+        "sha256": "306fbef4be6f840287f8f5577da0c73ef9a22ffd96c3d3930d1b2ab587d2b8e9"
+      },
+      {
+        "path": "android/app/src/main/res/values/styles.xml",
+        "sha256": "5e72c159df883032dd101bfc4bc52a32044d83d78d324cb2792243c139b168b0"
+      },
+      {
+        "path": "android/app/src/main/res/xml/backup_rules.xml",
+        "sha256": "865cae97840e81b9950d70457a05c5c1125a68364b0a83f44cd3daa030bc7e96"
+      },
+      {
+        "path": "android/app/src/main/res/xml/data_extraction_rules.xml",
+        "sha256": "cb029b35db0e976c087100424e16e14a6256b46962398887520e51508c3b5842"
+      },
+      {
+        "path": "android/app/src/test/java/studio/ax/arrival/BriefEngineTest.kt",
+        "sha256": "ec05e05c5f847862e5573ed317db9b05e1687de52d35e56413181ea78a3817e2"
+      },
+      {
+        "path": "android/app/src/test/java/studio/ax/arrival/BriefSessionTest.kt",
+        "sha256": "74e1a878959e7f966f2b748dd9e32b488a7519a3c4a86e796c4964527d2409f9"
+      },
+      {
+        "path": "android/app/src/test/java/studio/ax/arrival/NavigationCheckTest.kt",
+        "sha256": "2ca138fbe223c66e1322effd51e6ceda1b799702787b762e82181e280aaadd11"
+      },
+      {
+        "path": "android/app/src/test/java/studio/ax/arrival/ParkingMemoQrTest.kt",
+        "sha256": "7341be610a3bf2ebc8b0a901ef7b1e0e718ba1775fc968ba4746e7232ec3332d"
+      },
+      {
+        "path": "android/app/src/test/java/studio/ax/arrival/RecentDestinationTest.kt",
+        "sha256": "2c01aae03641a9622a52bbda9081c074969d43ecc0f76e84e089a9cceed9f187"
+      },
+      {
+        "path": "android/app/src/test/java/studio/ax/arrival/VisitCompanionTest.kt",
+        "sha256": "bffed5867b7e799ad3ef060364c50242c63ad56dbcfc250ef89c9ddef79effd6"
+      },
+      {
+        "path": "android/build.gradle.kts",
+        "sha256": "4a105b82fa7b138106c5d058e27c077248dc82a735680ee68b0ce3e5c4c4fcd6"
+      },
+      {
+        "path": "android/gradle/wrapper/gradle-wrapper.jar",
+        "sha256": "81a82aaea5abcc8ff68b3dfcb58b3c3c429378efd98e7433460610fecd7ae45f"
+      },
+      {
+        "path": "android/gradle/wrapper/gradle-wrapper.properties",
+        "sha256": "1bb6d43ff8af30abb0eaf03fe58f636ed9b37f758a748bf30a9cebd809639c9d"
+      },
+      {
+        "path": "android/gradle.properties",
+        "sha256": "d3377b161bac549c4206e67181feb45e8c5fe8fe1f642927920b70739e64477a"
+      },
+      {
+        "path": "android/gradlew",
+        "sha256": "734b3879d3501dce471cf0522d3bcbafe76873d9fc5129345b67fb43bd15e933"
+      },
+      {
+        "path": "android/gradlew.bat",
+        "sha256": "57931b17dd228e5c24dac90e815d0bf82477e831a4618dfab4136f5446b42a9f"
+      },
+      {
+        "path": "android/settings.gradle.kts",
+        "sha256": "fb8d6dbd06c36c142c0b4ec672e3f5065e8dc507e6cc85023e5af3a59bad742c"
+      },
+      {
+        "path": "tests/decision-cases.tsv",
+        "sha256": "93cf163362d966ca0704d4745afcbc24962d9b2f81a05eaa29c008bfce358ed4"
+      }
+    ]
+  },
+  "standard_ui_log": "INSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=1\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=\nstudio.ax.arrival.VisitFlowInstrumentedTest:\nINSTRUMENTATION_STATUS: test=savedMemoQrRoundTripsAndClearsWhenEditedOrDriving\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=1\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=savedMemoQrRoundTripsAndClearsWhenEditedOrDriving\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=2\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=\nINSTRUMENTATION_STATUS: test=memoQrDoesNotRestoreAfterRecreationAndDeletionClearsIt\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=2\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=memoQrDoesNotRestoreAfterRecreationAndDeletionClearsIt\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=3\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=\nINSTRUMENTATION_STATUS: test=realKeyboardKeepsMemoInputVisibleAndAllowsSaving\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=3\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=realKeyboardKeepsMemoInputVisibleAndAllowsSaving\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=4\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=\nINSTRUMENTATION_STATUS: test=destinationPickerPreservesConflictingNoticeAndCannotBypassReview\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=4\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=destinationPickerPreservesConflictingNoticeAndCannotBypassReview\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=5\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=\nINSTRUMENTATION_STATUS: test=parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=5\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=6\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=\nINSTRUMENTATION_STATUS: test=activeMemoAndQrExpireAtTheStoredDeadline\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=6\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=activeMemoAndQrExpireAtTheStoredDeadline\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=7\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=\nINSTRUMENTATION_STATUS: test=malformedSharedPayloadCannotEnterTheForm\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=7\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=malformedSharedPayloadCannotEnterTheForm\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=8\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=\nINSTRUMENTATION_STATUS: test=conflictingSourcesShowBothValuesAndPreventConfirmation\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=8\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=conflictingSourcesShowBothValuesAndPreventConfirmation\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=9\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=\nINSTRUMENTATION_STATUS: test=confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=9\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=10\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=\nINSTRUMENTATION_STATUS: test=warmShareKeepsCurrentDraftUntilExplicitImport\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=10\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=warmShareKeepsCurrentDraftUntilExplicitImport\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=11\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=\nINSTRUMENTATION_STATUS: test=sharedIntentWaitsForParkingAndNeverAutoConfirms\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=11\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=11\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=sharedIntentWaitsForParkingAndNeverAutoConfirms\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_RESULT: stream=\n\nTime: 380.009\n\nOK (11 tests)\n\n\nINSTRUMENTATION_CODE: -1\n",
+  "large_font_ui_log": "INSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=1\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=6\nINSTRUMENTATION_STATUS: stream=\nstudio.ax.arrival.VisitFlowInstrumentedTest:\nINSTRUMENTATION_STATUS: test=savedMemoQrRoundTripsAndClearsWhenEditedOrDriving\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=1\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=6\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=savedMemoQrRoundTripsAndClearsWhenEditedOrDriving\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=2\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=6\nINSTRUMENTATION_STATUS: stream=\nINSTRUMENTATION_STATUS: test=realKeyboardKeepsMemoInputVisibleAndAllowsSaving\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=2\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=6\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=realKeyboardKeepsMemoInputVisibleAndAllowsSaving\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=3\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=6\nINSTRUMENTATION_STATUS: stream=\nINSTRUMENTATION_STATUS: test=destinationPickerPreservesConflictingNoticeAndCannotBypassReview\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=3\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=6\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=destinationPickerPreservesConflictingNoticeAndCannotBypassReview\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=4\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=6\nINSTRUMENTATION_STATUS: stream=\nINSTRUMENTATION_STATUS: test=parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=4\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=6\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=5\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=6\nINSTRUMENTATION_STATUS: stream=\nINSTRUMENTATION_STATUS: test=conflictingSourcesShowBothValuesAndPreventConfirmation\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=5\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=6\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=conflictingSourcesShowBothValuesAndPreventConfirmation\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=6\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=6\nINSTRUMENTATION_STATUS: stream=\nINSTRUMENTATION_STATUS: test=confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: class=studio.ax.arrival.VisitFlowInstrumentedTest\nINSTRUMENTATION_STATUS: current=6\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: numtests=6\nINSTRUMENTATION_STATUS: stream=.\nINSTRUMENTATION_STATUS: test=confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy\nINSTRUMENTATION_STATUS_CODE: 0\nINSTRUMENTATION_RESULT: stream=\n\nTime: 144.771\n\nOK (6 tests)\n\n\nINSTRUMENTATION_CODE: -1\n",
+  "screenshots": [
+    {
+      "path": "android-aosp28-a10b-confirmed-parked.png",
+      "sha256": "e95d7c22dcc244b2c9de01f21247b2701698e52e3f5b49844f9b594049e513d6"
+    },
+    {
+      "path": "android-aosp28-a10b-saved-memo-qr.png",
+      "sha256": "0e2588b982c1d1f23b27f636a15f16a74d75826669d638657f13af282180f535"
+    },
+    {
+      "path": "android-aosp28-a10b-picker-preserves-conflicting-source.png",
+      "sha256": "682b4468b9392c54b0f3b75f5ae66b2db0278ff6ecd1d8e169e1bf08ccaca52b"
+    },
+    {
+      "path": "android-aosp28-a10b-memo-qr-after-expiry.png",
+      "sha256": "0651ed2f471395d6b288cd497a576f62774f181cdb2faa196e7e487a79ce8a50"
+    }
+  ],
+  "confirmed_ui_outcomes": {
+    "standard_passed": 11,
+    "large_font_scale": 1.3,
+    "large_font_passed": 6,
+    "source": "Embedded final instrumentation logs supersede the pending large-font field in the earlier release metadata snapshot."
+  }
+}

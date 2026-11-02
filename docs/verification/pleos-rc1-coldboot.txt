@@ -1,0 +1,92 @@
+Pleos Connect 2.1.0 / API34 x86_64 standalone cold boot diagnostic
+Date: 2026-11-01 UTC
+Official image SHA-1: b4f858d5bcc6c71506d7edfc872bcb9e5a11acaa
+Official device id: Pleos_Connect_v2_0 (display name: 2.1.0)
+Host: no GPU, no /dev/kvm; software CPU and graphics. Official minimum GPU requirements are not met.
+Launch: -read-only -no-window -no-audio -no-boot-anim -no-snapshot -accel off -gpu swiftshader_indirect -feature -Wifi,-VirtioWifi
+The Ethernet feature variant is a diagnostic alternative, not a claim of official hardware compliance.
+Started: 2026-11-01T15:12:54Z; last observations: 2026-11-01T15:17:25Z; then stopped.
+No AOSP emulator was running during this attempt.
+Candidate APK attempted: 1.0.0-rc1/code10, SHA-256 a10b1f7ea7f93010b01553468822581300bd1558864a878c2ea8fdc58870c5a6.
+This is an intermediate candidate. The latest post-review APK was not installed on Pleos.
+Outcome: ADB reached, but sys.boot_completed was unset and package service absent on repeated checks. APK install failed before application execution. NaviHelper, CarUxRestrictions, Virtual Console signal transitions, and real vehicle behavior remain unverified.
+GPU absence is not established as the sole cause of the observed vendor service failures.
+No system image, service binary, signature or privilege bypass was used. adb root was rejected by the production image; shell Ethernet-up was denied.
+Official requirements: https://document.pleos.ai/en/docs/connect/guide/getting-started/application-development/configure-pleos-connect-emulator
+
+
+
+[004-package.txt]
+Service package: not found
+
+
+[006-boot.txt]
+(empty output)
+
+
+[009-install-candidate.txt]
+Performing Streamed Install
+adb: failed to install <candidate>/ArrivalBrief_final_release.apk: cmd: Can't find service: package
+
+
+
+[010-boot-recheck.txt]
+(empty output)
+
+
+[011-package-recheck.txt]
+Service package: not found
+
+
+[013-adb-root.txt]
+adbd cannot run as root in production builds
+
+
+[015-identity.txt]
+uid=2000(shell) gid=2000(shell) groups=2000(shell),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),1078(ext_data_rw),1079(ext_obb_rw),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc),3011(uhid),3012(readtracefs) context=u:r:shell:s0
+
+
+[016-ethernet-up.txt]
+request send failed: Permission denied
+
+
+[017-link-after.txt]
+15: eth0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+    link/ether 52:54:00:12:34:56 brd ff:ff:ff:ff:ff:ff
+
+
+[018-route-after.txt]
+(empty output)
+
+
+[020-final-package.txt]
+Service package: not found
+
+
+[Final selected properties]
+[init.svc.bootanim]: [stopped]
+[ro.build.fingerprint]: [Pleos/crp_avd/crp_avd_x86_64:14/RELEASE.release_connect_v2.1.0/release_connect_v2.1.0:user/test-keys]
+[ro.build.type]: [user]
+[ro.build.version.release]: [14]
+[ro.build.version.release_or_codename]: [14]
+[ro.build.version.release_or_preview_display]: [14]
+[ro.product.cpu.abi]: [x86_64]
+[ro.product.cpu.abilist]: [x86_64]
+[ro.product.cpu.abilist32]: []
+[ro.product.cpu.abilist64]: [x86_64]
+
+[Vendor errors from final logcat; first/last instances per selected signature]
+11-01 07:16:08.610   188   222 E sdv_vhal_rust: sdv_vhal_rust_ffi::rust_vehicle_hardware: network eth0 is not ready yet
+11-01 07:16:09.841  1095  1095 F libc    : Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 1095 (binder:1095_2), pid 1095 (binder:1095_2)
+11-01 07:16:17.545  1152  1152 E ProfileHal:         called `Option::unwrap()` on a `None` value,
+11-01 07:16:17.545  1152  1152 E ProfileHal:         file: "vendor/42dot/sdvos/app-framework/app-framework/src/app.rs",
+11-01 07:16:17.545  1152  1152 E ProfileHal:         line: 220,
+11-01 07:16:17.545  1152  1152 E ProfileHal:     message: Some(
+11-01 07:16:20.377  1190  1190 E SdvVehicleExtService:         called `Option::unwrap()` on a `None` value,
+11-01 07:17:14.795  1498  1498 E ProfileHal:         called `Option::unwrap()` on a `None` value,
+11-01 07:17:14.795  1498  1498 E ProfileHal:         file: "vendor/42dot/sdvos/app-framework/app-framework/src/app.rs",
+11-01 07:17:14.795  1498  1498 E ProfileHal:         line: 220,
+11-01 07:17:14.795  1498  1498 E ProfileHal:     message: Some(
+11-01 07:17:19.719  1519  1519 E SdvVehicleExtService:         called `Option::unwrap()` on a `None` value,
+11-01 07:17:19.730  1519  1519 F libc    : Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 1519 (binder:1519_2), pid 1519 (binder:1519_2)
+11-01 07:17:21.606   188   222 E sdv_vhal_rust: sdv_vhal_rust_ffi::rust_vehicle_hardware: network eth0 is not ready yet

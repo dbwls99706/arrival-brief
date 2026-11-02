@@ -71,6 +71,8 @@ class NavigationCheckTest {
         assertEquals(NavigationStatus.MISMATCH, session.navigationCheck.status)
         assertFalse(session.confirm(parked))
         session.updateNavigation(NavigationMatcher.compare("코엑스", "서울 강남구 영동대로 513"))
+        assertFalse(session.confirm(parked))
+        session.reviewNavigationManually(true)
         assertTrue(session.confirm(parked))
     }
 

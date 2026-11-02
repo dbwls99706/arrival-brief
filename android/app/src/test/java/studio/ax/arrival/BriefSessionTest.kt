@@ -92,6 +92,21 @@ class BriefSessionTest {
         return confirm(UnconnectedVehicleGateway())
     }
 
+    @Test fun exportingAfterUnlockRequiresAllCurrentHumanChecks() {
+        val session = readySession()
+        assertFalse(session.canExport(demoParked))
+        assertTrue(session.confirm(demoParked))
+        assertTrue(session.canExport(demoParked))
+        session.lock()
+        assertNotNull(session.confirmed)
+        session.confirmParked(true)
+        assertFalse(session.canExport(demoParked))
+        session.reviewNavigationManually(true)
+        assertTrue(session.canExport(demoParked))
+        assertFalse(session.canExport(UnconnectedVehicleGateway()))
+        assertFalse(session.canExport(SimulatorVehicleGateway(VehicleMode.DRIVING)))
+    }
+
     @Test fun heightCorrectionPreservesSelectedPlaceButInvalidatesReview() {
         val session = BriefSession()
         session.updateNotice("코엑스 행사")
@@ -111,11 +126,24 @@ class BriefSessionTest {
     @Test fun editingNoticeInvalidatesOldConfirmationAndSelection() {
         val session = readySession()
         session.select("auditorium")
-        session.reviewHeight(true); session.confirmParked(true)
+        assertFalse(session.navigationReviewedManually)
+        session.reviewHeight(true); session.confirmParked(true); session.reviewNavigationManually(true)
         assertTrue(session.confirm(demoParked))
         session.updateNotice("코엑스 아셈볼룸 2층")
         assertNull(session.selectedId); assertNull(session.confirmed)
         assertEquals("asem", session.current.destination?.id)
+    }
+
+    @Test fun matchedNavigationStillRequiresCurrentEventReview() {
+        val session = readySession()
+        session.updateNavigation(NavigationCheck(NavigationStatus.MATCHED, "시설 대조 완료"))
+        assertTrue(session.navigationAllowsConfirmation())
+        assertFalse(session.canConfirm(demoParked))
+        session.reviewNavigationManually(true)
+        assertTrue(session.canConfirm(demoParked))
+        session.updateNavigation(NavigationCheck(NavigationStatus.MISMATCH, "시설 불일치"))
+        session.reviewNavigationManually(true)
+        assertFalse(session.canConfirm(demoParked))
     }
 
     @Test fun conflictedSourcesNeverConfirmEvenWithAllChecks() {

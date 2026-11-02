@@ -1,4 +1,6 @@
-# Arrival Brief 모의 심사와 수정 기록
+# Arrival Brief 0.3 모의 심사와 수정 기록
+
+이 문서는 0.3.0 전후에 수행한 과거 검토를 보존한 기록입니다. 아래 시험 수·점수·패키지 해시는 현재 `1.0.0-rc1`의 결과가 아닙니다. 최신 검증은 [HYUNDAI_VERIFICATION.md](HYUNDAI_VERIFICATION.md)와 `docs/verification`의 현재 기록을 따릅니다.
 
 검토 대상: 0.2.0 프로토타입에서 0.3.0-prototype으로 수정한 웹·Android·기획·제출 자료. 공식 [1차 심사 기준](https://appdevchallenge.auto-hmg.io/guide/judging-awards)의 차량특화성·창의성·기술 활용성·사업성을 기준으로 네 역할의 검토를 병렬로 수행했다. 공식 세부 배점은 공개되지 않았다. 이 문서의 1~5점은 개선 우선순위를 정하는 내부 준비도이며 공식 점수·수상 확률·시장 검증 결과가 아니다.
 

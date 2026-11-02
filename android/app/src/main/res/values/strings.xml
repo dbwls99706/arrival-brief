@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="demo_height">1.65</string>
+    <string name="memo_invalid">층·구역·기둥 번호를 1~64자의 한 줄로 적어주세요.</string>
+    <string name="memo_saved">주차 위치를 이 기기에 기억했어요. 저장 시각부터 24시간 후 만료됩니다.</string>
+    <string name="memo_qr_error">QR을 만들지 못했습니다. 잠시 뒤 다시 시도해주세요.</string>
 </resources>

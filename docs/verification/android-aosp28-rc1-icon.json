@@ -1,0 +1,24 @@
+{
+  "release_apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+  "generated_artwork_sha256": "ae99929907849fbc9f6827bee9c223937b3168b082bcf9da4277d9bd5456a381",
+  "source_resource_sha256": "ae99929907849fbc9f6827bee9c223937b3168b082bcf9da4277d9bd5456a381",
+  "embedded_bitmap_sha256": "add2a146d544813a4a4758b66c2a6e5d14602958a787010a38f2261098e88bfa",
+  "source_exact_bytes_match": true,
+  "embedded_bitmap_pixels_match": true,
+  "bitmap_dimensions": [
+    1254,
+    1254
+  ],
+  "note": "Android resource packaging re-encodes PNG bytes; decoded RGBA pixels match exactly.",
+  "adaptive_and_round_foreground": "drawable/ic_arrival -> drawable/arrival_brand",
+  "monochrome_resource": "drawable/ic_arrival_monochrome",
+  "android9_visual_status": "verified_in_system_app_info_screen",
+  "android13_themed_icon_visual_status": "not_runtime_tested",
+  "android9_visual_apk_build_type": "debug",
+  "android9_visual_apk_sha256": "7fc9bef75f2e6ccf2771db1bc478458759f32b314e1f2da9addcc14e4d6fb829",
+  "android9_visual_notes": "System Settings rendered the installed application icon without clipping its A/route/dot motif. Standard launcher app drawer could not be opened on this software emulator; no launcher-grid screenshot is claimed.",
+  "screenshot": {
+    "path": "docs/verification/android-aosp28-rc1-system-icon.png",
+    "sha256": "7ccee980d3c7fb17676d3f25a0099d7ce345a43723b690c158f8f81e3feddb8e"
+  }
+}

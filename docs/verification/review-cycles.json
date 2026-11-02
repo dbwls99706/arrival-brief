@@ -1,0 +1,166 @@
+{
+  "scheme": "Internal independent-agent review; not an official contest score",
+  "rubric": {
+    "problem_differentiation": 25,
+    "usable_flow": 25,
+    "design_accessibility": 20,
+    "accuracy_safety": 15,
+    "execution_evidence": 15
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "agent": "judge_round1",
+      "score": 63,
+      "report": "judging-round-1.md",
+      "fixes": [
+        "Separate venue and explicit parking clauses safely",
+        "Add same-device import and bounded manual parking memo",
+        "Begin real current-APK and Pleos environment verification"
+      ]
+    },
+    {
+      "round": 2,
+      "agent": "judge_round2",
+      "score": 66,
+      "report": "judging-round-2.md",
+      "fixes": [
+        "Block relocation/cancellation and unsupported explicit venue claims",
+        "Improve recoverable multi-floor messaging",
+        "Display both conflicting source recommendations in Android"
+      ]
+    },
+    {
+      "round": 3,
+      "agent": "judge_round3",
+      "score": 65,
+      "report": "judging-round-3.md",
+      "fixes": [
+        "Require human review of current valid venue even when vehicle navigation matches",
+        "Treat recognized venue as a candidate rather than verified event",
+        "Add explicit saved-memo plain-text QR export",
+        "Improve accessibility announcement and large-text flow"
+      ]
+    },
+    {
+      "round": 4,
+      "agent": "judge_round4",
+      "score": 81,
+      "report": "judging-round-4.md",
+      "fixes": [
+        "Reject unparsed parking and entry statements",
+        "Check all known parking/gate values in the original text",
+        "Reject unresolved gate/zone operation statements even when their name equals the official recommendation",
+        "Fix actual Android QR bitmap cleanup crash discovered by instrumentation"
+      ],
+      "candidate_apk_sha256": "a10b1f7ea7f93010b01553468822581300bd1558864a878c2ea8fdc58870c5a6",
+      "candidate_evidence": "arrival-rc1-candidate-a10b-evidence.json"
+    },
+    {
+      "round": 5,
+      "agent": "judge_round5",
+      "score": 81,
+      "report": "judging-round-5.md",
+      "fixes": [
+        "Preserve original conflicting notice when choosing a destination",
+        "Make saved-draft replacement explicit",
+        "Verify visible memo and QR removal at an actual expiry boundary"
+      ],
+      "candidate_apk_sha256": "a10b1f7ea7f93010b01553468822581300bd1558864a878c2ea8fdc58870c5a6",
+      "candidate_evidence": "arrival-rc1-candidate-a10b-evidence.json"
+    },
+    {
+      "round": "resume-1",
+      "phase": "resumed",
+      "agent": "judge_resume_1",
+      "score": 79,
+      "report": "resume-review-1.md",
+      "fixes": [
+        "Block plain Korean/English event non-holding notices while preserving original clauses",
+        "Make native QR reveal scroll fully into view and announce availability"
+      ]
+    },
+    {
+      "round": "resume-2",
+      "phase": "resumed",
+      "agent": "judge_resume_2",
+      "score": 84,
+      "report": "resume-review-2.md",
+      "fixes": [
+        "Show exact blocked source clauses in web and native screens",
+        "Require all current confirmations for Android export after parked return"
+      ]
+    },
+    {
+      "round": "resume-3",
+      "phase": "resumed",
+      "agent": "judge_resume_3",
+      "score": 82,
+      "report": "resume-review-3.md",
+      "fixes": [
+        "Block ended/completed event clauses with shared fixtures in both engines",
+        "Expose actual blocked quote text to TalkBack instead of numbered-only descriptions"
+      ]
+    },
+    {
+      "round": "resume-final",
+      "phase": "resumed",
+      "agent": "judge_resume_final",
+      "score": 88,
+      "report": "resume-review-final.md",
+      "fixes": [
+        "Preserve subjectless completion clauses after a venue line and block confirmation in both engines",
+        "Recheck completed-clause fixes independently with positive control inputs",
+        "Verify final generated brand, release APK installation/hash, standard UI13 and large-font UI6 against current evidence"
+      ],
+      "final_apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf"
+    }
+  ],
+  "score_policy": "Never award missing evidence or change the rubric to force100. Unverified optical phone scan, live Pleos SDK and field outcomes remain separate.",
+  "final_apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+  "incomplete_attempts": [
+    {
+      "round": 6,
+      "agent": "judge_round6",
+      "score": null,
+      "report": "judging-round-6.md",
+      "fixes": [
+        "Fail closed on uninterpreted vehicle entry/exit/access clauses regardless of permissive or prohibitive phrasing",
+        "Explain preparation, actual parking note and QR handoff on the native first screen"
+      ],
+      "status": "interrupted"
+    },
+    {
+      "round": 7,
+      "agent": "judge_round7",
+      "score": null,
+      "report": "judging-round-7.md",
+      "fixes": [
+        "Reject every uninterpreted parking/access clause except completely recognized safe parking grammar or the exact static height fact",
+        "Bind supported venue names to local COEX location context; sponsorship cannot establish the facility",
+        "Reject explicit non-holding and inaccessible-venue notices while preserving normal event and entry-ticket notes"
+      ],
+      "status": "interrupted"
+    },
+    {
+      "round": 8,
+      "agent": "judge_round8",
+      "score": null,
+      "report": "judging-round-8.md",
+      "fixes": [
+        "Preserve and block uninterpreted facility operating-state statements, including closure, holiday and suspension",
+        "Treat cancelled/nonexistent events and remote or hybrid event formats as needing review without requiring a transition keyword",
+        "Expose the latest native validation video directly from the landing hero and demo section"
+      ],
+      "status": "interrupted"
+    },
+    {
+      "round": 9,
+      "agent": "judge_round9",
+      "score": null,
+      "report": "judging-round-9.md",
+      "fixes": [],
+      "status": "interrupted"
+    }
+  ]
+}

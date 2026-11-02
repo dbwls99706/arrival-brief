@@ -2,6 +2,8 @@ package studio.ax.arrival
 
 /** Volatile session only: rotation retains it; process death drops private pasted text. */
 class BriefSession {
+    // Only retained across configuration changes, never bundled or persisted.
+    var pendingSharedNotice: String? = null
     var notice = ""
         private set
     var heightText = ""
@@ -42,7 +44,7 @@ class BriefSession {
         // A height correction must not silently discard an explicit destination choice.
     }
 
-    fun select(id: String) { selectedId = id; confirmed = null; heightReviewed = false; parkedConfirmed = false }
+    fun select(id: String) { selectedId = id; confirmed = null; heightReviewed = false; parkedConfirmed = false; navigationReviewedManually = false }
     fun reviewHeight(value: Boolean) { heightReviewed = value; if (!value) confirmed = null }
     fun confirmParked(value: Boolean) { parkedConfirmed = value; if (!value) confirmed = null }
     fun reviewNavigationManually(value: Boolean) { navigationReviewedManually = value; if (!value) confirmed = null }
@@ -76,7 +78,9 @@ class BriefSession {
     }
 
     fun canConfirm(gateway: VehicleGateway) =
-        InputAccess.allowed(gateway) && heightReviewed && parkedConfirmed && navigationAllowsConfirmation() && current.status == "ready"
+        InputAccess.allowed(gateway) && heightReviewed && parkedConfirmed && navigationReviewedManually && navigationAllowsConfirmation() && current.status == "ready"
+
+    fun canExport(gateway: VehicleGateway) = confirmed != null && canConfirm(gateway)
 
     fun confirm(gateway: VehicleGateway): Boolean {
         if (!canConfirm(gateway)) return false

@@ -1,0 +1,107 @@
+[Manifest]
+N: android=http://schemas.android.com/apk/res/android
+  E: manifest (line=2)
+    A: android:versionCode(0x0101021b)=(type 0x10)0xa
+    A: android:versionName(0x0101021c)="1.0.0-rc1" (Raw: "1.0.0-rc1")
+    A: android:compileSdkVersion(0x01010572)=(type 0x10)0x23
+    A: android:compileSdkVersionCodename(0x01010573)="15" (Raw: "15")
+    A: package="studio.ax.arrival" (Raw: "studio.ax.arrival")
+    A: platformBuildVersionCode=(type 0x10)0x23
+    A: platformBuildVersionName=(type 0x10)0xf
+    E: uses-sdk (line=7)
+      A: android:minSdkVersion(0x0101020c)=(type 0x10)0x1c
+      A: android:targetSdkVersion(0x01010270)=(type 0x10)0x23
+    E: uses-permission (line=11)
+      A: android:name(0x01010003)="pleos.car.permission.NAVI_ROUTE" (Raw: "pleos.car.permission.NAVI_ROUTE")
+    E: uses-feature (line=13)
+      A: android:name(0x01010003)="android.hardware.type.automotive" (Raw: "android.hardware.type.automotive")
+      A: android:required(0x0101028e)=(type 0x12)0x0
+    E: queries (line=17)
+      E: intent (line=18)
+        E: action (line=19)
+          A: android:name(0x01010003)="ai.pleos.playground.intent.action.NAVI_START" (Raw: "ai.pleos.playground.intent.action.NAVI_START")
+    E: application (line=23)
+      A: android:theme(0x01010000)=@0x7f0a0000
+      A: android:label(0x01010001)="Arrival Brief" (Raw: "Arrival Brief")
+      A: android:icon(0x01010002)=@0x7f080000
+      A: android:allowBackup(0x01010280)=(type 0x12)0x0
+      A: android:supportsRtl(0x010103af)=(type 0x12)0xffffffff
+      A: android:extractNativeLibs(0x010104ea)=(type 0x12)0x0
+      A: android:fullBackupContent(0x010104eb)=@0x7f0c0000
+      A: android:roundIcon(0x0101052c)=@0x7f080001
+      A: android:appComponentFactory(0x0101057a)="androidx.core.app.CoreComponentFactory" (Raw: "androidx.core.app.CoreComponentFactory")
+      A: android:dataExtractionRules(0x0101063e)=@0x7f0c0001
+      E: uses-library (line=34)
+        A: android:name(0x01010003)="android.car" (Raw: "android.car")
+        A: android:required(0x0101028e)=(type 0x12)0x0
+      E: activity (line=38)
+        A: android:name(0x01010003)="studio.ax.arrival.MainActivity" (Raw: "studio.ax.arrival.MainActivity")
+        A: android:exported(0x01010010)=(type 0x12)0xffffffff
+        A: android:launchMode(0x0101001d)=(type 0x10)0x1
+        A: android:windowSoftInputMode(0x0101022b)=(type 0x11)0x10
+        E: intent-filter (line=43)
+          E: action (line=44)
+            A: android:name(0x01010003)="android.intent.action.MAIN" (Raw: "android.intent.action.MAIN")
+          E: category (line=46)
+            A: android:name(0x01010003)="android.intent.category.LAUNCHER" (Raw: "android.intent.category.LAUNCHER")
+        E: intent-filter (line=48)
+          E: action (line=49)
+            A: android:name(0x01010003)="android.intent.action.SEND" (Raw: "android.intent.action.SEND")
+          E: category (line=51)
+            A: android:name(0x01010003)="android.intent.category.DEFAULT" (Raw: "android.intent.category.DEFAULT")
+          E: data (line=53)
+            A: android:mimeType(0x01010026)="text/plain" (Raw: "text/plain")
+      E: meta-data (line=57)
+        A: android:name(0x01010003)="ai.pleos.playground.service.navi.helper.min_version_name" (Raw: "ai.pleos.playground.service.navi.helper.min_version_name")
+        A: android:value(0x01010024)="2.0.1" (Raw: "2.0.1")
+      E: meta-data (line=60)
+        A: android:name(0x01010003)="ai.pleos.playground.service.navi.helper.min_version_code" (Raw: "ai.pleos.playground.service.navi.helper.min_version_code")
+        A: android:value(0x01010024)=(type 0x10)0xb
+      E: meta-data (line=63)
+        A: android:name(0x01010003)="ai.pleos.playground.sdk.navi.helper.current_version_name" (Raw: "ai.pleos.playground.sdk.navi.helper.current_version_name")
+        A: android:value(0x01010024)="3.0.5" (Raw: "3.0.5")
+      E: meta-data (line=66)
+        A: android:name(0x01010003)="ai.pleos.playground.sdk.navi.helper.current_version_code" (Raw: "ai.pleos.playground.sdk.navi.helper.current_version_code")
+        A: android:value(0x01010024)=(type 0x10)0x4b
+
+[Launcher adaptive icon]
+N: android=http://schemas.android.com/apk/res/android
+  E: adaptive-icon (line=1)
+    E: background (line=2)
+      A: android:drawable(0x01010199)=@0x7f020002
+    E: foreground (line=3)
+      A: android:drawable(0x01010199)=@0x7f040001
+    E: monochrome (line=4)
+      A: android:drawable(0x01010199)=@0x7f040002
+
+[Round adaptive icon]
+N: android=http://schemas.android.com/apk/res/android
+  E: adaptive-icon (line=1)
+    E: background (line=2)
+      A: android:drawable(0x01010199)=@0x7f020002
+    E: foreground (line=3)
+      A: android:drawable(0x01010199)=@0x7f040001
+    E: monochrome (line=4)
+      A: android:drawable(0x01010199)=@0x7f040002
+
+[Bitmap foreground]
+N: android=http://schemas.android.com/apk/res/android
+  E: bitmap (line=4)
+    A: android:gravity(0x010100af)=(type 0x11)0x77
+    A: android:src(0x01010119)=@0x7f040000
+    A: android:filter(0x0101011b)=(type 0x12)0xffffffff
+
+[Monochrome]
+N: android=http://schemas.android.com/apk/res/android
+  E: vector (line=3)
+    A: android:height(0x01010155)=(type 0x5)0x6c01
+    A: android:width(0x01010159)=(type 0x5)0x6c01
+    A: android:viewportWidth(0x01010402)=(type 0x4)0x42d80000
+    A: android:viewportHeight(0x01010403)=(type 0x4)0x42d80000
+    E: path (line=5)
+      A: android:fillColor(0x01010404)=(type 0x1c)0xffffffff
+      A: android:pathData(0x01010405)="M23,73 L43,32 C47,22 58,22 63,32 L85,73 C88,81 83,83 75,83 L69,83 C63,83 61,80 63,75 L66,68 C69,61 68,53 63,45 C60,39 54,39 51,45 L42,60 C51,57 60,56 62,51 C68,57 62,62 55,66 C48,70 47,75 50,80 C52,84 47,83 39,83 L31,83 C24,83 20,79 23,73 Z" (Raw: "M23,73 L43,32 C47,22 58,22 63,32 L85,73 C88,81 83,83 75,83 L69,83 C63,83 61,80 63,75 L66,68 C69,61 68,53 63,45 C60,39 54,39 51,45 L42,60 C51,57 60,56 62,51 C68,57 62,62 55,66 C48,70 47,75 50,80 C52,84 47,83 39,83 L31,83 C24,83 20,79 23,73 Z")
+      A: android:fillType(0x0101051e)=(type 0x10)0x1
+    E: path (line=7)
+      A: android:fillColor(0x01010404)=(type 0x1c)0xffffffff
+      A: android:pathData(0x01010405)="M63,46 A3.7,3.7 0,1 1,55.6 46 A3.7,3.7 0,1 1,63 46 Z" (Raw: "M63,46 A3.7,3.7 0,1 1,55.6 46 A3.7,3.7 0,1 1,63 46 Z")

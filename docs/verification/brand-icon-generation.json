@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-02",
+  "mode": "built-in image_gen",
+  "prompt": "Use case: logo-brand. Asset type: production square app icon for Arrival Brief, a thoughtful Korean in-car arrival and parking briefing app. Create ONE polished 1024x1024 square icon, not a mockup or presentation. Full-bleed deep midnight-blue background (#203650), with subtle barely visible tonal depth. Center a distinctive, very simple sculpted geometric ivory arrival-marker symbol that also suggests the letter A and a curved route into a destination, with one small warm golden-yellow destination dot. Rounded soft precision, a tiny amount of dimensionality, sophisticated and calm with a friendly touch. Strong bold silhouette instantly legible at 32px, no fine strokes. Keep all important symbol artwork within the central 58% of the canvas so it survives Android adaptive icon circular and squircle cropping. Balanced optical spacing. No words, no letters rendered as typography, no parking P, no map details, no car, no border, no pre-rounded exterior corners, no drop shadow outside the full square, no watermark. Premium restrained editorial mobility identity, avoid generic glossy app-store clipart.",
+  "original_asset": "dist/assets/arrival-brand-1.0.png",
+  "original_sha256": "ae99929907849fbc9f6827bee9c223937b3168b082bcf9da4277d9bd5456a381",
+  "web_asset": "dist/assets/arrival-brand-1.0.webp",
+  "web_asset_sha256": "32bbc0a75bdb03bc429645ec9c3022e9bd2e9f87c3d35ea1aee7b496fb5a5a0d",
+  "web_preparation": "FFmpeg scaling to256x256 and WebP compression; no change to design",
+  "verified": "Original visually inspected; web mark inspected at36px; native installation recorded separately"
+}

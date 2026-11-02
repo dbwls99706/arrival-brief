@@ -1,0 +1,61 @@
+{
+  "version": "1.0.0-rc1",
+  "verified_at": "2026-11-01",
+  "surface": "managed static preview in Chrome; no live vehicle signals",
+  "checks": [
+    {
+      "name": "Venue review is mandatory",
+      "result": "passed",
+      "observed": "Auditorium and height1.70; height and parked checked; current venue unchecked keeps confirm disabled. Checking the current venue enables confirm and displays North gate/B3 Blue."
+    },
+    {
+      "name": "Parking memo lifecycle",
+      "result": "passed",
+      "observed": "Explicit save, reload lock, parked reconfirm read, driving hide, return parked reconfirm, delete."
+    },
+    {
+      "name": "Responsive390px",
+      "result": "passed",
+      "observed": "Separate iframe viewport check of landing and app; 4-step illustrations and memo entry/record have no horizontal overflow."
+    },
+    {
+      "name": "QR landing explanation",
+      "result": "passed",
+      "observed": "Desktop and390px visual inspection distinguishes Android manual QR export and same-device web memo; phone copy does not expire with app."
+    },
+    {
+      "name": "Memo save hover contrast",
+      "result": "fixed_and_rechecked",
+      "observed": "Dark green hover with white label remains legible."
+    },
+    {
+      "name": "TXT file chooser import",
+      "result": "passed",
+      "observed": "Actual file chooser imported UTF-8 notice for Studio159 2F with Parking:B2 Purple 이용 바랍니다. Candidate and original parking sentence displayed, all three checks remained unchecked and confirmation stayed disabled."
+    },
+    {
+      "name": "Raw parking conflict cannot be omitted by partial parsing",
+      "result": "passed_by_independent_judge4",
+      "observed": "Parking:Purplezone/east gate and natural Korean suffix both stay blocked after all3checks; known correct B3Blue parking note still confirms."
+    },
+    {
+      "name": "Saved memo deadline",
+      "result": "source_reviewed",
+      "observed": "Visible saved memo schedules a deadline timeout in addition to clock-drift polling; hiding the page clears the timer and re-entry requires an explicit parked review."
+    },
+    {
+      "name": "Uninterpreted vehicle access restrictions remain blocked",
+      "result": "passed_by_independent_judge6",
+      "observed": "Three original Korean notices with entry unavailable, entry prohibited and car-entry unavailable remain visible and unconfirmable after three checks; choosing Auditorium cannot bypass. Correct B3 Blue parking note still confirms and exports. Verified after updating the separate preview snapshot."
+    },
+    {
+      "name": "Parking/access restrictions and facility attribution",
+      "result": "passed_by_independent_judges6_and7",
+      "observed": "Unparsed parking/access restrictions, named and unlabeled external Grand Ballroom with COEX sponsorship, explicit non-holding and inaccessible venue stay blocked with original text preserved even after manual selection and three checks. Ordinary design-conference notice with matching B3 Blue parking still confirms and exports. Separate preview snapshot was synchronized before verification.",
+      "engine_sha256": "4802947bf286356ba4f60c9ccc532ca8a168e7d31ddc448fec108d3132445a6a"
+    }
+  ],
+  "automated_tests": 47,
+  "shared_cases": 229,
+  "capture_boundary": "Earlier rc1 JPGs in this directory precede the final current-venue checkbox. The newest browser screenshot was visually inspected but could not be transferred because the browser shared-file sync failed. Do not represent earlier screenshots as the final checkbox or QR UI. Android screenshots are separate runtime evidence."
+}

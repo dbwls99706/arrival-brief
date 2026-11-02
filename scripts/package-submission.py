@@ -9,17 +9,16 @@ from hashlib import sha256
 from io import BytesIO
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from urllib.parse import urlsplit
+from urllib.parse import unquote, urlsplit
 import json
 import re
-import shutil
 import subprocess
 import sys
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 TEXT = {'.md', '.txt', '.py', '.mjs', '.css', '.html', '.svg', '.xml', '.json', '.properties', '.kts', '.kt', '.bat', '.vtt'}
-BLOCKED_PARTS = {'.git', '.openai', '.gradle', 'build', 'node_modules', '__pycache__', '.idea'}
+BLOCKED_PARTS = {'.git', '.openai', '.gradle', '.kotlin', 'build', 'node_modules', '__pycache__', '.idea', '.rsync-tmp'}
 
 
 def digest(data):
@@ -40,25 +39,31 @@ def allowed(path):
     if len(parts) == 1:
         return path.name in {'README.md', 'ATTRIBUTIONS.md', 'index.html', '.gitignore'}
     if parts[0] == 'android':
+        if name.startswith('android/app/src/main/assets/third_party/'):
+            return path.name in {'ZXing-LICENSE.txt', 'ZXing-NOTICE.txt'}
+        if name.startswith('android/app/src/main/res/'):
+            return path.suffix in {'.xml', '.png', '.webp', '.jpg'}
         return path.suffix in {'.kt', '.kts', '.xml', '.properties', '.bat', '.md'} or path.name in {'gradlew', 'gradle-wrapper.jar'}
     if parts[0] == 'apk':
         return path.name in {'ArrivalBrief_release.apk', 'README.md'}
     if parts[0] == 'dist':
         if path.name.lower().startswith('qa-'):
             return False
-        return path.suffix in {'.html', '.css', '.mjs', '.svg', '.mp4', '.vtt', '.jpg', '.png', '.json'} or name == 'dist/downloads/ArrivalBrief_release.apk'
+        return path.suffix in {'.html', '.css', '.mjs', '.svg', '.mp4', '.vtt', '.jpg', '.png', '.webp', '.woff2', '.json'} or name == 'dist/downloads/ArrivalBrief_release.apk'
     if parts[0] == 'tests':
         return path.suffix in {'.mjs', '.tsv'}
     if parts[0] == 'scripts':
         return path.suffix == '.py'
     if parts[0] == 'docs':
         if len(parts) == 2:
-            return path.name in {'ANDROID_BUILD.md', 'ARRIVAL_PLAN.md', 'HYUNDAI_FOCUS.md', 'HYUNDAI_VERIFICATION.md', 'USER_EVIDENCE.md', 'SUBMISSION.md', 'design-review.md', 'REVIEW_ROUND2.md'}
+            return path.name in {'ANDROID_BUILD.md', 'ARRIVAL_PLAN.md', 'HYUNDAI_FOCUS.md', 'HYUNDAI_VERIFICATION.md', 'USER_EVIDENCE.md', 'SUBMISSION.md', 'design-review.md', 'REVIEW_ROUND2.md', 'PRODUCT_SCOPE.md'}
         if len(parts) == 3 and parts[1] == 'verification':
-            return (path.name in {'build-inputs.json', 'release-verification.json', 'android-lint.txt', 'android-release-build.log', 'android-release-signature.txt', 'android-release-package.txt', 'android-runtime.md', 'android-v04-screenshots.json'}
+            return (path.name in {'build-inputs.json', 'release-verification.json', 'android-lint.txt', 'android-release-build.log', 'android-release-signature.txt', 'android-release-package.txt', 'android-runtime.md', 'android-v04-screenshots.json', 'web-tests-rc1.log', 'web-rc1-ui.json', 'web-resume-ui.json', 'brand-icon-generation.json', 'review-cycles.json', 'android-runtime-rc1.json', 'android-aosp28-rc1-release.txt', 'android-aosp28-rc1-ui-standard.log', 'android-aosp28-rc1-ui-largefont.log', 'android-aosp28-rc1-ui-video.log', 'android-aosp28-rc1-ui-first180.mp4', 'android-aosp28-rc1-logcat.txt', 'pleos-rc1-coldboot.txt'}
                     or (path.name.startswith('TEST-') and path.suffix == '.xml')
-                    or (path.name.startswith('android-aosp28-') and path.suffix == '.png')
-                    or (path.name.startswith(('arrival-v04-', 'arrival-v05-')) and path.suffix in {'.jpg', '.png', '.json'}))
+                    or (path.name.startswith('android-aosp28-') and path.suffix in {'.png', '.json', '.log', '.txt', '.mp4'})
+                    or (path.name.startswith('pleos-') and path.suffix in {'.json', '.log', '.txt'})
+                    or (path.name.startswith(('judging-round-', 'resume-review-')) and path.suffix == '.md')
+                    or (path.name.startswith(('arrival-v04-', 'arrival-v05-', 'arrival-rc1-', 'arrival-resume-')) and path.suffix in {'.jpg', '.png', '.json'}))
         return False
     if parts[0] == 'research':
         return path.name in {'OFL.txt', 'frontend-design-LICENSE.txt', 'frontend-design-SKILL.md', 'design-reference-2026-10-31.md', 'design-reference-2026-11-01.md'}
@@ -71,6 +76,8 @@ def redact(text, account, tokens):
                   '<span>소스 코드는 제출 ZIP에 포함되어 있습니다.</span>', text, flags=re.I | re.S)
     text = re.sub(r'\[([^\]]*)\]\(' + github + r'\)', r'\1 (운영용 주소 별도 전달)', text, flags=re.I)
     text = re.sub(github, '[운영용 저장소 주소 별도 전달]', text, flags=re.I)
+    text = re.sub(r'\[([^\]]+)\]\((?:\.?\.?/)*submission/ArrivalBrief-operator-checklist\.md\)',
+                  r'\1 (운영용 자료로 별도 전달)', text)
     for token in sorted(tokens, key=len, reverse=True):
         text = re.sub(re.escape(token), '[운영용 정보 별도 전달]', text, flags=re.I)
     return text
@@ -90,6 +97,19 @@ def private_check(data, tokens):
                 if not item.is_dir() and not private_check(z.read(item), tokens):
                     return False
     return True
+
+
+def verify_document_links(root):
+    """The review copy must not link to omitted operating or evidence files."""
+    for source in root.rglob('*.md'):
+        for value in re.findall(r'\]\(([^\s)]+)\)', source.read_text()):
+            url = urlsplit(value)
+            if url.scheme or url.netloc or not url.path:
+                continue
+            target = (source.parent / unquote(url.path)).resolve()
+            if not target.is_relative_to(root.resolve()) or not target.exists():
+                raise ValueError('Review document references an omitted file: '
+                                 + source.relative_to(root).as_posix() + ' -> ' + value)
 
 
 def verify_archive(path, compare_root=None):
@@ -119,6 +139,12 @@ def verify_archive(path, compare_root=None):
         for apk in ['apk/ArrivalBrief_release.apk', 'dist/downloads/ArrivalBrief_release.apk']:
             if digest(z.read(apk)) != manifest['apk_sha256']:
                 raise ValueError('APK copy mismatch')
+        build = json.loads(z.read('docs/verification/build-inputs.json'))
+        if build.get('apk_sha256') != manifest['apk_sha256'] or build.get('version') != manifest['version']:
+            raise ValueError('Build provenance and package disagree')
+        for item in build['files']:
+            if item['path'] not in expected or digest(z.read(item['path'])) != item['sha256']:
+                raise ValueError('Packaged build input mismatch: ' + item['path'])
     return manifest
 
 
@@ -156,12 +182,25 @@ def main():
     version = re.search(r'versionName\s*=\s*"([^"]+)"', gradle).group(1)
     if version != release['version']:
         raise ValueError('Source version and release verification disagree; rebuild and update evidence first')
+    build = json.loads((ROOT / 'docs/verification/build-inputs.json').read_text())
+    if build.get('apk_sha256') != actual_hash or build.get('version') != version or not build.get('source_snapshot_match'):
+        raise ValueError('Build provenance does not identify this APK and source snapshot')
+    build_paths = [item['path'] for item in build['files']]
+    if not build_paths or len(build_paths) != len(set(build_paths)):
+        raise ValueError('Build provenance has an empty or duplicate input inventory')
+    for item in build['files']:
+        rel = Path(item['path'])
+        if rel.is_absolute() or '..' in rel.parts or not (ROOT / rel).is_file():
+            raise ValueError('Invalid build input path: ' + item['path'])
+        if digest((ROOT / rel).read_bytes()) != item['sha256']:
+            raise ValueError('Source changed after the recorded APK build: ' + item['path'])
     static_apk = ROOT / 'dist/downloads/ArrivalBrief_release.apk'
-    static_apk.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(apk, static_apk)
+    if not static_apk.is_file() or digest(static_apk.read_bytes()) != actual_hash:
+        raise ValueError('Static APK copy does not match the verified release; synchronize it before packaging')
     for html in [ROOT / 'dist/arrival-brief/index.html', ROOT / 'dist/arrival-brief/review.html']:
-        text = re.sub(r'(<span data-release-version>)[^<]+(</span>)', lambda m: m[1] + version + m[2], html.read_text())
-        html.write_text(text)
+        versions = re.findall(r'<span data-release-version>([^<]+)</span>', html.read_text())
+        if not versions or any(value != version for value in versions):
+            raise ValueError('Displayed release version is stale: ' + html.relative_to(ROOT).as_posix())
     subprocess.run([sys.executable, str(ROOT / 'scripts/check-paths.py'), '--static-root', 'dist'], check=True)
     selected = [(f.relative_to(ROOT), f) for f in sorted(ROOT.rglob('*')) if f.is_file() and not f.is_symlink() and allowed(f.relative_to(ROOT))]
     source = [{'path': rel.as_posix(), 'sha256': digest(f.read_bytes())} for rel, f in selected if is_core(rel)]
@@ -185,6 +224,7 @@ def main():
             target = staging / rel
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(raw)
+        verify_document_links(staging)
         source_digest = digest(json.dumps(source, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode())
         files = [{'path': f.relative_to(staging).as_posix(), 'bytes': f.stat().st_size, 'sha256': digest(f.read_bytes())} for f in sorted(staging.rglob('*')) if f.is_file()]
         manifest = {'schema_version': 1, 'app': 'Arrival Brief', 'version': version, 'apk_sha256': actual_hash,
@@ -206,8 +246,8 @@ def main():
         verify_archive(zip_path, ROOT)
         zip_hash = digest(zip_path.read_bytes())
     checklist = output / 'ArrivalBrief-operator-checklist.md'
-    checklist.write_text(f'''# Arrival Brief 운영용 제출 목록\n\n이 문서는 운영 전달용이며 익명 심사용 ZIP에 포함하지 않습니다.\n\n- 저장소: {args.repository_url}\n- APK 경로: apk/ArrivalBrief_release.apk\n- APK 버전: {version}\n- APK SHA-256: {actual_hash}\n- 익명 검토 ZIP: {zip_path.name}\n- ZIP SHA-256: {zip_hash}\n- 앱 소스 목록 SHA-256: {source_digest}\n- 영상: dist/assets/media/arrival-reel.mp4, arrival-confirm-reel.mp4\n- 영상은 동봉한 웹 프로토타입의 캡처 편집본이며 차량 SDK의 실제 응답을 촬영한 영상은 아닙니다.\n\n## 본인 또는 운영 확인이 필요한 항목\n\n- [ ] 별도 공식 접수양식의 동의 여부·본인 서명·서명일자 확인\n- [ ] 공식 파일명 형식과 익명 심사 지침에 맞는 APK 제출명 확인\n- [ ] 공개 저장소의 소스·APK 접근 확인(비공개 전환 시 심사용 계정 접근 확인)\n- [ ] 개인 계정이 표시되는 GitHub 주소의 익명 전달 방식 확인\n- [ ] 신청서 7번 첨부 파일명과 실제 첨부물 일치 확인\n- [ ] 화면·영상에 개인정보가 없는지 육안 확인\n- [ ] 지원 환경에서 실제 Pleos 설치·SDK·UX 제한 재검증\n\nAPK 단독 제출을 대신하는 ZIP이 아닙니다. 공식 안내는 GitHub에 소스와 APK를 함께 제출하도록 하며, 이 ZIP만으로 접근·익명 요건이 해결됐다고 간주하지 않습니다. 서명키 백업·연락처·동의서는 리뷰 ZIP에 넣지 않았습니다. 이메일은 발송하지 않았습니다.\n''')
-    print(json.dumps({'review_zip': str(zip_path), 'operator_checklist': str(checklist), 'version': version, 'files': len(files), 'source_tree_sha256': source_digest, 'apk_sha256': actual_hash, 'zip_sha256': zip_hash, 'status': 'prepared_not_submitted'}, ensure_ascii=False))
+    checklist.write_text(f'''# Arrival Brief 운영용 제출 목록\n\n이 문서는 운영 전달용이며 익명 심사용 ZIP에 포함하지 않습니다.\n\n- 저장소: {args.repository_url}\n- APK 경로: apk/ArrivalBrief_release.apk\n- APK 버전: {version}\n- APK SHA-256: {actual_hash}\n- 익명 검토 ZIP: {zip_path.name}\n- ZIP SHA-256: {zip_hash}\n- 앱 소스 목록 SHA-256: {source_digest}\n- 영상: dist/assets/media/arrival-reel.mp4, arrival-confirm-reel.mp4, arrival-native-validation.mp4\n- 앞의 두 영상은 1.0.0-rc1 실제 웹 화면 편집본입니다. 마지막 영상은 rc1과 같은 main 소스의 일반 Android debug 자동 UI 시험 실제 캡처 편집본입니다. 모두 연속 실차 녹화나 Pleos SDK 실제 응답 영상이 아닙니다.\n\n## 본인 또는 운영 확인이 필요한 항목\n\n- [ ] 별도 공식 접수양식의 동의 여부·본인 서명·서명일자 확인\n- [ ] 공식 파일명 형식과 익명 심사 지침에 맞는 APK 제출명 확인\n- [ ] 공개 저장소의 소스·APK 접근 확인(비공개 전환 시 심사용 계정 접근 확인)\n- [ ] 개인 계정이 표시되는 GitHub 주소의 익명 전달 방식 확인\n- [ ] 신청서 7번 첨부 파일명과 실제 첨부물 일치 확인\n- [ ] 화면·영상에 개인정보가 없는지 육안 확인\n- [ ] 지원 환경에서 실제 Pleos 설치·SDK·UX 제한 재검증\n\nAPK 단독 제출을 대신하는 ZIP이 아닙니다. 공식 안내는 GitHub에 소스와 APK를 함께 제출하도록 하며, 이 ZIP만으로 접근·익명 요건이 해결됐다고 간주하지 않습니다. 서명키 백업·연락처·동의서는 리뷰 ZIP에 넣지 않았습니다. 이메일은 발송하지 않았습니다.\n''')
+    print(json.dumps({'review_zip': str(zip_path), 'operator_checklist': str(checklist), 'version': version, 'files': len(files), 'source_tree_sha256': source_digest, 'apk_sha256': actual_hash, 'zip_sha256': zip_hash, 'zip_bytes': zip_path.stat().st_size, 'status': 'prepared_not_submitted'}, ensure_ascii=False))
 
 
 if __name__ == '__main__':

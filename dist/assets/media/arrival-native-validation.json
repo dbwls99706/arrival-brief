@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0-rc1",
+  "kind": "edited_stills_from_actual_android_instrumentation",
+  "duration_seconds": 30,
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "release_apk_sha256": "04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf",
+  "tested_debug_apk_sha256": "7fc9bef75f2e6ccf2771db1bc478458759f32b314e1f2da9addcc14e4d6fb829",
+  "note": "Separate debug instrumentation, same main source as release. No continuous screen recording or live Pleos response is claimed. Phone optical QR scan is unverified.",
+  "screenshots": [
+    {
+      "file": "arrival-confirmed-parked.png",
+      "packaged_screenshot": "docs/verification/android-aosp28-rc1-confirmed.png",
+      "sha256": "1c33e0098f1d442ad396f424fa42c94ce8390d51e7db0aeb54847e4ed847784e",
+      "start_seconds": 0,
+      "duration_seconds": 6
+    },
+    {
+      "file": "arrival-source-conflict-evidence.png",
+      "packaged_screenshot": "docs/verification/android-aosp28-rc1-source-conflict.png",
+      "sha256": "a5048d95b7a9afbbf28f60430efec54c8ab7316eebc4d70a179fd174fd505cf9",
+      "start_seconds": 6,
+      "duration_seconds": 6
+    },
+    {
+      "file": "arrival-parking-memo-restored.png",
+      "packaged_screenshot": "docs/verification/android-aosp28-rc1-memo.png",
+      "sha256": "f5d123a1db25217a0608659b558bf93da4f099b6c389d9ba2476b6519f3b1ed7",
+      "start_seconds": 12,
+      "duration_seconds": 6
+    },
+    {
+      "file": "arrival-saved-memo-qr.png",
+      "packaged_screenshot": "docs/verification/android-aosp28-rc1-qr.png",
+      "sha256": "c662f2543c4a2f8a4ca13ad7c8ca79c12c1bbb55e5ab33e7d228d9183d7f6e0a",
+      "start_seconds": 18,
+      "duration_seconds": 6
+    },
+    {
+      "file": "arrival-confirmed-driving-locked.png",
+      "packaged_screenshot": "docs/verification/android-aosp28-rc1-driving.png",
+      "sha256": "2885b61eff55d2c3107afbda6dfe68b4c6664e206bef65c11e1061d85a546918",
+      "start_seconds": 24,
+      "duration_seconds": 6
+    }
+  ],
+  "video_sha256": "65ee791794c009240361846e923b7f4065978e1fa1aca86e2ff2bed5e14c086a"
+}

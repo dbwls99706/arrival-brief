@@ -1,0 +1,647 @@
+[295-final-logcat.txt]
+11-01 15:40:47.177  1702  1945 V installed: DexInv: --- END '/data/app/studio.ax.arrival-Kj3cI4hgsXZqx8pvijg7VQ==/base.apk' (success) ---
+11-01 15:40:47.634  1851  1898 I ActivityManager: Force stopping studio.ax.arrival appid=10067 user=0: pkg removed
+11-01 15:40:47.936  1851  1927 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:studio.ax.arrival flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+11-01 15:40:47.974  1851  1867 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:studio.ax.arrival flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+11-01 15:40:48.010  1851  1882 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REPLACED dat=package:studio.ax.arrival flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+11-01 15:40:50.316  1851  2996 I ActivityManager: START u0 {flg=0x10000000 cmp=studio.ax.arrival/.MainActivity} from uid 2000
+11-01 15:40:51.710  1851  1885 I ActivityManager: Start proc 3043:studio.ax.arrival/u0a67 for activity studio.ax.arrival/.MainActivity
+11-01 15:40:57.159  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +5s927ms
+11-01 15:40:57.441  1697  1757 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:40:57.442  1697  1757 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival#0
+
+[310-standard-logcat.txt]
+11-01 15:41:25.962  3203  3203 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-01 15:41:26.793  3203  3203 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+11-01 15:41:26.849  1851  2172 I ActivityManager: Force stopping studio.ax.arrival appid=10068 user=0: start instr
+11-01 15:41:27.057  1851  1885 I ActivityManager: Start proc 3218:studio.ax.arrival/u0a68 for added application studio.ax.arrival
+11-01 15:41:29.262  3218  3234 I TestRunner: run started: 13 tests
+11-01 15:41:29.288  3218  3234 I TestRunner: started: vehicleEntryRestrictionsCannotBeOverriddenBySelectionOrChecks(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:41:29.629  1851  1927 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:41:32.695  3218  3218 W udio.ax.arriva: Verification of void studio.ax.arrival.MainActivity.render() took 142.456ms
+11-01 15:41:32.930  3218  3218 W udio.ax.arriva: Verification of void studio.ax.arrival.MainActivity.onCreate(android.os.Bundle) took 158.633ms
+11-01 15:41:33.197  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@93dbf02 in: PRE_ON_CREATE
+11-01 15:41:39.229  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@93dbf02 in: CREATED
+11-01 15:41:39.231  3218  3218 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@93dbf02
+11-01 15:41:39.267  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@93dbf02 in: STARTED
+11-01 15:41:39.269  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@93dbf02
+11-01 15:41:39.274  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@93dbf02 in: RESUMED
+11-01 15:41:39.277  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@93dbf02
+11-01 15:41:44.070  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +11s869ms
+11-01 15:41:49.646  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:41:56.658  1697  1755 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:41:56.658  1697  1755 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:42:08.408  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:42:15.218  1697  1755 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:42:15.218  1697  1755 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:42:36.571  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-vehicle-entry-restriction-1.png
+11-01 15:42:40.686  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:42:45.674  1697  2352 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:42:45.674  1697  2352 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:42:57.676  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-vehicle-entry-restriction-2.png
+11-01 15:43:00.445  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:43:09.018  1697  1755 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:43:09.018  1697  1755 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:43:20.803  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-vehicle-entry-restriction-3.png
+11-01 15:43:25.895  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:43:32.977  1697  1755 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:43:32.977  1697  1755 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:43:43.966  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-vehicle-entry-restriction-4.png
+11-01 15:43:48.488  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:43:55.628  1697  2352 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:43:55.628  1697  2352 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:44:06.666  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-vehicle-entry-restriction-5.png
+11-01 15:44:10.031  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:44:17.212  1697  2352 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:44:17.212  1697  2352 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:44:26.289  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-vehicle-entry-restriction-6.png
+11-01 15:44:27.981  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:44:29.789  1697  2187 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:44:29.789  1697  2187 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:44:33.459  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-vehicle-entry-restriction-7.png
+11-01 15:44:35.094  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:44:36.731  1697  1755 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:44:36.731  1697  1755 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:44:40.978  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-vehicle-entry-restriction-8.png
+11-01 15:44:42.431  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:44:47.925  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-vehicle-entry-restriction-9.png
+11-01 15:44:49.081  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:44:54.860  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-vehicle-entry-restriction-10.png
+11-01 15:44:55.559  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-vehicleEntryRestrictionsCannotBeOverriddenBySelectionOrChecks.png
+11-01 15:44:55.586  1851  2174 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:44:55.994  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@93dbf02 in: PAUSED
+11-01 15:44:56.008  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@93dbf02
+11-01 15:44:56.432  1851  1885 I ActivityManager: Start proc 3500:studio.ax.arrival.test/u0a69 for activity studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity
+11-01 15:44:58.401  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@93dbf02 in: STOPPED
+11-01 15:44:58.407  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@93dbf02
+11-01 15:44:58.469  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@93dbf02 in: DESTROYED
+11-01 15:44:58.710  3218  3234 I TestRunner: finished: vehicleEntryRestrictionsCannotBeOverriddenBySelectionOrChecks(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:44:58.740  3218  3234 I TestRunner: started: sponsoringFacilityCannotReplaceTheActualVenueEvenAfterSelection(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:44:58.844  1697  2187 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{119a8f1 token=Token{dd58898 ActivityRecord{ed2da0a u0 studio.ax.arrival/.MainActivity t6}}}#0
+11-01 15:44:59.070  1851  1866 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:44:59.423  1851  1882 W ActivityManager: Activity pause timeout for ActivityRecord{ceaa8a1 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t7 f}
+11-01 15:45:00.114  1851  2700 W ActivityManager: Duplicate finish request for ActivityRecord{ceaa8a1 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t7 f}
+11-01 15:45:00.115  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@29e393b in: PRE_ON_CREATE
+11-01 15:45:01.433  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@29e393b in: CREATED
+11-01 15:45:01.434  3218  3218 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@29e393b
+11-01 15:45:01.466  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@29e393b in: STARTED
+11-01 15:45:01.467  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@29e393b
+11-01 15:45:01.471  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@29e393b in: RESUMED
+11-01 15:45:01.472  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@29e393b
+11-01 15:45:02.063  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +2s44ms (total +5s889ms)
+11-01 15:45:02.300  1697  1757 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{16e1a87 token=Token{cd10ac6 ActivityRecord{ceaa8a1 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t7}}}#0
+11-01 15:45:02.943  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:45:11.759  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-venue-attribution-blocked.png
+11-01 15:45:12.765  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:45:14.487  1697  1757 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:45:14.487  1697  1757 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:45:18.099  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-venue-attribution-picker-blocked.png
+11-01 15:45:18.678  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-sponsoringFacilityCannotReplaceTheActualVenueEvenAfterSelection.png
+11-01 15:45:18.700  1851  2700 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:45:19.169  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@29e393b in: PAUSED
+11-01 15:45:19.170  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@29e393b
+11-01 15:45:20.187  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@29e393b in: STOPPED
+11-01 15:45:20.189  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@29e393b
+11-01 15:45:20.200  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@29e393b in: DESTROYED
+11-01 15:45:20.506  3218  3234 I TestRunner: finished: sponsoringFacilityCannotReplaceTheActualVenueEvenAfterSelection(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:45:20.631  3218  3234 I TestRunner: started: savedMemoQrRoundTripsAndClearsWhenEditedOrDriving(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:45:20.836  1851  3090 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:45:21.360  1851  2172 W ActivityManager: Duplicate finish request for ActivityRecord{563aa0 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t9 f}
+11-01 15:45:21.469  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a06d9d0 in: PRE_ON_CREATE
+11-01 15:45:22.007  1697  1895 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:45:22.007  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:45:22.981  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a06d9d0 in: CREATED
+11-01 15:45:22.985  3218  3218 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@a06d9d0
+11-01 15:45:23.032  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a06d9d0 in: STARTED
+11-01 15:45:23.035  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@a06d9d0
+11-01 15:45:23.039  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a06d9d0 in: RESUMED
+11-01 15:45:23.039  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@a06d9d0
+11-01 15:45:23.739  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +2s448ms (total +4s493ms)
+11-01 15:45:24.028  1697  1755 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:45:24.031  1697  1755 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:45:24.223  1697  1755 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{7291aff token=Token{fbe621e ActivityRecord{563aa0 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t9}}}#0
+11-01 15:45:24.723  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:45:27.058  1697  2187 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:45:27.058  1697  2187 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:45:32.649  3218  3218 I ViewInteraction: Checking 'studio.ax.arrival.VisitFlowInstrumentedTest$$ExternalSyntheticLambda4@ed2a92c' assertion on view view.getContentDescription() is "저장한 주차 위치를 휴대폰으로 가져가는 QR"
+11-01 15:45:34.107  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-saved-memo-qr.png
+11-01 15:45:34.422  3218  3218 I ViewInteraction: Checking 'studio.ax.arrival.VisitFlowInstrumentedTest$$ExternalSyntheticLambda0@3572c18' assertion on view view.getContentDescription() is "저장한 주차 위치를 휴대폰으로 가져가는 QR"
+11-01 15:45:37.585  3218  3218 I ViewInteraction: Checking 'studio.ax.arrival.VisitFlowInstrumentedTest$$ExternalSyntheticLambda0@aa0a3aa' assertion on view view.getContentDescription() is "저장한 주차 위치를 휴대폰으로 가져가는 QR"
+11-01 15:45:38.149  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-memo-qr-cleared-driving.png
+11-01 15:45:38.718  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-savedMemoQrRoundTripsAndClearsWhenEditedOrDriving.png
+11-01 15:45:38.740  1851  2700 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:45:39.308  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a06d9d0 in: PAUSED
+11-01 15:45:39.312  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@a06d9d0
+11-01 15:45:40.013  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a06d9d0 in: STOPPED
+11-01 15:45:40.037  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@a06d9d0
+11-01 15:45:40.204  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a06d9d0 in: DESTROYED
+11-01 15:45:40.429  1697  2187 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{4f38900 token=Token{4fb383 ActivityRecord{95dba32 u0 studio.ax.arrival/.MainActivity t10}}}#0
+11-01 15:45:40.436  3218  3234 I TestRunner: finished: savedMemoQrRoundTripsAndClearsWhenEditedOrDriving(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:45:40.527  3218  3234 I TestRunner: started: memoQrDoesNotRestoreAfterRecreationAndDeletionClearsIt(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:45:41.281  1697  1755 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:45:41.281  1697  1755 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:45:41.390  1851  2172 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:45:41.999  1851  1927 W ActivityManager: Duplicate finish request for ActivityRecord{c9daa1c u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t11 f}
+11-01 15:45:42.356  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a1dda7c in: PRE_ON_CREATE
+11-01 15:45:43.177  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a1dda7c in: CREATED
+11-01 15:45:43.178  3218  3218 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@a1dda7c
+11-01 15:45:43.199  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a1dda7c in: STARTED
+11-01 15:45:43.200  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@a1dda7c
+11-01 15:45:43.204  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a1dda7c in: RESUMED
+11-01 15:45:43.206  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@a1dda7c
+11-01 15:45:44.280  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +1s677ms (total +4s581ms)
+11-01 15:45:45.203  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:45:46.521  1697  1757 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:45:46.521  1697  1757 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:45:50.018  1851  2622 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:45:50.384  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a1dda7c in: PAUSED
+11-01 15:45:50.416  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@a1dda7c
+11-01 15:45:51.986  1851  1891 I ActivityManager: Displayed studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity: +1s513ms
+11-01 15:45:52.209  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a1dda7c in: STOPPED
+11-01 15:45:52.210  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@a1dda7c
+11-01 15:45:52.639  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a1dda7c in: RESTARTED
+11-01 15:45:52.640  3218  3218 V ActivityScenario: Update currentActivityStage to RESTARTED, currentActivity=studio.ax.arrival.MainActivity@a1dda7c
+11-01 15:45:52.668  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a1dda7c in: STARTED
+11-01 15:45:52.669  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@a1dda7c
+11-01 15:45:52.675  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a1dda7c in: RESUMED
+11-01 15:45:52.676  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@a1dda7c
+11-01 15:45:53.540  3218  3218 I ViewInteraction: Checking 'studio.ax.arrival.VisitFlowInstrumentedTest$$ExternalSyntheticLambda0@5836940' assertion on view view.getContentDescription() is "저장한 주차 위치를 휴대폰으로 가져가는 QR"
+11-01 15:45:53.878  1697  1757 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{a377004 token=Token{30e8417 ActivityRecord{b11e096 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t13}}}#0
+11-01 15:45:57.713  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a1dda7c in: PAUSED
+11-01 15:45:57.714  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@a1dda7c
+11-01 15:45:57.729  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a1dda7c in: STOPPED
+11-01 15:45:57.729  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@a1dda7c
+11-01 15:45:57.732  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a1dda7c in: DESTROYED
+11-01 15:45:57.897  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@1ed2001 in: PRE_ON_CREATE
+11-01 15:45:59.077  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@1ed2001 in: CREATED
+11-01 15:45:59.078  3218  3218 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@1ed2001
+11-01 15:45:59.098  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@1ed2001 in: STARTED
+11-01 15:45:59.106  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@1ed2001
+11-01 15:45:59.112  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@1ed2001 in: RESUMED
+11-01 15:45:59.113  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@1ed2001
+11-01 15:45:59.679  3218  3218 I ViewInteraction: Checking 'studio.ax.arrival.VisitFlowInstrumentedTest$$ExternalSyntheticLambda0@699c328' assertion on view view.getContentDescription() is "저장한 주차 위치를 휴대폰으로 가져가는 QR"
+11-01 15:46:00.224  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:46:01.500  1697  2352 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:46:01.500  1697  2352 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:46:03.405  3218  3218 I ViewInteraction: Checking 'studio.ax.arrival.VisitFlowInstrumentedTest$$ExternalSyntheticLambda0@f4f61e4' assertion on view view.getContentDescription() is "저장한 주차 위치를 휴대폰으로 가져가는 QR"
+11-01 15:46:04.528  3218  3218 I ViewInteraction: Checking 'studio.ax.arrival.VisitFlowInstrumentedTest$$ExternalSyntheticLambda0@f410c14' assertion on view view.getContentDescription() is "저장한 주차 위치를 휴대폰으로 가져가는 QR"
+11-01 15:46:05.409  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-memoQrDoesNotRestoreAfterRecreationAndDeletionClearsIt.png
+11-01 15:46:05.423  1851  3090 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:46:05.817  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@1ed2001 in: PAUSED
+11-01 15:46:05.819  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@1ed2001
+11-01 15:46:06.632  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@1ed2001 in: STOPPED
+11-01 15:46:06.633  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@1ed2001
+11-01 15:46:06.649  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@1ed2001 in: DESTROYED
+11-01 15:46:06.849  3218  3234 I TestRunner: finished: memoQrDoesNotRestoreAfterRecreationAndDeletionClearsIt(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:46:06.881  3218  3234 I TestRunner: started: realKeyboardKeepsMemoInputVisibleAndAllowsSaving(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:46:07.516  1851  2622 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:46:08.016  1851  2622 W ActivityManager: Duplicate finish request for ActivityRecord{f3f60e1 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t14 f}
+11-01 15:46:08.160  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@656c172 in: PRE_ON_CREATE
+11-01 15:46:08.353  1697  2352 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:46:08.354  1697  2352 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:46:09.844  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@656c172 in: CREATED
+11-01 15:46:09.847  3218  3218 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@656c172
+11-01 15:46:09.886  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@656c172 in: STARTED
+11-01 15:46:09.887  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@656c172
+11-01 15:46:09.895  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@656c172 in: RESUMED
+11-01 15:46:09.896  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@656c172
+11-01 15:46:10.719  1697  1757 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:46:10.719  1697  1757 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:46:10.792  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +2s486ms (total +4s527ms)
+11-01 15:46:10.965  1697  1757 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{5842cc7 token=Token{c86fe06 ActivityRecord{f3f60e1 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t14}}}#0
+11-01 15:46:11.615  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:46:18.838  1851  1954 I InputDispatcher: Window 'Window{c27468f u0 studio.ax.arrival/studio.ax.arrival.MainActivity}' spent 2183.2ms processing the last input event: KeyEvent(deviceId=-1, source=0x00000101, action=DOWN, flags=0x00000008, keyCode=59, scanCode=0, metaState=0x00000041, repeatCount=0), policyFlags=0x69000000
+11-01 15:46:22.722  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-real-ime-memo-visible.png
+11-01 15:46:24.365  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-realKeyboardKeepsMemoInputVisibleAndAllowsSaving.png
+11-01 15:46:24.382  1851  1866 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:46:25.067  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@656c172 in: PAUSED
+11-01 15:46:25.068  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@656c172
+11-01 15:46:26.097  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@656c172 in: STOPPED
+11-01 15:46:26.097  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@656c172
+11-01 15:46:26.177  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@656c172 in: DESTROYED
+11-01 15:46:26.309  3218  3234 I TestRunner: finished: realKeyboardKeepsMemoInputVisibleAndAllowsSaving(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:46:26.383  3218  3234 I TestRunner: started: destinationPickerPreservesConflictingNoticeAndCannotBypassReview(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:46:26.923  1851  3090 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:46:27.369  1851  2174 W ActivityManager: Duplicate finish request for ActivityRecord{77113e0 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t16 f}
+11-01 15:46:28.265  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@7e88b99 in: PRE_ON_CREATE
+11-01 15:46:29.051  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@7e88b99 in: CREATED
+11-01 15:46:29.052  3218  3218 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@7e88b99
+11-01 15:46:29.062  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@7e88b99 in: STARTED
+11-01 15:46:29.063  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@7e88b99
+11-01 15:46:29.068  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@7e88b99 in: RESUMED
+11-01 15:46:29.069  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@7e88b99
+11-01 15:46:29.602  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +1s727ms (total +4s498ms)
+11-01 15:46:29.754  1697  2187 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:46:29.754  1697  2187 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:46:29.982  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{af1fd5e token=Token{e73e699 ActivityRecord{77113e0 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t16}}}#0
+11-01 15:46:30.453  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:46:32.365  1697  1895 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:46:32.365  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:46:34.720  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:46:39.436  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-picker-preserves-conflicting-source.png
+11-01 15:46:40.104  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-destinationPickerPreservesConflictingNoticeAndCannotBypassReview.png
+11-01 15:46:40.123  1851  2700 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:46:40.588  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@7e88b99 in: PAUSED
+11-01 15:46:40.589  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@7e88b99
+11-01 15:46:41.363  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@7e88b99 in: STOPPED
+11-01 15:46:41.366  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@7e88b99
+11-01 15:46:41.389  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@7e88b99 in: DESTROYED
+11-01 15:46:41.641  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{5e57317 token=Token{e432b96 ActivityRecord{9608ab1 u0 studio.ax.arrival/.MainActivity t17}}}#0
+11-01 15:46:41.643  3218  3234 I TestRunner: finished: destinationPickerPreservesConflictingNoticeAndCannotBypassReview(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:46:41.663  3218  3234 I TestRunner: started: parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:46:42.390  1697  1895 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:46:42.391  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:46:42.397  1851  2622 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:46:42.988  1851  3090 W ActivityManager: Duplicate finish request for ActivityRecord{c372142 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t18 f}
+11-01 15:46:43.729  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@91a4586 in: PRE_ON_CREATE
+11-01 15:46:44.624  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@91a4586 in: CREATED
+11-01 15:46:44.630  3218  3218 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@91a4586
+11-01 15:46:44.657  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@91a4586 in: STARTED
+11-01 15:46:44.658  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@91a4586
+11-01 15:46:44.669  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@91a4586 in: RESUMED
+11-01 15:46:44.670  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@91a4586
+11-01 15:46:45.290  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +1s921ms (total +4s638ms)
+11-01 15:46:45.506  1697  1755 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:46:45.506  1697  1755 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:46:45.810  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{3e6e90 token=Token{aa77553 ActivityRecord{c372142 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t18}}}#0
+11-01 15:46:46.236  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:46:51.013  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@91a4586 in: PAUSED
+11-01 15:46:51.014  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@91a4586
+11-01 15:46:51.027  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@91a4586 in: STOPPED
+11-01 15:46:51.028  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@91a4586
+11-01 15:46:51.034  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@91a4586 in: DESTROYED
+11-01 15:46:51.194  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@dbef69c in: PRE_ON_CREATE
+11-01 15:46:52.373  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@dbef69c in: CREATED
+11-01 15:46:52.375  3218  3218 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@dbef69c
+11-01 15:46:52.393  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@dbef69c in: STARTED
+11-01 15:46:52.409  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@dbef69c
+11-01 15:46:52.419  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@dbef69c in: RESUMED
+11-01 15:46:52.420  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@dbef69c
+11-01 15:46:53.332  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:46:57.087  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-parking-memo-restored.png
+11-01 15:46:58.213  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed.png
+11-01 15:46:58.308  1851  1927 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:46:58.784  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@dbef69c in: PAUSED
+11-01 15:46:58.797  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@dbef69c
+11-01 15:46:59.996  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@dbef69c in: STOPPED
+11-01 15:46:59.997  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@dbef69c
+11-01 15:47:00.002  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@dbef69c in: DESTROYED
+11-01 15:47:00.236  3218  3234 I TestRunner: finished: parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:47:00.441  3218  3234 I TestRunner: started: activeMemoAndQrExpireAtTheStoredDeadline(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:47:00.874  1697  2352 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{8ddf208 token=Token{fd7bab ActivityRecord{c2df425 u0 studio.ax.arrival/.MainActivity t19}}}#0
+11-01 15:47:00.986  1851  2700 W ActivityManager: Duplicate finish request for ActivityRecord{271e57d u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t20 f}
+11-01 15:47:00.990  1851  1866 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:47:02.064  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a45562 in: PRE_ON_CREATE
+11-01 15:47:03.386  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a45562 in: CREATED
+11-01 15:47:03.387  3218  3218 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@a45562
+11-01 15:47:03.485  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a45562 in: STARTED
+11-01 15:47:03.487  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@a45562
+11-01 15:47:03.515  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a45562 in: RESUMED
+11-01 15:47:03.516  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@a45562
+11-01 15:47:04.278  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +2s240ms (total +5s300ms)
+11-01 15:47:04.354  1697  1895 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:47:04.356  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:47:04.541  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{bba68c3 token=Token{a18fc72 ActivityRecord{271e57d u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t20}}}#0
+11-01 15:47:05.427  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:47:10.089  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-memo-qr-before-expiry.png
+11-01 15:48:00.685  3218  3218 I ViewInteraction: Checking 'studio.ax.arrival.VisitFlowInstrumentedTest$$ExternalSyntheticLambda0@a052d56' assertion on view view.getContentDescription() is "저장한 주차 위치를 휴대폰으로 가져가는 QR"
+11-01 15:48:01.227  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-memo-qr-after-expiry.png
+11-01 15:48:01.945  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-activeMemoAndQrExpireAtTheStoredDeadline.png
+11-01 15:48:01.961  1851  2996 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:48:02.292  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a45562 in: PAUSED
+11-01 15:48:02.293  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@a45562
+11-01 15:48:03.390  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a45562 in: STOPPED
+11-01 15:48:03.392  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@a45562
+11-01 15:48:03.501  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@a45562 in: DESTROYED
+11-01 15:48:03.706  3218  3234 I TestRunner: finished: activeMemoAndQrExpireAtTheStoredDeadline(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:48:03.719  3218  3234 I TestRunner: started: malformedSharedPayloadCannotEnterTheForm(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:48:03.838  1697  2187 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{722e51b token=Token{ed32a ActivityRecord{3828415 u0 studio.ax.arrival/.MainActivity t21}}}#0
+11-01 15:48:04.201  1697  2187 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:48:04.201  1697  2187 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:48:04.327  1851  2172 I ActivityManager: START u0 {act=android.intent.action.SEND typ=text/plain flg=0x10008001 cmp=studio.ax.arrival/.MainActivity clip={text/plain T:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+11-01 15:48:05.677  1851  2622 W ActivityManager: Duplicate finish request for ActivityRecord{a6d0038 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t22 f}
+11-01 15:48:05.769  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@bd927a2 in: PRE_ON_CREATE
+11-01 15:48:06.716  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@bd927a2 in: CREATED
+11-01 15:48:06.717  3218  3218 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@bd927a2
+11-01 15:48:06.762  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@bd927a2 in: STARTED
+11-01 15:48:06.763  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@bd927a2
+11-01 15:48:06.773  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@bd927a2 in: RESUMED
+11-01 15:48:06.776  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@bd927a2
+11-01 15:48:07.570  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +2s247ms (total +5s235ms)
+11-01 15:48:08.127  1697  2187 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{22dd76 token=Token{9ca5811 ActivityRecord{a6d0038 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t22}}}#0
+11-01 15:48:08.214  1851  2172 I ActivityManager: START u0 {act=android.intent.action.SEND dat=content://untrusted.example/private typ=text/plain flg=0x20000001 cmp=studio.ax.arrival/.MainActivity clip={text/plain T:코엑스 오디토리움 3층} (has extras)} from uid 10068
+11-01 15:48:08.322  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@bd927a2 in: PAUSED
+11-01 15:48:08.326  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@bd927a2
+11-01 15:48:08.355  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@bd927a2 in: RESUMED
+11-01 15:48:08.356  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@bd927a2
+11-01 15:48:09.606  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-malformedSharedPayloadCannotEnterTheForm.png
+11-01 15:48:09.620  1851  3090 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:48:09.777  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@bd927a2 in: PAUSED
+11-01 15:48:09.778  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@bd927a2
+11-01 15:48:10.502  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@bd927a2 in: STOPPED
+11-01 15:48:10.503  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@bd927a2
+11-01 15:48:10.518  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@bd927a2 in: DESTROYED
+11-01 15:48:10.913  3218  3234 I TestRunner: finished: malformedSharedPayloadCannotEnterTheForm(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:48:10.942  1697  2187 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{9062ae token=Token{3c24f29 ActivityRecord{96c84b0 u0 studio.ax.arrival/.MainActivity t23}}}#0
+11-01 15:48:11.040  3218  3234 I TestRunner: started: conflictingSourcesShowBothValuesAndPreventConfirmation(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:48:11.448  1697  1755 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:48:11.712  1851  3090 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:48:12.137  1851  2996 W ActivityManager: Duplicate finish request for ActivityRecord{ed589c5 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t24 f}
+11-01 15:48:12.796  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@f17658 in: PRE_ON_CREATE
+11-01 15:48:13.305  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@f17658 in: CREATED
+11-01 15:48:13.307  3218  3218 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@f17658
+11-01 15:48:13.317  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@f17658 in: STARTED
+11-01 15:48:13.317  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@f17658
+11-01 15:48:13.324  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@f17658 in: RESUMED
+11-01 15:48:13.325  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@f17658
+11-01 15:48:14.567  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +1s926ms (total +4s646ms)
+11-01 15:48:14.690  1697  1757 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:48:14.690  1697  1757 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:48:14.977  1697  1757 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{6fc1a4b token=Token{443df1a ActivityRecord{ed589c5 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t24}}}#0
+11-01 15:48:15.447  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:48:15.715  3218  3251 I chatty  : uid=10068(studio.ax.arrival) identical 2 lines
+11-01 15:48:20.821  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-source-conflict-evidence.png
+11-01 15:48:21.766  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-conflictingSourcesShowBothValuesAndPreventConfirmation.png
+11-01 15:48:21.805  1851  2622 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:48:22.155  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@f17658 in: PAUSED
+11-01 15:48:22.157  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@f17658
+11-01 15:48:23.149  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@f17658 in: STOPPED
+11-01 15:48:23.150  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@f17658
+11-01 15:48:23.152  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@f17658 in: DESTROYED
+11-01 15:48:23.549  3218  3234 I TestRunner: finished: conflictingSourcesShowBothValuesAndPreventConfirmation(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:48:23.563  3218  3234 I TestRunner: started: confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:48:23.793  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{d026b34 token=Token{768ae07 ActivityRecord{2b3021 u0 studio.ax.arrival/.MainActivity t25}}}#0
+11-01 15:48:24.102  1851  2622 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:48:24.754  1851  2622 W ActivityManager: Duplicate finish request for ActivityRecord{16422b7 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t26 f}
+11-01 15:48:24.805  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@e90959b in: PRE_ON_CREATE
+11-01 15:48:25.633  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@e90959b in: CREATED
+11-01 15:48:25.634  3218  3218 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@e90959b
+11-01 15:48:25.661  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@e90959b in: STARTED
+11-01 15:48:25.662  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@e90959b
+11-01 15:48:25.674  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@e90959b in: RESUMED
+11-01 15:48:25.681  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@e90959b
+11-01 15:48:26.121  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +1s461ms (total +3s925ms)
+11-01 15:48:26.352  1697  2187 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:48:26.355  1697  2187 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:48:26.614  1697  2352 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{89e698d token=Token{ac0ba24 ActivityRecord{16422b7 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t26}}}#0
+11-01 15:48:27.150  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:48:34.197  1851  2700 W NotificationService: Toast already killed. pkg=studio.ax.arrival callback=android.app.ITransientNotification$Stub$Proxy@db0312
+11-01 15:48:35.740  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-confirmed-parked.png
+11-01 15:48:38.087  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-confirmed-driving-locked.png
+11-01 15:48:40.559  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-return-checks-required.png
+11-01 15:48:41.990  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy.png
+11-01 15:48:42.003  1851  2996 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:48:42.353  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@e90959b in: PAUSED
+11-01 15:48:42.354  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@e90959b
+11-01 15:48:43.143  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@e90959b in: STOPPED
+11-01 15:48:43.144  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@e90959b
+11-01 15:48:43.200  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@e90959b in: DESTROYED
+11-01 15:48:43.476  3218  3234 I TestRunner: finished: confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:48:43.501  3218  3234 I TestRunner: started: warmShareKeepsCurrentDraftUntilExplicitImport(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:48:43.871  1851  2996 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:48:44.373  1851  2174 W ActivityManager: Duplicate finish request for ActivityRecord{ed72d0d u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t28 f}
+11-01 15:48:45.099  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@9054a0c in: PRE_ON_CREATE
+11-01 15:48:45.938  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@9054a0c in: CREATED
+11-01 15:48:45.939  3218  3218 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@9054a0c
+11-01 15:48:45.949  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@9054a0c in: STARTED
+11-01 15:48:45.950  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@9054a0c
+11-01 15:48:45.953  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@9054a0c in: RESUMED
+11-01 15:48:45.953  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@9054a0c
+11-01 15:48:46.362  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +1s587ms (total +3s958ms)
+11-01 15:48:46.735  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{77162d3 token=Token{66654c2 ActivityRecord{ed72d0d u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t28}}}#0
+11-01 15:48:47.130  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:48:49.331  1851  2700 I ActivityManager: START u0 {act=android.intent.action.SEND typ=text/plain flg=0x20000001 cmp=studio.ax.arrival/.MainActivity clip={text/plain T:코엑스 스튜디오 159 2층 행사} (has extras)} from uid 10068
+11-01 15:48:49.458  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@9054a0c in: PAUSED
+11-01 15:48:49.459  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@9054a0c
+11-01 15:48:49.541  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@9054a0c in: RESUMED
+11-01 15:48:49.542  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@9054a0c
+11-01 15:48:51.566  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-warmShareKeepsCurrentDraftUntilExplicitImport.png
+11-01 15:48:51.906  1851  1866 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:48:52.271  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@9054a0c in: PAUSED
+11-01 15:48:52.272  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@9054a0c
+11-01 15:48:53.143  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@9054a0c in: STOPPED
+11-01 15:48:53.144  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@9054a0c
+11-01 15:48:53.149  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@9054a0c in: DESTROYED
+11-01 15:48:53.452  3218  3234 I TestRunner: finished: warmShareKeepsCurrentDraftUntilExplicitImport(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:48:53.464  3218  3234 I TestRunner: started: sharedIntentWaitsForParkingAndNeverAutoConfirms(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:48:54.236  1851  1866 I ActivityManager: START u0 {act=android.intent.action.SEND typ=text/plain flg=0x10008001 cmp=studio.ax.arrival/.MainActivity clip={text/plain T:코엑스 스튜디오 159 2층 행사} (has extras)} from uid 10068
+11-01 15:48:54.976  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@19afbf3 in: PRE_ON_CREATE
+11-01 15:48:54.996  1851  2996 W ActivityManager: Duplicate finish request for ActivityRecord{358f130 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t30 f}
+11-01 15:48:55.314  1697  2187 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:48:55.320  1697  2187 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:48:55.781  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@19afbf3 in: CREATED
+11-01 15:48:55.782  3218  3218 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@19afbf3
+11-01 15:48:55.808  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@19afbf3 in: STARTED
+11-01 15:48:55.809  3218  3218 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@19afbf3
+11-01 15:48:55.821  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@19afbf3 in: RESUMED
+11-01 15:48:55.822  3218  3218 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@19afbf3
+11-01 15:48:56.421  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +1s547ms (total +4s35ms)
+11-01 15:48:56.542  1697  1895 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:48:56.543  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:48:56.757  1697  1757 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{4cde32e token=Token{17b81a9 ActivityRecord{358f130 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t30}}}#0
+11-01 15:48:57.384  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-shared-pending-locked.png
+11-01 15:48:58.053  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:49:03.226  3218  3234 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-sharedIntentWaitsForParkingAndNeverAutoConfirms.png
+11-01 15:49:03.241  1851  2174 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:49:03.891  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@19afbf3 in: PAUSED
+11-01 15:49:03.892  3218  3218 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@19afbf3
+11-01 15:49:05.208  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@19afbf3 in: STOPPED
+11-01 15:49:05.209  3218  3218 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@19afbf3
+11-01 15:49:05.213  3218  3218 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@19afbf3 in: DESTROYED
+11-01 15:49:05.873  1697  2187 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{d74c790 token=Token{5cb9253 ActivityRecord{d159242 u0 studio.ax.arrival/.MainActivity t31}}}#0
+11-01 15:49:06.050  1851  3090 W NotificationService: Toast already killed. pkg=studio.ax.arrival callback=android.app.ITransientNotification$Stub$Proxy@ce5b40d
+11-01 15:49:06.052  3218  3234 I TestRunner: finished: sharedIntentWaitsForParkingAndNeverAutoConfirms(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:49:06.123  3218  3234 I TestRunner: run finished: 13 tests, 0 failed, 0 ignored
+11-01 15:49:06.399  1851  2622 I ActivityManager: Force stopping studio.ax.arrival appid=10068 user=0: finished inst
+11-01 15:49:06.401  1851  2622 I ActivityManager: Killing 3218:studio.ax.arrival/u0a68 (adj 0): stop studio.ax.arrival
+11-01 15:49:06.573  3203  3203 D AndroidRuntime: Shutting down VM
+11-01 15:49:06.689  1697  1755 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:49:06.689  1697  1755 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:49:08.334  1697  1755 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{3aa2098 token=Token{85a0a7b ActivityRecord{c7fb20a u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t32}}}#0
+
+[324-large-logcat.txt]
+11-01 15:49:30.157  3669  3669 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-01 15:49:33.796  3669  3669 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+11-01 15:49:33.950  1851  2622 I ActivityManager: Force stopping studio.ax.arrival appid=10068 user=0: start instr
+11-01 15:49:34.047  1851  1885 I ActivityManager: Start proc 3702:studio.ax.arrival/u0a68 for added application studio.ax.arrival
+11-01 15:49:37.768  3702  3720 I TestRunner: run started: 6 tests
+11-01 15:49:37.781  3702  3720 I TestRunner: started: savedMemoQrRoundTripsAndClearsWhenEditedOrDriving(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:49:38.003  1851  2622 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:49:38.650  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@93dbf02 in: PRE_ON_CREATE
+11-01 15:49:41.922  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@93dbf02 in: CREATED
+11-01 15:49:41.924  3702  3702 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@93dbf02
+11-01 15:49:41.975  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@93dbf02 in: STARTED
+11-01 15:49:41.977  3702  3702 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@93dbf02
+11-01 15:49:41.986  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@93dbf02 in: RESUMED
+11-01 15:49:41.988  3702  3702 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@93dbf02
+11-01 15:49:43.653  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +5s418ms
+11-01 15:49:46.139  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:49:56.442  3702  3702 I ViewInteraction: Checking 'studio.ax.arrival.VisitFlowInstrumentedTest$$ExternalSyntheticLambda4@1ed4f8c' assertion on view view.getContentDescription() is "저장한 주차 위치를 휴대폰으로 가져가는 QR"
+11-01 15:49:58.504  3702  3720 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-saved-memo-qr.png
+11-01 15:49:58.968  3702  3702 I ViewInteraction: Checking 'studio.ax.arrival.VisitFlowInstrumentedTest$$ExternalSyntheticLambda0@fe73e90' assertion on view view.getContentDescription() is "저장한 주차 위치를 휴대폰으로 가져가는 QR"
+11-01 15:50:03.901  3702  3702 I ViewInteraction: Checking 'studio.ax.arrival.VisitFlowInstrumentedTest$$ExternalSyntheticLambda0@5b794f' assertion on view view.getContentDescription() is "저장한 주차 위치를 휴대폰으로 가져가는 QR"
+11-01 15:50:04.733  3702  3720 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-memo-qr-cleared-driving.png
+11-01 15:50:05.428  3702  3720 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-savedMemoQrRoundTripsAndClearsWhenEditedOrDriving.png
+11-01 15:50:05.487  1851  1866 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:50:06.236  1851  1882 W ActivityManager: Activity pause timeout for ActivityRecord{26f2a52 u0 studio.ax.arrival/.MainActivity t33}
+11-01 15:50:06.364  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@93dbf02 in: PAUSED
+11-01 15:50:06.378  3702  3702 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@93dbf02
+11-01 15:50:07.748  1851  1891 I ActivityManager: Displayed studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity: +1s350ms
+11-01 15:50:08.032  1697  1895 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:50:08.032  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:50:08.247  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@93dbf02 in: STOPPED
+11-01 15:50:08.249  3702  3702 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@93dbf02
+11-01 15:50:08.293  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@93dbf02 in: DESTROYED
+11-01 15:50:09.044  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{ecdc620 token=Token{5a63123 ActivityRecord{26f2a52 u0 studio.ax.arrival/.MainActivity t33}}}#0
+11-01 15:50:09.180  3702  3720 I TestRunner: finished: savedMemoQrRoundTripsAndClearsWhenEditedOrDriving(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:50:09.244  3702  3720 I TestRunner: started: realKeyboardKeepsMemoInputVisibleAndAllowsSaving(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:50:09.756  1851  2549 W ActivityManager: Duplicate finish request for ActivityRecord{3e90a1f u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t34 f}
+11-01 15:50:09.934  1851  1927 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:50:11.073  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@d14b85e in: PRE_ON_CREATE
+11-01 15:50:11.319  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{425e335 token=Token{e48f16c ActivityRecord{3e90a1f u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t34}}}#0
+11-01 15:50:12.746  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@d14b85e in: CREATED
+11-01 15:50:12.747  3702  3702 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@d14b85e
+11-01 15:50:12.761  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@d14b85e in: STARTED
+11-01 15:50:12.762  3702  3702 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@d14b85e
+11-01 15:50:12.766  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@d14b85e in: RESUMED
+11-01 15:50:12.768  3702  3702 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@d14b85e
+11-01 15:50:13.857  1697  1755 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:50:13.858  1697  1755 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:50:13.930  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +2s770ms
+11-01 15:50:14.805  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:50:25.874  3702  3720 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-real-ime-memo-visible.png
+11-01 15:50:28.056  3702  3720 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-realKeyboardKeepsMemoInputVisibleAndAllowsSaving.png
+11-01 15:50:28.146  1851  2172 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:50:28.770  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@d14b85e in: PAUSED
+11-01 15:50:28.776  3702  3702 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@d14b85e
+11-01 15:50:29.693  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@d14b85e in: STOPPED
+11-01 15:50:29.697  3702  3702 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@d14b85e
+11-01 15:50:29.748  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@d14b85e in: DESTROYED
+11-01 15:50:30.451  3702  3720 I TestRunner: finished: realKeyboardKeepsMemoInputVisibleAndAllowsSaving(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:50:30.471  3702  3720 I TestRunner: started: destinationPickerPreservesConflictingNoticeAndCannotBypassReview(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:50:30.647  1697  2352 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{5099c94 token=Token{af248e7 ActivityRecord{7e976a6 u0 studio.ax.arrival/.MainActivity t35}}}#0
+11-01 15:50:30.958  1851  2549 W ActivityManager: Duplicate finish request for ActivityRecord{3402b77 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t36 f}
+11-01 15:50:30.969  1851  2996 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:50:32.488  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@b531f65 in: PRE_ON_CREATE
+11-01 15:50:34.246  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@b531f65 in: CREATED
+11-01 15:50:34.247  3702  3702 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@b531f65
+11-01 15:50:34.271  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@b531f65 in: STARTED
+11-01 15:50:34.273  3702  3702 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@b531f65
+11-01 15:50:34.285  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@b531f65 in: RESUMED
+11-01 15:50:34.290  3702  3702 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@b531f65
+11-01 15:50:35.021  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +2s826ms (total +6s208ms)
+11-01 15:50:35.539  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{2a1804d token=Token{49af3e4 ActivityRecord{3402b77 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t36}}}#0
+11-01 15:50:36.203  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:50:42.112  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:50:48.466  3702  3720 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-picker-preserves-conflicting-source.png
+11-01 15:50:49.037  3702  3720 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-destinationPickerPreservesConflictingNoticeAndCannotBypassReview.png
+11-01 15:50:49.068  1851  2172 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:50:49.491  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@b531f65 in: PAUSED
+11-01 15:50:49.493  3702  3702 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@b531f65
+11-01 15:50:50.791  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@b531f65 in: STOPPED
+11-01 15:50:50.792  3702  3702 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@b531f65
+11-01 15:50:50.808  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@b531f65 in: DESTROYED
+11-01 15:50:51.186  3702  3720 I TestRunner: finished: destinationPickerPreservesConflictingNoticeAndCannotBypassReview(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:50:51.220  3702  3720 I TestRunner: started: parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:50:51.246  1697  2352 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{7206e62 token=Token{269292d ActivityRecord{463444 u0 studio.ax.arrival/.MainActivity t37}}}#0
+11-01 15:50:51.618  1851  2549 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:50:51.889  1851  2172 W ActivityManager: Duplicate finish request for ActivityRecord{3db9f94 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t38 f}
+11-01 15:50:52.593  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@5ea7056 in: PRE_ON_CREATE
+11-01 15:50:53.928  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@5ea7056 in: CREATED
+11-01 15:50:53.930  3702  3702 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@5ea7056
+11-01 15:50:53.951  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@5ea7056 in: STARTED
+11-01 15:50:53.952  3702  3702 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@5ea7056
+11-01 15:50:53.956  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@5ea7056 in: RESUMED
+11-01 15:50:53.957  3702  3702 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@5ea7056
+11-01 15:50:54.531  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +2s359ms (total +4s947ms)
+11-01 15:50:55.049  1697  2187 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{a979232 token=Token{f9a3a3d ActivityRecord{3db9f94 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t38}}}#0
+11-01 15:50:55.467  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:50:57.607  1697  1755 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:50:57.610  1697  1755 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:51:01.208  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@5ea7056 in: PAUSED
+11-01 15:51:01.209  3702  3702 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@5ea7056
+11-01 15:51:01.238  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@5ea7056 in: STOPPED
+11-01 15:51:01.239  3702  3702 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@5ea7056
+11-01 15:51:01.242  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@5ea7056 in: DESTROYED
+11-01 15:51:01.421  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@cd5f916 in: PRE_ON_CREATE
+11-01 15:51:02.884  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@cd5f916 in: CREATED
+11-01 15:51:02.887  3702  3702 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@cd5f916
+11-01 15:51:02.922  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@cd5f916 in: STARTED
+11-01 15:51:02.924  3702  3702 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@cd5f916
+11-01 15:51:02.932  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@cd5f916 in: RESUMED
+11-01 15:51:02.934  3702  3702 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@cd5f916
+11-01 15:51:04.281  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:51:05.758  1697  2352 W SurfaceFlinger: Attempting to set client state on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:51:05.758  1697  2352 W SurfaceFlinger: Attempting to destroy on removed layer: studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:51:08.446  3702  3720 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-parking-memo-restored.png
+11-01 15:51:09.793  3702  3720 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed.png
+11-01 15:51:09.821  1851  1927 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:51:10.379  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@cd5f916 in: PAUSED
+11-01 15:51:10.383  3702  3702 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@cd5f916
+11-01 15:51:11.821  1697  2352 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:51:11.821  1697  2352 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:51:11.868  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@cd5f916 in: STOPPED
+11-01 15:51:11.869  3702  3702 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@cd5f916
+11-01 15:51:11.874  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@cd5f916 in: DESTROYED
+11-01 15:51:11.914  1851  1891 I ActivityManager: Displayed studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity: +1s71ms
+11-01 15:51:12.094  3702  3720 I TestRunner: finished: parkingMemoSurvivesRecreationButRemainsLockedUntilReconfirmed(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:51:12.150  3702  3720 I TestRunner: started: conflictingSourcesShowBothValuesAndPreventConfirmation(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:51:12.184  1697  1757 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{cf4d18c token=Token{b95d6bf ActivityRecord{cbdb4de u0 studio.ax.arrival/.MainActivity t39}}}#0
+11-01 15:51:12.359  1851  2180 W ActivityManager: Duplicate finish request for ActivityRecord{e4cc56b u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t40 f}
+11-01 15:51:12.362  1851  2180 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:51:13.837  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@ade0c2c in: PRE_ON_CREATE
+11-01 15:51:15.060  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@ade0c2c in: CREATED
+11-01 15:51:15.061  3702  3702 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@ade0c2c
+11-01 15:51:15.073  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@ade0c2c in: STARTED
+11-01 15:51:15.076  3702  3702 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@ade0c2c
+11-01 15:51:15.082  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@ade0c2c in: RESUMED
+11-01 15:51:15.083  3702  3702 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@ade0c2c
+11-01 15:51:15.729  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +2s320ms
+11-01 15:51:15.998  1697  1757 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:51:15.998  1697  1757 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival#0
+11-01 15:51:16.132  1697  2352 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{3d16d61 token=Token{698d8c8 ActivityRecord{e4cc56b u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t40}}}#0
+11-01 15:51:16.622  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:51:21.094  3702  3720 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-source-conflict-evidence.png
+11-01 15:51:21.823  3702  3720 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-conflictingSourcesShowBothValuesAndPreventConfirmation.png
+11-01 15:51:21.869  1851  2996 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:51:22.303  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@ade0c2c in: PAUSED
+11-01 15:51:22.304  3702  3702 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@ade0c2c
+11-01 15:51:23.377  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@ade0c2c in: STOPPED
+11-01 15:51:23.378  3702  3702 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@ade0c2c
+11-01 15:51:23.381  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@ade0c2c in: DESTROYED
+11-01 15:51:23.600  3702  3720 I TestRunner: finished: conflictingSourcesShowBothValuesAndPreventConfirmation(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:51:23.726  1697  1755 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{696a679 token=Token{c296740 ActivityRecord{7d522c3 u0 studio.ax.arrival/.MainActivity t41}}}#0
+11-01 15:51:23.737  3702  3720 I TestRunner: started: confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:51:23.901  1851  1866 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=studio.ax.arrival/.MainActivity} from uid 10068
+11-01 15:51:24.655  1851  1927 W ActivityManager: Duplicate finish request for ActivityRecord{e88bd30 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t42 f}
+11-01 15:51:24.754  1851  1882 W ActivityManager: Activity pause timeout for ActivityRecord{e88bd30 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t42 f}
+11-01 15:51:25.486  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@2483b95 in: PRE_ON_CREATE
+11-01 15:51:26.324  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@2483b95 in: CREATED
+11-01 15:51:26.328  3702  3702 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=studio.ax.arrival.MainActivity@2483b95
+11-01 15:51:26.343  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@2483b95 in: STARTED
+11-01 15:51:26.344  3702  3702 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=studio.ax.arrival.MainActivity@2483b95
+11-01 15:51:26.349  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@2483b95 in: RESUMED
+11-01 15:51:26.351  3702  3702 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=studio.ax.arrival.MainActivity@2483b95
+11-01 15:51:26.810  1851  1891 I ActivityManager: Displayed studio.ax.arrival/.MainActivity: +1s860ms (total +4s360ms)
+11-01 15:51:27.276  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{4208f2e token=Token{cfd5da9 ActivityRecord{e88bd30 u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t42}}}#0
+11-01 15:51:27.702  1697  1697 D SurfaceFlinger: duplicate layer name: changing studio.ax.arrival/studio.ax.arrival.MainActivity to studio.ax.arrival/studio.ax.arrival.MainActivity#1
+11-01 15:51:35.052  1851  2996 W NotificationService: Toast already killed. pkg=studio.ax.arrival callback=android.app.ITransientNotification$Stub$Proxy@3deae75
+11-01 15:51:36.757  3702  3720 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-confirmed-parked.png
+11-01 15:51:39.099  3702  3720 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-confirmed-driving-locked.png
+11-01 15:51:41.772  3702  3720 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-return-checks-required.png
+11-01 15:51:43.217  3702  3720 I ArrivalEvidence: Runtime test screenshot: /storage/emulated/0/Android/data/studio.ax.arrival/files/arrival-confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy.png
+11-01 15:51:43.231  1851  2172 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10068
+11-01 15:51:43.588  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@2483b95 in: PAUSED
+11-01 15:51:43.589  3702  3702 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=studio.ax.arrival.MainActivity@2483b95
+11-01 15:51:44.568  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@2483b95 in: STOPPED
+11-01 15:51:44.569  3702  3702 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=studio.ax.arrival.MainActivity@2483b95
+11-01 15:51:44.572  3702  3702 D LifecycleMonitor: Lifecycle status change: studio.ax.arrival.MainActivity@2483b95 in: DESTROYED
+11-01 15:51:44.863  1697  1757 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{bb7e42 token=Token{d090c8d ActivityRecord{7740924 u0 studio.ax.arrival/.MainActivity t43}}}#0
+11-01 15:51:44.879  3702  3720 I TestRunner: finished: confirmedBriefStaysVisibleButDrivingHidesEditingAndCopy(studio.ax.arrival.VisitFlowInstrumentedTest)
+11-01 15:51:45.332  3702  3720 I TestRunner: run finished: 6 tests, 0 failed, 0 ignored
+11-01 15:51:45.480  1697  2352 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:51:45.481  1697  2352 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen studio.ax.arrival.test#0
+11-01 15:51:45.656  1851  3090 I ActivityManager: Force stopping studio.ax.arrival appid=10068 user=0: finished inst
+11-01 15:51:45.658  1851  3090 I ActivityManager: Killing 3702:studio.ax.arrival/u0a68 (adj 0): stop studio.ax.arrival
+11-01 15:51:45.701  3669  3669 D AndroidRuntime: Shutting down VM
+11-01 15:51:47.567  1697  1895 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{d391ee5 token=Token{cda0ddc ActivityRecord{534124f u0 studio.ax.arrival.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t44}}}#0

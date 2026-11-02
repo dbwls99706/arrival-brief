@@ -1,24 +1,22 @@
 # Arrival Brief APK
 
-[ArrivalBrief_release.apk](ArrivalBrief_release.apk)는 검증 JSON에 연결된 `0.5.0-prototype` 파일이다. 최신 배포 APK.
+[ArrivalBrief_release.apk](ArrivalBrief_release.apk)는 `1.0.0-rc1` 서명 release 후보입니다. APK 설치·실행과 실제 Pleos 서비스의 검증 범위는 별도로 확인합니다.
 
 | 항목 | 값 |
 | --- | --- |
 | 패키지 | `studio.ax.arrival` |
-| 버전 | `0.5.0-prototype` (versionCode 5) |
+| 버전 | `1.0.0-rc1` (versionCode 10) |
 | minimum / target / compile SDK | 28 / 35 / 35 |
-| 크기 | 5,082,664바이트 |
+| 크기 | 6,658,807바이트 |
 | 서명 | APK v2, CN=Arrival Brief, RSA 3072비트 |
-| SHA-256 | `c8ba298b9396aa567e84b2e6e5cdfb2f0dbcc2c50788042ea85620f9649f39f4` |
+| SHA-256 | `04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf` |
+| 단위시험 | Android JUnit 73개 통과 |
+| 정적검사 | Lint 오류 0개·경고 0개 |
+| 일반 Android 9 | release 설치·첫 실행·기기 내 SHA-256 일치 |
+| 별도 debug UI | 표준 13개·글자 크기 1.3배 반복 6개 통과 |
 
-이번 0.5.0은 빌드·단위 테스트·Lint·서명을 검증했습니다. 새 UI의 일반 Android 기기/에뮬레이터 실행과 실제 Pleos 실행은 미검증입니다.
+같은 기기의 텍스트 공유, 안내문의 행사장·주차 문장 구분, NaviHelper 시설 대조, 최근 목적지와 수동 주차 메모를 포함합니다. 주차 메모는 64자·1건·24시간이며 같은 기기 재열람과 Android의 명시적 텍스트 QR 반출을 지원합니다. 휴대폰 카메라로 읽고 사용자가 별도 저장하며 실제 광학 스캔은 미검증입니다. 앱의 24시간 만료·삭제 규칙은 휴대폰 복사본에 적용되지 않습니다. 서버·URL·자동 동기화·위치 추적은 제공하지 않습니다.
 
-현재 소스는 `0.5.0-prototype`이며 NaviHelper 시설 대조·목록 직접 선택·최근 목적지 24시간 복구를 포함한다. 버전이 다르면 위 APK를 해당 소스의 검증 결과로 인용하지 않는다.
+[버전별 런타임 기록](../docs/verification/android-runtime.md)은 release 설치·실행과 debug instrumentation, 일반 Android와 Pleos 환경을 구분합니다. 0.3·0.4·0.5의 과거 실행 기록을 이번 후보의 성공 근거로 재사용하지 않습니다. `1.0.0-rc1`은 정식 출시나 실차 적합성 인증을 뜻하지 않습니다.
 
-이전 0.4.0 APK는 일반 Android 9에서 설치·첫 실행·명시적 데모·높이/시설/정차 확인·브리핑 확정·주행 입력 잠금을 확인했습니다. 1280×800과 960×600 논리 화면에서 핵심 안내를 검토했습니다. 이전 0.3.0의 목적지 저장·프로세스 재시작·초안 복구 관측은 별도 역사 기록입니다. [버전별 런타임 기록](../docs/verification/android-runtime.md)에서 구분합니다. 실제 Pleos SDK 응답과 차량 UX 전환은 아직 재검증해야 합니다.
-
-공식 제출명 APK를 같은 폴더에 함께 제공하며, 검증 기준 파일과 바이트·서명이 같다.
-
-서명키·비밀번호는 저장소에 없다. [빌드 지침](../docs/ANDROID_BUILD.md)의 환경 설정을 사용하고, 제출 전에 실행 가능한 release 서명과 공식 파일명 형식을 확인한다. 서명은 실차 검증이나 마켓 승인을 뜻하지 않는다.
-
-이전 0.1.0 debug·0.2.0 release 파일은 당시 버전의 자료다. 검증한 APK 해시와 소스 상태를 맞춰 사용한다.
+공식 제출명 APK와 검증 기준 APK는 동일한 바이트와 서명이어야 합니다. 파일명만 바꿔도 위 SHA-256을 다시 비교합니다. 서명키·비밀번호는 저장소에 없습니다. [빌드 지침](../docs/ANDROID_BUILD.md)에 따라 재빌드하며, 다른 키로 서명한 APK를 동일 배포 파일로 간주하지 않습니다.

@@ -1,0 +1,27 @@
+Final release APK SHA-256: 04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf
+
+[288-baseline-final-version.txt]
+    versionCode=10 minSdk=28 targetSdk=35
+    versionName=1.0.0-rc1
+[289-final-update.txt]
+Performing Streamed Install
+Success
+
+[290-final-installed-package.txt]
+    versionCode=10 minSdk=28 targetSdk=35
+    versionName=1.0.0-rc1
+[292-final-launch.txt]
+Starting: Intent { cmp=studio.ax.arrival/.MainActivity }
+Status: ok
+Activity: studio.ax.arrival/.MainActivity
+ThisTime: 5927
+TotalTime: 5927
+WaitTime: 6877
+Complete
+
+[293-final-process.txt]
+3043
+
+[296-final-device-sha.txt]
+04114df0de41218e21b293609e6625983f4eb615d77ade959ec3bb2a8c48e8bf  /data/app/studio.ax.arrival-Kj3cI4hgsXZqx8pvijg7VQ==/base.apk
+

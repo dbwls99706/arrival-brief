@@ -1,0 +1,186 @@
+{
+  "version": "1.0.0-rc1",
+  "apk": "apk/ArrivalBrief_release.apk",
+  "bytes": 5579851,
+  "sha256": "a10b1f7ea7f93010b01553468822581300bd1558864a878c2ea8fdc58870c5a6",
+  "tests": [
+    {
+      "name": "studio.ax.arrival.BriefEngineTest",
+      "tests": "28",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "studio.ax.arrival.BriefSessionTest",
+      "tests": "11",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "studio.ax.arrival.NavigationCheckTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "studio.ax.arrival.ParkingMemoQrTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "studio.ax.arrival.RecentDestinationTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "studio.ax.arrival.VisitCompanionTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "lint": [],
+  "runtime": {
+    "pleos": {
+      "status": "final_cold_boot_retry_pending",
+      "image": "Pleos Connect 2.1.0 API34 x86_64",
+      "image_sha1": "b4f858d5bcc6c71506d7edfc872bcb9e5a11acaa",
+      "host": "no GPU, no KVM",
+      "initial_attempt": "Cold boot reached ADB but package service was not present; vendor ProfileHal SIGABRT and eth0-not-ready messages were observed",
+      "latest_version_verified": false,
+      "required_followup": "Complete isolated Ethernet compatibility cold boot attempt, then record installation/SDK state if OS services become available",
+      "requirements_url": "https://document.pleos.ai/en/docs/connect/guide/getting-started/application-development/configure-pleos-connect-emulator"
+    },
+    "aosp_android9": {
+      "status": "installed_and_launched",
+      "api": 28,
+      "abi": "x86",
+      "screen": "1280x800 @160dpi",
+      "image_sha1": "ce03c42d80c0fc6dc47f6455dbee7aa275d02780",
+      "verified_version": "1.0.0-rc1",
+      "verified_apk_sha256": "a10b1f7ea7f93010b01553468822581300bd1558864a878c2ea8fdc58870c5a6",
+      "installed_apk_sha256": "a10b1f7ea7f93010b01553468822581300bd1558864a878c2ea8fdc58870c5a6",
+      "upgrade_from": "0.5.0-prototype / versionCode 5",
+      "install": "Success",
+      "launch": "Status: ok; Activity: studio.ax.arrival/.MainActivity; Complete",
+      "latest_version_status": "candidate_release_and_ui_verified_pending_judge6_parser_revision",
+      "debug_apk_sha256": "b05eb857f14ae2537865dab275928ee7c96318db92eb312286657cead5271851",
+      "test_apk_sha256": "6b84e5c92068358183a0cfb372101f443b8615abe59442e2fa8b6538cbad12cb",
+      "standard_ui": {
+        "tests": 11,
+        "failures": 0,
+        "status": "passed"
+      },
+      "font_1_3_ui": {
+        "status": "passed",
+        "tests": 6,
+        "failures": 0
+      },
+      "observed": [
+        "Original signing certificate preserved; update from versionCode5 to10 succeeded",
+        "Final installed release SHA-256 matches delivered APK",
+        "Release first screen renders UNKNOWN state with input locked",
+        "Separate debug instrumentation passes eleven real Activity/Intent/UI tests, including IME, picker preservation, memo expiry and QR lifecycle"
+      ],
+      "limitations": [
+        "AOSP non-automotive demo; no Pleos SDK or live vehicle response is inferred",
+        "CPU emulation and software rendering without GPU/KVM; timings are not performance measurements",
+        "Test fixture suppresses OS error dialogs and disables animations; app FATAL/ANR logs are reviewed separately",
+        "Physical phone camera QR scan and physical vehicle operation are unverified"
+      ],
+      "video_repeat_ui": {
+        "status": "passed",
+        "tests": 1,
+        "failures": 0,
+        "note": "Repeated confirmed-driving case for raw video; not an additional unique test"
+      }
+    }
+  },
+  "version_code": 10,
+  "web_tests": 36,
+  "shared_decision_cases": 153,
+  "runtime_history": {
+    "aosp_android9_0.3.0": {
+      "status": "installed_and_launched",
+      "api": 28,
+      "abi": "x86",
+      "screen": "1280x800 @160dpi",
+      "image_sha1": "ce03c42d80c0fc6dc47f6455dbee7aa275d02780",
+      "install": "Success",
+      "launch": "Status: ok; Activity: studio.ax.arrival/.MainActivity; Complete",
+      "observed": [
+        "release upgrade install succeeded with original signing key",
+        "initial UNKNOWN state locks inputs",
+        "explicit non-vehicle demo entry",
+        "manual facility, total-height and safe-parking checks enable confirmation",
+        "confirmed Auditorium brief shows north gate and B3 Blue zone",
+        "driving demo locks input and retains confirmed briefing in current process",
+        "explicit destination-only save survives force-stop and restart",
+        "restored destination has empty height, unchecked reviews and disabled confirmation",
+        "explicit delete removes the remembered destination and disables restore"
+      ],
+      "limitations": [
+        "non-automotive simulation only; no Pleos SDK success claimed",
+        "host lacks GPU/KVM; System UI ANR dismissed, UIAutomator intermittently returned null root",
+        "no performance, long-duration or real vehicle validation"
+      ],
+      "verified_version": "0.3.0-prototype",
+      "latest_version_status": "pending_0.4.0_runtime_check"
+    },
+    "aosp_android9_0.4.0": {
+      "status": "installed_and_launched",
+      "api": 28,
+      "abi": "x86",
+      "screen": "1280x800 @160dpi; logical display override 960x600 also checked",
+      "image_sha1": "ce03c42d80c0fc6dc47f6455dbee7aa275d02780",
+      "install": "Success",
+      "launch": "Status: ok; Activity: studio.ax.arrival/.MainActivity; Complete",
+      "observed": [
+        "release update installed with original signing key",
+        "initial UNKNOWN state hides input and offers explicit non-vehicle demo entry",
+        "explicit demo begins with example Auditorium and height1.65m",
+        "manual facility, total-height and safe-parking checks gate confirmation",
+        "unconfirmed preview shows checklist without gate/parking route values",
+        "confirmed Auditorium shows north gate and B3 Blue zone in dark briefing panel",
+        "driving demo hides input, copy and save actions while retaining confirmed brief",
+        "960x600 logical display retains locked confirmed briefing with destination, gate, parking, height and field-signage priority text visible"
+      ],
+      "limitations": [
+        "non-automotive AOSP simulation only; no Pleos SDK or live vehicle signal success claimed",
+        "software rendering and CPU emulation without GPU/KVM; Android System UI ANR was dismissed during initial host setup",
+        "no performance, long-duration, real vehicle or 0.4.0 process-restart storage UI validation; prior0.3.0 storage observations are preserved separately"
+      ],
+      "verified_version": "0.4.0-prototype",
+      "verified_apk_sha256": "40ce148be83d608acae1e7bd1bb381619c8ad7896ee7f01fa2cd354d6e4a276f",
+      "latest_version_status": "installed_launched_and_core_ui_checked"
+    },
+    "pleos_0.2.0": {
+      "status": "blocked_before_install",
+      "image": "Pleos Connect 2.1.0 API34 x86_64",
+      "image_sha1": "b4f858d5bcc6c71506d7edfc872bcb9e5a11acaa",
+      "host": "no GPU, no KVM",
+      "observed": "Boot did not complete; guest system services failed; adb install failed with PackageManagerInternal.freeStorage NullPointerException. Application was not launched.",
+      "required_followup": "Re-test installation, first launch, SDK services and UX restriction transitions on supported hardware.",
+      "requirements_url": "https://document.pleos.ai/docs/connect/guide/getting-started/application-development/configure-pleos-connect-emulator",
+      "attempted_app_version": "0.2.0-prototype",
+      "latest_version_verified": false
+    }
+  },
+  "verified_at": "2026-11-01",
+  "lint_history": [
+    {
+      "id": "GradleDependency",
+      "severity": "Warning",
+      "scope": "androidTestImplementation only",
+      "message": "An earlier lint invocation advised androidx.test.ext:junit 1.2.1 -> 1.3.0. The pinned dependency was not changed; final lint reported No issues found."
+    }
+  ]
+}

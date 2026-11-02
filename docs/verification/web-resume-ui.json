@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-02",
+  "environment": "Cloud Chromium against locally built Sites preview; 1348px desktop and 390x844 / 960x600 iframe viewports",
+  "app_version": "1.0.0-rc1",
+  "source_engine_sha256": "8b8865c25646c83be85590e674125088cbc08e8987c54ed200fa792a613c6a4b",
+  "source_app_sha256": "8fbd7539c3f51ac18eec536d4949b3b6acc31dd00d8ec7cc2830c0298e63fd63",
+  "source_html_sha256": "97e49ee3c92312c33f705de042ff879d7ea48b59ed9aeff73a2a09d84a060840",
+  "source_style_sha256": "3f2bae2ac41396391248d39db878a9e92bf208db62f4e0ce05d85b16a4939c01",
+  "brand_asset_sha256": "ae99929907849fbc9f6827bee9c223937b3168b082bcf9da4277d9bd5456a381",
+  "checks": [
+    {
+      "check": "Generated brand mark visible at actual 36px header size",
+      "result": "pass"
+    },
+    {
+      "check": "Known auditorium + height + all three confirmations yields North gate and B3 Blue",
+      "result": "pass"
+    },
+    {
+      "check": "Driving simulation hides input, export and memo; confirmed values retained",
+      "result": "pass"
+    },
+    {
+      "check": "Parked return requires parking reconfirmation before export",
+      "result": "pass"
+    },
+    {
+      "check": "Manual parking note persists after reload and requires safe-parking review before display; delete clears record",
+      "result": "pass",
+      "snapshot": "pre-brand, unchanged memo source"
+    },
+    {
+      "check": "Original non-holding notice preserved when manually choosing venue; confirmation disabled",
+      "result": "pass"
+    },
+    {
+      "check": "Subjectless completed-event clause preserved and held at mobile width",
+      "result": "pass",
+      "image": "arrival-resume-mobile-held.jpg"
+    },
+    {
+      "check": "Official source conflict keeps both conflicting recommendations visible and blocks confirmation",
+      "result": "pass"
+    },
+    {
+      "check": "Facility closure quote retained and visible after manual selection",
+      "result": "pass"
+    },
+    {
+      "check": "Mobile viewport no horizontal overflow",
+      "result": "pass",
+      "client_width": 375,
+      "scroll_width": 375
+    },
+    {
+      "check": "Compact driving viewport no horizontal overflow and result readable",
+      "result": "pass",
+      "client_width": 945,
+      "scroll_width": 945,
+      "image": "arrival-resume-compact-driving.jpg"
+    }
+  ],
+  "limitations": [
+    "Web driving mode is a simulation, not vehicle sensor validation.",
+    "Manual UI observations do not replace Android/Pleos or physical phone optical QR checks."
+  ]
+}
